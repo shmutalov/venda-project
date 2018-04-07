@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "d00aed58af25d3ceff75281893369ddd",
+    "content-hash": "c5df365f3fcdaad5014577d0b7e08720",
     "packages": [
         {
             "name": "composer/installers",
@@ -482,6 +482,77 @@
             }
         },
         {
+            "name": "drupal/devel",
+            "version": "1.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/devel",
+                "reference": "7.x-1.5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/devel-7.x-1.5.zip",
+                "reference": "7.x-1.5",
+                "shasum": "9065fe4fbaa260e087b4d2b1876bf8a768fade13"
+            },
+            "require": {
+                "drupal/drupal": "~7.0"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
+                "drupal": {
+                    "version": "7.x-1.5",
+                    "datestamp": "1398963228",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/7/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "catch",
+                    "homepage": "https://www.drupal.org/user/35733"
+                },
+                {
+                    "name": "juampynr",
+                    "homepage": "https://www.drupal.org/user/682736"
+                },
+                {
+                    "name": "lussoluca",
+                    "homepage": "https://www.drupal.org/user/138068"
+                },
+                {
+                    "name": "moshe weitzman",
+                    "homepage": "https://www.drupal.org/user/23"
+                },
+                {
+                    "name": "pcambra",
+                    "homepage": "https://www.drupal.org/user/122101"
+                },
+                {
+                    "name": "salvis",
+                    "homepage": "https://www.drupal.org/user/82964"
+                },
+                {
+                    "name": "willzyx",
+                    "homepage": "https://www.drupal.org/user/1043862"
+                }
+            ],
+            "description": "Various blocks, pages, and functions for developers.",
+            "homepage": "https://www.drupal.org/project/devel",
+            "support": {
+                "source": "http://cgit.drupalcode.org/devel"
+            }
+        },
+        {
             "name": "drupal/drupal",
             "version": "7.58.0",
             "source": {
@@ -594,6 +665,145 @@
             "homepage": "https://www.drupal.org/project/drupal",
             "support": {
                 "source": "http://cgit.drupalcode.org/drupal"
+            }
+        },
+        {
+            "name": "drupal/features",
+            "version": "2.10.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/features",
+                "reference": "7.x-2.10"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/features-7.x-2.10.zip",
+                "reference": "7.x-2.10",
+                "shasum": "b49cf87df5197195003e24ec679ffbc7c4ea1e08"
+            },
+            "require": {
+                "drupal/drupal": "~7.0"
+            },
+            "require-dev": {
+                "drupal/strongarm": "*",
+                "drupal/views": "*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-2.x": "2.x-dev"
+                },
+                "drupal": {
+                    "version": "7.x-2.10",
+                    "datestamp": "1461011639",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/7/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "dawehner",
+                    "homepage": "https://www.drupal.org/user/99340"
+                },
+                {
+                    "name": "e2thex",
+                    "homepage": "https://www.drupal.org/user/189123"
+                },
+                {
+                    "name": "febbraro",
+                    "homepage": "https://www.drupal.org/user/43670"
+                },
+                {
+                    "name": "jmiccolis",
+                    "homepage": "https://www.drupal.org/user/31731"
+                },
+                {
+                    "name": "mpotter",
+                    "homepage": "https://www.drupal.org/user/616192"
+                },
+                {
+                    "name": "nedjo",
+                    "homepage": "https://www.drupal.org/user/4481"
+                },
+                {
+                    "name": "tim.plunkett",
+                    "homepage": "https://www.drupal.org/user/241634"
+                }
+            ],
+            "description": "Provides feature management for Drupal.",
+            "homepage": "https://www.drupal.org/project/features",
+            "support": {
+                "source": "http://cgit.drupalcode.org/features"
+            }
+        },
+        {
+            "name": "drupal/ftools",
+            "version": "1.6.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/ftools",
+                "reference": "7.x-1.6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/ftools-7.x-1.6.zip",
+                "reference": "7.x-1.6",
+                "shasum": "4881d7c65d6aa29fe2c198802558e10b56b5c6a7"
+            },
+            "require": {
+                "drupal/drupal": "~7.0",
+                "drupal/features": "*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
+                "drupal": {
+                    "version": "7.x-1.6",
+                    "datestamp": "1350205638",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/7/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "andriy",
+                    "homepage": "https://www.drupal.org/user/296236"
+                },
+                {
+                    "name": "konforti",
+                    "homepage": "https://www.drupal.org/user/99548"
+                },
+                {
+                    "name": "manuelBS",
+                    "homepage": "https://www.drupal.org/user/302791"
+                },
+                {
+                    "name": "perelman.yuval",
+                    "homepage": "https://www.drupal.org/user/622934"
+                },
+                {
+                    "name": "z.stolar",
+                    "homepage": "https://www.drupal.org/user/48488"
+                }
+            ],
+            "description": "Provides feature management auto download button.",
+            "homepage": "https://www.drupal.org/project/ftools",
+            "support": {
+                "source": "http://cgit.drupalcode.org/ftools"
             }
         },
         {

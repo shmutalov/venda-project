@@ -39,32 +39,32 @@ $roz_sum = $opt_sum = $i = $cash_sum = $terminal_sum = $roz_usd = $opt_usd = $ca
         $cash_sum = $cash_sum + $row->field_field_trc_payment_cash[0]['raw']['value'];
         $terminal_sum = $terminal_sum + $row->field_field_trc_payment_terminal[0]['raw']['value'];
         $owe_sum = $owe_sum + $row->field_field_trc_payment_owe[0]['raw']['value'];
-        
+
         //U.E.
         $roz_usd = $roz_usd + round($row->field_field_trc_price[0]['raw']['value']/$row->field_field_trc_rate[0]['raw']['value'], 2);
         $opt_usd = $opt_usd + round($row->field_field_trc_price_base[0]['raw']['value']/$row->field_field_trc_rate[0]['raw']['value'], 2);
         $cash_usd = $cash_usd + round($row->field_field_trc_payment_cash[0]['raw']['value']/$row->field_field_trc_rate[0]['raw']['value'], 2);
         $terminal_usd = $terminal_usd + round($row->field_field_trc_payment_terminal[0]['raw']['value']/$row->field_field_trc_rate[0]['raw']['value'], 2);
         $owe_usd = $owe_usd + round($row->field_field_trc_payment_owe[0]['raw']['value']/$row->field_field_trc_rate[0]['raw']['value'], 2);
-        
+
         $i++;
       }
     }
-    
+
     $check_amount = $i;
-    
+
     //SUM
     $prib_sum = $roz_sum - $opt_sum;
     $average_check_sum = round(($roz_sum / $check_amount),2);
     $pribil_average_check_sum = round($prib_sum / $check_amount,2);
-    
+
     //UE
     $prib_usd = $roz_usd - $opt_usd;
     $average_check_usd = round(($roz_usd / $check_amount), 2);
     $pribil_average_check_usd = round($prib_usd / $check_amount,2);
 
-    
-    
+
+
 //Get Inkassatsiya data
 $inc_output = '';
 $date_from = $date_to = false;
@@ -73,21 +73,21 @@ if (isset($_SESSION['views']['reports_transactions']['default']['date_filter_fro
 	$date_from = $_SESSION['views']['reports_transactions']['default']['date_filter_from']['value'];
 	$date_to = $_SESSION['views']['reports_transactions']['default']['date_filter_to']['value'];
 	$inc_output = ' ('.date('d.m.Y', strtotime($date_from)).' - '.date('d.m.Y', strtotime($date_to)).')';
-	
-	
+
+
 } elseif (isset($_SESSION['views']['reports_transactions']['default']['date_filter_from']['value'])) {
 	$date_from = $_SESSION['views']['reports_transactions']['default']['date_filter_from']['value'];
 	$inc_output = ' ('.date('d.m.Y', strtotime($date_from)).')';
 } elseif (isset($_SESSION['views']['reports_transactions']['default']['date_filter_to']['value'])) {
 	$date_to = $_SESSION['views']['reports_transactions']['default']['date_filter_to']['value'];
-	$inc_output = ' ('.date('d.m.Y', strtotime($date_to)).')';	
+	$inc_output = ' ('.date('d.m.Y', strtotime($date_to)).')';
 }
 
 $enc_amount = 0;
 $encashment = views_get_view('encashment');
 if ($encashment) {
 	if ($encashment->set_display('block_1')) {
-		
+
 		if ($date_from) {
 			$filter = $encashment->get_item('default', 'filter', 'date_filter');
 			$filter['value'] = array('value'=>$date_from);
@@ -98,7 +98,7 @@ if ($encashment) {
 			$filter['value'] = array('value'=>$date_to);
 			$encashment->set_item('default', 'filter', 'date_filter_1', $filter);
 		}
-		
+
 		$encashment->pre_execute();
 
 		if ($encashment->execute() !== FALSE) {
@@ -106,7 +106,7 @@ if ($encashment) {
 				$enc_amount = isset($view_row->field_field_enc_amount[0]['raw']['value']) ?
 					$view_row->field_field_enc_amount[0]['raw']['value']
 					: 0;
-								
+
 			}
 		}
 	}
@@ -129,12 +129,12 @@ $average_check_output = round(($roz_sum / $check_amount), 2) . ' '.$price_show;
 $pribil_average_check_output = round(($prib_sum / $check_amount),2) . ' '.$price_show;
 
 if (!isset($_SESSION['price_show'])) {
-  
+
 } elseif ($_SESSION['price_show']=='sum') {
   $price_show = 'сум';
 } elseif ($_SESSION['price_show']=='ue') {
   $price_show = 'у.е.';
-  
+
   //SUM output
   $roz_output = round($roz_usd, 2) . ' '.$price_show;
   $cash_output = round($cash_usd, 2) . ' '.$price_show;
@@ -148,7 +148,7 @@ if (!isset($_SESSION['price_show'])) {
 
 
 
-		
+
  ?>
 <hr/>
 <div class="row">
@@ -169,6 +169,6 @@ if (!isset($_SESSION['price_show'])) {
 <hr/>
 <?php if ($enc_amount): ?>
 	<h4>Расходы<?php print $inc_output; ?>: <span><?php print $enc_amount_output; ?></span></h4>
+	<hr/>
 <?php endif; ?>
-<hr/>
 </div><?php /* class view */ ?>

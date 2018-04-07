@@ -29,7 +29,9 @@
         "cweagans/composer-patches": "^1.6",
         "drupal-composer/preserve-paths": "^0.1",
         "drupal/composer_autoloader": "^1.0",
+        "drupal/devel": "^1.5",
         "drupal/drupal": "~7.0",
+        "drupal/ftools": "^1.6",
         "drush/drush": "~8.0",
         "symfony/filesystem": "~2.7|^3",
         "webflo/drupal-finder": "^1.0.0"

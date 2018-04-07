@@ -3,3 +3,6 @@ sites/*/files/css
 sites/*/files/languages
 sites/*/files/examples
 sites/*/private
+
+tmp
+tmp/*
