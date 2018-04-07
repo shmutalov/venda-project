@@ -223,7 +223,7 @@ function config_pages_entity_info() {
       'controller class' => 'ConfigPagesTypeUIController',
     ),
   );
-
+  
   foreach (_config_pages_get_names() as $type => $info) {
     $return['config_pages']['bundles'][$type] = array(
       'label' => $info->label,
@@ -235,7 +235,7 @@ function config_pages_entity_info() {
       ),
     );
   }
-
+  
   return $return;
 }
 
