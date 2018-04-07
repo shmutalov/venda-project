@@ -1,0 +1,9 @@
+name = Customizer
+description = Allow for the customisation of drupal 7
+core = 7.x
+version = "7.x-0.1"
+project = "Custom Modules"
+
+files[] = customizer_handler_filter_seller_select.inc
+files[] = customizer.views.inc
+

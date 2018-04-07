@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Venda feature.
+ */
+
+include_once 'venda.features.inc';

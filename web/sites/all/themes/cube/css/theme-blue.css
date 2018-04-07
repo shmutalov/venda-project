@@ -1,0 +1,33 @@
+body.theme-blue .page-title-container {
+  background:#1976D2;
+}
+body.theme-blue aside .menu li.dropdown > .menu-opener, body.theme-blue aside .menu li.active > a, body.theme-blue aside .menu li > a.active {
+	color: #1976D2;
+}
+body.theme-blue .well, body.theme-blue .form-control:focus, body.theme-blue .check-container, body.theme-blue .tt-menu, body.theme-blue .tt-suggestion, body.theme-blue .panel-default, body.theme-blue .img-thumbnail, body.theme-blue .form-control, body.theme-blue .nav-tabs, body.theme-blue .input-group-addon, body.theme-blue .pagination>li>a, body.theme-blue .pagination>li>span, body.theme-blue .pagination>.active>a, body.theme-blue .pagination>.active>a:focus, body.theme-blue .pagination>.active>a:hover, body.theme-blue .pagination>.active>span, body.theme-blue .pagination>.active>span:focus, body.theme-blue .pagination>.active>span:hover, body.theme-blue .pagination>.disabled>a, body.theme-blue .pagination>.disabled>a:focus, body.theme-blue .pagination>.disabled>a:hover, body.theme-blue .pagination>.disabled>span, body.theme-blue .pagination>.disabled>span:focus, body.theme-blue .pagination>.disabled>span:hover, body.theme-blue .pagination>li>a:focus, body.theme-blue .pagination>li>a:hover, body.theme-blue .pagination>li>span:focus, body.theme-blue .pagination>li>span:hover, body.theme-blue .report-main-nav {
+	border-color: #1976D2;
+}
+body.theme-blue .tt-suggestion.tt-cursor, body.theme-blue .tt-suggestion:hover, body.theme-blue #block-menu-menu-report-menu li.active-trail > a, body.theme-blue .view-profile-block {
+	background-color:#1976D2;
+}
+body.theme-blue .chosen-container .chosen-results li.highlighted, body.theme-blue .datepicker table tr td.active.active.focus, body.theme-blue .datepicker table tr td.active.active:focus, body.theme-blue .datepicker table tr td.active.active:hover, body.theme-blue .datepicker table tr td.active.highlighted.active.focus, body.theme-blue .datepicker table tr td.active.highlighted.active:focus, body.theme-blue .datepicker table tr td.active.highlighted.active:hover, body.theme-blue .datepicker table tr td.active.highlighted:active.focus, body.theme-blue .datepicker table tr td.active.highlighted:active:focus, body.theme-blue .datepicker table tr td.active.highlighted:active:hover, body.theme-blue .datepicker table tr td.active:active.focus, body.theme-blue .datepicker table tr td.active:active:focus, body.theme-blue .datepicker table tr td.active:active:hover, body.theme-blue .datepicker table tr td.active.active, body.theme-blue .datepicker table tr td.active.highlighted.active, body.theme-blue .datepicker table tr td.active.highlighted:active, body.theme-blue .datepicker table tr td.active:active, body.theme-blue .datepicker table tr td.active.highlighted:hover, body.theme-blue .datepicker table tr td.active:hover, body.theme-blue .datepicker table tr td span.active.active.focus, body.theme-blue .datepicker table tr td span.active.active:focus, body.theme-blue .datepicker table tr td span.active.active:hover, body.theme-blue .datepicker table tr td span.active.disabled.active.focus, body.theme-blue .datepicker table tr td span.active.disabled.active:focus, body.theme-blue .datepicker table tr td span.active.disabled.active:hover, body.theme-blue .datepicker table tr td span.active.disabled:active.focus, body.theme-blue .datepicker table tr td span.active.disabled:active:focus, body.theme-blue .datepicker table tr td span.active.disabled:active:hover, body.theme-blue .datepicker table tr td span.active.disabled:hover.active.focus, body.theme-blue .datepicker table tr td span.active.disabled:hover.active:focus, body.theme-blue .datepicker table tr td span.active.disabled:hover.active:hover, body.theme-blue .datepicker table tr td span.active.disabled:hover:active.focus, body.theme-blue .datepicker table tr td span.active.disabled:hover:active:focus, body.theme-blue .datepicker table tr td span.active.disabled:hover:active:hover, body.theme-blue .datepicker table tr td span.active:active.focus, body.theme-blue .datepicker table tr td span.active:active:focus, body.theme-blue .datepicker table tr td span.active:active:hover, body.theme-blue .datepicker table tr td span.active:hover.active.focus, body.theme-blue .datepicker table tr td span.active:hover.active:focus, body.theme-blue .datepicker table tr td span.active:hover.active:hover, body.theme-blue .datepicker table tr td span.active:hover:active.focus, body.theme-blue .datepicker table tr td span.active:hover:active:focus, body.theme-blue .datepicker table tr td span.active:hover:active:hover, body.theme-blue .datepicker table tr td span.active.active, body.theme-blue .datepicker table tr td span.active.disabled.active, body.theme-blue .datepicker table tr td span.active.disabled:active, body.theme-blue .datepicker table tr td span.active.disabled:hover.active, body.theme-blue .datepicker table tr td span.active.disabled:hover:active, body.theme-blue .datepicker table tr td span.active:active, body.theme-blue .datepicker table tr td span.active:hover.active, body.theme-blue .datepicker table tr td span.active:hover:active, body.theme-blue .panel-default>.panel-heading {
+	background: #1E88E5;
+	border-color: #1E88E5;
+}
+body.theme-blue #jGrowl .jGrowl-notification {
+	box-shadow:1px 1px 1px #1976D2;
+}
+body.theme-blue .nav-tabs>li>a:hover {
+	border-bottom:#1976D2;
+}
+body.theme-blue .main-container aside {
+	border-right: 1px solid #1976D2;
+}
+body.theme-blue .form-control:focus {
+	box-shadow: 2px 2px 5px rgba(25, 118, 210, 0.26);
+}
+@media (max-width: 990px) {
+  body.theme-blue .top-split {
+		border-top: 1px solid #1976D2;
+	}
+}

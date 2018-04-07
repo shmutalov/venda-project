@@ -1,0 +1,64 @@
+@media print {
+  body > .container-fluid, .page-dashboard-preparates .page-header, #sidedrawer, .view-filters, .view .nav-tabs, .report-main-nav, .feed-icon, .vbo-views-form fieldset#edit-select, .vbo-views-form .views-field-views-bulk-operations, .view-warehouse .view-header, .view-warehouse table th:last-child, .view-warehouse table td:last-child, .hide-print, .page-dashboard-warehouse-export .page-header {
+		display: none;
+	}
+	body {
+		font-size:12px;
+		background:#fff;
+		line-height:1;
+    background: none;
+	}
+	body, h1, h2, h3, h4, h5, h6 {
+		font-family:Arial, Tahoma, Calibri;
+	}
+	.page-dashboard-preparates .well {
+		padding:0;
+		margin-bottom:10px;
+		background:none;
+		border:0;
+	}
+	.page-dashboard-preparates .view-preparate-information-details h3 {
+		font-size:14px;
+		margin-bottom:15px;
+	}
+	.copyright-text {
+		display:none;
+	}
+	@page { 
+		margin: 5px;
+		size: A4;	
+	}
+	html, body {
+    width: 210mm;
+    height: 297mm;
+  }
+	a[href]:after {
+    content: none !important;
+  }
+	.report-mobile-menu, .report-mobile-menu + hr {
+		display:none !important;
+	}
+	.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+		padding:3px;
+		border:1px solid #333;
+		font-size: 10px;
+	}
+	.table-striped>tbody>tr:nth-child(odd) {
+		background-color:transparent;
+	}
+	.panel.table-panel {
+		border:0;
+	}
+	.view-reports-transactions .view-content, #wrapper {
+		margin-top:0;
+	}
+	.view-warehouse table .h3 {
+		font-size:10px;
+	}
+    
+    .print-input {
+      background: transparent;
+      border:0 none;
+      border-bottom: 1px solid #333;
+    }
+}

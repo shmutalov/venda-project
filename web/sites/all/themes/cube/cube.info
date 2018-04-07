@@ -1,0 +1,20 @@
+name = Cube
+description = A Bootstrap Sub-theme.
+core = 7.x
+base theme = bootstrap
+
+regions[content]        = 'Content'
+regions[sidebar_first]  = 'Primary'
+
+stylesheets[all][] = css/bootstrap.min.css
+stylesheets[all][] = css/glyphicons.css
+;stylesheets[all][] = css/material.css
+stylesheets[all][] = css/style.css
+stylesheets[all][] = css/print.css
+
+scripts[] = 'js/bootstrap.min.js'
+;scripts[] = 'js/ripples.min.js'
+;scripts[] = 'js/material.min.js'
+scripts[] = 'js/bootbox.min.js'
+scripts[] = 'js/jquery.cookie.js'
+scripts[] = 'js/script.js'

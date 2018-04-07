@@ -1,0 +1,264 @@
+fieldset[disabled] .form-control:not(textarea):not(select),
+.form-control-wrapper .form-control:not(textarea):not(select),
+.form-control:not(textarea):not(select),
+fieldset[disabled] .form-control:focus:not(textarea):not(select),
+.form-control-wrapper .form-control:focus:not(textarea):not(select),
+.form-control:focus:not(textarea):not(select),
+fieldset[disabled] .form-control.focus:not(textarea):not(select),
+.form-control-wrapper .form-control.focus:not(textarea):not(select),
+.form-control.focus:not(textarea):not(select) {
+  
+}
+fieldset[disabled] .form-control:disabled,
+.form-control-wrapper .form-control:disabled,
+.form-control:disabled,
+fieldset[disabled] .form-control:focus:disabled,
+.form-control-wrapper .form-control:focus:disabled,
+.form-control:focus:disabled,
+fieldset[disabled] .form-control.focus:disabled,
+.form-control-wrapper .form-control.focus:disabled,
+.form-control.focus:disabled {
+  border-style: dashed;
+  border-bottom: 1px solid #757575;
+}
+select.form-control {
+  
+}
+select[multiple].form-control,
+select[multiple].form-control:focus,
+select[multiple].form-control.focus {
+  
+}
+.form-control {
+  border: 0;
+  background-image: linear-gradient(#009587, #009587), linear-gradient(#d2d2d2, #d2d2d2);
+  background-size: 0 2px, 100% 1px;
+  background-repeat: no-repeat;
+  background-position: center bottom, center calc(100% - 1px);
+}
+.form-control:focus,
+.form-control.focus {
+  outline: none;
+  background-image: linear-gradient(#009587, #009587), linear-gradient(#d2d2d2, #d2d2d2);
+  -webkit-animation: input-highlight 0.5s forwards;
+          animation: input-highlight 0.5s forwards;
+  box-shadow: none;
+  background-size: 0 2px, 100% 1px;
+}
+.form-control-wrapper {
+  position: relative;
+}
+.form-control-wrapper .floating-label {
+  color: #7E7E7E;
+  font-size: 14px;
+  position: absolute;
+  pointer-events: none;
+  left: 0px;
+  top: 5px;
+  transition: 0.2s ease all;
+  opacity: 0;
+}
+.form-control-wrapper .form-control:not(.empty) ~ .floating-label {
+  top: -10px;
+  font-size: 10px;
+  opacity: 1;
+}
+.form-control-wrapper .form-control:focus:invalid ~ .floating-label,
+.form-control-wrapper .form-control.focus:invalid ~ .floating-label {
+  color: #f44336;
+}
+.form-control-wrapper .form-control:focus ~ .material-input:after,
+.form-control-wrapper .form-control.focus ~ .material-input:after {
+  background-color: #009587;
+}
+.form-control-wrapper .form-control:focus:invalid ~ .material-input:before,
+.form-control-wrapper .form-control.focus:invalid ~ .material-input:before,
+.form-control-wrapper .form-control:focus:invalid ~ .material-input:after,
+.form-control-wrapper .form-control.focus:invalid ~ .material-input:after {
+  background-color: #f44336;
+}
+.form-control-wrapper .form-control.empty ~ .floating-label {
+  opacity: 1;
+}
+.form-control-wrapper textarea {
+  resize: none;
+}
+.form-control-wrapper textarea ~ .form-control-highlight {
+  margin-top: -11px;
+}
+.form-control-wrapper .hint {
+  position: absolute;
+  font-size: 80%;
+  display: none;
+}
+.form-control-wrapper .form-control:focus ~ .hint,
+.form-control-wrapper .form-control.focus ~ .hint {
+  display: block;
+}
+.form-control-wrapper select ~ .material-input:after {
+  display: none;
+}
+.form-group.has-warning .form-control {
+  box-shadow: none;
+}
+.form-group.has-warning .material-input:focus,
+.form-group.has-warning .form-control:focus,
+.form-group.has-warning .form-control.focus {
+  background-image: linear-gradient(#ff5722, #ff5722), linear-gradient(#d2d2d2, #d2d2d2);
+  box-shadow: none;
+}
+.form-group.has-warning .control-label,
+.form-group.has-warning input.form-control:not(.empty) ~ .floating-label {
+  color: #ff5722;
+}
+.form-group.has-error .form-control {
+  box-shadow: none;
+}
+.form-group.has-error .material-input:focus,
+.form-group.has-error .form-control:focus,
+.form-group.has-error .form-control.focus {
+  background-image: linear-gradient(#f44336, #f44336), linear-gradient(#d2d2d2, #d2d2d2);
+  box-shadow: none;
+}
+.form-group.has-error .control-label,
+.form-group.has-error input.form-control:not(.empty) ~ .floating-label {
+  color: #f44336;
+}
+.form-group.has-success .form-control {
+  box-shadow: none;
+}
+.form-group.has-success .material-input:focus,
+.form-group.has-success .form-control:focus,
+.form-group.has-success .form-control.focus {
+  background-image: linear-gradient(#0f9d58, #0f9d58), linear-gradient(#d2d2d2, #d2d2d2);
+  box-shadow: none;
+}
+.form-group.has-success .control-label,
+.form-group.has-success input.form-control:not(.empty) ~ .floating-label {
+  color: #0f9d58;
+}
+.form-group.has-info .form-control {
+  box-shadow: none;
+}
+.form-group.has-info .material-input:focus,
+.form-group.has-info .form-control:focus,
+.form-group.has-info .form-control.focus {
+  background-image: linear-gradient(#03a9f4, #03a9f4), linear-gradient(#d2d2d2, #d2d2d2);
+  box-shadow: none;
+}
+.form-group.has-info .control-label,
+.form-group.has-info input.form-control:not(.empty) ~ .floating-label {
+  color: #03a9f4;
+}
+.form-group .form-control:focus,
+.form-group-default .form-control:focus {
+  background-image: linear-gradient(#009587, #009587), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.form-group-black .form-control:focus {
+  background-image: linear-gradient(#000000, #000000), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.form-group-white .form-control:focus {
+  background-image: linear-gradient(#ffffff, #ffffff), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.form-group-inverse .form-control:focus {
+  background-image: linear-gradient(#3f51b5, #3f51b5), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.form-group-primary .form-control:focus {
+  background-image: linear-gradient(#009587, #009587), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.form-group-success .form-control:focus {
+  background-image: linear-gradient(#0f9d58, #0f9d58), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.form-group-info .form-control:focus {
+  background-image: linear-gradient(#03a9f4, #03a9f4), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.form-group-warning .form-control:focus {
+  background-image: linear-gradient(#ff5722, #ff5722), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.form-group-danger .form-control:focus {
+  background-image: linear-gradient(#f44336, #f44336), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.form-group .control-label,
+.form-group-default .control-label {
+  color: rgba(0, 0, 0, 0.84);
+}
+.form-group-black .control-label {
+  color: #000000;
+}
+.form-group-white .control-label {
+  color: #ffffff;
+}
+.form-group-inverse .control-label {
+  color: #3f51b5;
+}
+.form-group-primary .control-label {
+  color: #009587;
+}
+.form-group-success .control-label {
+  color: #0f9d58;
+}
+.form-group-info .control-label {
+  color: #03a9f4;
+}
+.form-group-warning .control-label {
+  color: #ff5722;
+}
+.form-group-danger .control-label {
+  color: #f44336;
+}
+.input-group .form-control-wrapper {
+  margin-right: 5px;
+  margin-left: 5px;
+}
+.input-group .form-control-wrapper .form-control {
+  float: none;
+}
+.input-group .input-group-addon {
+  border: 0;
+  background: transparent;
+}
+.input-group .input-group-btn .btn {
+  border-radius: 4px;
+  margin: 0;
+}
+select.form-control {
+  border: 0;
+  box-shadow: none;
+  border-bottom: 1px solid #757575;
+  border-radius: 0;
+}
+select.form-control:focus,
+select.form-control.focus {
+  box-shadow: none;
+  border-color: #757575;
+}
+@-webkit-keyframes input-highlight {
+  0% {
+    background-size: 0 2px, 100% 1px;
+  }
+  100% {
+    background-size: 100% 2px, 100% 1px;
+  }
+}
+@keyframes input-highlight {
+  0% {
+    background-size: 0 2px, 100% 1px;
+  }
+  100% {
+    background-size: 100% 2px, 100% 1px;
+  }
+}
+.form-control-wrapper input[type=file] {
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+}
+legend {
+  border-bottom: 0;
+}

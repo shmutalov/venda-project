@@ -1,0 +1,1 @@
+<div><?php print $node->title; ?> / <?php print (isset($node->field_prtrc_amount[LANGUAGE_NONE][0]['value']) ? $node->field_prtrc_amount[LANGUAGE_NONE][0]['value'] : ''); ?> упк / <?php print (isset($node->field_prtrc_roz_price[LANGUAGE_NONE][0]['value']) ? $node->field_prtrc_roz_price[LANGUAGE_NONE][0]['value'] : ''); ?> сум</div> 

@@ -1,0 +1,10 @@
+<div class="product-row" data-prtrc-nid="<?php print $node->nid; ?>" data-pr-nid="<?php print (isset($node->field_prtrc_product[LANGUAGE_NONE][0]['nid']) ? $node->field_prtrc_product[LANGUAGE_NONE][0]['nid'] : ''); ?>">
+	<span class="product-title"><?php print $node->title; ?></span> / 
+	<span class="trc-qty" data-pkg-qty="<?php print (isset($node->field_prtrc_amount[LANGUAGE_NONE][0]['value']) ? $node->field_prtrc_amount[LANGUAGE_NONE][0]['value'] : ''); ?>"><?php print (isset($node->field_prtrc_amount[LANGUAGE_NONE][0]['value']) ? $node->field_prtrc_amount[LANGUAGE_NONE][0]['value'] : ''); ?> упк</span>
+	<span class="hide trc-batches-qty"><?php print (isset($node->field_prtrc_batch_info[LANGUAGE_NONE][0]['value']) ? $node->field_prtrc_batch_info[LANGUAGE_NONE][0]['value'] : ''); ?></span>
+	<span class="hide trc-batches-prices"><?php print (isset($node->field_prtrc_batch_prices[LANGUAGE_NONE][0]['value']) ? $node->field_prtrc_batch_prices[LANGUAGE_NONE][0]['value'] : ''); ?></span>
+	<span class="hide trc-batches-opt-prices"><?php print (isset($node->field_prtrc_batch_opt_prices[LANGUAGE_NONE][0]['value']) ? $node->field_prtrc_batch_opt_prices[LANGUAGE_NONE][0]['value'] : ''); ?></span>
+	<span class="hide trc-batches-to-update"></span> / 
+	<?php if (isset($node->field_prtrc_prediscount_price[LANGUAGE_NONE][0]['value'])): ?><span class="product-prediscount-price text-linethrough" data-prediscount-price="<?php print $node->field_prtrc_prediscount_price[LANGUAGE_NONE][0]['value']; ?>"><?php print $node->field_prtrc_prediscount_price[LANGUAGE_NONE][0]['value']; ?></span><?php endif; ?>
+	<span class="product-price" data-price="<?php print (isset($node->field_prtrc_roz_price[LANGUAGE_NONE][0]['value']) ? $node->field_prtrc_roz_price[LANGUAGE_NONE][0]['value'] : ''); ?>" data-base-price="<?php print (isset($node->field_prtrc_opt_price[LANGUAGE_NONE][0]['value']) ? $node->field_prtrc_opt_price[LANGUAGE_NONE][0]['value'] : ''); ?>"><?php print (isset($node->field_prtrc_roz_price[LANGUAGE_NONE][0]['value']) ? $node->field_prtrc_roz_price[LANGUAGE_NONE][0]['value'] : ''); ?> сум</span>
+</div>

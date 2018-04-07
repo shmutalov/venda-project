@@ -1,0 +1,4059 @@
+<?php
+/**
+ * @file
+ * Custom module for customizing site functionality and theming.
+ */
+
+/**
+ * Minimum length of username text field.
+ */
+define('CUSTOMIZER_USERNAME_MIN_LENGTH', 4);
+
+/**
+ * Maximum length of username text field.
+ */
+define('CUSTOMIZER_USERNAME_MAX_LENGTH', 20);
+
+function customizer_menu() {
+  $items = array();
+
+  $items['dashboard/sell'] = array(
+    'title' => t('Касса'),
+    'page callback' => 'customizer_sell_page_callback',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+
+  $items['dashboard/save-transactions-data'] = array(
+    'page callback' => 'customizer_transaction_page_callback',
+    'access callback' => 'user_is_seller',
+  );
+
+  $items['dashboard/sellers/new'] = array(
+    'type' => MENU_NORMAL_ITEM,
+    'page callback' => 'customizer_seller_add_page',
+    'access callback' => 'user_is_manager',
+  );
+
+  $items['dashboard/sellers/%/edit'] = array(
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('customizer_seller_manage_form', 2),
+    'access callback' => 'customizer_seller_edit_access',
+    'access arguments' => array(2),
+    'type' => MENU_CALLBACK,
+  );
+
+  $items['dashboard/sellers/%/cancel'] = array(
+    'title' => 'Cancel account',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('customizer_seller_cancel_confirm_form', 2),
+    'access callback' => 'customizer_seller_edit_access',
+    'access arguments' => array(2),
+  );
+
+  $items['dashboard/warehouse/import'] = array(
+    'title' => 'Импорт из CSV',
+    'title callback' => FALSE,
+    'type' => MENU_NORMAL_ITEM,
+    'access callback' => 'user_is_warehouse_manager',
+		'page callback' => 'drupal_get_form',
+    'page arguments' => array('customizer_warehouse_import_form', NULL),
+  );
+
+  $items['dashboard/warehouse/apply'] = array(
+    'title' => 'Поступление по накладной',
+    'title callback' => FALSE,
+    'type' => MENU_NORMAL_ITEM,
+    'access callback' => 'user_is_warehouse_manager',
+		'page callback' => 'drupal_get_form',
+    'page arguments' => array('customizer_warehouse_apply_form', NULL),
+  );
+
+  $items['dashboard/warehouse/import/extract'] = array(
+    'title' => 'Импорт из CSV',
+    'title callback' => FALSE,
+    'type' => MENU_NORMAL_ITEM,
+    'access callback' => 'user_is_warehouse_manager',
+		'page callback' => 'drupal_get_form',
+    'page arguments' => array('customizer_warehouse_import_extract_form', NULL),
+  );
+
+  $items['dashboard/warehouse/export'] = array(
+    'title' => 'Экспорт в CSV',
+    'title callback' => FALSE,
+    'type' => MENU_NORMAL_ITEM,
+    'access callback' => 'user_is_warehouse_manager',
+		'page callback' => 'drupal_get_form',
+    'page arguments' => array('customizer_warehouse_export_form', NULL),
+  );
+
+  $items['dashboard/warehouse/revoke'] = array(
+    'title' => 'Списание товаров',
+    'title callback' => FALSE,
+    'type' => MENU_NORMAL_ITEM,
+    'access callback' => 'user_is_warehouse_manager',
+		'page callback' => 'drupal_get_form',
+    'page arguments' => array('customizer_warehouse_revoke_form', NULL),
+  );
+
+	$items['dashboard/warehouse/export/get-batches'] = array(
+    'page callback' => 'customizer_export_get_batches',
+    'access callback' => 'user_is_warehouse_manager',
+  );
+
+  $items['customizer/autocomplete_filter/product_title'] = array(
+    'title' => 'Product autocomplete',
+    'page callback' => 'customizer_product_title_autocomplete_filter',
+    'access callback' => 'user_is_warehouse_manager',
+    'type' => MENU_CALLBACK,
+  );
+
+  $items['dashboard/custom_calls'] = array(
+    'page callback' => 'custom_calls_cb',
+    'access callback' => 'user_is_warehouse_manager',
+    'type' => MENU_CALLBACK,
+  );
+
+  $items['dashboard/warehouse/barcode/%'] = array(
+    'title' => 'Печать штрих-кода',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('_customizer_print_product_barcode', 3),
+    'access callback' => 'user_is_warehouse_manager',
+    'access arguments' => array(3),
+    'type' => MENU_CALLBACK,
+    'file' => "includes/_customizer_print_product_barcode.php"
+  );
+
+  //%1 - product, %2 - copy
+  $items['dashboard/warehouse/barcode/a4/%/%'] = array(
+    'title' => 'Печать штрих-кода',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('_customizer_print_a4_barcode', 4),
+    'access callback' => 'user_is_manager',
+    'access arguments' => array(4),
+    'type' => MENU_CALLBACK,
+    'file' => "includes/_customizer_print_a4_barcode.php"
+  );
+
+  $items['dashboard/reports/send-online'] = array(
+    'page callback' => 'customizer_reports_send_callback',
+    'access callback' => 'user_is_logged_in',
+    'type' => MENU_CALLBACK,
+  );
+
+  $items['dashboard/sell/add-denied'] = array(
+    'page callback' => 'customizer_reports_add_denied',
+    'access callback' => 'user_is_logged_in',
+    'type' => MENU_CALLBACK,
+  );
+
+  return $items;
+}
+
+function customizer_menu_alter(&$items) {
+  $items['dashboard/branches']['access callback'] = 'check_if_app_is_server';
+}
+
+function customizer_form_alter(&$form, &$form_state, $form_id) {
+  global $user;
+  switch ($form_id) {
+    case 'user_login':
+      $form['#theme'] = 'customizer_login_form';
+    break;
+    case 'user_pass':
+      drupal_goto('<front>');
+    break;
+    case 'user_profile_form':
+      // Account edit form
+      if (
+        !isset($form_state['build_info']['args'][1])
+        || $form_state['build_info']['args'][1] === 'account'
+      ) {
+        // Validate user name policy
+        if (!isset($form['#validate']) || !is_array($form['#validate'])) {
+          $form['#validate'] = array();
+        }
+        array_unshift($form['#validate'], 'customizer_user_account_form_validate');
+      }
+
+      // Theme, redirect
+      if (in_array('manager',$user->roles) and in_array(arg(1), $user->roles) and arg(1)!='register') {
+        $form['account']['notify']['#access']=0;
+        $form['account']['roles']['#access']=0;
+        $form['#submit'][] = 'customizer_redirect_sellers_page';
+        drupal_set_title('Редактировать '.$form['#user']->name);
+      }
+    break;
+    case 'product_node_form':
+      if (arg(1)=='add') {
+        drupal_set_title('Добавить новый продукт');
+
+        if (isset($_GET['clone'])) {
+          if (is_numeric($_GET['clone'])) {
+            $clone_product = node_load($_GET['clone']);
+
+            if (is_object($clone_product)) {
+              $form['title']['#default_value'] = $clone_product->title;
+              $form['field_md_up_amount'][LANGUAGE_NONE][0]['value']['#default_value'] = $clone_product->field_md_up_amount[LANGUAGE_NONE][0]['value'];
+              $form['field_pr_medicament_title'][LANGUAGE_NONE][0]['value']['#default_value'] = $clone_product->field_pr_medicament_title[LANGUAGE_NONE][0]['value'];
+              $form['field_md_up_barcode'][LANGUAGE_NONE][0]['value']['#default_value'] = $clone_product->field_md_up_barcode[LANGUAGE_NONE][0]['value'];
+
+              $form['field_pr_mn_country'][LANGUAGE_NONE]['#default_value'] = $clone_product->field_pr_mn_country[LANGUAGE_NONE][0]['tid'];
+
+              //get manufacturer
+              if (isset($clone_product->field_pr_manufacturer[LANGUAGE_NONE][0]['tid'])) {
+                if (!empty($clone_product->field_pr_manufacturer[LANGUAGE_NONE][0]['tid'])) {
+                  $manufacturer = taxonomy_term_load($clone_product->field_pr_manufacturer[LANGUAGE_NONE][0]['tid']);
+
+                  if ($manufacturer) {
+                    $form['field_pr_manufacturer'][LANGUAGE_NONE]['#default_value'] = $manufacturer->name;
+                  }
+                }
+              }
+
+              drupal_set_title(t('Клонировать продукта "'.$clone_product->title.'"'));
+              drupal_set_message('Параметры упаковки скопированы из продукта <em>'.$clone_product->title.'</em>. Теперь Вы можете добавить партии.');
+            }
+          }
+        }
+			}
+
+      // Set page_title on node edit page to node title only
+      if (isset($form['#node']->nid) && !isset($form['#node']->is_new)) {
+        drupal_set_title($form['#node']->title);
+      }
+
+			$form['#theme'] = 'product_custom_form';
+      $form['#attached']['js'] = array(
+        drupal_get_path('module', 'customizer') . '/bootstrap-datepicker/js/bootstrap-datepicker.min.js',
+        drupal_get_path('module', 'customizer') . '/bootstrap-datepicker/locales/bootstrap-datepicker.ru.min.js',
+        drupal_get_path('module', 'customizer') . '/js/row-sorter.min.js',
+        drupal_get_path('module', 'customizer') . '/js/customizer.js',
+      );
+
+      $form['#attached']['css'] = array(
+        drupal_get_path('module', 'customizer') . '/bootstrap-datepicker/css/bootstrap-datepicker3.min.css',
+      );
+      hide($form['options']['status']);
+      if (!user_access('administer nodes')) {
+        hide($form['options']);
+      }
+			$form['title']['#attributes']['placeholder'] = 'Название продукта';
+			$form['field_pr_mn_country'][LANGUAGE_NONE]['#options']['_none'] = t(' - Страна - ');
+			$form['field_pr_manufacturer'][LANGUAGE_NONE]['#attributes']['placeholder'] = 'Производитель';
+			$form['field_md_up_barcode'][LANGUAGE_NONE][0]['value']['#attributes']['placeholder'] = 'Штрих-код';
+
+			$form['title']['#description'] = t('Введите название продукта');
+      drupal_add_library('system', 'drupal.ajax');
+
+      $form['batches'] = array(
+        '#type' => 'value',
+        '#value' => NULL,
+      );
+      $form['batches_delete'] = array(
+        '#type' => 'value',
+        '#value' => NULL,
+      );
+
+      $form['batches_errors'] = array(
+        '#type' => 'value',
+        '#value' => array(),
+      );
+
+      if ($form_state['input']) {
+        $batches_post = customizer_product_node_form_get_batches_from_post();
+        $form['batches']['#value'] = $batches_post['batches'];
+        $form['batches_delete']['#value'] = $batches_post['batches_delete'];
+        unset($batches_post);
+      }
+
+      $form['#validate'][] = 'customizer_product_node_form_batches_validate';
+      $form['actions']['submit']['#submit'][] = 'customizer_product_node_form_batches_submit';
+      $form['actions']['submit']['#submit'][] = 'customizer_dashboard_warehouse_submit_redirect';
+    break;
+    case 'provider_node_form':
+      if (arg(0)=='node' and arg(1)=='add') {
+				drupal_set_title('Добавить нового поставщика');
+			}
+      break;
+    case 'transaction_node_form':
+      $form['#validate'][] = 'customizer_transaction_node_validate';
+      break;
+    case 'contract_node_form':
+      if (isset($_GET['provider_nid'])) {
+        if (is_numeric($_GET['provider_nid'])) {
+        $form['field_dg_provider'][LANGUAGE_NONE][0]['nid']['#default_value'] = $_GET['provider_nid'];
+        }
+
+      }
+      break;
+		case 'config_pages_edit_form':
+			unset($form['actions']['delete']);
+
+			break;
+  }
+
+  if (drupal_multilingual()) {
+    if ($form_id == 'user_register_form' || ($form_id == 'user_profile_form' && $form['#user_category'] == 'account')) {
+      if (count(element_children($form['locale'])) > 1) {
+        $form['locale']['language']['#access'] = FALSE;
+      }
+      else {
+        $form['locale']['#access'] = FALSE;
+      }
+    }
+  }
+
+  if (strpos($form_id, 'views_form_') === 0) {
+    $vbo = _views_bulk_operations_get_field($form_state['build_info']['args'][0]);
+
+    // Not a VBO-enabled views form.
+    if (empty($vbo)) {
+      return;
+    }
+
+    // Theme VBO operations block
+    $view = $form_state['build_info']['args'][0];
+    if (empty($view->result)) {
+      unset($form['select']);
+    }
+  }
+
+  if (isset($form['views_bulk_operations'])) {
+    $form['output']['#weight'] = -99; //Decrease the weight of output to rise it above other elements.
+    $form['select']['#title'] = t('Групповые действия');
+    $form['select']['operation']['#attributes']['class'] = array('input-sm');
+    $form['select']['submit']['#attributes']['class'] = array('btn-sm');
+
+  }
+}
+
+
+
+function customizer_form_views_exposed_form_alter(&$form, &$form_state) {
+
+  if (isset($_GET['currency'])) {
+    if ($_GET['currency']=='sum') {
+      $_SESSION['price_show']='sum';
+    }
+    if ($_GET['currency']=='ue') {
+      $_SESSION['price_show']='ue';
+    }
+  }
+
+  if (isset($form['trc_product']['#options'])) {
+    $form['trc_product']['#options']['All'] = ' - Продукт - ';
+  } elseif ($form['trc_product']['#type']=='textfield') {
+    $form['trc_product']['#attributes']['placeholder'] = 'Продукт';
+  }
+
+  if (isset($form['client']['#options'])) {
+    $form['client']['#options']['All'] = ' - Клиент - ';
+  }
+
+  if ($form['#id']=='views-exposed-form-reports-date-page'
+  or $form['#id']=='views-exposed-form-reports-products-page'
+  or $form['#id']=='views-exposed-form-reports-manufacturers-page'
+  or $form['#id']=='views-exposed-form-reports-transactions-page'
+  or $form['#id']=='views-exposed-form-reports-provider-page'
+  or $form['#id']=='views-exposed-form-reports-sellers-page') {
+    $form['#theme'] = 'reports_date_exposed_form';
+    $form['date_filter_from']['value']['#attributes']['placeholder'] = 'От даты';
+    $form['date_filter_to']['value']['#attributes']['placeholder'] = 'До даты';
+    $form['check_no']['#attributes']['placeholder'] = 'Чек №';
+    $form['manufacturer']['#attributes']['placeholder'] = 'Производитель';
+    $form['country']['#attributes']['placeholder'] = 'Пр.страна';
+		$form['payment_type']['#options']['All'] = t(' - Все типы оплаты - ');
+		$form['provider']['#attributes']['placeholder'] = 'Поставщик';
+
+    if ($form['#id']=='views-exposed-form-reports-transactions-page') {
+      $form['seller_select']['#options']['All'] = t(' - Все продавцы - ');
+      $form['field_trc_type_value']['#options']['All'] = t(' - Все транзакции - ');
+    }
+  }
+
+  if ($form['#id']=='views-exposed-form-warehouse-page') {
+    $form['#theme'] = 'warehouse_filter_exposed_form';
+    $form['title']['#attributes']['placeholder'] = t('Продукт');
+    $form['field_md_up_barcode_value']['#attributes']['placeholder'] = t('Штрих-код');
+    $form['status']['#options'] = array(
+        1 => t('Включенные'),
+        0 => t('Выключенные'),
+    );
+
+  }
+
+  if ($form['#id']=='views-exposed-form-reports-hours-page') {
+    $form['#theme'] = 'reports_hours_exposed_form';
+		$form['payment_type']['#options']['All'] = t(' - Все типы оплаты - ');
+		$form['product_title']['#attributes']['placeholder'] = t('Продукт');
+		$form['provider']['#attributes']['placeholder'] = 'Поставщик';
+		$form['date_filter_from']['value']['#attributes']['placeholder'] = 'Дата';
+  }
+
+  if (in_array($form_state['view']->name, array(
+    'reports_date', 'reports_products', 'reports_sellers',
+    'reports_hours', 'reports_transactions',
+  ))) {
+    // Limit product autocomplete filter in reports to manager products only
+    if (isset($form['product_title']['#autocomplete_path'])) {
+      $form['product_title']['#autocomplete_path'] = 'customizer/autocomplete_filter/product_title';
+    }
+  }
+
+}
+
+/**
+ * Access callback function for manager role.
+ * @return bool
+ */
+function user_is_manager($account = NULL) {
+  global $user;
+
+  if (!is_object($account)) {
+    $account = user_load($user->uid);
+  }
+
+  if (in_array('manager', $account->roles)) {
+    return TRUE;
+  }
+
+  if (in_array('administrator', $account->roles)) {
+    return TRUE;
+  }
+
+  return FALSE;
+}
+
+function user_is_warehouse_manager($account = NULL) {
+  global $user;
+
+  if (!is_object($account)) {
+    $account = user_load($user->uid);
+  }
+
+  if (in_array('warehouse manager', $account->roles)) {
+    return TRUE;
+  }
+
+	if (in_array('manager', $account->roles)) {
+    return TRUE;
+  }
+
+  if (in_array('administrator', $account->roles)) {
+    return TRUE;
+  }
+
+  return FALSE;
+}
+
+
+/**
+ * Access callback for active seller account.
+ */
+function user_is_seller($account = NULL) {
+  global $user;
+
+  if (!is_object($account)) {
+    $account = user_load($user->uid);
+  }
+
+  if (in_array('manager', $account->roles) or in_array('warehouse manager', $account->roles)) {
+    return true;
+  } elseif (in_array('seller', $account->roles)) {
+    $parent_manager = user_get_parent_manager($account);
+
+    if ($parent_manager !== FALSE && user_is_manager($parent_manager)) {
+      return TRUE;
+    }
+  }
+
+  return false;
+}
+
+function user_get_parent_manager($account) {
+	$account = user_load($account->uid);
+  $parent_id =
+    isset($account->field_parent_manager[LANGUAGE_NONE][0]['uid'])
+    ? (int) $account->field_parent_manager[LANGUAGE_NONE][0]['uid']
+    : 0;
+
+  if ($parent_id) {
+    return user_load($parent_id);
+  }
+
+  return FALSE;
+}
+
+function customizer_theme() {
+  $items = array(
+    'customizer_login_form' => array(
+      'render element' => 'form',
+      'template' => 'templates/customizer-login-form',
+    ),
+    'product_custom_form' => array(
+      'render element' => 'form',
+      'template' => 'templates/product-node-form',
+    ),
+    'warehouse_import_csv' => array(
+      'render element' => 'form',
+      'template' => 'templates/warehouse-import-csv',
+    ),
+    'warehouse_export_csv' => array(
+      'render element' => 'form',
+      'template' => 'templates/warehouse-export-csv',
+    ),
+    'warehouse_revoke' => array(
+      'render element' => 'form',
+      'template' => 'templates/warehouse-revoke',
+    ),
+    'warehouse_apply_form' => array(
+      'render element' => 'form',
+      'template' => 'templates/warehouse-apply-form',
+    ),
+    'warehouse_extract_csv_data' => array(
+      'render element' => 'form',
+      'template' => 'templates/warehouse-extract-csv-data',
+    ),
+    'medicament_search_exposed_form' => array(
+      'render element' => 'form',
+      'template' => 'templates/medicament-search-exposed-form',
+    ),
+    'reports_date_exposed_form' => array(
+      'render element' => 'form',
+      'template' => 'templates/reports-date-exposed-form',
+    ),
+    'warehouse_filter_exposed_form' => array(
+      'render element' => 'form',
+      'template' => 'templates/warehouse-filter-exposed-form',
+    ),
+    'reports_hours_exposed_form' => array(
+      'render element' => 'form',
+      'template' => 'templates/reports-hours-exposed-form',
+    ),
+    'price_custom_form' => array(
+      'render element' => 'form',
+      'template' => 'templates/price-node-form',
+    ),
+    'sell_custom_form' => array(
+      'variables' => array(),
+      'template' => 'templates/sell-process-form',
+    ),
+  );
+  return $items;
+}
+
+
+function customizer_redirect_sellers_page(&$form, $form_state) {
+  drupal_goto('dashboard/sellers');
+}
+
+function customizer_redirect_providers_page(&$form, $form_state) {
+  drupal_goto('dashboard/providers');
+}
+
+function customizer_redirect_dashboard_page(&$form, $form_state) {
+  drupal_goto('<front>');
+}
+
+//POS-terminal page
+function customizer_sell_page_callback() {
+  global $user;
+
+  $rate = config_pages_get('li'.'c'.'ense','field_exchange_rate',0);
+  $warehouse_currency = config_pages_get('li'.'c'.'ense','field_currency_warehouse','сум');
+  $pos_currency = config_pages_get('li'.'c'.'ense','field_currency_pos','сум');
+  $rate_round = config_pages_get('li'.'c'.'ense','field_rate_round',1);
+  $rate_round_side = config_pages_get('li'.'c'.'ense','field_rate_round_side','round');
+
+  $auto_update = config_pages_get('li'.'c'.'ense','field_kass_auto_update',0);
+
+  if (!user_is_seller()) {
+    return MENU_ACCESS_DENIED;
+  }
+
+  $account = array();
+
+  if (in_array('seller',$user->roles) or in_array('warehouse manager',$user->roles)) {
+    $acc = user_load($user->uid);
+    $manager_uid = (isset($acc->field_parent_manager[LANGUAGE_NONE][0]['uid']) ? $acc->field_parent_manager[LANGUAGE_NONE][0]['uid'] : 0);
+    $account = profile2_load_by_user($manager_uid);
+  } else {
+    $account = profile2_load_by_user($user);
+    $manager_uid = $user->uid;
+  }
+
+  //Products
+  $data = db_query("SELECT
+      n.nid,
+      n.title,
+      b.field_md_up_barcode_value AS barcode,
+      GROUP_CONCAT(p_amount.field_pr_amount_value ORDER BY batch_product_weight.field_weight_value ASC SEPARATOR '^') AS product_qty,
+      GROUP_CONCAT(batch.entity_id ORDER BY batch_product_weight.field_weight_value ASC SEPARATOR '^') AS batch_nid,
+      GROUP_CONCAT(price_table.field_pr_price_value ORDER BY batch_product_weight.field_weight_value ASC SEPARATOR '^') AS price,
+      GROUP_CONCAT(base_price_table.field_pr_price_base_value ORDER BY batch_product_weight.field_weight_value ASC SEPARATOR '^') AS base_price,
+      GROUP_CONCAT(date_expire_table.field_pr_expiry_date_value ORDER BY batch_product_weight.field_weight_value ASC SEPARATOR '^') AS date_expire,
+      up_amount.field_md_up_amount_value AS pack_amount
+    FROM node n
+    LEFT JOIN field_data_field_md_up_barcode b ON b.entity_id = n.nid
+    INNER JOIN field_data_field_md_up_amount up_amount ON up_amount.entity_id = n.nid
+    INNER JOIN field_data_field_pb_product batch ON batch.field_pb_product_nid = n.nid
+    INNER JOIN field_data_field_pr_amount p_amount ON batch.entity_id = p_amount.entity_id
+    INNER JOIN field_data_field_pr_price price_table ON price_table.entity_id = batch.entity_id
+    INNER JOIN field_data_field_pr_price_base base_price_table ON base_price_table.entity_id = batch.entity_id
+    INNER JOIN field_data_field_weight batch_product_weight ON batch_product_weight.entity_id = batch.entity_id
+    LEFT JOIN field_data_field_pr_branch br ON br.entity_id = batch.entity_id
+    LEFT JOIN field_data_field_pr_expiry_date date_expire_table ON date_expire_table.entity_id = batch.entity_id
+    WHERE n.type = 'product' AND (ISNULL(br.field_pr_branch_nid) OR br.field_pr_branch_nid=0) AND n.status = 1 ".
+		//"AND p_amount.field_pr_amount_value>0 ".
+		//"AND n.uid = :uid
+    "GROUP BY n.nid
+    ORDER BY n.nid DESC")->fetchAll();
+
+    $products = array();
+    $i=0;
+    foreach ($data as $row) {
+      $products[$row->nid]['nid'] = $row->nid;
+      $products[$row->nid]['barcode'] = $row->barcode;
+      $products[$row->nid]['pack_amount'] = $row->pack_amount;
+
+      $qtys = explode('^', $row->product_qty);
+      $prices = explode('^', $row->price);
+      $base_prices = explode('^', $row->base_price);
+      $date_expires = explode('^', $row->date_expire);
+      $batch_nids = explode('^', $row->batch_nid);
+
+      //Change the currency
+      if ($pos_currency!=$warehouse_currency) {
+        if ($warehouse_currency=='у.е.') {
+          foreach ($prices as $i => $price) {
+            $prices[$i] = call_user_func( $rate_round_side, ($price*$rate/$rate_round) ) * $rate_round;
+          }
+
+          foreach ($base_prices as $i => $price) {
+            $base_prices[$i] = call_user_func( $rate_round_side, ($price*$rate/$rate_round) ) * $rate_round;
+          }
+        }
+
+        if ($warehouse_currency=='сум') {
+          foreach ($prices as $i => $price) {
+            if ($price) {
+              $prices[$i] = $price/$rate;
+
+              if ($rate_round=='0.1') {
+                $prices[$i] = call_user_func( $rate_round_side, array($prices[$i],1) );
+              }
+
+              if ($rate_round=='0.01') {
+                $prices[$i] = call_user_func( $rate_round_side, array($prices[$i],2) );
+              }
+
+            }
+
+          }
+
+          foreach ($base_prices as $i => $price) {
+            if ($price) {
+              $base_prices[$i] = $price/$rate;
+
+              if ($rate_round=='0.1') {
+                $base_prices[$i] = call_user_func( $rate_round_side, array($base_prices[$i],1) );
+              }
+
+              if ($rate_round=='0.01') {
+                $base_prices[$i] = call_user_func( $rate_round_side, array($base_prices[$i],2) );
+              }
+
+            }
+
+          }
+        }
+
+      }
+
+      if (count($qtys)>0) {
+        $products[$row->nid]['product_qty'] = 0;
+        $products[$row->nid]['product_qty_orig'] = 0;
+        $products[$row->nid]['price'] = $prices[0];
+        $products[$row->nid]['base_price'] = $base_prices[0];
+        $products[$row->nid]['date_expire'] = $date_expires[0];
+
+        $exist = false;
+        foreach ($qtys as $n => $qty) {
+          $products[$row->nid]['batches'][$batch_nids[$n]]['qty'] = $qty;
+          $products[$row->nid]['batches'][$batch_nids[$n]]['price'] = $prices[$n];
+          $products[$row->nid]['batches'][$batch_nids[$n]]['base_price'] = $base_prices[$n];
+          $products[$row->nid]['batches'][$batch_nids[$n]]['date_expire'] = $date_expires[$n];
+
+          $products[$row->nid]['product_qty'] += $qty;
+          $products[$row->nid]['product_qty_orig'] += $qty;
+
+          $products[$row->nid]['batches_orig'][$batch_nids[$n]]['qty'] = $qty;
+          $products[$row->nid]['batches_orig'][$batch_nids[$n]]['price'] = $prices[$n];
+          $products[$row->nid]['batches_orig'][$batch_nids[$n]]['base_price'] = $base_prices[$n];
+          $products[$row->nid]['batches_orig'][$batch_nids[$n]]['date_expire'] = $date_expires[$n];
+
+          if ($qty>0 and !$exist) {
+            $products[$row->nid]['price'] = $prices[$n];
+            $products[$row->nid]['base_price'] = $base_prices[$n];
+
+            $exist = true;
+          }
+        }
+      }
+      $products[$row->nid]['title'] = $row->title.'  [на складе: '.$products[$row->nid]['product_qty'].'] ('.$products[$row->nid]['price'].' '.$pos_currency.')'.(!empty($products[$row->nid]['date_expire']) ? ' {срок: '.date('d.m.Y', strtotime($products[$row->nid]['date_expire'])).'г.}' : '');
+
+      $i++;
+    }
+
+
+    //Clients
+    $clients = db_query("SELECT title FROM {node} WHERE type='client' ORDER BY title")->fetchCol();
+
+
+  drupal_add_js('var array_products = '.json_encode($products).', '
+          . 'seller = \''.$user->name.'\', '
+          . 'rate_round = \''.$rate_round.'\', '
+          . 'rate_round_side = \''.$rate_round_side.'\', '
+          . 'auto_update = \''.$auto_update.'\', '
+          . 'array_clients = '.json_encode($clients), 'inline');
+
+  //append css
+  drupal_add_css(drupal_get_path('module', 'customizer') . '/bootstrap-datepicker/css/bootstrap-datepicker3.min.css');
+
+  //append sell process js file
+  drupal_add_js(drupal_get_path('module', 'customizer') . '/bootstrap-datepicker/js/bootstrap-datepicker.min.js');
+  drupal_add_js(drupal_get_path('module', 'customizer') . '/bootstrap-datepicker/locales/bootstrap-datepicker.ru.min.js');
+
+  drupal_add_js(drupal_get_path('module', 'customizer') . '/js/typeahead.bundle.min.js');
+  drupal_add_js(drupal_get_path('module', 'customizer') . '/js/shortcut.js');
+  drupal_add_js(drupal_get_path('module', 'customizer') . '/js/sell-process.js');
+  drupal_add_js(drupal_get_path('module', 'customizer') . '/js/jquery.pos.js');
+
+  return theme('sell_custom_form', array('account'=>$account));
+}
+
+
+
+function customizer_transaction_page_callback() {
+  global $user;
+
+  $rate = config_pages_get('li'.'c'.'ense','field_exchange_rate',0);
+
+  $response_array = array();
+	$upd_products = array();
+	$new_prtrcs = array();
+
+  if (!isset($_POST['transactions_obj'])) {
+    drupal_json_output($response_array);
+    exit;
+  }
+
+  $loop_index = 0; // current loop index
+  $loop_by = 100; // transactions number for one time limit loop
+  $loop_time = 3600; // seconds for one time limit loop
+
+	$last_check_no = config_pages_get('li'.'c'.'ense','field_st_last_check_no',0);
+	$new_check_no = $last_check_no+1;
+
+  foreach ($_POST['transactions_obj'] as $key => $trc) {
+    if ($loop_index++ % $loop_by === 0) {
+      set_time_limit($loop_time);
+    }
+
+    $data = db_query("SELECT n.title, n.nid FROM {node} n
+      WHERE n.type = 'transaction' AND n.status = 1 AND n.uid = :uid AND n.title=:title", array(
+        ':uid' => $user->uid,
+        ':title' => trim($trc['trc_unix_time']),
+    ))->fetchObject();
+
+    if (!$data) {
+      //Transaction didn't exist in the db. Let's add it.
+      $node = new stdclass();
+      $node->title = t(trim($trc['trc_unix_time']));
+      $node->uid = $user->uid;
+      $node->status = 1;
+      $node->type = 'transaction';
+      $node->language = LANGUAGE_NONE;
+      $node->name = $user->name;
+      $node->created=$node->changed=strtotime(trim($trc['trc_time']));
+
+			$node->field_trc_check_no[LANGUAGE_NONE][0]['value'] = $new_check_no;
+
+			$node->field_trc_price_base[LANGUAGE_NONE][0]['value'] = (float)$trc['trc_base_price'];
+			$node->field_trc_price[LANGUAGE_NONE][0]['value'] = (float)$trc['trc_price'];
+      $node->field_trc_payment_terminal[LANGUAGE_NONE][0]['value'] = (float)$trc['trc_terminal'];
+      $node->field_trc_payment_cash[LANGUAGE_NONE][0]['value'] = (float)$trc['trc_cash'];
+      $node->field_trc_payment_owe[LANGUAGE_NONE][0]['value'] = (float)$trc['trc_owe'];
+			$node->field_trc_type[LANGUAGE_NONE][0]['value']='sell';
+
+      if ($trc['trc_payment_type'] == 9732) {
+        $n=0;
+        if ($node->field_trc_payment_terminal[LANGUAGE_NONE][0]['value']>0) {
+          $node->field_trc_payment_type[LANGUAGE_NONE][$n]['tid'] = 9729;
+          $n++;
+        }
+        if ($node->field_trc_payment_cash[LANGUAGE_NONE][0]['value']>0) {
+          $node->field_trc_payment_type[LANGUAGE_NONE][$n]['tid'] = 9730;
+          $n++;
+        }
+        if ($node->field_trc_payment_owe[LANGUAGE_NONE][0]['value']>0) {
+          $node->field_trc_payment_type[LANGUAGE_NONE][$n]['tid'] = 10342;
+          $n++;
+        }
+
+			} else {
+				$node->field_trc_payment_type[LANGUAGE_NONE][0]['tid'] = $trc['trc_payment_type'];
+			}
+
+      //Append client
+      $trc['trc_client'] = trim($trc['trc_client']);
+      if (!empty($trc['trc_client']) and $trc['trc_client']!='') {
+        $find_client_nid = db_query("SELECT n.nid FROM {node} n
+          WHERE n.type = 'client' AND n.status = 1 AND n.title=:title", array(
+            ':title' => trim($trc['trc_unix_time']),
+        ))->fetchField();
+
+        if (!$find_client_nid) {
+          //Create new client
+          $client_node = new stdclass();
+          $client_node->title = t($trc['trc_client']);
+          $client_node->uid = $user->uid;
+          $client_node->status = 1;
+          $client_node->type = 'client';
+
+          node_save($client_node);
+
+          $find_client_nid = $client_node->nid;
+        }
+
+        //Set existing client id
+        $node->field_trc_client[LANGUAGE_NONE][0]['nid'] = $find_client_nid;
+
+      }
+
+      //Rate
+      $node->field_trc_rate[LANGUAGE_NONE][0]['value'] = $rate;
+
+			//Read products
+			$i = 0;
+			foreach ($trc['products'] as $product_nid => $product) {
+				//Create transaction product
+				$prtrc_node = new stdclass();
+				$prtrc_node->title = t(trim($product['trc_name']));
+				$prtrc_node->uid = $user->uid;
+				$prtrc_node->status = 1;
+				$prtrc_node->type = 'transaction_product';
+				$prtrc_node->language = LANGUAGE_NONE;
+				$prtrc_node->name = $user->name;
+				$prtrc_node->created=$prtrc_node->changed = strtotime(trim($trc['trc_time']));
+
+				$prtrc_node->field_prtrc_amount[LANGUAGE_NONE][0]['value'] = $product['trc_qty'];
+
+				$barcode = check_if_product_exists($product_nid);
+				if ($barcode) {
+					$prtrc_node->field_prtrc_barcode[LANGUAGE_NONE][0]['value'] = $barcode;
+				}
+
+				$prtrc_node->field_prtrc_opt_price[LANGUAGE_NONE][0]['value'] = $product['trc_opt_price'];
+				$prtrc_node->field_prtrc_roz_price[LANGUAGE_NONE][0]['value'] = $product['trc_roz_price'];
+
+        if ($product['trc_prediscount_price']!='') {
+          $prtrc_node->field_prtrc_prediscount_price[LANGUAGE_NONE][0]['value'] = $product['trc_prediscount_price'];
+        }
+				$prtrc_node->field_prtrc_manufacturer[LANGUAGE_NONE][0]['value'] = 'Другой';
+				//Get product manufacturer name and set if exists
+				$manufacturer_title = db_query("SELECT t.name FROM {taxonomy_term_data} t "
+								. "INNER JOIN {field_data_field_pr_manufacturer} m ON m.field_pr_manufacturer_tid = t.tid "
+								. "WHERE m.entity_id = '".$product_nid."'")->fetchField();
+				if ($manufacturer_title) {
+					$prtrc_node->field_prtrc_manufacturer[LANGUAGE_NONE][0]['value'] = $manufacturer_title;
+				}
+
+				$prtrc_node->field_prtrc_mn_country[LANGUAGE_NONE][0]['value'] = 'Другой';
+				//Get product country name and set if exists
+				$country_title = db_query("SELECT t.name FROM {taxonomy_term_data} t "
+								. "INNER JOIN {field_revision_field_pr_mn_country} c ON c.field_pr_mn_country_tid = t.tid "
+								. "WHERE c.entity_id = '".$product_nid."'")->fetchField();
+				if ($country_title) {
+					$prtrc_node->field_prtrc_mn_country[LANGUAGE_NONE][0]['value'] = $country_title;
+				}
+
+				//Additional fields
+				$prtrc_node->field_prtrc_product[LANGUAGE_NONE][0]['nid'] = $product_nid;
+				$prtrc_node->field_prtrc_batch_info[LANGUAGE_NONE][0]['value'] = $product['trc_batches_qty'];
+				$prtrc_node->field_prtrc_batch_prices[LANGUAGE_NONE][0]['value'] = $product['trc_batches_prices'];
+				$prtrc_node->field_prtrc_batch_opt_prices[LANGUAGE_NONE][0]['value'] = $product['trc_batches_opt_prices'];
+
+				$prtrc_node->field_prtrc_provider_title[LANGUAGE_NONE][0]['value'] = 'Другой';
+
+				//Load batches and set batch provider
+				$batches = drupal_json_decode($product['trc_batches_qty']);
+				if (count($batches)>0) {
+					$bz = 0;
+					$ppnids = array();
+					foreach ($batches as $bnid => $bcount) {
+						if ($bcount>0) {
+							$bnode = node_load($bnid);
+
+							if (isset($bnode->field_pr_provider[LANGUAGE_NONE][0]['nid'])) {
+								if ($bnode->field_pr_provider[LANGUAGE_NONE][0]['nid']) {
+									$ppnid = $bnode->field_pr_provider[LANGUAGE_NONE][0]['nid'];
+
+									if (!in_array($ppnid, $ppnids)) {
+										$bp_title = db_query("SELECT n.title, n.nid FROM {node} n WHERE n.nid='".$ppnid."'")->fetchField();
+										$prtrc_node->field_prtrc_provider_title[LANGUAGE_NONE][$bz]['value'] = $bp_title;
+
+										$bz++;
+										$ppnids[] = $ppnid;
+									}
+								}
+							}
+						}
+					}
+
+					$upd_products[$product_nid]['batches'] = $batches;
+				}
+
+				//Save transaction product
+				node_save($prtrc_node);
+				$node->field_trc_product[LANGUAGE_NONE][$i]['nid']=$prtrc_node->nid;
+				$new_prtrcs[$product_nid] = $prtrc_node->nid;
+
+				$i++;
+			}
+
+      //Save transaction
+			node_save($node);
+
+			//Save last check no
+			$list = config_pages_load(1);
+			if (is_object($list)) {
+				$list->field_st_last_check_no[LANGUAGE_NONE][0]['value'] = $new_check_no;
+				config_pages_save($list);
+			}
+
+
+			$transaction_response = array(
+        'trc_nid' => $node->nid,
+        'trc_unix_time' => $trc['trc_unix_time'],
+        'trc_check_no' => $new_check_no,
+        'updated_products' => array(),
+        'new_prtrcs' => $new_prtrcs,
+				'transaction_type' => 'sell',
+      );
+
+      // Load product batches and decrease items
+      $transaction_response['updated_products'] = customizer_transaction_update_batches($upd_products, FALSE);
+			$response_array[] = $transaction_response;
+
+
+    } else {
+      //Transaction already must be in db.
+      $transaction_nid = $data->nid;
+
+      // Load the transaction
+      $transaction = node_load($transaction_nid);
+
+      if (is_object($transaction)) {
+				// @TODO: Write transaction refund logic here
+				$transaction->field_trc_price_base[LANGUAGE_NONE][0]['value'] = $trc['trc_base_price'];
+				$transaction->field_trc_price[LANGUAGE_NONE][0]['value'] = $trc['trc_price'];
+				$transaction->field_trc_payment_terminal[LANGUAGE_NONE][0]['value'] = $trc['trc_terminal'];
+				$transaction->field_trc_payment_cash[LANGUAGE_NONE][0]['value'] = $trc['trc_cash'];
+				$transaction->field_trc_payment_owe[LANGUAGE_NONE][0]['value'] = $trc['trc_owe'];
+				$transaction->field_field_trc_refund_reason[LANGUAGE_NONE][0]['value'] = $trc['trc_refund'];
+
+        $n=0;
+        $transaction->field_trc_payment_type[LANGUAGE_NONE] = array();
+
+        if ($transaction->field_trc_payment_terminal[LANGUAGE_NONE][0]['value']!=0) {
+          $transaction->field_trc_payment_type[LANGUAGE_NONE][$n]['tid'] = 9729;
+          $n++;
+        }
+        if ($transaction->field_trc_payment_cash[LANGUAGE_NONE][0]['value']!=0) {
+          $transaction->field_trc_payment_type[LANGUAGE_NONE][$n]['tid'] = 9730;
+          $n++;
+        }
+        if ($transaction->field_trc_payment_owe[LANGUAGE_NONE][0]['value']!=0) {
+          $transaction->field_trc_payment_type[LANGUAGE_NONE][$n]['tid'] = 10342;
+          $n++;
+        }
+
+				if ($trc['trc_price']==0) {
+					$transaction->field_trc_type[LANGUAGE_NONE][0]['value']='refund';
+				}
+
+				//Read products
+				$i = 0;
+				foreach ($trc['products'] as $product_nid => $product) {
+
+					//Update transaction product
+					$prtrc_node = node_load($product['trc_prtrc_nid']);
+
+					if (is_object($prtrc_node)) {
+						$prtrc_node->field_prtrc_amount[LANGUAGE_NONE][0]['value'] = $product['trc_qty'];
+						$prtrc_node->field_prtrc_opt_price[LANGUAGE_NONE][0]['value'] = $product['trc_opt_price'];
+						$prtrc_node->field_prtrc_roz_price[LANGUAGE_NONE][0]['value'] = $product['trc_roz_price'];
+						$prtrc_node->field_prtrc_batch_info[LANGUAGE_NONE][0]['value'] = $product['trc_batches_qty'];
+
+
+						//Save transaction product
+						node_save($prtrc_node);
+
+						$batches_to_update = drupal_json_decode($product['trc_batches_to_update']);
+						$upd_products[$product_nid]['batches'] = $batches_to_update;
+					}
+
+					$i++;
+				}
+
+				node_save($transaction);
+
+				$transaction_response = array(
+					'trc_nid' => $transaction->nid,
+					'trc_unix_time' => $trc['trc_unix_time'],
+					'updated_products' => array(),
+					'transaction_type' => 'refund',
+				);
+
+				if (empty($batches)) {
+					$batches = array();
+				}
+
+				// Load the product batches and increase/decrease items
+				$transaction_response['updated_products'] = customizer_transaction_update_batches($upd_products, true);
+
+				$response_array[] = $transaction_response;
+			}
+    }
+  }
+
+  drupal_json_output($response_array);
+  exit;
+}
+
+/**
+ * Load the product batches and decrease/increase items.
+ * @param integer $product_nid Product nid.
+ * @param array $batches_qty Array({batch_nid} => {qty_increase_value}).
+ * @return array Product batches new quantities.
+ */
+function customizer_transaction_update_batches($upd_products, $reverse_siqn = FALSE) {
+  $updated_products = array();
+
+  $rate = config_pages_get('li'.'c'.'ense','field_exchange_rate',0);
+  $warehouse_currency = config_pages_get('li'.'c'.'ense','field_currency_warehouse','сум');
+  $pos_currency = config_pages_get('li'.'c'.'ense','field_currency_pos','сум');
+  $rate_round = config_pages_get('li'.'c'.'ense','field_rate_round',1);
+  $rate_round_side = config_pages_get('li'.'c'.'ense','field_rate_round_side','round');
+
+	if (count($upd_products)>0) {
+		foreach ($upd_products as $product_nid => $batches_qty) {
+
+			// Filter not changed batches
+			$batches_qty = array_filter($batches_qty['batches']);
+
+			// Load product batches ordered by weight and created
+			$query = new EntityFieldQuery();
+			$query->entityCondition('entity_type', 'node');
+			$query->entityCondition('bundle', 'product_batch');
+			$query->propertyCondition('status', 1);
+			$query->fieldCondition('field_pb_product', 'nid', $product_nid);
+			$query->fieldOrderBy('field_weight', 'value', SORT_ASC);
+			$query->propertyOrderBy('created', SORT_ASC);
+			$db_result = $query->execute();
+			$batches_load_nids = array();
+
+			if (isset($db_result['node'])) {
+				foreach ($db_result['node'] as $value) {
+					$batches_load_nids[] = $value->nid;
+				}
+			}
+
+			// Return all product batches
+			$batches_nodes = node_load_multiple($batches_load_nids);
+
+			foreach ($batches_nodes as $batch_nid => $batch_node) {
+				if (isset($batches_qty[$batch_nid])) {
+					if (isset($batch_node->field_pr_amount[LANGUAGE_NONE][0]['value'])) {
+						$batch_qty = $batches_qty[$batch_nid];
+
+						if ($reverse_siqn) {
+							$batch_qty = -$batch_qty;
+						}
+
+						$batch_node->field_pr_amount[LANGUAGE_NONE][0]['value'] -= $batch_qty;
+						if ($batch_node->field_pr_amount[LANGUAGE_NONE][0]['value']<0) {
+							$batch_node->field_pr_amount[LANGUAGE_NONE][0]['value'] = 0;
+						}
+
+						// save updated batch
+						node_save($batch_node);
+					}
+				}
+
+				// remember updated batch quantities
+				$updated_products[$product_nid]['updated_batches'][$batch_node->nid]['qty'] = $batch_node->field_pr_amount[LANGUAGE_NONE][0]['value'];
+				$updated_products[$product_nid]['updated_batches'][$batch_node->nid]['price'] = $batch_node->field_pr_price[LANGUAGE_NONE][0]['value'];
+				$updated_products[$product_nid]['updated_batches'][$batch_node->nid]['base_price'] = $batch_node->field_pr_price_base[LANGUAGE_NONE][0]['value'];
+
+        //Change the currency
+        if ($pos_currency!=$warehouse_currency) {
+          if ($warehouse_currency=='у.е.') {
+            $updated_products[$product_nid]['updated_batches'][$batch_node->nid]['price'] = call_user_func( $rate_round_side, ($updated_products[$product_nid]['updated_batches'][$batch_node->nid]['price']*$rate/$rate_round) ) * $rate_round;
+            $updated_products[$product_nid]['updated_batches'][$batch_node->nid]['base_price'] = call_user_func( $rate_round_side, ($updated_products[$product_nid]['updated_batches'][$batch_node->nid]['base_price']*$rate/$rate_round) ) * $rate_round;
+
+          }
+
+          if ($warehouse_currency=='сум') {
+            if ($updated_products[$product_nid]['updated_batches'][$batch_node->nid]['price']) {
+              $updated_products[$product_nid]['updated_batches'][$batch_node->nid]['price'] = $updated_products[$product_nid]['updated_batches'][$batch_node->nid]['price']/$rate;
+
+              if ($rate_round=='0.1') {
+                $updated_products[$product_nid]['updated_batches'][$batch_node->nid]['price'] = call_user_func( $rate_round_side, array($updated_products[$product_nid]['updated_batches'][$batch_node->nid]['price'],1) );
+              }
+
+              if ($rate_round=='0.01') {
+                $updated_products[$product_nid]['updated_batches'][$batch_node->nid]['price'] = call_user_func( $rate_round_side, array($updated_products[$product_nid]['updated_batches'][$batch_node->nid]['price'],2) );
+              }
+            }
+
+            if ($updated_products[$product_nid]['updated_batches'][$batch_node->nid]['base_price']) {
+              $updated_products[$product_nid]['updated_batches'][$batch_node->nid]['base_price'] = $updated_products[$product_nid]['updated_batches'][$batch_node->nid]['base_price']/$rate;
+
+              if ($rate_round=='0.1') {
+                $updated_products[$product_nid]['updated_batches'][$batch_node->nid]['base_price'] = call_user_func( $rate_round_side, array($updated_products[$product_nid]['updated_batches'][$batch_node->nid]['base_price'],1));
+              }
+
+              if ($rate_round=='0.01') {
+                $updated_products[$product_nid]['updated_batches'][$batch_node->nid]['base_price'] = call_user_func( $rate_round_side, array($updated_products[$product_nid]['updated_batches'][$batch_node->nid]['base_price'],2));
+              }
+            }
+
+          }
+
+        }
+
+			}
+
+		}
+
+	}
+
+	return $updated_products;
+}
+
+function customizer_product_node_form_batches_validate(&$form, &$form_state) {
+  $app_type = config_pages_get('li'.'c'.'ense','field_st_app_type',0);
+
+	if ($form_state['input']) {
+    $batches_post = customizer_product_node_form_get_batches_from_post();
+    $form['batches']['#value'] = $batches_post['batches'];
+    $form['batches_delete']['#value'] = $batches_post['batches_delete'];
+    unset($batches_post);
+  }
+
+  $batches = isset($form['batches']['#value']) && is_array($form['batches']['#value']) ? $form['batches']['#value'] : array();
+  $product_node =
+    isset($form_state['node'])
+      && isset($form_state['node']->nid)
+      && !isset($form_state['node']->is_new)
+    ? $form_state['node']
+    : NULL;
+
+  // validate data
+  $edit_nids = array();
+  $batches_errors = array();
+  $nid_keys = array();
+  foreach ($batches as $key => $batch) {
+    $batches_errors[$key] = array();
+
+    $field_key = 'nid';
+    $nid = $batch[$field_key];
+
+    if ($nid !== '') {
+      if (preg_match('#^\d+$#', $nid, $match) && $nid > 0) {
+        $nid = (int) $nid;
+        $batches[$key][$field_key] = $nid;
+        $nid_keys[$nid] = $key;
+      } else {
+        $batches_errors[$key][$field_key] = TRUE;
+      }
+    }
+
+		$field_key = 'field_pr_provider';
+    $pr_provider = $batch[$field_key];
+    if (!isset($pr_provider[0])) {
+      $batches_errors[$key][$field_key] = TRUE;
+    }
+
+    $field_key = 'field_pr_provider_other';
+		if ($batch['field_pr_provider']=='other' and empty($batch[$field_key])) {
+			$batches_errors[$key][$field_key] = TRUE;
+		}
+
+    if ($app_type=='server') {
+      $field_key = 'field_pr_branch';
+      $pr_branch = $batch[$field_key];
+      if (!isset($pr_branch[0])) {
+        $batches_errors[$key][$field_key] = TRUE;
+      }
+
+      if (is_numeric($pr_branch)) {
+
+        if ($pr_branch>0) {
+          //@Check internet connection
+        }
+      }
+    }
+
+    $field_key = 'field_pr_income_date';
+    $income_date = $batch[$field_key];
+
+    if (!isset($income_date[0]) || (($dateTime = DateTime::createFromFormat('d.m.Y', $income_date)) === FALSE) || ($dateTime->format('d.m.Y')) != $income_date) {
+      $batches_errors[$key][$field_key] = TRUE;
+    } else {
+      // format like sql date
+      $batches[$key][$field_key] = $dateTime->format('Y-m-d');
+    }
+
+		$field_key = 'field_pr_expiry_date';
+    $expiry_date = $batch[$field_key];
+    if (isset($expiry_date[0])) {
+      if ((($dateTime = DateTime::createFromFormat('d.m.Y', $expiry_date)) === FALSE) || ($dateTime->format('d.m.Y')) != $expiry_date) {
+        $batches_errors[$key][$field_key] = TRUE;
+      } else {
+        // format like sql date
+        $batches[$key][$field_key] = $dateTime->format('Y-m-d');
+      }
+    }
+
+    $field_key = 'field_pr_amount';
+    $pr_amount = $batch[$field_key];
+    if (!isset($pr_amount[0]) || !is_numeric($pr_amount) || $pr_amount < 0) {
+      $batches_errors[$key][$field_key] = TRUE;
+    }
+
+    foreach (array('field_pr_price', 'field_pr_price_base') as $field_key) {
+      $var = (float)$batch[$field_key];
+      if (!is_float($var) || $var <= 0) {
+        $batches_errors[$key][$field_key] = TRUE;
+      }
+    }
+
+    if (!count($batches_errors[$key])) {
+      unset($batches_errors[$key]);
+    }
+  }
+
+  $batches_delete = array();
+  $edit_nids = array();
+
+  // Product edit form
+  if ($product_node !== NULL) {
+
+    $batches_delete = isset($form['batches_delete']['#value']) && is_array($form['batches_delete']['#value']) ? $form['batches_delete']['#value'] : array();
+
+    foreach ($batches_delete as $i => $val) {
+      if (!isset($val[0]) || !preg_match('#^\d+$#', $val, $match) || $val <= 0) {
+        unset($batches_delete[$i]);
+      }
+    }
+
+    // Check node references if no other errors
+    if (!count($batches_errors,  COUNT_RECURSIVE)) {
+      $edit_nids = array_keys($nid_keys);
+      // load product existing batch nids
+      $available_nids = db_query("SELECT node.nid AS nid
+FROM
+{node} node
+LEFT JOIN {field_data_field_pb_product} field_data_field_pb_product ON node.nid = field_data_field_pb_product.entity_id AND (field_data_field_pb_product.entity_type = 'node' AND field_data_field_pb_product.deleted = '0')
+WHERE (( (field_data_field_pb_product.field_pb_product_nid = :nid ) )AND(( (node.status = '1') AND (node.type IN  ('product_batch')) )))", array(':nid' => $product_node->nid))->fetchAllAssoc('nid');
+
+      foreach ($edit_nids as $val) {
+        if (!isset($available_nids[$val])) {
+          $batch_index = $nid_keys[$val];
+          $batches_errors[$batch_index]['nid'] = TRUE;
+        }
+      }
+
+      foreach ($batches_delete as $i => $val) {
+        if (!isset($available_nids[$val])) {
+          unset($batches_delete[$i]);
+        }
+      }
+    }
+
+  }
+
+  if (count($batches_errors, COUNT_RECURSIVE)) {
+    form_set_error('batches', 'Неверные данные для партий или обязательные поля не заполнены.');
+  } else {
+    $form_state['values']['batches'] = $batches;
+    $form_state['values']['batches_edit_nids'] = $edit_nids;
+    $form_state['values']['batches_delete'] = $batches_delete;
+  }
+
+  $form['batches_errors']['#value'] = $batches_errors;
+}
+
+
+
+function customizer_transaction_node_validate($form, &$form_state) {
+  $total_value = $form_state['values']['field_trc_payment_terminal'][LANGUAGE_NONE][0]['value'] +
+          $form_state['values']['field_trc_payment_cash'][LANGUAGE_NONE][0]['value'] +
+          $form_state['values']['field_trc_payment_owe'][LANGUAGE_NONE][0]['value'];
+  if ($total_value != $form_state['values']['field_trc_price'][LANGUAGE_NONE][0]['value']) {
+    form_set_error('field_trc_price', t('Общая сумма <em>Терминал</em>, <em>Наличные</em> и <em>Долг</em> должна быть равна к <em>Розничную цену</em>. '
+            . 'Сейчас общая сумма '.$total_value.' и розничная цена '.$form_state['values']['field_trc_price'][LANGUAGE_NONE][0]['value']));
+  }
+}
+
+
+function customizer_product_node_form_batches_submit($form, &$form_state) {
+  $product_node = isset($form_state['node']) && isset($form_state['node']->nid) && !isset($form_state['node']->is_new)
+    ? $form_state['node']
+    : NULL;
+
+  if ($product_node === NULL) {
+    if (isset($form_state['nid'])) {
+      $product_node = node_load($form_state['nid']);
+    }
+  }
+
+  $nodes = array();
+
+  if ($product_node !== NULL) {
+    $edit_nids = array();
+    if (isset($form_state['values']['batches_edit_nids'])) {
+      $edit_nids = (array) $form_state['values']['batches_edit_nids'];
+    }
+    if ($edit_nids) {
+      $nodes = node_load_multiple($edit_nids);
+      $nodes_keyed = array();
+      foreach ($nodes as $val) {
+        $nodes_keyed[$val->nid] = $val;
+
+        // Load some entity.
+        $entity = entity_load_single('node', $val->nid);
+
+        // Remove the field value.
+        unset($entity->field_pr_expiry_date[LANGUAGE_NONE][0]);
+
+        // Reset the array to zero-based sequential keys.
+        $entity->field_pr_expiry_date[LANGUAGE_NONE] = array_values($entity->field_pr_expiry_date[LANGUAGE_NONE]);
+
+        // Save the entity.
+        entity_save('node', $entity);
+
+      }
+      $nodes = $nodes_keyed;
+      unset($nodes_keyed);
+    }
+  }
+
+  $weight_index = 0;
+
+  foreach ($form_state['values']['batches'] as $val) {
+		$provider_id = $branch_nid = 0;
+
+    if (is_numeric($val['field_pr_branch'])) {
+			$branch_nid = $val['field_pr_branch'];
+		}
+
+		if (is_numeric($val['field_pr_provider'])) {
+			$provider_id = $val['field_pr_provider'];
+
+		} elseif ($val['field_pr_provider']=='other') {
+			//Create a new provider
+			$new_provider = new stdClass();
+			$new_provider->type = 'provider';
+      node_object_prepare($new_provider);
+
+			$new_provider->status = 1;
+      $new_provider->language=LANGUAGE_NONE;
+			$new_provider->title = $val['field_pr_provider_other'];
+
+			node_save($new_provider);
+
+			$provider_id = $new_provider->nid;
+
+		}
+
+    $waybill_nid = 0;
+    if ($val['field_pr_waybill_no']) {
+      $wb_parts = explode('-', $val['field_pr_waybill_no']);
+      $waybill_nid = $wb_parts[1];
+    }
+
+    if ($val['nid'] === '' && isset($product_node->nid)) {
+      $batch_node = new stdClass();
+      $batch_node->type = 'product_batch';
+      node_object_prepare($batch_node);
+      $batch_node->status = 1;
+      $batch_node->language=LANGUAGE_NONE;
+      $batch_node->field_pb_product[LANGUAGE_NONE][]['nid'] = $product_node->nid;
+			$batch_node->field_pr_provider[LANGUAGE_NONE][]['nid'] = $provider_id;
+
+      $batch_node->field_pr_income_date[LANGUAGE_NONE][]['value'] = $val['field_pr_income_date'];
+
+      if (isset($val['field_pr_expiry_date']) and !empty($val['field_pr_expiry_date']) and $val['field_pr_expiry_date']!='') {
+        $batch_node->field_pr_expiry_date[LANGUAGE_NONE][]['value'] = $val['field_pr_expiry_date'];
+      }
+
+      $batch_node->field_pr_waybill_no[LANGUAGE_NONE][]['nid'] = $waybill_nid;
+      $batch_node->field_pr_amount[LANGUAGE_NONE][]['value'] = $val['field_pr_amount'];
+      $batch_node->field_pr_price[LANGUAGE_NONE][]['value'] = $val['field_pr_price'];
+      $batch_node->field_pr_price_base[LANGUAGE_NONE][]['value'] = $val['field_pr_price_base'];
+      $batch_node->field_weight[LANGUAGE_NONE][]['value'] = $weight_index++;
+
+      $batch_node->field_pr_branch[LANGUAGE_NONE][]['nid'] = $branch_nid;
+
+      $batch_node = node_submit($batch_node);
+      node_save($batch_node);
+
+    } else {
+      if (isset($nodes[$val['nid']])) {
+        $existing_batch = $nodes[$val['nid']];
+
+        $existing_batch->field_pr_provider[LANGUAGE_NONE][0]['nid'] = $provider_id;
+        $existing_batch->field_pr_income_date[LANGUAGE_NONE][0]['value'] = $val['field_pr_income_date'];
+
+        if (isset($val['field_pr_expiry_date']) and !empty($val['field_pr_expiry_date']) and $val['field_pr_expiry_date']!='') {
+          $existing_batch->field_pr_expiry_date[LANGUAGE_NONE][0]['value'] = $val['field_pr_expiry_date'];
+        } else {
+          $existing_batch->field_pr_expiry_date[LANGUAGE_NONE][0]['value'] = null;
+        }
+
+        $existing_batch->field_pr_waybill_no[LANGUAGE_NONE][0]['nid'] = $waybill_nid;
+        $existing_batch->field_pr_amount[LANGUAGE_NONE][0]['value'] = $val['field_pr_amount'];
+        $existing_batch->field_pr_price[LANGUAGE_NONE][0]['value'] = $val['field_pr_price'];
+        $existing_batch->field_pr_price_base[LANGUAGE_NONE][0]['value'] = $val['field_pr_price_base'];
+        $existing_batch->field_weight[LANGUAGE_NONE][0]['value'] = $weight_index++;
+
+        if ($branch_nid != $existing_batch->field_pr_branch[LANGUAGE_NONE][0]['nid']) {
+          $existing_batch->field_pr_branch[LANGUAGE_NONE][0]['nid'] = $branch_nid;
+
+          $branch = node_load($branch_nid);
+          $id = $branch->field_apteka_id[LANGUAGE_NONE][0]['value'];
+
+        }
+
+        node_save($existing_batch);
+      }
+    }
+  }
+
+  // Delete product_batches
+  node_delete_multiple($form_state['values']['batches_delete']);
+}
+
+function customizer_product_node_form_get_batches_from_post() {
+  /** @var array $batches Edited or created batches */
+  $batches = array();
+
+  $post_batches = isset($_POST['batches']) && is_array($_POST['batches']) ? $_POST['batches'] : array();
+  $nids = isset($post_batches['nid']) && is_array($post_batches['nid']) ? $post_batches['nid'] : array();
+
+  if (count($nids)) {
+    $fields = array();
+    $field_keys = array(
+      'field_pr_branch',
+      'field_pr_provider',
+      'field_pr_provider_other',
+      'field_pr_income_date',
+      'field_pr_expiry_date',
+      'field_pr_waybill_no',
+      'field_pr_amount',
+      'field_pr_price',
+      'field_pr_price_base',
+    );
+
+    foreach ($field_keys as $field_name) {
+      $fields[$field_name] = isset($post_batches[$field_name]) ? (array) $post_batches[$field_name] : array();
+    }
+
+    // filter data
+    foreach ($nids as $key => $val) {
+      $row = array();
+      $row['nid'] = (string) $val;
+
+      foreach ($field_keys as $field_name) {
+        $row[$field_name] = isset($fields[$field_name][$key]) ?
+          trim((string) $fields[$field_name][$key])
+          : '';
+      }
+
+      // Remove empty user submitted rows
+      $row_flip = array_flip($row);
+      if (!(isset($row_flip['']) && count($row_flip) == 1)) {
+        $batches[] = $row;
+      }
+    }
+  }
+
+  /** @var array $batches_delete Batch nids for delete */
+  $batches_delete = isset($_POST['batches_delete']) && is_array($_POST['batches_delete']) ? $_POST['batches_delete'] : array();
+
+  if ($batches_delete) {
+    array_walk($batches_delete, function (&$value, $key) {
+      $value = (string) $value;
+    });
+  }
+
+  return array(
+    'batches' => $batches,
+    'batches_delete' => $batches_delete,
+  );
+}
+
+function customizer_seller_add_page() {
+  global $user;
+
+  drupal_set_title('Регистрация нового продавца');
+
+  $form = drupal_get_form('customizer_seller_manage_form', NULL);
+	return $form;
+}
+
+function customizer_seller_manage_form($form, &$form_state, $account = NULL) {
+
+	if (!$account) {
+    $account = drupal_anonymous_user();
+  } else {
+		$account = user_load($account);
+	}
+
+  if ($account->uid < 1) {
+    $register = TRUE;
+    drupal_set_title('Добавить нового продавца');
+  } else {
+    $register = FALSE;
+    drupal_set_title(format_string('Редактировать продавца @seller', array('@seller' => $account->name)));
+  }
+
+  menu_set_active_item('dashboard/sellers');
+
+  $form['#user'] = $account;
+
+  $form['name'] = array(
+    '#title' => t('Username'),
+    '#type' => 'textfield',
+    '#maxlength' => USERNAME_MAX_LENGTH,
+    '#required' => true,
+    '#default_value' => (!$register ? $account->name : ''),
+  );
+
+  $form['pass'] = array(
+    '#title' => ($register ? t('Password') : 'Новый пароль'),
+    '#type' => 'textfield',
+    '#maxlength' => 20,
+    '#required' => ($register ? TRUE : FALSE),
+    '#default_value' => '',
+  );
+
+	$warehouse_access = 0;
+	if (in_array('warehouse manager', $account->roles)) {
+		$warehouse_access = 1;
+	}
+
+  $form['warehouse_access'] = array(
+    '#title' => t('Расширенный доступ'),
+    '#type' => 'checkbox',
+		'#default_value' => $warehouse_access,
+		'#description' => t('Если вы отмечаете этого поля - Склад, Поставщики и Производители будут доступны для этого продавца.'),
+  );
+
+  $form['actions']['submit']=array(
+    '#type' => 'submit',
+    '#value' => $register ? t('Add') : t('Save'),
+  );
+
+  // Replace Delete btn with link
+  if (!$register) {
+    $destination = array();
+    if (isset($_GET['destination'])) {
+      $destination = drupal_get_destination();
+    }
+    $form['actions']['cancel_page'] = array(
+      '#markup' => l(t('Delete'), 'dashboard/sellers/' . $form['#user']->uid . '/cancel', array('query' => $destination, 'attributes' => array('class' => 'btn btn-danger'))),
+    );
+  }
+
+  return $form;
+}
+
+function customizer_seller_manage_form_validate($form, &$form_state) {
+  // Edited or created user
+  $account = $form['#user'];
+
+  // Validate username.
+  if (isset($form_state['values']['name'])) {
+    if ($error = customizer_user_validate_name($form_state['values']['name'])) {
+      form_set_error('name', $error);
+    }
+    elseif ((bool) db_select('users')->fields('users', array('uid'))->condition('uid', $account->uid, '<>')->condition('name', db_like($form_state['values']['name']), 'LIKE')->range(0, 1)->execute()->fetchField()) {
+      form_set_error('name', t('The name %name is already taken.', array('%name' => $form_state['values']['name'])));
+    }
+  }
+
+  // Validate email.
+  $current_errors = form_get_errors();
+  $safe_mail = NULL;
+
+  if (!isset($current_errors['name'])) {
+    $auto_email_domain = 'venda.uz';
+    $mail = mb_strtolower($form_state['values']['name'], 'UTF-8') . '@' . $auto_email_domain;
+
+    // Validate the e-mail address, and check if it is taken by an existing user.
+    if ($error = user_validate_mail($mail)) {
+      form_set_error('name', t('The username contains an illegal character.'));
+    }
+    elseif ((bool) db_select('users')->fields('users', array('uid'))->condition('uid', $account->uid, '<>')->condition('mail', db_like($mail), 'LIKE')->range(0, 1)->execute()->fetchField()) {
+      form_set_error('name', t('The name %name is already taken.', array('%name' => $form_state['values']['name'])));
+    } else {
+      $safe_mail = $mail;
+    }
+  }
+
+  $form_state['values']['mail'] = $safe_mail;
+}
+
+function customizer_seller_manage_form_submit($form, &$form_state) {
+  // Seller role is assigned through Rules
+  $account = $form['#user'];
+
+  if (is_numeric($account)) {
+    $account = user_load($account);
+  }
+
+  $account_unchanged = clone $account;
+  $register = $account->uid < 1;
+
+  if ($register) {
+    $account_values = array(
+      'name' => $form_state['values']['name'],
+      'pass' => $form_state['values']['pass'],
+      'mail' => $form_state['values']['mail'],
+      'status' => 1,
+      'roles' => array(
+        DRUPAL_AUTHENTICATED_RID => 'authenticated user',
+      ),
+      'field_parent_manager' => array(LANGUAGE_NONE => array(
+        array('uid' => $GLOBALS['user']->uid),
+      )),
+    );
+
+		if ($form_state['values']['warehouse_access']) {
+			$account_values['roles'][6] = 'warehouse manager';
+		}
+
+    $user_saved = user_save('', $account_values);
+    drupal_set_message('Новый продавец успешно создан.');
+
+  } else {
+    $edit = array(
+      'name' => $form_state['values']['name'],
+      'mail' => $form_state['values']['mail'],
+    );
+
+    $new_pass = trim($form_state['values']['pass']);
+
+    if (isset($new_pass[0])) {
+      $edit['pass'] = $new_pass;
+    }
+
+		if ($form_state['values']['warehouse_access']) {
+			$edit['roles'][6] = 'warehouse manager';
+		} else {
+      $edit['roles'][4] = 'seller';
+		}
+
+		$user_saved = user_save($account_unchanged, $edit);
+    drupal_set_message(t('The changes have been saved.'));
+
+  }
+}
+
+/**
+ * Validate user name value.
+ * @param string $name
+ * @return null|string Error message or null
+ */
+function customizer_user_validate_name($name) {
+  if (!$name) {
+    return t('You must enter a username.');
+  }
+
+  if (preg_match('#[^a-z0-9]#i', $name)) {
+    return 'Имя пользователя может содержать только латинские буквенно-цифровые символы.';
+  }
+
+  $name_strlen = drupal_strlen($name);
+
+  if ($name_strlen < CUSTOMIZER_USERNAME_MIN_LENGTH
+    || $name_strlen > CUSTOMIZER_USERNAME_MAX_LENGTH
+  ) {
+    return t('The username must be %min-%max characters long.', array('%min' => CUSTOMIZER_USERNAME_MIN_LENGTH, '%max' => CUSTOMIZER_USERNAME_MAX_LENGTH));
+  }
+
+  // Reserve some usernames if account is being created by not admin user
+  if (!user_access('administer users')) {
+    // Reserve these usernames because automatic email is constructed
+    // from them like username@venda.uz
+    $reserved = array(
+      'login', 'admin', 'administrator', 'adminer', 'sysadmin', 'sistemadmin',
+      'manager', 'register', 'venda', 'apteka', 'manage', 'seller',
+    );
+    $reserved = array_flip($reserved);
+    $name_lower = mb_strtolower($name, 'UTF-8');
+
+    if (isset($reserved[$name_lower])) {
+      return t('The name %name is already taken.', array('%name' => $name));
+    }
+  }
+}
+
+/**
+ * User account form validation callback.
+ * @param mixed $form
+ * @param mixed $form_state
+ */
+function customizer_user_account_form_validate($form, &$form_state) {
+  if ($form['#user_category'] == 'account' || $form['#user_category'] == 'register') {
+    // Validate new or changing username.
+    if (isset($form_state['values']['name'])) {
+      if ($error = customizer_user_validate_name($form_state['values']['name'])) {
+        form_set_error('name', $error);
+      }
+    }
+  }
+}
+
+/**
+ * Load seller user.
+ * @param integer $id
+ * @return object|false
+ */
+function customizer_seller_load($id) {
+  $seller = user_load($id);
+
+  if ($seller === FALSE) {
+    return FALSE;
+  }
+
+  if (in_array('seller', $seller->roles, TRUE)) {
+    return $seller;
+  }
+
+  return FALSE;
+}
+
+/**
+ * Access callback for seller edit form
+ * @param mixed $account Edited seller account.
+ */
+function customizer_seller_edit_access($account) {
+	$account = user_load($account);
+  if (!user_is_manager()) {
+    return FALSE;
+  }
+
+  return
+    isset($account->field_parent_manager[LANGUAGE_NONE][0]['uid'])
+    && ((string) $account->field_parent_manager[LANGUAGE_NONE][0]['uid'] === (string) $GLOBALS['user']->uid);
+}
+
+
+function customizer_seller_cancel_confirm_form($form, &$form_state, $account) {
+  menu_set_active_item('dashboard/sellers');
+
+  $form['_account'] = array('#type' => 'value', '#value' => $account);
+
+  $question = format_string('Вы уверены, что хотите удалить продавца %name', array('%name' => $account->name));
+
+  $form['user_cancel_method'] = array('#type' => 'value', '#value' => 'user_cancel_delete');
+  $form['user_cancel_confirm'] = array('#type' => 'value', '#value' => FALSE);
+  $form['user_cancel_notify'] = array('#type' => 'value', '#value' => FALSE);
+
+  // Always provide entity id in the same form key as in the entity edit form.
+  $form['uid'] = array('#type' => 'value', '#value' => $account->uid);
+  return confirm_form($form,
+    $question,
+    'dashboard/sellers',
+    NULL,
+    t('Delete'));
+}
+
+/**
+ * Submit handler for the seller account cancellation by manager confirm form.
+ */
+function customizer_seller_cancel_confirm_form_submit($form, &$form_state) {
+  $account = $form_state['values']['_account'];
+
+	if (is_numeric($account)) {
+		$account = user_load($account);
+	}
+
+  // Reassign sellers content to parent Manager
+  // HACK: Because works only in this form. Doesn't work from Admin/Users
+  $manager = customizer_get_seller_manager($account);
+
+  if ($manager !== FALSE) {
+    // Reassign sellers content to parent Manager
+    db_update('node')
+      ->fields(array('uid' => $manager->uid))
+      ->condition('uid', $account->uid)
+      ->execute();
+
+    // Reassign old revisions.
+    db_update('node_revision')
+      ->fields(array('uid' => $manager->uid))
+      ->condition('uid', $account->uid)
+      ->execute();
+  }
+
+  $user_deleted = clone $account;
+
+  // Delete seller
+  user_cancel($form_state['values'], $account->uid, $form_state['values']['user_cancel_method']);
+
+  $form_state['redirect'] = 'dashboard/sellers';
+}
+
+
+/**
+ * Get sellers count for given manager account.
+ * @param object|integer $account Given manager.
+ * @param boolean $count Flag whether return sellers uids or sellers count.
+ * @return array|integer Seller uid array or count number.
+ */
+function customizer_get_manager_sellers($account, $count = FALSE, $reset = FALSE) {
+  static $cached;
+
+  $count = (bool) $count;
+  $reset = (bool) $reset;
+
+  $account_id = is_object($account) ? $account->uid : $account;
+  $account_id = (int) $account_id;
+
+  if (!$reset && isset($cached[(int) $count][$account_id])) {
+    return $cached[(int) $count][$account_id];
+  }
+
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'user');
+  $query->propertyCondition('status', 1);
+  $query->fieldCondition('field_parent_manager', 'uid', $account_id);
+
+  if ($count) {
+    $query->count();
+  }
+
+  $result = $query->execute();
+
+  if ($count) {
+    $return = $result;
+  } else {
+    if (!empty($result['user'])) {
+      $return = array_keys($result['user']);
+    } else {
+      $return = array();
+    }
+  }
+
+  $cached[(int) $count][$account_id] = $return;
+  return $return;
+}
+
+/**
+ * Get manager of given seller user.
+ * @param object|integer $seller Given seller user.
+ * @return object|false Manager user.
+ */
+function customizer_get_seller_manager($seller) {
+  $seller_uid = is_object($seller) ? $seller->uid : $seller;
+  $seller_user = user_load($seller_uid);
+
+  if (
+    $seller_user === FALSE
+    || !isset($seller_user->field_parent_manager[LANGUAGE_NONE][0]['uid'])
+  ) {
+    return FALSE;
+  }
+
+  $manager = user_load($seller_user->field_parent_manager[LANGUAGE_NONE][0]['uid']);
+
+  if ($manager === FALSE) {
+    return FALSE;
+  }
+
+  if (in_array('manager', $manager->roles)) {
+    return $manager;
+  }
+
+  return FALSE;
+}
+
+function customizer_user_delete($account) {
+  // Manager
+  if (in_array('manager', $account->roles)) {
+    // Delete seller accounts when manager account is removed
+    $seller_uids = customizer_get_manager_sellers($account);
+
+    if ($seller_uids) {
+      user_delete_multiple($seller_uids);
+    }
+  }
+  elseif (in_array('seller', $account->roles)) {
+    // Seller
+    // Reassign sellers content to parent Manager
+    $manager = customizer_get_seller_manager($account);
+
+    if ($manager !== FALSE) {
+      // Reassign nodes (current revisions).
+      db_update('node')
+        ->fields(array('uid' => $manager->uid))
+        ->condition('uid', $account->uid)
+        ->execute();
+
+      // Reassign old revisions.
+      db_update('node_revision')
+        ->fields(array('uid' => $manager->uid))
+        ->condition('uid', $account->uid)
+        ->execute();
+
+      // Empty cache
+      //cache_clear_all();
+    }
+  }
+}
+
+/*
+ * Node API hooks
+ */
+/**
+ * Implements hook_node_presave().
+ */
+function customizer_node_presave($node) {
+
+  if ($node->type =='branch' && $node->is_new) {
+    //@TODO: Write branch save logic
+
+  }
+}
+
+/**
+ * Implements hook_node_delete().
+ */
+function customizer_node_delete($node) {
+  if ($node->type === 'product') {
+		// Remove batches when product is deleted
+    $query = new EntityFieldQuery();
+    $query->entityCondition('entity_type', 'node');
+    $query->entityCondition('bundle', 'product_batch');
+    $query->fieldCondition('field_pb_product', 'nid', $node->nid);
+    $db_result = $query->execute();
+    $nodes = array();
+
+    if (isset($db_result['node'])) {
+      $nodes = array_keys($db_result['node']);
+    }
+
+    node_delete_multiple($nodes);
+
+
+		//Remove product IDs from transaction products
+		$query = new EntityFieldQuery();
+		$query->entityCondition('entity_type', 'node');
+		$query->entityCondition('bundle', 'transaction_product');
+		$query->fieldCondition('field_prtrc_product', 'nid', $node->nid);
+		$db_result = $query->execute();
+		$nodes = array();
+
+		if (isset($db_result['node'])) {
+      $nodes = array_keys($db_result['node']);
+    }
+
+		$nodes = node_load_multiple($nodes);
+
+		foreach ($nodes as $node) {
+			unset($node->field_prtrc_product[LANGUAGE_NONE][0]['nid']);
+			node_save($node);
+		}
+  }
+
+	if ($node->type === 'branch') {
+		//@TODO: Write branch remove logic
+
+	}
+
+	if ($node->type === 'transaction') {
+		$trprc_nodes = array();
+		foreach ($node->field_trc_product[LANGUAGE_NONE] as $trprc) {
+			$trprc_nodes[$trprc['nid']] = $trprc['nid'];
+		}
+
+    if (count($trprc_nodes)>0) {
+			node_delete_multiple($trprc_nodes);
+		}
+
+  }
+}
+
+
+function get_branch_ID_by_nid($branch_nid=0) {
+	$branch_ID = 0;
+	if  ($branch_nid) {
+		$branch_ID = db_query("SELECT field_apteka_id_value FROM {field_data_field_apteka_id} WHERE entity_id='".$branch_nid."'")->fetchField();
+	}
+
+	return $branch_ID;
+}
+
+
+function customizer_batch_maxqty_curprice($product_nid=0, $show_on_table = false) {
+  $product = array();
+  $product['price'] = '-';
+  $product['expire_date'] = '';
+  $product['qty'] = '-';
+
+  if ($product_nid) {
+      $data = db_query("SELECT
+        n.nid,
+        n.title,
+        p_amount.field_pr_amount_value,
+        price_table.field_pr_price_value,
+        date_expire.field_pr_expiry_date_value
+      FROM node n
+      INNER JOIN field_data_field_pb_product batch ON batch.field_pb_product_nid = n.nid
+      INNER JOIN field_data_field_pr_amount p_amount ON batch.entity_id = p_amount.entity_id
+      INNER JOIN field_data_field_pr_price price_table ON price_table.entity_id = batch.entity_id
+      LEFT JOIN field_data_field_pr_expiry_date date_expire ON date_expire.entity_id = batch.entity_id
+      INNER JOIN field_data_field_weight batch_product_weight ON batch_product_weight.entity_id = batch.entity_id
+      WHERE n.type = 'product' ".((!$show_on_table) ? 'AND p_amount.field_pr_amount_value>0 ' : '')."AND n.nid = :nid
+      ORDER BY batch_product_weight.field_weight_value ASC", array(':nid' => $product_nid))->fetchAll();
+
+      $i=0;
+      $exist = false;
+      $temp = array();
+      foreach ($data as $row) {
+        $temp[$i]['price'] = $row->field_pr_price_value;
+        $temp[$i]['expire_date'] = $row->field_pr_expiry_date_value;
+
+        $product['qty'] = (int)$product['qty'] + $row->field_pr_amount_value;
+
+        if (!$exist and $product['qty']>0) {
+          $product['price'] = $row->field_pr_price_value;
+          $product['expire_date'] = $row->field_pr_expiry_date_value;
+
+          $exist = true;
+        }
+
+
+        $i++;
+      }
+
+      if (!$exist and $product['qty']>=0) {
+        if (isset($temp[0]['price']) and isset($temp[0]['base_price'])) {
+          $product['price'] = $temp[0]['price'];
+          $product['base_price'] = $temp[0]['base_price'];
+        }
+      }
+
+  }
+  return $product;
+}
+
+function customizer_user_login(&$edit, $account) {
+	if (user_is_logged_in()) {
+		if (in_array('seller', $account->roles)) {
+			unset($_GET['destination']);
+			drupal_goto('dashboard/sell');
+			exit;
+		}
+	}
+}
+
+//print barcode
+function barcode_print($barcode, $copy = 1, $product_title = false, $print = true) {
+  module_load_include('php', 'customizer', 'includes/barcode');
+  module_load_include('php', 'customizer', 'includes/php_image_magician');
+
+  //save barcode img to use in print
+  $barcode_img_name = "barcode" . uniqid("_");
+
+  for ($i = 0; $i < $copy; $i++) {
+
+    //generate barcode
+    barcode::code39($barcode, $barcode_img_name);
+
+    //convert it to bmp to print
+    $magicianObj = new imageLib(dirname(__FILE__) . '/includes/' . $barcode_img_name . '.png');
+    $magicianObj->saveImage(dirname(__FILE__) . '/includes/' . $barcode_img_name . '.bmp');
+
+  }
+
+  return $barcode_img_name;
+}
+
+
+/*
+ * Views API hooks.
+ */
+function customizer_views_query_alter(&$view, &$query) {
+  global $user;
+
+  if ($view->name === 'products_empty_stock') {
+    if (isset($query->having[1]['type'])) {
+      $query->having[1]['type'] = 'OR';
+    }
+  }
+
+  if ($view->name === 'package_expiring') {
+    if (isset($query->where[1]['conditions'][2]['value'][':field_data_field_pr_expiry_date_field_pr_expiry_date_value'])) {
+      $query->where[1]['conditions'][2]['value'][':field_data_field_pr_expiry_date_field_pr_expiry_date_value'] = date('Y-m-d', (time()+config_pages_get('li'.'c'.'ense','field_highlight_time',2592000)));
+    }
+  }
+}
+
+
+
+function customizer_dashboard_warehouse_submit_redirect($form, &$form_state) {
+  $form_state['redirect'] = 'dashboard/warehouse';
+}
+
+
+
+function customizer_views_pre_render(&$view) {
+
+  if ($view->name === 'daily_sales' && $view->current_display === 'block') {
+    $dtz = new DateTimeZone(drupal_get_user_timezone());
+    $interval = new DateInterval('P1D');
+    $date_end = new DateTime('today +1 day', $dtz);
+    $date_start = clone $date_end;
+    $date_start->modify('-10 days');
+    $date_range = new DatePeriod($date_start, $interval, $date_end);
+
+    $empty_row = new stdClass();
+    $empty_row->node_created = '20160121';
+    $empty_row->nid = 0;
+    $empty_row->field_data_field_trc_price_node_entity_type = 'node';
+    $empty_row->field_data_field_trc_price_field_trc_price_value = 0;
+    $empty_row->field_data_field_trc_price_base_node_entity_type = 'node';
+    $empty_row->field_data_field_trc_price_base_field_trc_price_base_value = 0;
+    $empty_row->field_data_field_trc_payment_cash_field_trc_payment_cash_value = 0;
+    $empty_row->field_data_field_trc_payment_terminal_field_trc_payment_terminal_value = 0;
+    $empty_row->views_php_3 = 0; // profit
+    $empty_row->_field_data = array(
+      'nid' => array(
+        'entity_type' => 'node',
+        'entity' => FALSE,
+      ),
+    );
+    $empty_row->field_field_trc_price = array(array(
+      'rendered' => array(
+        '#markup' => '0.00',
+        '#access' => 1,
+      ),
+      'raw' => array(
+        'value' => 0,
+      ),
+    ));
+
+    $empty_row->field_field_trc_price_base = array(array(
+      'rendered' => array(
+        '#markup' => '0.00',
+        '#access' => 1,
+      ),
+      'raw' => array(
+        'value' => 0,
+      ),
+    ));
+
+    $empty_row->field_field_trc_payment_cash = array(array(
+      'rendered' => array(
+        '#markup' => '0.00',
+        '#access' => 1,
+      ),
+      'raw' => array(
+        'value' => 0,
+      ),
+    ));
+
+    $empty_row->field_field_trc_payment_terminal = array(array(
+      'rendered' => array(
+        '#markup' => '0.00',
+        '#access' => 1,
+      ),
+      'raw' => array(
+        'value' => 0,
+      ),
+    ));
+
+    $new_result = array();
+
+    foreach ($date_range as $date) {
+      $date_key = $date->format('Ymd');
+      $mod_row = clone $empty_row;
+      $mod_row->node_created = $date_key;
+      $new_result[$date_key] = $mod_row;
+    }
+
+    foreach ($view->result as $row) {
+      $date_key = $row->node_created;
+
+      if (isset($new_result[$date_key])) {
+        $new_result[$date_key] = $row;
+      }
+    }
+
+    $view->result = array_values($new_result);
+
+    foreach ($view->result as &$row) {
+      $created_value = $row->node_created;
+      $new_date_key = substr($created_value, 6, 2) . '.' . substr($created_value, 4, 2) . '.' . substr($created_value, 0, 4);
+      $row->node_created = $new_date_key;
+    }
+  }
+  elseif ($view->name === 'reports_sellers') {
+    $empty_row = new stdClass();
+    $empty_row->node_uid = 0;
+    $empty_row->node_field_data_field_trc_product_title = 0;
+    $empty_row->nid = 0;
+    $empty_row->nid_1 = 0;
+    $empty_row->field_data_field_trc_qty_node_entity_type = 'node';
+    $empty_row->field_data_field_trc_qty_field_trc_qty_value = 0;
+    $empty_row->field_data_field_trc_price_node_entity_type = 'node';
+    $empty_row->field_data_field_trc_price_field_trc_price_value = 0;
+    $empty_row->field_data_field_trc_price_base_node_entity_type = 'node';
+    $empty_row->field_data_field_trc_price_base_field_trc_price_base_value = 0;
+    $empty_row->views_php_2 = ''; // user->name
+    $empty_row->views_php_7 = 0; // profit
+    $empty_row->_field_data = array(
+      'nid_1' => array(
+        'entity_type' => 'node',
+        'entity' => FALSE,
+      ),
+    );
+    $empty_row->field_field_trc_qty = array(
+      array(
+        'rendered' => array(
+          '#markup' => '0.00',
+          '#access' => 1,
+        ),
+        'raw' => array(
+          'value' => 0,
+        ),
+      ),
+    );
+    $empty_row->field_field_trc_price =
+    $empty_row->field_field_trc_price_base =
+      array(
+        array(
+          'rendered' => array(
+            '#markup' => '0 сум',
+            '#access' => 1,
+          ),
+          'raw' => array(
+            'value' => 0,
+          ),
+        ),
+      );
+
+    $uids = isset($view->args[0]) ? explode('+', $view->args[0]) : array();
+    $users = $uids ? user_load_multiple($uids) : array();
+
+    if ($users) {
+      usort($users, function ($a, $b) {
+        if (in_array('manager', $a->roles)) {
+          return -1;
+        } elseif (in_array('manager', $b->roles)) {
+          return 1;
+        }
+
+        if ($a->created == $b->created) {
+          return 0;
+        }
+
+        return $a->created > $b->created ? -1 : 1;
+      });
+
+      $result_keyed = array();
+
+      foreach ($view->result as $val) {
+        $result_keyed[$val->node_uid] = $val;
+      }
+
+      $new_result = array();
+
+      foreach ($users as $val) {
+        $val_uid = $val->uid;
+
+        if (isset($result_keyed[$val_uid])) {
+          $new_row = $result_keyed[$val_uid];
+        } else {
+          $new_row = clone $empty_row;
+          $new_row->node_uid = $val_uid;
+        }
+
+        $new_row->views_php_2 = $val->name;
+        $new_result[] = $new_row;
+      }
+
+      $view->result = $new_result;
+    } else {
+      $view->result = array();
+    }
+  } // reports_sellers
+  elseif ($view->name === 'reports_hours') {
+    $dtz = new DateTimeZone(drupal_get_user_timezone());
+    $interval = new DateInterval('PT1H');
+    $date_start = new DateTime('today', $dtz);
+    $date_end = new DateTime('tomorrow', $dtz);
+    $date_range = new DatePeriod($date_start, $interval, $date_end);
+    $date_labels = array();
+
+    foreach ($date_range as $date) {
+      $date_key = $date->format('H');
+      $date_to = clone $date;
+      $date_to->modify('+1 hour');
+      $date_labels[$date_key] = $date->format('H:i') . ' - ' . $date_to->format('H:i');
+    }
+
+    if ($view->current_display === 'attachment_1') {
+      $empty_row = new stdClass();
+      $empty_row->node_field_data_field_trc_product_title = '';
+      $empty_row->node_created = '01';
+      $empty_row->nid = 0; // transactions count
+      $empty_row->nid_1 = 0;
+      $empty_row->field_data_field_trc_qty_node_entity_type = 'node';
+      $empty_row->field_data_field_trc_qty_field_trc_qty_value = 0;
+      $empty_row->field_data_field_trc_price_node_entity_type = 'node';
+      $empty_row->field_data_field_trc_price_field_trc_price_value = 0;
+      $empty_row->field_data_field_trc_price_base_node_entity_type = 'node';
+      $empty_row->field_data_field_trc_price_base_field_trc_price_base_value = 0;
+      $empty_row->node_created_1 = time();
+      $empty_row->views_php_6 = 0; // profit
+      $empty_row->_field_data = array(
+        'nid_1' => array(
+          'entity_type' => 'node',
+          'entity' => FALSE,
+        ),
+      );
+      $empty_row->field_field_trc_qty = array(
+        array(
+          'rendered' => array(
+            '#markup' => '0.00',
+            '#access' => 1,
+          ),
+          'raw' => array(
+            'value' => 0,
+          ),
+        ),
+      );
+      $empty_row->field_field_trc_price = array(
+        array(
+          'rendered' => array(
+            '#markup' => '0 сум',
+            '#access' => 1,
+          ),
+          'raw' => array(
+            'value' => 0,
+          ),
+        ),
+      );
+      $empty_row->field_field_trc_price_base = array(
+        array(
+          'rendered' => array(
+            '#markup' => '0 сум',
+            '#access' => 1,
+          ),
+          'raw' => array(
+            'value' => 0,
+          ),
+        ),
+      );
+
+      $new_result = array();
+
+      foreach ($date_range as $date) {
+        $date_key = $date->format('H');
+        $mod_row = clone $empty_row;
+        $mod_row->node_created = $date_key;
+        $new_result[$date_key] = $mod_row;
+      }
+
+      foreach ($view->result as $row) {
+        $date_key = $row->node_created;
+
+        // Replace placeholder with actual data if exists
+        if (isset($new_result[$date_key])) {
+          $new_result[$date_key] = $row;
+        }
+      }
+
+      $view->result = array_values($new_result);
+    }
+
+    // Reformat hours label
+    foreach ($view->result as $key => $row) {
+      $date_key = $row->node_created;
+
+      if (isset($date_labels[$date_key])) {
+        $view->result[$key]->node_created = $date_labels[$date_key];
+      }
+    }
+  } // reports_hours
+}
+
+
+
+function customizer_views_api() {
+  return array('api' => 3);
+}
+
+function customizer_manager_user_context_filter() {
+  $uids = customizer_manager_user_context_filter_get_uids();
+  return implode('+', $uids);
+}
+
+/**
+ * Validate manager user context filter for Reports.
+ * Check context filter value.
+ * @param string $argument Argument value from views contextual filter.
+ * @return bool Valid or not.
+ */
+function customizer_manager_user_context_filter_validate($argument) {
+  if (user_access('administer views')) {
+    return TRUE;
+  };
+
+  /*if (arg($arg_index) === NULL) {
+    return TRUE;
+  }*/
+
+  $uids = customizer_manager_user_context_filter_get_uids();
+  $view_args = explode('+', $argument);
+
+  foreach ($view_args as $val) {
+    if (!in_array($val, $uids)) {
+      return FALSE;
+    }
+  }
+
+  return TRUE;
+}
+
+function customizer_manager_user_context_filter_get_uids() {
+  $uids = array();
+  $current_user = $GLOBALS['user'];
+  $uids[] = $current_user->uid;
+
+  if (in_array('manager', $current_user->roles)) {
+    $seller_uids = customizer_get_manager_sellers($current_user);
+    $uids = array_merge($uids, $seller_uids);
+  }
+
+  $uids = array_unique($uids);
+  return $uids;
+}
+
+/**
+ * Menu callback. Retrieves a pipe delimited string of autocomplete suggestions.
+ */
+function customizer_product_title_autocomplete_filter($string = '') {
+  if (trim($string) == '') {
+    // Ignore empty strings.
+    return drupal_json_output(array());
+  }
+
+  // Config
+  $autocomplete_min_chars = 1;
+  $autocomplete_items = 10;
+  $autocomplete_raw_suggestion = TRUE;
+  $autocomplete_raw_dropdown = TRUE;
+
+  $matches = array();
+
+  // Do not filter if the string length is less that minimum characters setting.
+  if (drupal_strlen(trim($string)) < $autocomplete_min_chars) {
+    $matches[''] = '<div class="reference-autocomplete">' . t('The %string should have at least %min_chars characters.', array('%string' => $string, '%min_chars' => $autocomplete_min_chars)) . '</div>';
+    return drupal_json_output($matches);
+  }
+
+  // Render field on each row and fill matches array.
+  $matches = array();
+
+  // Render field on each row and fill matches array.
+  $use_raw_suggestion = !empty($autocomplete_raw_suggestion);
+  $use_raw_dropdown = !empty($autocomplete_raw_dropdown);
+
+  // select node of type product, whose uid is current user uid
+  $manager_uid = $GLOBALS['user']->uid;
+  $result = db_select('node', 'n')->fields('n', array('title'))->condition('n.uid', $manager_uid)->condition('n.type', 'product')->condition('title', '%' . db_like($string) . '%', 'LIKE')->range(0, $autocomplete_items)->execute();
+
+  foreach ($result as $product) {
+    $title = $product->title;
+    $rendered_field = $raw_field = '';
+
+    // Render field only if suggestion or dropdown item not in RAW format.
+    if (!$use_raw_suggestion || !$use_raw_dropdown) {
+      $rendered_field = check_plain($title);
+    }
+
+    // Get the raw field value only if suggestion or dropdown item is in RAW format.
+    if ($use_raw_suggestion || $use_raw_dropdown) {
+      $raw_field = $title;
+    }
+
+    if (isset($raw_field) && strstr(drupal_strtolower($raw_field), drupal_strtolower($string))) {
+      $dropdown = $use_raw_dropdown ? check_plain($raw_field) : $rendered_field;
+      if ($dropdown != '') {
+        $suggestion = $use_raw_suggestion ? check_plain($raw_field) : $rendered_field;
+        $suggestion = decode_entities($suggestion);
+
+        // Add a class wrapper for a few required CSS overrides.
+        $matches[$suggestion] = '<div class="reference-autocomplete">' . $dropdown . '</div>';
+      }
+    }
+  }
+
+  if (empty($matches)) {
+    $matches[''] = '<div class="reference-autocomplete">' . t('The %string return no results. Please try something else.', array('%string' => $string)) . '</div>';
+  }
+
+  return drupal_json_output($matches);
+}
+
+/**
+ * Implements hook_chart_definition_alter().
+ */
+function customizer_chart_definition_alter(&$definition, $chart, $chart_id) {
+  // Reports_manufacturers: hack for Pie chart
+  // Also y value column needs to be set to no formatter. maybe bug
+  if ($chart_id == 'reports_manufacturers__attachment_1') {
+    if (isset($definition['tooltip'])) {
+      $definition['tooltip']['valueSuffix'] = ' сум';
+    }
+  }
+}
+
+
+function customizer_warehouse_export_form($form, &$form_state) {
+	global $user;
+
+	$form['#attributes']['class'][] = 'stop-on-submit';
+
+  $form['#theme'] = 'warehouse_export_csv';
+
+  $data = db_query("SELECT
+      n.nid,
+      n.title,
+      b.field_md_up_barcode_value AS barcode
+    FROM node n
+    LEFT JOIN field_data_field_md_up_barcode b ON b.entity_id = n.nid
+    WHERE n.type = 'product'
+    GROUP BY n.nid
+    ORDER BY n.nid DESC")->fetchAll();
+
+    $products = array();
+    $i=0;
+    foreach ($data as $row) {
+      $products[$i]['nid'] = $row->nid;
+      $products[$i]['barcode'] = $row->barcode;
+      $products[$i]['title'] = $row->title;
+
+      $i++;
+    }
+
+  drupal_add_js('var array_products = '.json_encode($products), 'inline');
+  //append sell process js file
+  drupal_add_js(drupal_get_path('module', 'customizer') . '/js/typeahead.bundle.min.js');
+	drupal_add_js(drupal_get_path('module', 'customizer') . '/js/row-sorter.min.js');
+  drupal_add_js(drupal_get_path('module', 'customizer') . '/js/export-csv.js');
+
+	$form['remove_exported_batches'] = array(
+    '#title' => t('Уменьшить количество партий в базе'),
+    '#type' => 'checkbox',
+		'#description' => t('Если выберёте эту опцию, система будет удалять экспортированных продуктов из склада.'),
+  );
+
+	$form['ignore_empty_packages'] = array(
+    '#title' => t('Пропустить пустых партий'),
+    '#type' => 'checkbox',
+		'#default_value' => 1,
+  );
+
+  $form['actions']['submit']=array(
+    '#type' => 'submit',
+    '#value' => 'Создать CSV файл',
+  );
+
+	return $form;
+
+}
+
+
+
+function customizer_warehouse_export_form_submit($form, &$form_state) {
+	set_time_limit(0);
+
+	if (isset($form_state['input']['products'])) {
+		if (count($form_state['input']['products'])>0) {
+
+			$csvfile_name = 'server_sklad_'.date('d-m-Y_H-i-s').'.csv'; // the file to save to
+			$lines = $lines_obj = array();
+			$i = 0;
+
+			$separator = ';';
+			$accept_lang = $_SERVER['HTTP_ACCEPT_LANGUAGE'];
+			if ($accept_lang) {
+				$ln = explode(',', $accept_lang);
+
+				if (in_array($ln[0], array('en-US'))) {
+					$separator = ',';
+				}
+			}
+
+			foreach ($form_state['input']['products'] as $nid => $product_row) {
+				$product = node_load($nid);
+				if (is_object($product)) {
+					$lines_obj[0] = mb_convert_encoding('Название продукта'.$separator.'Штрих код'.$separator.'Кол. в упаковке'.$separator.'Производитель'.$separator.'Страна производителя'.$separator.'Дата прибытия'.$separator.'Количество'.$separator.'Оптовая цена (сум)'.$separator.'Розничная цена (сум)'.$separator.'Поставщик'.$separator.'Срок годности'.$separator.'Включен', "Windows-1251", "utf-8") . PHP_EOL;
+					foreach ($product_row['batches'] as $batch_nid => $batch) {
+
+						if (($form_state['input']['ignore_empty_packages'] and $batch['pr_amount']>0) or $form_state['input']['ignore_empty_packages']==0) {
+							$lines[$i]['title'] = '"'.$product->field_pr_medicament_title[LANGUAGE_NONE][0]['value'].'"';
+							$lines[$i]['barcode'] = $product->field_md_up_barcode[LANGUAGE_NONE][0]['value'];
+
+							$lines[$i]['up_col'] = $product->field_md_up_amount[LANGUAGE_NONE][0]['value'];
+
+							$lines[$i]['manufacturer'] = '';
+							if (isset($product->field_pr_manufacturer[LANGUAGE_NONE][0]['tid'])) {
+								$manufacturer = taxonomy_term_load($product->field_pr_manufacturer[LANGUAGE_NONE][0]['tid']);
+
+								if (is_object($manufacturer)) {
+									$lines[$i]['manufacturer'] = $manufacturer->name;
+								}
+							}
+
+							$lines[$i]['country'] = '';
+							if (isset($product->field_pr_mn_country[LANGUAGE_NONE][0]['tid'])) {
+								$country = taxonomy_term_load($product->field_pr_mn_country[LANGUAGE_NONE][0]['tid']);
+
+								if (is_object($country)) {
+									$lines[$i]['country'] = $country->name;
+								}
+							}
+
+							$batch_node = node_load($batch_nid);
+
+							if (is_object($batch_node)) {
+								$lines[$i]['date_income'] = '';
+								if (isset($batch_node->field_pr_income_date[LANGUAGE_NONE][0]['value'])) {
+									$lines[$i]['date_income'] = date('d.m.Y', strtotime($batch_node->field_pr_income_date[LANGUAGE_NONE][0]['value']));
+								}
+
+								$lines[$i]['col'] = $batch['pr_amount'];
+								$lines[$i]['opt_price'] = $batch['opt_price'];
+								$lines[$i]['roz_price'] = $batch['roz_price'];
+
+								$lines[$i]['provider'] = '';
+								if (isset($batch_node->field_pr_provider[LANGUAGE_NONE][0]['nid'])) {
+									$batch_title = get_provider_title($batch_node->field_pr_provider[LANGUAGE_NONE][0]['nid']);
+									if ($batch_title) {
+										$lines[$i]['provider'] = '"'.$batch_title.'"';
+									}
+								}
+
+								$lines[$i]['date_expire'] = '';
+								if (isset($batch_node->field_pr_expiry_date[LANGUAGE_NONE][0]['value'])) {
+									$lines[$i]['date_expire'] = date('d.m.Y', strtotime($batch_node->field_pr_expiry_date[LANGUAGE_NONE][0]['value']));
+								}
+
+								$lines[$i]['is_enabled'] = $product->status;
+
+								if ($form_state['values']['remove_exported_batches'] and $batch_node->field_pr_amount[LANGUAGE_NONE][0]['value']>0) {
+									$batch_node->field_pr_amount[LANGUAGE_NONE][0]['value'] = $batch_node->field_pr_amount[LANGUAGE_NONE][0]['value'] - $batch['pr_amount'];
+
+									node_save($batch_node);
+
+								}
+
+							}
+							$lines_str = mb_convert_encoding(implode($separator,$lines[$i]), "Windows-1251", "utf-8");
+							$lines_obj[$i+1] = $lines_str . PHP_EOL;
+
+							$i++;
+						}
+					}
+				}
+
+
+
+				 // Remove this if file_save_data don't work.
+				// Use PHP statement below to append to file here if file_save_data don't work.
+				// file_put_contents(..path to file.., $user, FILE_APPEND);
+			}
+
+			$file = file_save_data($lines_obj, 'public://csv-export/' . $csvfile_name); // Remove this if file_save_data don't work.
+			$file->field_file_service[LANGUAGE_NONE][0]['value'] = 'export';
+
+			file_save($file);
+
+			$file_download_link = file_create_url($file->uri);
+			drupal_set_message(t('Файл создан успешно. Вы можете скачать файл '.l('здесь', $file_download_link).' или найдете файла в списке созданных файлов.'));
+		}
+	}
+}
+
+
+
+function customizer_warehouse_revoke_form($form, &$form_state) {
+	global $user;
+
+	$form['#attributes']['class'][] = 'stop-on-submit';
+
+  $form['#theme'] = 'warehouse_revoke';
+
+  $data = db_query("SELECT
+      n.nid,
+      n.title,
+      b.field_md_up_barcode_value AS barcode
+    FROM node n
+    LEFT JOIN field_data_field_md_up_barcode b ON b.entity_id = n.nid
+    WHERE n.type = 'product'
+    GROUP BY n.nid
+    ORDER BY n.nid DESC")->fetchAll();
+
+    $products = array();
+    $i=0;
+    foreach ($data as $row) {
+      $products[$i]['nid'] = $row->nid;
+      $products[$i]['barcode'] = $row->barcode;
+      $products[$i]['title'] = $row->title;
+
+      $i++;
+    }
+
+  drupal_add_js('var array_products = '.json_encode($products), 'inline');
+  //append sell process js file
+  drupal_add_js(drupal_get_path('module', 'customizer') . '/js/typeahead.bundle.min.js');
+	drupal_add_js(drupal_get_path('module', 'customizer') . '/js/row-sorter.min.js');
+  drupal_add_js(drupal_get_path('module', 'customizer') . '/js/revoke.js');
+
+  $form['actions']['submit']=array(
+    '#type' => 'submit',
+    '#value' => 'Списать выбранных товаров',
+  );
+
+	return $form;
+
+}
+
+
+
+function customizer_warehouse_revoke_form_submit($form, &$form_state) {
+	set_time_limit(0);
+  $i = 0;
+
+	if (isset($form_state['input']['products'])) {
+		if (count($form_state['input']['products'])>0) {
+
+			foreach ($form_state['input']['products'] as $nid => $product_row) {
+				foreach ($product_row['batches'] as $batch_nid => $batch) {
+          if ($batch['pr_amount']>0) {
+            $batch_node = node_load($batch_nid);
+
+            if (is_object($batch_node)) {
+              $batch_node->field_pr_amount[LANGUAGE_NONE][0]['value'] = $batch_node->field_pr_amount[LANGUAGE_NONE][0]['value'] - $batch['pr_amount'];
+
+              if ($batch_node->field_pr_amount[LANGUAGE_NONE][0]['value']<0) {
+                $batch_node->field_pr_amount[LANGUAGE_NONE][0]['value'] = 0;
+              }
+
+              node_save($batch_node);
+
+              $new_revoke = new stdClass();
+              $new_revoke->type = 'revoked_product';
+              node_object_prepare($new_revoke);
+
+              $new_revoke->title = $product_row['title'];
+              $new_revoke->field_rv_amount[LANGUAGE_NONE][0]['value'] = $batch['pr_amount'];
+              $new_revoke->field_rv_opt_price[LANGUAGE_NONE][0]['value'] = $batch['opt_price'];
+              $new_revoke->field_rv_roz_price[LANGUAGE_NONE][0]['value'] = $batch['roz_price'];
+              $new_revoke->field_rv_comment[LANGUAGE_NONE][0]['value'] = $batch['comment'];
+              $new_revoke->field_rv_product[LANGUAGE_NONE][0]['nid'] = $nid;
+
+              node_save($new_revoke);
+
+            }
+
+            $i++;
+          }
+        }
+
+			}
+
+      if ($i>0) {
+        drupal_set_message(t('Выбранные товары списаны.'));
+      }
+		}
+	}
+}
+
+
+
+function customizer_export_get_batches() {
+	$batches = array();
+	if (isset($_POST['nid'])) {
+		//Get product batches in order to get latest batch weight
+
+		$view_batch = views_get_view('product_batches');
+
+		if ($view_batch) {
+			if ($view_batch->set_display('block')) {
+				$view_batch->set_arguments(array($_POST['nid']));
+				$view_batch->pre_execute();
+
+				if ($view_batch->execute() !== FALSE) {
+					foreach ($view_batch->result as $view_row) {
+						$batches[$view_row->nid]['pr_amount'] = (isset($view_row->field_field_pr_amount[0]['raw']['value']) ?
+										$view_row->field_field_pr_amount[0]['raw']['value'] : 0);
+						$batches[$view_row->nid]['roz_price'] = (isset($view_row->field_field_pr_price[0]['raw']['value']) ?
+										$view_row->field_field_pr_price[0]['raw']['value'] : 0);
+						$batches[$view_row->nid]['opt_price'] = (isset($view_row->field_field_pr_price_base[0]['raw']['value']) ?
+										$view_row->field_field_pr_price_base[0]['raw']['value'] : 0);
+						$batches[$view_row->nid]['date_expire'] = (isset($view_row->field_field_pr_expiry_date[0]['raw']['value']) ?
+										date('d.m.Y', strtotime($view_row->field_field_pr_expiry_date[0]['raw']['value'])) : '');
+					}
+				}
+			}
+
+			$view_batch->destroy();
+		}
+
+		unset($view_batch);
+
+	}
+
+	if (count($batches)>0) {
+		drupal_json_output($batches);
+	}	else {
+		drupal_json_output(array('valid' => FALSE));
+	}
+
+	exit;
+}
+
+
+//CSV import form
+function customizer_warehouse_import_form($form, &$form_state) {
+	global $user;
+
+	$app_type = config_pages_get('li'.'c'.'ense','field_st_app_type',0);
+
+  $form['#theme'] = 'warehouse_import_csv';
+
+  $form['import_upload'] = array(
+    '#title' => t('Выберите CSV файл'),
+    '#type' => 'managed_file',
+    '#required' => true,
+		'#upload_location' => 'public://csv-import/',
+		'#upload_validators' => array(
+    'file_validate_extensions' => array('csv'),
+			// Pass the maximum file size in bytes
+			'file_validate_size' => array(10*1024*1024),
+		),
+		'#description' => t('Вы можете загрузить только CSV файл.'),
+  );
+
+  $form['actions']['submit']=array(
+    '#type' => 'submit',
+    '#value' => 'Извлекать данные',
+  );
+
+	$destination = array();
+  if (isset($_GET['destination'])) {
+    $destination = drupal_get_destination();
+  }
+
+  $form['actions']['cancel_page'] = array(
+    '#markup' => l(t('Cancel'), '<front>', array('query' => $destination, 'attributes' => array('class' => 'btn btn-danger'))),
+  );
+
+	return $form;
+
+}
+
+
+function customizer_warehouse_import_form_submit($form, &$form_state) {
+	$table_data = array();
+	if (isset($form_state['values']['import_upload'])) {
+		$fid = $form_state['values']['import_upload'];
+		if (is_numeric($fid)) {
+			$import_file = file_load($fid);
+			if (is_object($import_file)) {
+
+				//Save file
+				$import_file->status = FILE_STATUS_PERMANENT;
+				$import_file->field_file_service[LANGUAGE_NONE][0]['value'] = 'import';
+				file_save($import_file);
+
+				$_SESSION['import_fid'] = $fid;
+
+				unset($_SESSION['empty_warnings']);
+				unset($_SESSION['table_data']);
+				$handle = fopen(drupal_realpath($import_file->uri), 'r');
+				$i=$r=0;
+				$delimiter = getFileDelimiter(drupal_realpath($import_file->uri));
+
+				while ($row = fgetcsv($handle, 0, $delimiter)) {
+					$row = array_map( "convert", $row );
+
+					if (!empty($row[0]) or !empty($row[1])) { //check for empty lines
+						//Skip header
+						if ($i!=0) {
+							$table_data[$r]['nid']['value'] = false;
+
+							foreach ($row as $i => $field) {
+								$field = htmlspecialchars(trim($field));
+
+								//Check for errors
+								switch ($i) {
+									case 0: //product title
+										$table_data[$r]['title'] = false;
+										if (empty($field)) {
+											$table_data[$r]['title']['errors'][] = t('Название продукта отсутствует.');
+
+										} else {
+											$table_data[$r]['title']['value'] = $field;
+										}
+										break;
+
+									case 1: //barcode
+										$table_data[$r]['barcode']['value'] = $field;
+										if (empty($field)) {
+											$table_data[$r]['barcode']['warnings'][] = t('Штрих-код отсутствует.');
+										} elseif (!is_numeric($field)) {
+											$table_data[$r]['barcode']['errors'][] = t('Формат штрих-кода неправильно. Штрих-код должен состоит только из цифры.');
+										} elseif (strlen($field)<9) {
+											$table_data[$r]['barcode']['warnings'][] = t('Минимальная длина штрих-кода должно бить 9 цифры.');
+										} elseif (strlen($field)>14) {
+											$table_data[$r]['barcode']['warnings'][] = t('Максимальная длина штрих-кода должно бить 14 цифры.');
+										} else {
+											//Checked for errors. Now check if barcode exists
+											$table_data[$r]['nid']['value'] = check_if_barcode_exists($field);
+											if (!$table_data[$r]['nid']['value']) {
+												$table_data[$r]['barcode']['warnings'][] = t('Штрих-код <em></em> не найден в системе. Продукт будет добавлен как новый.');
+											}
+										}
+										break;
+
+									case 2: //kolichestvo v upakovke
+										$table_data[$r]['up_col']['value'] = $field;
+										if (empty($field)) {
+											$table_data[$r]['up_col']['errors'][] = t('Количество в упаковке пусто.');
+										} elseif (!is_numeric($field)) {
+											$table_data[$r]['up_col']['errors'][] = t('Формат Количества неправильно. Количество должно состоит только из цифры.');
+										} elseif ($field<0) {
+											$table_data[$r]['up_col']['errors'][] = t('Количество в упаковке не может быть отрицательное значение.');
+										}
+										break;
+
+									case 3: //manufacturer
+										$table_data[$r]['manufacturer']['value'] = $field;
+										if (empty($field)) {
+											$table_data[$r]['manufacturer']['warnings'][] = t('Производитель отсутствует.');
+										} else {
+											$terms = taxonomy_get_term_by_name(ucfirst($field));
+											$term_exists = false;
+											if (count($terms)>0) {
+												foreach ($terms as $term) {
+													if (!$term_exists) {
+														$table_data[$r]['manufacturer']['tid'] = $term->tid;
+														$term_exists = true;
+													}
+												}
+											}
+
+											if (!$term_exists) {
+												$table_data[$r]['manufacturer']['warnings'][] = t('В системе не найдена <em>'.ucfirst($field).'</em> производитель. <em>'.ucfirst($field).'</em> будет добавлен как новый.');
+											}
+
+										}
+										break;
+
+									case 4: //country
+										$table_data[$r]['country']['value'] = $field;
+										if (empty($field)) {
+											$table_data[$r]['country']['warnings'][] = t('Страна-производитель отсутствует.');
+										} else {
+											$terms = taxonomy_get_term_by_name(ucfirst($field));
+											$term_exists = false;
+											if (count($terms)>0) {
+												foreach ($terms as $term) {
+													if (!$term_exists) {
+														$table_data[$r]['country']['tid'] = $term->tid;
+														$term_exists = true;
+													}
+												}
+											}
+
+											if (!$term_exists) {
+												$table_data[$r]['country']['errors'][] = t('В системе не найдена <em>'.ucfirst($field).'</em> страна-производитель.');
+											}
+
+										}
+										break;
+
+									case 5: //date income
+										$table_data[$r]['date_income']['value'] = $field;
+										if (empty($field)) {
+											$table_data[$r]['date_income']['warnings'][] = t('Дата прибытия отсутствует. Сегодняшняя дата будет сохранена как дата прибытия.');
+										} else {
+											$d = DateTime::createFromFormat('d.m.Y', $field);
+											if ($d) {
+												if ($d->format('d.m.Y') !== $field) {
+													$table_data[$r]['date_income']['errors'][] = t('Вы ввели неправильную дату. Формат даты прибытия должно быть дд.мм.гггг');
+												}
+											} else {
+												$table_data[$r]['date_income']['errors'][] = t('Вы ввели неправильную дату. Формат даты прибытия должно быть дд.мм.гггг');
+											}
+										}
+
+										break;
+
+									case 6: //kolichestvo
+										$table_data[$r]['col']['value'] = $field;
+										if (empty($field)) {
+											$table_data[$r]['col']['warnings'][] = t('Количество пусто.');
+										} elseif (!is_numeric($field)) {
+											$table_data[$r]['col']['errors'][] = t('Формат Количества неправильно. Количество должно состоит только из цифры.');
+										} elseif ($field<0) {
+											$table_data[$r]['col']['errors'][] = t('Количество не может быть отрицательное значение.');
+										}
+										break;
+
+									case 7: //opt price
+										$table_data[$r]['opt_price']['value'] = $field;
+										if (empty($field)) {
+											$table_data[$r]['opt_price']['warnings'][] = t('Оптовая цена отсутствует. Она нужна чтобы посчитать прибыли.');
+										} elseif (!is_numeric($field)) {
+											$table_data[$r]['opt_price']['errors'][] = t('Формат Оптовой цены неправильно. Цена должна состоит только из цифры.');
+										} elseif ($field<0) {
+											$table_data[$r]['opt_price']['errors'][] = t('Цена не может быть отрицательное значение.');
+										}
+										break;
+
+									case 8: //roz price
+										$table_data[$r]['roz_price']['value'] = $field;
+										if (empty($field)) {
+											$table_data[$r]['roz_price']['errors'][] = t('Розничная цена отсутствует. Без розничной цены продукты не может быть добавлены.');
+										} elseif (!is_numeric($field)) {
+											$table_data[$r]['roz_price']['errors'][] = t('Формат Розничной цены неправильно. Цена должна состоит только из цифры.');
+										} elseif ($field<0) {
+											$table_data[$r]['roz_price']['errors'][] = t('Цена не может быть отрицательное значение.');
+										} elseif ((int)$field<(int)$row[7]) {
+											$table_data[$r]['roz_price']['errors'][] = t('Розничная цена не может быть ниже чем оптовой цены.');
+										}
+										break;
+
+									case 9: //expire_date
+										$table_data[$r]['expire_date']['value'] = $field;
+										if ($field==NULL) {
+											$table_data[$r]['expire_date']['warnings'][] = t('Дата срока годности отсутствует.');
+										} else {
+											$d = DateTime::createFromFormat('d.m.Y', $field);
+											if ($d) {
+												if ($d->format('d.m.Y') !== $field) {
+													$table_data[$r]['expire_date']['errors'][] = t('Формат даты срока годности должно быть дд.мм.гггг');
+												} elseif ($d->format('U')<time()) {
+													$table_data[$r]['expire_date']['warnings'][] = t('У продукта '.$row[0].' cрок годности истек.');
+												}
+
+											} else {
+												$table_data[$r]['expire_date']['errors'][] = t('Формат даты срока годности должно быть дд.мм.гггг');
+											}
+										}
+
+										break;
+
+									case 10: //is_enabled
+										$table_data[$r]['is_enabled']['value'] = $field;
+										if ($field!='0' and $field!=1) {
+											$table_data[$r]['is_enabled']['warnings'][] = t('Значение Включен пусто или задан неправильно. Значение должно быть 1 для Вкл и 0 для Выкл. По умолчанию продукт будет включен.');
+										}
+
+										break;
+
+								}
+							}
+						}
+					} else {
+						$empty_warnings[] = t('Строка №'.$r.' пропущена из-за пустих ячеек.');
+					}
+
+					$i++;
+					$r++;
+				}
+				if (count($table_data)==0) {
+					form_set_error('import_upload', t('Данные отсутствуют в CSV файле или формат CSV файла неверно.'));
+				} else {
+					$_SESSION['table_data'] = $table_data;
+					//file_delete($import_file);
+					drupal_goto('dashboard/warehouse/import/extract');
+				}
+				if (isset($empty_warnings)) {
+					$_SESSION['empty_warnings'] = $empty_warnings;
+				}
+
+			}
+		}
+	}
+}
+
+
+
+//CSV import extract form
+function customizer_warehouse_import_extract_form($form, &$form_state) {
+	if (!isset($_SESSION['table_data'])) {
+		drupal_goto('dashboard/warehouse/import');
+	}
+
+  $form['actions']['submit']=array(
+    '#type' => 'submit',
+    '#value' => 'Сохранить',
+  );
+
+	$destination = array();
+  if (isset($_GET['destination'])) {
+    $destination = drupal_get_destination();
+  }
+
+  $form['actions']['cancel_page'] = array(
+    '#markup' => l(t('Cancel'), 'dashboard/warehouse/import', array('query' => $destination, 'attributes' => array('class' => 'btn btn-danger'))),
+  );
+
+  $form['#theme'] = 'warehouse_extract_csv_data';
+
+	return $form;
+
+}
+
+
+
+//CSV import extract form submit
+function customizer_warehouse_import_extract_form_submit($form, &$form_state) {
+	if (!isset($_SESSION['table_data'])) {
+		drupal_goto('dashboard/warehouse/import');
+		exit;
+	}
+
+	if (isset($form_state['values']['op'])) {
+		if (count($_SESSION['table_data'])) {
+			$table_data = $_SESSION['table_data'];
+
+			$batch = array(
+      'title' => t('Импорт из CSV...'),
+      'operations' => array(),
+      'init_message' => t('Начинается'),
+      'progress_message' => t('@current строк импортирован из @total.'),
+      'error_message' => t('Ошибка появилось в импорте.'),
+      'finished' => '_customizer_import_finished',
+			) ;
+			foreach ($table_data as $id => $row) {
+				$batch['operations'][] = array('_customizer_batch_extract_save_row', array($row));
+
+			}
+
+			batch_set($batch);
+		}
+	}
+
+}
+
+
+
+function _customizer_batch_extract_save_row($row) {
+	//Check if product exists
+	$product_nid = false;
+	if (isset($row['nid']['value'])) {
+		$product_nid = $row['nid']['value'];
+	}
+
+  if (!$product_nid) {
+    $product_nid = check_if_barcode_exists($row['barcode']['value']);
+  }
+
+	$latest_batch_weight = false;
+
+	if ($product_nid) {
+		//Product nid found. Load product
+		$product = node_load($product_nid);
+
+		//Update status
+		if (isset($row['is_enabled']['value']) ) {
+			if ($row['is_enabled']['value']!=1) {
+        $product->status = 0;
+			} else {
+				$product->status = 1;
+			}
+		}
+
+		node_save($product);
+
+		//Get product batches in order to get latest batch weight
+
+		$view_batch = views_get_view('product_batches');
+
+		if ($view_batch) {
+			if ($view_batch->set_display('block')) {
+				$view_batch->set_arguments(array($product_nid));
+				$view_batch->pre_execute();
+
+				if ($view_batch->execute() !== FALSE) {
+					foreach ($view_batch->result as $view_row) {
+						$latest_batch_weight = isset($view_row->field_field_weight[0]['raw']['value']) ?
+							$view_row->field_field_weight[0]['raw']['value']
+							: '';
+					}
+				}
+			}
+
+			$view_batch->destroy();
+		}
+
+		unset($view_batch);
+
+	} else {
+		//Create a new product
+		$product = new stdClass();
+		$product->type = 'product';
+		node_object_prepare($product);
+
+		$product->title = $row['title']['value'].' №'.$row['up_col']['value'];
+		$product->field_pr_medicament_title[LANGUAGE_NONE][0]['value'] = $row['title']['value'];
+
+    if (!empty($row['barcode']['value']) and $row['barcode']['value']!='') {
+      $product->field_md_up_barcode[LANGUAGE_NONE][0]['value'] = $row['barcode']['value'];
+    }
+
+    if (isset($row['manufacturer']['tid'])) {
+			$product->field_pr_manufacturer[LANGUAGE_NONE][0]['tid'] = $row['manufacturer']['tid'];
+			$product->title .= ' '.ucfirst($row['manufacturer']['value']);
+		} else {
+			if (!empty($row['manufacturer']['value'])) {
+				$manufacturer_term = new stdClass();
+				$manufacturer_term->name = $row['manufacturer']['value'];
+				$manufacturer_term->vid = 9;
+				taxonomy_term_save($manufacturer_term);
+				$product->field_pr_manufacturer[LANGUAGE_NONE][0]['tid'] = $manufacturer_term->tid;
+
+				$product->title .= ' '.ucfirst($row['manufacturer']['value']);
+			}
+		}
+
+		if (isset($row['country']['tid'])) {
+			$product->field_pr_mn_country[LANGUAGE_NONE][0]['tid'] = $row['country']['tid'];
+
+			$product->title .= ' '.ucfirst(mb_substr($row['country']['value'], 0, 3));
+		}
+
+		$product->field_md_up_amount[LANGUAGE_NONE][0]['value'] = $row['up_col']['value'];
+
+		node_save($product);
+		$product_nid = $product->nid;
+
+	}
+
+	if ($product_nid) {
+		//Add a new batch
+		$new_batch = new stdClass();
+		$new_batch->type = 'product_batch';
+		node_object_prepare($new_batch);
+		$new_batch->status = 1;
+		$new_batch->language = LANGUAGE_NONE;
+		$new_batch->field_pb_product[LANGUAGE_NONE][]['nid'] = $product_nid;
+
+		if (isset($row['provider']['nid'])) {
+			$new_batch->field_pr_provider[LANGUAGE_NONE][0]['nid'] = $row['provider']['nid'];
+		} else {
+			if (!empty($row['provider']['value'])) {
+				$batch_nid = get_provider_nid($row['provider']['value']);
+				if ($batch_nid) {
+					$new_batch->field_pr_provider[LANGUAGE_NONE][0]['nid'] = $batch_nid;
+				} else {
+					$new_provider = new stdClass();
+					$new_provider->type = 'provider';
+					$new_provider->title = $row['provider']['value'];
+					node_save($new_provider);
+
+					$new_batch->field_pr_provider[LANGUAGE_NONE][0]['nid'] = $new_provider->nid;
+				}
+			}
+
+		}
+
+		if (!empty($row['date_income']['value'])) {
+			$date_income = strtotime($row['date_income']['value']);
+			if ($date_income) {
+				$new_batch->field_pr_income_date[LANGUAGE_NONE][0]['value'] = date('Y-m-d 00:00:00', $date_income);
+			} else {
+				$new_batch->field_pr_income_date[LANGUAGE_NONE][0]['value'] = date('Y-m-d 00:00:00');
+			}
+		} else {
+			$new_batch->field_pr_income_date[LANGUAGE_NONE][0]['value'] = date('Y-m-d 00:00:00');
+		}
+
+		if (!empty($row['expire_date']['value'])) {
+			$expire_date = strtotime($row['expire_date']['value']);
+			if ($expire_date) {
+				$new_batch->field_pr_expiry_date[LANGUAGE_NONE][0]['value'] = date('Y-m-d 00:00:00', $expire_date);
+			}
+		}
+
+		$new_batch->field_pr_amount[LANGUAGE_NONE][0]['value'] = $row['col']['value'];
+		$new_batch->field_pr_price[LANGUAGE_NONE][0]['value'] = $row['roz_price']['value'];
+		$new_batch->field_pr_price_base[LANGUAGE_NONE][0]['value'] = $row['opt_price']['value'];
+
+		if ($latest_batch_weight!==false) {
+			$latest_batch_weight++;
+		} else {
+			$latest_batch_weight = 0;
+		}
+
+		$new_batch->field_weight[LANGUAGE_NONE][0]['value'] = $latest_batch_weight;
+		node_save($new_batch);
+	}
+
+}
+
+
+
+function _customizer_import_finished($success, $results, $operations) {
+  if ( !empty($results['failed_rows']) ) {
+    drupal_set_message('Ошибка при импорте!');
+  } else {
+		unset($_SESSION['table_data']);
+		if (isset($_SESSION['import_fid'])) {
+			$import_file = file_load($_SESSION['import_fid']);
+
+			if (is_object($import_file)) {
+				$import_file->field_file_is_extracted[LANGUAGE_NONE][0]['value'] = 1;
+				file_save($import_file);
+			}
+		}
+
+		unset($_SESSION['import_fid']);
+		drupal_set_message(t('CSV импорт завершена!'));
+	}
+  return t('CSV импорт завершена!');
+}
+
+
+
+function customizer_warehouse_apply_form($form, &$form_state) {
+  global $user;
+
+  $form['#theme'] = 'warehouse_apply_form';
+
+  $contracts = array();
+  $contracts_view = views_get_view('contracts');
+
+		if ($contracts_view) {
+			if ($contracts_view->set_display('default')) {
+				$contracts_view->pre_execute();
+
+				if ($contracts_view->execute() !== FALSE) {
+					foreach ($contracts_view->result as $view_row) {
+            $contracts[$view_row->field_field_dg_provider[0]['raw']['nid'].'-'.$view_row->nid] = $view_row->node_title . ' от ' .
+                    strip_tags($view_row->field_field_dg_date[0]['rendered']['#markup']) . ' - ' .
+                    strip_tags($view_row->field_field_dg_provider[0]['rendered']['#markup']);
+
+					}
+				}
+			}
+
+      $contracts_view->destroy();
+    }
+
+  $form['#contracts'] = $contracts;
+
+  //Get providers list
+  $providers_array = array();
+  $providers = views_get_view('providers_as_list');
+  if ($providers) {
+    if ($providers->set_display('default')) {
+      $providers->set_arguments(array($user->uid));
+      $providers->pre_execute();
+
+      if ($providers->execute() !== FALSE) {
+
+        foreach ($providers->result as $view_row) {
+          $providers_array[$view_row->nid] = $view_row->node_title;
+        }
+      }
+    }
+
+    $providers->destroy();
+  }
+
+  $form['#providers'] = $providers_array;
+
+  unset($providers);
+
+
+  $data = db_query("SELECT
+      n.nid,
+      n.title,
+      b.field_md_up_barcode_value AS barcode
+    FROM node n
+    LEFT JOIN field_data_field_md_up_barcode b ON b.entity_id = n.nid
+    WHERE n.type = 'product'
+    GROUP BY n.nid
+    ORDER BY n.nid DESC")->fetchAll();
+
+    $products = array();
+    $i=0;
+    foreach ($data as $row) {
+      $products[$i]['nid'] = $row->nid;
+      $products[$i]['barcode'] = $row->barcode;
+      $products[$i]['title'] = $row->title;
+
+      $i++;
+    }
+
+  drupal_add_js('var array_products = '.json_encode($products), 'inline');
+  //append sell process js file
+
+  $form['#attached']['js'] = array(
+    drupal_get_path('module', 'customizer') . '/bootstrap-datepicker/js/bootstrap-datepicker.min.js',
+    drupal_get_path('module', 'customizer') . '/bootstrap-datepicker/locales/bootstrap-datepicker.ru.min.js',
+    drupal_get_path('module', 'customizer') . '/js/typeahead.bundle.min.js',
+    drupal_get_path('module', 'customizer') . '/js/waybill.js',
+  );
+
+  $form['#attached']['css'] = array(
+    drupal_get_path('module', 'customizer') . '/bootstrap-datepicker/css/bootstrap-datepicker3.min.css',
+  );
+
+  $form['actions']['submit']=array(
+    '#type' => 'submit',
+    '#value' => 'Сохранить',
+  );
+
+	$destination = array();
+  if (isset($_GET['destination'])) {
+    $destination = drupal_get_destination();
+  }
+
+  $form['actions']['cancel_page'] = array(
+    '#markup' => l(t('Cancel'), '<front>', array('query' => $destination, 'attributes' => array('class' => 'btn btn-danger'))),
+  );
+
+	return $form;
+
+}
+
+
+
+function customizer_warehouse_apply_form_validate($form, &$form_state) {
+  $check_for_products = false;
+  if (isset($form_state['input']['products'])) {
+    foreach ($form_state['input']['products'] as $product) {
+      //Check if fields weren't empty
+      if ($product['title']!='') {
+        $check_for_products = true;
+      }
+    }
+  }
+
+  if (!$check_for_products) {
+    form_set_error('products[0][title]', t('Пожалуйста добавьте минимум один продукт.'));
+  }
+
+}
+
+
+
+function customizer_warehouse_apply_form_submit($form, &$form_state) {
+
+  $waybill_no = trim($form_state['input']['waybill_no']);
+  $waybill_date = $form_state['input']['waybill_date'];
+  $provider_nid = $form_state['input']['provider_nid'];
+  $contract_data = $form_state['input']['contract_nid'];
+
+  $contract_nid = $products_created = $products_updated = $waybill_nid = 0;
+  if ($contract_data) {
+    $contract_parts = explode('-',$contract_data);
+    $contract_nid = $contract_parts[1];
+  }
+
+  if ($contract_nid and !empty($waybill_no)) {
+    //Create a new waybill
+    $waybill = new stdClass();
+    $waybill->type = 'waybill';
+    node_object_prepare($waybill);
+    $waybill->status = 1;
+    $waybill->language = LANGUAGE_NONE;
+    $waybill->title = $waybill_no;
+    $waybill->field_wb_contract_no[LANGUAGE_NONE][0]['nid'] = $contract_nid;
+
+
+    if ($waybill_date) {
+      $waybill_date = strtotime($waybill_date);
+      if ($waybill_date) {
+        $waybill->field_wb_date[LANGUAGE_NONE][0]['value'] = date('Y-m-d 00:00:00', $waybill_date);
+      }
+    }
+
+    node_save($waybill);
+
+    $waybill_nid = $waybill->nid;
+
+  }
+
+
+  if (isset($form_state['input']['products'])) {
+    foreach ($form_state['input']['products'] as $product) {
+      //Check if fields weren't empty
+      if ($product['title']!='') {
+        $product_exists = false;
+
+        //Check if existing product
+        if ($product['nid']) {
+          if (is_numeric($product['nid'])) {
+            //Load existing product
+            $product_node = node_load($product['nid']);
+
+            if ($product_node->nid) {
+              $product_exists = true;
+            }
+          }
+        }
+
+        if (!$product_exists) {
+          $product_node = new stdClass();
+          $product_node->type = 'product';
+          node_object_prepare($product_node);
+          $product_node->status = 1;
+          $product_node->language = LANGUAGE_NONE;
+          $product_node->title = trim($product['title']);
+          $product_node->field_pr_medicament_title[LANGUAGE_NONE][0]['value'] = trim($product['title']);
+
+          if ($product['barcode']) {
+            $product_node->field_md_up_barcode[LANGUAGE_NONE][0]['value'] = trim($product['barcode']);
+          }
+          $product_node->field_md_up_amount[LANGUAGE_NONE][0]['value'] = 1;
+
+          node_save($product_node);
+          $products_created++;
+        }
+
+        if ($product_node->nid) {
+
+          $latest_batch_weight = false;
+
+          //Get product batches in order to get latest batch weight
+          $view_batch = views_get_view('product_batches');
+
+          if ($view_batch) {
+            if ($view_batch->set_display('block')) {
+              $view_batch->set_arguments(array($product_node->nid));
+              $view_batch->pre_execute();
+
+              if ($view_batch->execute() !== FALSE) {
+                foreach ($view_batch->result as $view_row) {
+                  $latest_batch_weight = isset($view_row->field_field_weight[0]['raw']['value']) ?
+                    $view_row->field_field_weight[0]['raw']['value']
+                    : '';
+                }
+              }
+            }
+            $view_batch->destroy();
+          }
+
+
+          //Add a new batch
+          $new_batch = new stdClass();
+          $new_batch->type = 'product_batch';
+          node_object_prepare($new_batch);
+          $new_batch->status = 1;
+          $new_batch->language = LANGUAGE_NONE;
+          $new_batch->field_pb_product[LANGUAGE_NONE][0]['nid'] = $product_node->nid;
+
+          if ($provider_nid) {
+            $new_batch->field_pr_provider[LANGUAGE_NONE][0]['nid'] = $provider_nid;
+          }
+
+          if (!empty($waybill_date)) {
+            $date_income = strtotime($waybill_date);
+            if ($date_income) {
+              $new_batch->field_pr_income_date[LANGUAGE_NONE][0]['value'] = date('Y-m-d 00:00:00', $date_income);
+            } else {
+              $new_batch->field_pr_income_date[LANGUAGE_NONE][0]['value'] = date('Y-m-d 00:00:00');
+            }
+          } else {
+            $new_batch->field_pr_income_date[LANGUAGE_NONE][0]['value'] = date('Y-m-d 00:00:00');
+          }
+
+          if ($product['date_expire']) {
+            $expire_date = strtotime($product['date_expire']);
+            if ($expire_date) {
+              $new_batch->field_pr_expiry_date[LANGUAGE_NONE][0]['value'] = date('Y-m-d 00:00:00', $expire_date);
+            }
+          }
+
+          if ($product['pr_amount']) {
+            $new_batch->field_pr_amount[LANGUAGE_NONE][0]['value'] = trim($product['pr_amount']);
+          }
+
+          if ($product['roz_price']) {
+            $new_batch->field_pr_price[LANGUAGE_NONE][0]['value'] = trim($product['roz_price']);
+          }
+
+          if ($product['opt_price']) {
+            $new_batch->field_pr_price_base[LANGUAGE_NONE][0]['value'] = trim($product['opt_price']);
+          }
+
+          if ($latest_batch_weight!==false) {
+            $latest_batch_weight++;
+          } else {
+            $latest_batch_weight = 0;
+          }
+
+          $new_batch->field_weight[LANGUAGE_NONE][0]['value'] = $latest_batch_weight;
+
+          //Set waybill nid
+          $new_batch->field_pr_waybill_no[LANGUAGE_NONE][0]['nid'] = $waybill_nid;
+
+          node_save($new_batch);
+
+          $products_updated++;
+        }
+
+      } //end title
+    }
+  }
+
+  if ($products_updated) {
+
+    if ($products_created>0) {
+      if ($products_created>1) {
+        drupal_set_message(t($products_created.' новых продуктов добавлены.'));
+      } else {
+        drupal_set_message(t($products_created.' новый продукт добавлен.'));
+      }
+    }
+
+    if (($products_updated-$products_created)>0) {
+      if (($products_updated-$products_created)>1) {
+        drupal_set_message(t(($products_updated-$products_created).' продукты обновлены.'));
+      } else {
+        drupal_set_message(t(($products_updated-$products_created).' продукт обновлен.'));
+      }
+    }
+
+  }
+
+}
+
+
+//custom calls callback function
+function custom_calls_cb() {
+    if(isset($_POST['request_id']) && $_POST['request_id'] == 'barcodeA4' && isset($_POST['title'], $_POST['product_id'], $_POST['copy'],$_POST['barcode'])) {
+      $barcode_img_name = barcode_print($_POST['barcode'], 1, $_POST['title'], false);
+
+      $image = dirname(__FILE__) . '/includes/' . $barcode_img_name . '.png';
+      $picture = base64_encode(file_get_contents($image));
+
+      $markup = "<html><head><style type='text/css' media='print'>@page{size:  auto; margin: 0mm;}</style></head>";
+      $markup .= "<body><div class='print_me' style='text-align: center; background: #fff; overflow: hidden;'><br>";
+      for($i = 0; $i < $_POST['copy']; $i++) {
+        $markup .= "<table border=0 style='float:left; margin-right: 4px;'>";
+          $markup .= "<tr>";
+            $markup .= "<td>";
+              $markup .= '<p style="margin:0;font-size: 7px; margin-bottom: 2px;">' . trim($_POST['title']) . '</p>';
+              $markup .= '<img src="data:image/png;base64,'. $picture . '" width="145px">';
+            $markup .= '</td>';
+          $markup .= '</tr>';
+        $markup .= '</table>';
+      }
+      $markup .= '</div><br></body></html>';
+
+      unlink(dirname(__FILE__) . "/includes/" . $barcode_img_name . ".png");
+      unlink(dirname(__FILE__) . "/includes/" . $barcode_img_name . ".bmp");
+
+      print $markup;
+      exit;
+    }
+}
+
+
+/**
+  Implements hook_cron().
+*/
+function customizer_cron() {
+  $online_reporting_enabled = config_pages_get('li'.'c'.'ense','field_online_reports',0);
+
+  if ($online_reporting_enabled==1) {
+
+    customizer_send_reports_to_server(false);
+  }
+}
+
+
+
+/**
+  Implements hook_cron().
+*/
+function customizer_send_reports_to_server($response = false) {
+
+  //Check if configuration is filled
+  $receiver_url = config_pages_get('li'.'c'.'ense','field_receiver_url',0);
+  $receiver_login = config_pages_get('li'.'c'.'ense','field_receiver_login',0);
+  $receiver_id = config_pages_get('li'.'c'.'ense','field_receiver_id',0);
+
+  if ($receiver_url['url']!='' and $receiver_url and
+      $receiver_login!='' and $receiver_login) {
+
+    $transactions = array();
+    $report_view = views_get_view('reports_transactions');
+
+		if ($report_view) {
+			if ($report_view->set_display('online')) {
+				$report_view->pre_execute();
+
+				if ($report_view->execute() !== FALSE) {
+					foreach ($report_view->result as $view_row) {
+
+            $transactions[$view_row->nid] = new stdclass();
+            $transactions[$view_row->nid]->type = 'transaction';
+
+            node_object_prepare($transactions[$view_row->nid]);
+
+            if (isset($view_row->field_field_trc_server_node_id[0])) {
+              $transactions[$view_row->nid]->nid = trim(render($view_row->field_field_trc_server_node_id));
+            }
+
+            $transactions[$view_row->nid]->title = $view_row->node_title;
+            $transactions[$view_row->nid]->status = 1;
+            $transactions[$view_row->nid]->uid = $receiver_id;
+            $transactions[$view_row->nid]->language = LANGUAGE_NONE;
+            $transactions[$view_row->nid]->created=$node->changed = $view_row->node_created;
+
+            $transactions[$view_row->nid]->field_trc_check_no[LANGUAGE_NONE][0]['value'] = trim(render($view_row->field_field_trc_check_no));
+            $transactions[$view_row->nid]->field_trc_author[LANGUAGE_NONE][0]['value'] = trim(render($view_row->users_node_name));
+
+            $i = 0;
+            foreach ($view_row->field_field_trc_payment_type as $payment_type) {
+              $transactions[$view_row->nid]->field_trc_payment_type[LANGUAGE_NONE][$i]['value'] = trim(render($payment_type['rendered']));
+
+              $i++;
+            }
+
+            $transactions[$view_row->nid]->field_trc_price_base[LANGUAGE_NONE][0]['value'] = trim(render($view_row->field_field_trc_price_base));
+            $transactions[$view_row->nid]->field_trc_price[LANGUAGE_NONE][0]['value'] = trim(render($view_row->field_field_trc_price));
+            $transactions[$view_row->nid]->field_trc_payment_terminal[LANGUAGE_NONE][0]['value'] = trim(render($view_row->field_field_trc_payment_terminal));
+            $transactions[$view_row->nid]->field_trc_payment_cash[LANGUAGE_NONE][0]['value'] = trim(render($view_row->field_field_trc_payment_cash));
+
+            $transactions[$view_row->nid]->field_field_trc_refund_reason[LANGUAGE_NONE][0]['value'] = trim(render($view_row->field_field_field_trc_refund_reason));
+
+            $transactions[$view_row->nid]->field_trc_type[LANGUAGE_NONE][0]['value'] = trim(render($view_row->field_field_trc_type));
+            $transactions[$view_row->nid]->field_trc_remote_id[LANGUAGE_NONE][0]['value'] = $view_row->nid;
+
+            $i = 0;
+            foreach ($view_row->field_field_trc_product as $product) {
+              $transactions[$view_row->nid]->field_trc_product[LANGUAGE_NONE][$i]['value'] = str_replace('&', '-', trim(preg_replace(array('/\{(?:[^{}]|(?R))*\}/x', '/\s+/'), array('', ' '), render($product['rendered']))));
+              $transactions[$view_row->nid]->field_trc_product[LANGUAGE_NONE][$i]['format'] = 'full_html';
+
+              $i++;
+            }
+
+					}
+				}
+			}
+
+      $report_view->destroy();
+		}
+
+		unset($report_view);
+
+    if (count($transactions)>0) {
+
+      //Send post to the server
+      $content = serialize($transactions);
+
+      $ch = curl_init();
+
+      curl_setopt($ch,CURLOPT_URL, $receiver_url['url'] . '?uid='.$receiver_id.'&authkey='.$receiver_login);
+      curl_setopt($ch,CURLOPT_POST, true);
+      curl_setopt($ch,CURLOPT_POSTFIELDS, 'transactions='.$content);
+      curl_setopt($ch,CURLOPT_RETURNTRANSFER, true);
+
+      $response_arr = unserialize(curl_exec($ch));
+
+      $status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+
+      if ( $status == 200 ) {
+        if (count($response_arr)>0) {
+          $saved = false;
+          foreach ($response_arr as $key => $val) {
+            if (is_numeric($key)) {
+              $node = node_load($key);
+              if (is_object($node)) {
+                $node->field_trc_uploaded_server[LANGUAGE_NONE][0]['value'] = 1;
+                $node->field_trc_server_node_id[LANGUAGE_NONE][0]['value'] = $val;
+
+                node_save($node);
+
+                $saved = true;
+                variable_set('last_online_report_time', date('d.m.Y H:i'));
+              }
+            }
+          }
+          if ($response and $saved) {
+            drupal_set_message(t('Продажи сохранены в интернете.'));
+          }
+        }
+
+      } elseif ($response) {
+        drupal_set_message(t('Ошибка '.$status.'. Проблема c подключением. Убедитесь что интернет работает на вашем компьютере.'), 'error');
+      }
+
+
+      curl_close($ch);
+
+    } elseif ($response) {
+      drupal_set_message(t('Несохраненнные продажи не найдены.'), 'warning');
+    }
+
+  } elseif ($response) {
+    drupal_set_message(t('Настройки сервера не заполнены.'), 'error');
+  }
+
+}
+
+
+
+function customizer_reports_add_denied() {
+  global $user;
+
+  if ($_POST['title']) {
+    $title = htmlspecialchars($_POST['title']);
+
+    $node = new stdclass();
+    $node->title = $title;
+    $node->uid = $user->uid;
+    $node->status = 1;
+    $node->type = 'missing_product';
+    $node->language = LANGUAGE_NONE;
+    $node->name = $user->name;
+    $node->created=$node->changed = time();
+
+    node_save($node);
+
+    if ($node->nid) {
+      print $node->nid;
+      exit;
+    }
+
+  }
+
+}
+
+
+
+function customizer_reports_send_callback() {
+  customizer_send_reports_to_server(true);
+
+  if (isset($_GET['destination'])) {
+    drupal_goto($_GET['destination']);
+  } else {
+    drupal_goto('<front>');
+  }
+
+}
+
+
+
+//get custom exposed fields
+function _customizer_set_exposed_input($view, $query) {
+    if (empty($view->exposed_input)) {
+      $view->exposed_input = $query;
+      // unset items that are definitely not our input:
+      foreach (array('page', 'q') as $key) {
+        if (isset($view->exposed_input[$key])) {
+          unset($view->exposed_input[$key]);
+        }
+      }
+      if (empty($view->exposed_input) && !empty($_SESSION['views'][$view->name][$view->current_display])) {
+        $view->exposed_input = $_SESSION['views'][$view->name][$view->current_display];
+      }
+    }
+
+    return $view;
+}
+
+
+
+function get_total_prices($args) {
+  $query = "SELECT
+    SUM(p_p.field_pr_price_value*p_a.field_pr_amount_value) as `total_price`,
+    SUM(p_b.field_pr_price_base_value*p_a.field_pr_amount_value) as `total_base_price`
+    FROM `field_data_field_pr_amount`p_a
+    INNER JOIN field_data_field_pr_price p_p ON p_a.entity_id = p_p.entity_id
+    INNER JOIN field_data_field_pr_price_base p_b ON p_a.entity_id = p_b.entity_id
+    INNER JOIN field_data_field_pb_product p_bp ON p_a.entity_id = p_bp.entity_id
+    INNER JOIN node n ON p_bp.field_pb_product_nid = n.nid";
+
+  if (isset($args['field_md_up_barcode_value'])) {
+    if ($args['field_md_up_barcode_value']!='') {
+      $query .= " INNER JOIN field_data_field_md_up_barcode barcode ON "
+             . "(barcode.entity_id = p_bp.field_pb_product_nid AND "
+             . "barcode.field_md_up_barcode_value = '".$args['field_md_up_barcode_value']."')";
+    }
+  }
+
+  $query .= " WHERE";
+
+  if (isset($args['title'])) {
+    if ($args['title']!='') {
+      $query .= " n.title LIKE '%".$args['title']."%' AND";
+    }
+  }
+
+  if (isset($args['status'])) {
+    if ($args['status']!='') {
+      $query .= " n.status = ".$args['status']." AND";
+    }
+  }
+
+  $query .= " p_a.bundle = 'product_batch'";
+
+  $results = db_query($query)->fetchObject();
+
+  return $results;
+}
+
+function convert( $str ) {
+  return iconv( "Windows-1251", "UTF-8", $str );
+}
+
+function mb_convert( $str ) {
+  return mb_convert_encoding($str,'windows-1251', 'UTF-8' );
+}
+
+
+function check_if_barcode_exists($barcode=0) {
+	if ($barcode) {
+		$nid = db_query("SELECT b.entity_id FROM {field_data_field_md_up_barcode} b
+      WHERE b.field_md_up_barcode_value = :barcode", array(
+        ':barcode' => $barcode,
+			))->fetchField();
+
+		if ($nid) {
+			return $nid;
+		}
+	}
+
+	return 0;
+}
+
+
+function check_if_product_exists($nid=0) {
+	if ($nid) {
+		$barcode = db_query("SELECT b.field_md_up_barcode_value FROM {field_data_field_md_up_barcode} b WHERE b.entity_id = :nid", array(
+      ':nid' => $nid,
+		))->fetchField();
+
+		if ($barcode) {
+			return $barcode;
+		}
+	}
+
+	return 0;
+}
+
+
+
+function check_if_provider_exists($provider=0) {
+	if ($provider) {
+		$nid = db_query("SELECT nid FROM {node} WHERE title = :provider", array(':provider' => $provider))->fetchField();
+
+		if ($nid) {
+			return $nid;
+		}
+	}
+
+	return 0;
+}
+
+
+function check_if_app_is_server() {
+	$app_type = config_pages_get('li'.'c'.'ense','field_st_app_type',0);
+	if ($app_type == 'server') {
+		return TRUE;
+	}
+
+	return FALSE;
+}
+
+
+function get_provider_title($nid=0) {
+	if ($nid) {
+		$title = db_query("SELECT title FROM {node} WHERE nid = :nid", array(':nid' => $nid))->fetchField();
+
+		if ($title) {
+			return $title;
+		}
+	}
+
+	return 0;
+}
+
+
+function get_provider_nid($title=0) {
+	if ($title) {
+		$nid = db_query("SELECT nid FROM {node} WHERE title = :title", array(':title' => $title))->fetchField();
+
+		if ($nid) {
+			return $nid;
+		}
+	}
+
+	return 0;
+}
+
+
+function getFileDelimiter($file, $checkLines = 2) {
+        $file = new SplFileObject($file);
+        $delimiters = array(
+          ',',
+          '\t',
+          ';',
+          '|',
+          ':'
+        );
+        $results = array();
+        $i = 0;
+         while($file->valid() && $i <= $checkLines){
+            $line = $file->fgets();
+            foreach ($delimiters as $delimiter){
+                $regExp = '/['.$delimiter.']/';
+                $fields = preg_split($regExp, $line);
+                if(count($fields) > 1){
+                    if(!empty($results[$delimiter])){
+                        $results[$delimiter]++;
+                    } else {
+                        $results[$delimiter] = 1;
+                    }
+	    }
+    }
+    $i++;
+  }
+  $results = array_keys($results, max($results));
+  return $results[0];
+}
