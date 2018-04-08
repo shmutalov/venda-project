@@ -30,6 +30,9 @@ function venda_default_config_pages_type() {
  * Implements hook_ctools_plugin_api().
  */
 function venda_ctools_plugin_api($module = NULL, $api = NULL) {
+  if ($module == "backup_migrate" && $api == "backup_migrate_exportables") {
+    return array("version" => "1");
+  }
   if ($module == "field_group" && $api == "field_group") {
     return array("version" => "1");
   }
@@ -40,6 +43,31 @@ function venda_ctools_plugin_api($module = NULL, $api = NULL) {
  */
 function venda_views_api($module = NULL, $api = NULL) {
   return array("api" => "3.0");
+}
+
+/**
+ * Implements hook_image_default_styles().
+ */
+function venda_image_default_styles() {
+  $styles = array();
+
+  // Exported image style: square_thumbnail.
+  $styles['square_thumbnail'] = array(
+    'label' => 'square_thumbnail',
+    'effects' => array(
+      1 => array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 100,
+          'height' => 100,
+          'weight' => 0,
+        ),
+        'weight' => 0,
+      ),
+    ),
+  );
+
+  return $styles;
 }
 
 /**
@@ -77,6 +105,14 @@ function venda_node_info() {
       'description' => '',
       'has_title' => '1',
       'title_label' => t('Title'),
+      'help' => '',
+    ),
+    'missing_product' => array(
+      'name' => t('Отказной товар'),
+      'base' => 'node_content',
+      'description' => '',
+      'has_title' => '1',
+      'title_label' => t('Название'),
       'help' => '',
     ),
     'page' => array(

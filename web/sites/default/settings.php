@@ -217,7 +217,7 @@ $databases = array (
   array (
     'default' =>
     array (
-      'database' => 'venda_test',
+      'database' => 'venda',
       'username' => 'root',
       'password' => '',
       'host' => '127.0.0.1',
