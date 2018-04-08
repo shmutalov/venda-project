@@ -70,126 +70,6 @@ function venda_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'config_pages-license-field_contact_name'.
-  $field_instances['config_pages-license-field_contact_name'] = array(
-    'bundle' => 'license',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 1,
-      ),
-    ),
-    'entity_type' => 'config_pages',
-    'exclude_cv' => 0,
-    'field_name' => 'field_contact_name',
-    'label' => 'Название контактного лица',
-    'placeholder' => '',
-    'required' => 0,
-    'settings' => array(
-      'better_formats' => array(
-        'allowed_formats' => array(
-          'full_html' => 'full_html',
-          'php_code' => 'php_code',
-          'plain_text' => 'plain_text',
-        ),
-        'allowed_formats_toggle' => 0,
-        'default_order_toggle' => 0,
-        'default_order_wrapper' => array(
-          'formats' => array(
-            'full_html' => array(
-              'weight' => 0,
-            ),
-            'php_code' => array(
-              'weight' => 11,
-            ),
-            'plain_text' => array(
-              'weight' => 10,
-            ),
-          ),
-        ),
-      ),
-      'exclude_cv' => FALSE,
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'use_title_as_placeholder' => 0,
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 3,
-    ),
-  );
-
-  // Exported field_instance: 'config_pages-license-field_contract_no'.
-  $field_instances['config_pages-license-field_contract_no'] = array(
-    'bundle' => 'license',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 4,
-      ),
-    ),
-    'entity_type' => 'config_pages',
-    'exclude_cv' => 0,
-    'field_name' => 'field_contract_no',
-    'label' => 'Договор №',
-    'placeholder' => '',
-    'required' => 0,
-    'settings' => array(
-      'better_formats' => array(
-        'allowed_formats' => array(
-          'full_html' => 'full_html',
-          'php_code' => 'php_code',
-          'plain_text' => 'plain_text',
-        ),
-        'allowed_formats_toggle' => 0,
-        'default_order_toggle' => 0,
-        'default_order_wrapper' => array(
-          'formats' => array(
-            'full_html' => array(
-              'weight' => 0,
-            ),
-            'php_code' => array(
-              'weight' => 11,
-            ),
-            'plain_text' => array(
-              'weight' => 10,
-            ),
-          ),
-        ),
-      ),
-      'exclude_cv' => FALSE,
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'use_title_as_placeholder' => 0,
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 4,
-    ),
-  );
-
   // Exported field_instance: 'config_pages-license-field_currency_pos'.
   $field_instances['config_pages-license-field_currency_pos'] = array(
     'bundle' => 'license',
@@ -446,186 +326,6 @@ function venda_field_default_field_instances() {
       'settings' => array(),
       'type' => 'options_select',
       'weight' => 0,
-    ),
-  );
-
-  // Exported field_instance: 'config_pages-license-field_lk'.
-  $field_instances['config_pages-license-field_lk'] = array(
-    'bundle' => 'license',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 3,
-      ),
-    ),
-    'entity_type' => 'config_pages',
-    'exclude_cv' => 0,
-    'field_name' => 'field_lk',
-    'label' => 'Лицензионный ключ',
-    'placeholder' => '',
-    'required' => 0,
-    'settings' => array(
-      'better_formats' => array(
-        'allowed_formats' => array(
-          'full_html' => 'full_html',
-          'php_code' => 'php_code',
-          'plain_text' => 'plain_text',
-        ),
-        'allowed_formats_toggle' => 0,
-        'default_order_toggle' => 0,
-        'default_order_wrapper' => array(
-          'formats' => array(
-            'full_html' => array(
-              'weight' => 0,
-            ),
-            'php_code' => array(
-              'weight' => 11,
-            ),
-            'plain_text' => array(
-              'weight' => 10,
-            ),
-          ),
-        ),
-      ),
-      'exclude_cv' => FALSE,
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'use_title_as_placeholder' => 0,
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 6,
-    ),
-  );
-
-  // Exported field_instance: 'config_pages-license-field_mac_address'.
-  $field_instances['config_pages-license-field_mac_address'] = array(
-    'bundle' => 'license',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 2,
-      ),
-    ),
-    'entity_type' => 'config_pages',
-    'exclude_cv' => 0,
-    'field_name' => 'field_mac_address',
-    'label' => 'MAC',
-    'placeholder' => '',
-    'required' => 0,
-    'settings' => array(
-      'better_formats' => array(
-        'allowed_formats' => array(
-          'full_html' => 'full_html',
-          'php_code' => 'php_code',
-          'plain_text' => 'plain_text',
-        ),
-        'allowed_formats_toggle' => 0,
-        'default_order_toggle' => 0,
-        'default_order_wrapper' => array(
-          'formats' => array(
-            'full_html' => array(
-              'weight' => 0,
-            ),
-            'php_code' => array(
-              'weight' => 11,
-            ),
-            'plain_text' => array(
-              'weight' => 10,
-            ),
-          ),
-        ),
-      ),
-      'exclude_cv' => FALSE,
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'use_title_as_placeholder' => 0,
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 5,
-    ),
-  );
-
-  // Exported field_instance: 'config_pages-license-field_organization'.
-  $field_instances['config_pages-license-field_organization'] = array(
-    'bundle' => 'license',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'config_pages',
-    'exclude_cv' => 0,
-    'field_name' => 'field_organization',
-    'label' => 'Название компании',
-    'placeholder' => '',
-    'required' => 0,
-    'settings' => array(
-      'better_formats' => array(
-        'allowed_formats' => array(
-          'full_html' => 'full_html',
-          'php_code' => 'php_code',
-          'plain_text' => 'plain_text',
-        ),
-        'allowed_formats_toggle' => 0,
-        'default_order_toggle' => 0,
-        'default_order_wrapper' => array(
-          'formats' => array(
-            'full_html' => array(
-              'weight' => 0,
-            ),
-            'php_code' => array(
-              'weight' => 11,
-            ),
-            'plain_text' => array(
-              'weight' => 10,
-            ),
-          ),
-        ),
-      ),
-      'exclude_cv' => FALSE,
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'use_title_as_placeholder' => 0,
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 1,
     ),
   );
 
@@ -1399,6 +1099,8 @@ function venda_field_default_field_instances() {
       'module' => 'select_or_other',
       'settings' => array(
         'available_options' => '',
+        'available_options_php' => '',
+        'markup_available_options_php' => '&lt;none&gt;',
         'other' => 'Другой',
         'other_size' => 30,
         'other_title' => '',
@@ -1540,7 +1242,9 @@ function venda_field_default_field_instances() {
         'label' => 'above',
         'module' => 'bigint',
         'settings' => array(
+          'decimal_separator' => '.',
           'prefix_suffix' => TRUE,
+          'scale' => 0,
           'thousand_separator' => ',',
         ),
         'type' => 'number_bigint',
@@ -1563,6 +1267,7 @@ function venda_field_default_field_instances() {
       'max' => '999999999999999',
       'min' => 100000,
       'prefix' => '',
+      'size' => 60,
       'suffix' => '',
       'user_register_form' => FALSE,
     ),
@@ -3437,7 +3142,9 @@ function venda_field_default_field_instances() {
         'label' => 'above',
         'module' => 'bigint',
         'settings' => array(
+          'decimal_separator' => '.',
           'prefix_suffix' => TRUE,
+          'scale' => 0,
           'thousand_separator' => ',',
         ),
         'type' => 'number_bigint',
@@ -3460,6 +3167,7 @@ function venda_field_default_field_instances() {
       'max' => '',
       'min' => 0,
       'prefix' => '',
+      'size' => 60,
       'suffix' => '',
       'user_register_form' => FALSE,
     ),
@@ -4711,7 +4419,6 @@ function venda_field_default_field_instances() {
   t('Display messages in popups.');
   t('Email');
   t('ID филиала');
-  t('MAC');
   t('Title Text');
   t('Title text is used in the tool tip when a user hovers their mouse over the image. Adding title text makes it easier to understand the context of an image and improves usability.');
   t('Авто-обновление кассы каждый');
@@ -4723,7 +4430,6 @@ function venda_field_default_field_instances() {
   t('Дата договора');
   t('Дата прибытия');
   t('Договор');
-  t('Договор №');
   t('Долг');
   t('Загружен на сервер');
   t('Здесь Вы можете сбросить счетчик чека задав 0 значение.');
@@ -4742,10 +4448,7 @@ function venda_field_default_field_instances() {
   t('Курс');
   t('Курс у.е  в сумах.');
   t('Курс у.е. в сумах');
-  t('Лицензионный ключ');
   t('Менеджер');
-  t('Название компании');
-  t('Название контактного лица');
   t('Название магазина');
   t('Название продукта');
   t('Накладная №');

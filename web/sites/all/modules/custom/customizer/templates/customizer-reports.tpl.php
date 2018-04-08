@@ -48,7 +48,7 @@
           </div>
         </div>
       </div>
-      
+
       <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="headingTwo">
           <h3 class="panel-title text-center"><a role="button" data-toggle="collapse"href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
@@ -57,11 +57,11 @@
         </div>
         <div id="collapseTwo" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingTwo">
           <div class="panel-body">
-            <img src="/sites/all/themes/cube/images/diagram.png" style="width:100%;height:auto;"/>
+            <img src="<?php print base_path() . path_to_theme(); ?>/images/diagram.png" style="width:100%;height:auto;"/>
           </div>
         </div>
       </div>
-      
+
       <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="headingThree">
           <h3 class="panel-title text-center"><a role="button" data-toggle="collapse" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
@@ -115,6 +115,6 @@
           </div>
         </div>
       </div>
-      
+
   </div>
 </div>

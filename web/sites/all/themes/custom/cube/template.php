@@ -129,7 +129,7 @@ function cube_css_alter(&$css) {
     //disable unused CSS files on Sell process page
     unset($css['modules/system/system.base.css']);
     unset($css['sites/all/modules/date/date_popup/themes/datepicker.1.7.css']);
-    unset($css['sites/all/themes/cube/css/print.css']);
+    unset($css['sites/all/themes/custom/cube/css/print.css']);
     unset($css['sites/all/modules/views/css/views.css']);
   }
 
@@ -275,21 +275,6 @@ function cube_views_data_export_xlsx_body(&$vars) {
 	foreach ($vars['themed_rows'] as $k => $row) {
 		foreach ($row as $v => $value) {
 			$vars['themed_rows'][$k][$v] = strip_tags($value);
-		}
-	}
-
-	if ($vars['view']->name=='products_empty_stock') {
-		foreach ($vars['themed_rows'] as $k => $rw) {
-
-			$last_trc = customizer_get_product_last_transaction($rw['nid']);
-
-			if ($last_trc) {
-				$vars['themed_rows'][$k]['nid'] = round($last_trc['last_price']);
-				$vars['themed_rows'][$k]['nid_1'] = format_date($last_trc['last_sell_time'], 'custom', 'd.m.Y');
-			} else {
-				$vars['themed_rows'][$k]['nid'] = ' - ';
-				$vars['themed_rows'][$k]['nid_1'] = ' - ';
-			}
 		}
 	}
 

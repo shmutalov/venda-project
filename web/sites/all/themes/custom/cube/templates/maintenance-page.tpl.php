@@ -28,7 +28,7 @@ body {
 </head>
 <body>
 <div class="container">
-  <div class="maintenance-logo"><img src="/sites/all/themes/cube/images/venda-logo-horizontal.png"/></div>
+  <div class="maintenance-logo"><img src="<?php print base_path() . path_to_theme(); ?>/images/venda-logo-horizontal.png"/></div>
 </div>
 </body>
 </html>

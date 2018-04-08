@@ -18,8 +18,8 @@
  *   field id, then row number. This matches the index in $rows.
  * @ingroup views_templates
  */
- 
- 
+
+
 ?>
 <table class="non-left-medicaments table table-striped table-hover" <?php print $attributes; ?>>
    <?php if (!empty($title) || !empty($caption)) : ?>
@@ -40,30 +40,10 @@
     <?php foreach ($rows as $row_count => $row): ?>
       <?php
       $row_nid = $view->result[$row_count]->nid;
-      $last_trc = customizer_get_product_last_transaction($row_nid);
       ?>
       <tr <?php if ($row_classes[$row_count]) { print 'class="' . implode(' ', $row_classes[$row_count]) .'"';  } ?>>
         <?php foreach ($row as $field => $content): ?>
-          <td <?php if ($field_classes[$field][$row_count]) { print 'class="'. $field_classes[$field][$row_count] . '" '; } ?><?php print drupal_attributes($field_attributes[$field][$row_count]); ?>>
-            
-            <?php
-              if ($field=='nothing') {
-                if ($last_trc) {
-                  echo round($last_trc['last_price']) . ' сум';
-                } else {
-                  echo '-';
-                }
-              } elseif ($field=='nothing_1') {
-                if ($last_trc) {
-                  echo format_date($last_trc['last_sell_time'], 'custom', 'd.m.Y');
-                } else {
-                  echo '-';
-                }
-              } else {
-                print $content;
-              }
-            ?>
-          </td>
+          <td <?php if ($field_classes[$field][$row_count]) { print 'class="'. $field_classes[$field][$row_count] . '" '; } ?><?php print drupal_attributes($field_attributes[$field][$row_count]); ?>><?php print $content; ?></td>
         <?php endforeach; ?>
       </tr>
     <?php endforeach; ?>

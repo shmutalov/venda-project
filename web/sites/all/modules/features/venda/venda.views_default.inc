@@ -170,7 +170,7 @@ function venda_views_default_views() {
   $handler->display->display_options['empty']['area']['format'] = 'full_html';
   /* Поле: Массовые операции: Содержимое */
   $handler->display->display_options['fields']['views_bulk_operations']['id'] = 'views_bulk_operations';
-  $handler->display->display_options['fields']['views_bulk_operations']['table'] = 'node';
+  $handler->display->display_options['fields']['views_bulk_operations']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['views_bulk_operations']['field'] = 'views_bulk_operations';
   $handler->display->display_options['fields']['views_bulk_operations']['label'] = '';
   $handler->display->display_options['fields']['views_bulk_operations']['element_label_colon'] = FALSE;
@@ -334,7 +334,7 @@ function venda_views_default_views() {
   $handler->display->display_options['relationships']['reverse_field_trc_client_node']['label'] = 'client';
   /* Поле: Массовые операции: Содержимое */
   $handler->display->display_options['fields']['views_bulk_operations']['id'] = 'views_bulk_operations';
-  $handler->display->display_options['fields']['views_bulk_operations']['table'] = 'node';
+  $handler->display->display_options['fields']['views_bulk_operations']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['views_bulk_operations']['field'] = 'views_bulk_operations';
   $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['display_type'] = '0';
   $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['enable_select_all_pages'] = 1;
@@ -528,7 +528,7 @@ function venda_views_default_views() {
   $handler->display->display_options['empty']['area']['format'] = 'full_html';
   /* Поле: Массовые операции: Содержимое */
   $handler->display->display_options['fields']['views_bulk_operations']['id'] = 'views_bulk_operations';
-  $handler->display->display_options['fields']['views_bulk_operations']['table'] = 'node';
+  $handler->display->display_options['fields']['views_bulk_operations']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['views_bulk_operations']['field'] = 'views_bulk_operations';
   $handler->display->display_options['fields']['views_bulk_operations']['label'] = '';
   $handler->display->display_options['fields']['views_bulk_operations']['element_label_colon'] = FALSE;
@@ -931,7 +931,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
   $handler->display->display_options['empty']['area']['format'] = 'full_html';
   /* Поле: Массовые операции: Содержимое */
   $handler->display->display_options['fields']['views_bulk_operations']['id'] = 'views_bulk_operations';
-  $handler->display->display_options['fields']['views_bulk_operations']['table'] = 'node';
+  $handler->display->display_options['fields']['views_bulk_operations']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['views_bulk_operations']['field'] = 'views_bulk_operations';
   $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['display_type'] = '0';
   $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['enable_select_all_pages'] = 1;
@@ -1195,7 +1195,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
   );
   /* Поле: Массовые операции: Файл */
   $handler->display->display_options['fields']['views_bulk_operations']['id'] = 'views_bulk_operations';
-  $handler->display->display_options['fields']['views_bulk_operations']['table'] = 'file_managed';
+  $handler->display->display_options['fields']['views_bulk_operations']['table'] = 'views_entity_file';
   $handler->display->display_options['fields']['views_bulk_operations']['field'] = 'views_bulk_operations';
   $handler->display->display_options['fields']['views_bulk_operations']['label'] = '';
   $handler->display->display_options['fields']['views_bulk_operations']['element_label_colon'] = FALSE;
@@ -1566,7 +1566,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
   $handler->display->display_options['empty']['area']['format'] = 'full_html';
   /* Поле: Массовые операции: Файл */
   $handler->display->display_options['fields']['views_bulk_operations']['id'] = 'views_bulk_operations';
-  $handler->display->display_options['fields']['views_bulk_operations']['table'] = 'file_managed';
+  $handler->display->display_options['fields']['views_bulk_operations']['table'] = 'views_entity_file';
   $handler->display->display_options['fields']['views_bulk_operations']['field'] = 'views_bulk_operations';
   $handler->display->display_options['fields']['views_bulk_operations']['label'] = '';
   $handler->display->display_options['fields']['views_bulk_operations']['element_label_colon'] = FALSE;
@@ -1712,7 +1712,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
   $handler->display->display_options['empty']['area']['format'] = 'full_html';
   /* Поле: Массовые операции: Термин таксономии */
   $handler->display->display_options['fields']['views_bulk_operations']['id'] = 'views_bulk_operations';
-  $handler->display->display_options['fields']['views_bulk_operations']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['fields']['views_bulk_operations']['table'] = 'views_entity_taxonomy_term';
   $handler->display->display_options['fields']['views_bulk_operations']['field'] = 'views_bulk_operations';
   $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['display_type'] = '0';
   $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['enable_select_all_pages'] = 1;
@@ -2403,35 +2403,14 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
   $handler->display->display_options['relationships']['reverse_field_pb_product_node']['id'] = 'reverse_field_pb_product_node';
   $handler->display->display_options['relationships']['reverse_field_pb_product_node']['table'] = 'node';
   $handler->display->display_options['relationships']['reverse_field_pb_product_node']['field'] = 'reverse_field_pb_product_node';
-  /* Связь: Содержимое: Продукт (field_prtrc_product) - реверс */
-  $handler->display->display_options['relationships']['reverse_field_prtrc_product_node']['id'] = 'reverse_field_prtrc_product_node';
-  $handler->display->display_options['relationships']['reverse_field_prtrc_product_node']['table'] = 'node';
-  $handler->display->display_options['relationships']['reverse_field_prtrc_product_node']['field'] = 'reverse_field_prtrc_product_node';
   /* Поле: Содержимое: Заголовок */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['relationship'] = 'field_pb_product_nid';
-  $handler->display->display_options['fields']['title']['label'] = 'Название лекарства';
+  $handler->display->display_options['fields']['title']['label'] = 'Название продукта';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  /* Поле: Глобальный: Пользовательский текст */
-  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
-  $handler->display->display_options['fields']['nothing']['table'] = 'views';
-  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
-  $handler->display->display_options['fields']['nothing']['label'] = 'Последняя цена';
-  $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
-  /* Поле: Глобальный: Пользовательский текст */
-  $handler->display->display_options['fields']['nothing_1']['id'] = 'nothing_1';
-  $handler->display->display_options['fields']['nothing_1']['table'] = 'views';
-  $handler->display->display_options['fields']['nothing_1']['field'] = 'nothing';
-  $handler->display->display_options['fields']['nothing_1']['label'] = 'Последная дата продажи';
-  $handler->display->display_options['fields']['nothing_1']['element_label_colon'] = FALSE;
-  /* Поле: Содержимое: Nid */
-  $handler->display->display_options['fields']['nid']['id'] = 'nid';
-  $handler->display->display_options['fields']['nid']['table'] = 'node';
-  $handler->display->display_options['fields']['nid']['field'] = 'nid';
   /* Критерий сортировки: Содержимое: Заголовок */
   $handler->display->display_options['sorts']['title']['id'] = 'title';
   $handler->display->display_options['sorts']['title']['table'] = 'node';
@@ -2446,6 +2425,10 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
   $handler->display->display_options['arguments']['uid']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['uid']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['uid']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['filter_groups']['groups'] = array(
+    1 => 'OR',
+    2 => 'OR',
+  );
   /* Критерий фильтра: Содержимое: Тип */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
@@ -2453,13 +2436,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
   $handler->display->display_options['filters']['type']['value'] = array(
     'product' => 'product',
   );
-  $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Критерий фильтра: Содержимое: Опубликовано */
-  $handler->display->display_options['filters']['status']['id'] = 'status';
-  $handler->display->display_options['filters']['status']['table'] = 'node';
-  $handler->display->display_options['filters']['status']['field'] = 'status';
-  $handler->display->display_options['filters']['status']['value'] = '1';
-  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['type']['group'] = 3;
   /* Критерий фильтра: SUM(Содержимое: Количество (field_pr_amount)) */
   $handler->display->display_options['filters']['field_pr_amount_value']['id'] = 'field_pr_amount_value';
   $handler->display->display_options['filters']['field_pr_amount_value']['table'] = 'field_data_field_pr_amount';
@@ -2469,6 +2446,19 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
   $handler->display->display_options['filters']['field_pr_amount_value']['operator'] = '<=';
   $handler->display->display_options['filters']['field_pr_amount_value']['value']['value'] = '0';
   $handler->display->display_options['filters']['field_pr_amount_value']['group'] = 1;
+  /* Критерий фильтра: SUM(Содержимое: Количество (field_pr_amount)) */
+  $handler->display->display_options['filters']['field_pr_amount_value_1']['id'] = 'field_pr_amount_value_1';
+  $handler->display->display_options['filters']['field_pr_amount_value_1']['table'] = 'field_data_field_pr_amount';
+  $handler->display->display_options['filters']['field_pr_amount_value_1']['field'] = 'field_pr_amount_value';
+  $handler->display->display_options['filters']['field_pr_amount_value_1']['relationship'] = 'reverse_field_pb_product_node';
+  $handler->display->display_options['filters']['field_pr_amount_value_1']['group_type'] = 'sum';
+  $handler->display->display_options['filters']['field_pr_amount_value_1']['operator'] = 'empty';
+  $handler->display->display_options['filters']['field_pr_amount_value_1']['group'] = 1;
+  /* Критерий фильтра: Содержимое: Опубликовано */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = '1';
 
   /* Display: Block */
   $handler = $view->new_display('block', 'Block', 'block');
@@ -2493,7 +2483,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
   $handler->display->display_options['pager']['options']['items_per_page'] = '50';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['pager']['options']['id'] = '0';
-  $handler->display->display_options['pager']['options']['quantity'] = '5';
+  $handler->display->display_options['pager']['options']['quantity'] = '9';
   $handler->display->display_options['pager']['options']['expose']['items_per_page_label'] = 'Элементов на страницу';
   $handler->display->display_options['pager']['options']['expose']['items_per_page_options_all_label'] = '- Все -';
   $handler->display->display_options['pager']['options']['expose']['offset_label'] = 'Пропустить';
@@ -2501,45 +2491,6 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
   $handler->display->display_options['pager']['options']['tags']['previous'] = '‹ предыдущая';
   $handler->display->display_options['pager']['options']['tags']['next'] = 'следующая ›';
   $handler->display->display_options['pager']['options']['tags']['last'] = 'последняя »';
-  $handler->display->display_options['defaults']['footer'] = FALSE;
-  /* Подвал: Глобальный: Сводка результатов */
-  $handler->display->display_options['footer']['result']['id'] = 'result';
-  $handler->display->display_options['footer']['result']['table'] = 'views';
-  $handler->display->display_options['footer']['result']['field'] = 'result';
-  $handler->display->display_options['footer']['result']['content'] = 'Показан @start - @end из @total';
-  $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Поле: Содержимое: Заголовок */
-  $handler->display->display_options['fields']['title']['id'] = 'title';
-  $handler->display->display_options['fields']['title']['table'] = 'node';
-  $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['relationship'] = 'field_pb_product_nid';
-  $handler->display->display_options['fields']['title']['label'] = 'Название лекарства';
-  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
-  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  /* Поле: Содержимое: Розничная цена */
-  $handler->display->display_options['fields']['field_prtrc_roz_price']['id'] = 'field_prtrc_roz_price';
-  $handler->display->display_options['fields']['field_prtrc_roz_price']['table'] = 'field_data_field_prtrc_roz_price';
-  $handler->display->display_options['fields']['field_prtrc_roz_price']['field'] = 'field_prtrc_roz_price';
-  $handler->display->display_options['fields']['field_prtrc_roz_price']['relationship'] = 'reverse_field_prtrc_product_node';
-  $handler->display->display_options['fields']['field_prtrc_roz_price']['empty'] = '-';
-  $handler->display->display_options['fields']['field_prtrc_roz_price']['type'] = 'number_unformatted';
-  $handler->display->display_options['fields']['field_prtrc_roz_price']['settings'] = array(
-    'thousand_separator' => '',
-    'decimal_separator' => '.',
-    'scale' => '2',
-    'prefix_suffix' => 1,
-  );
-  /* Поле: Содержимое: Дата публикации */
-  $handler->display->display_options['fields']['created']['id'] = 'created';
-  $handler->display->display_options['fields']['created']['table'] = 'node';
-  $handler->display->display_options['fields']['created']['field'] = 'created';
-  $handler->display->display_options['fields']['created']['relationship'] = 'reverse_field_prtrc_product_node';
-  $handler->display->display_options['fields']['created']['label'] = 'Последная дата продажи';
-  $handler->display->display_options['fields']['created']['empty'] = '-';
-  $handler->display->display_options['fields']['created']['date_format'] = 'short';
-  $handler->display->display_options['fields']['created']['second_date_format'] = 'long';
-  $handler->display->display_options['fields']['created']['format_date_sql'] = 0;
   $handler->display->display_options['path'] = 'dashboard/warehouse/no-stock';
 
   /* Display: Data export */
@@ -2551,44 +2502,6 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
   $handler->display->display_options['style_options']['provide_file'] = 1;
   $handler->display->display_options['style_options']['filename'] = 'Нет-в-наличии-%timestamp-full.xlsx';
   $handler->display->display_options['style_options']['parent_sort'] = 1;
-  $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Поле: Содержимое: Заголовок */
-  $handler->display->display_options['fields']['title']['id'] = 'title';
-  $handler->display->display_options['fields']['title']['table'] = 'node';
-  $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['label'] = 'Название лекарства';
-  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
-  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  /* Поле: SUM(Содержимое: Количество) */
-  $handler->display->display_options['fields']['field_pr_amount']['id'] = 'field_pr_amount';
-  $handler->display->display_options['fields']['field_pr_amount']['table'] = 'field_data_field_pr_amount';
-  $handler->display->display_options['fields']['field_pr_amount']['field'] = 'field_pr_amount';
-  $handler->display->display_options['fields']['field_pr_amount']['relationship'] = 'reverse_field_pb_product_node';
-  $handler->display->display_options['fields']['field_pr_amount']['group_type'] = 'sum';
-  $handler->display->display_options['fields']['field_pr_amount']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_pr_amount']['settings'] = array(
-    'thousand_separator' => '',
-    'decimal_separator' => '.',
-    'scale' => '2',
-    'prefix_suffix' => 1,
-  );
-  /* Поле: Содержимое: Nid */
-  $handler->display->display_options['fields']['nid']['id'] = 'nid';
-  $handler->display->display_options['fields']['nid']['table'] = 'node';
-  $handler->display->display_options['fields']['nid']['field'] = 'nid';
-  $handler->display->display_options['fields']['nid']['label'] = 'Последняя цена';
-  $handler->display->display_options['fields']['nid']['element_type'] = '0';
-  $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['nid']['element_default_classes'] = FALSE;
-  /* Поле: Содержимое: Nid */
-  $handler->display->display_options['fields']['nid_1']['id'] = 'nid_1';
-  $handler->display->display_options['fields']['nid_1']['table'] = 'node';
-  $handler->display->display_options['fields']['nid_1']['field'] = 'nid';
-  $handler->display->display_options['fields']['nid_1']['label'] = 'Последняя дата продажи';
-  $handler->display->display_options['fields']['nid_1']['element_type'] = '0';
-  $handler->display->display_options['fields']['nid_1']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['nid_1']['element_default_classes'] = FALSE;
   $handler->display->display_options['path'] = 'dashboard/warehouse/no-stock/xlsx';
   $handler->display->display_options['displays'] = array(
     'page_1' => 'page_1',
@@ -2902,7 +2815,7 @@ return $parent_manager->uid;
   $handler->display->display_options['relationships']['reverse_field_dg_provider_node']['field'] = 'reverse_field_dg_provider_node';
   /* Поле: Массовые операции: Содержимое */
   $handler->display->display_options['fields']['views_bulk_operations']['id'] = 'views_bulk_operations';
-  $handler->display->display_options['fields']['views_bulk_operations']['table'] = 'node';
+  $handler->display->display_options['fields']['views_bulk_operations']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['views_bulk_operations']['field'] = 'views_bulk_operations';
   $handler->display->display_options['fields']['views_bulk_operations']['label'] = '';
   $handler->display->display_options['fields']['views_bulk_operations']['element_label_colon'] = FALSE;
@@ -3053,14 +2966,8 @@ return $parent_manager->uid;
   $handler->display->display_options['exposed_form']['options']['exposed_sorts_label'] = 'Сортировать по';
   $handler->display->display_options['exposed_form']['options']['sort_asc_label'] = 'По возрастанию';
   $handler->display->display_options['exposed_form']['options']['sort_desc_label'] = 'По убыванию';
-  $handler->display->display_options['pager']['type'] = 'full';
-  $handler->display->display_options['pager']['options']['expose']['items_per_page_label'] = 'Элементов на страницу';
-  $handler->display->display_options['pager']['options']['expose']['items_per_page_options_all_label'] = '- Все -';
-  $handler->display->display_options['pager']['options']['expose']['offset_label'] = 'Пропустить';
-  $handler->display->display_options['pager']['options']['tags']['first'] = '« первая';
-  $handler->display->display_options['pager']['options']['tags']['previous'] = '‹ предыдущая';
-  $handler->display->display_options['pager']['options']['tags']['next'] = 'следующая ›';
-  $handler->display->display_options['pager']['options']['tags']['last'] = 'последняя »';
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
   /* Поле: Содержимое: Заголовок */
@@ -6217,7 +6124,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Поле: Массовые операции: Содержимое */
   $handler->display->display_options['fields']['views_bulk_operations']['id'] = 'views_bulk_operations';
-  $handler->display->display_options['fields']['views_bulk_operations']['table'] = 'node';
+  $handler->display->display_options['fields']['views_bulk_operations']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['views_bulk_operations']['field'] = 'views_bulk_operations';
   $handler->display->display_options['fields']['views_bulk_operations']['label'] = '';
   $handler->display->display_options['fields']['views_bulk_operations']['element_label_colon'] = FALSE;
@@ -7320,7 +7227,7 @@ print $trc_user->name;
   );
   /* Поле: Массовые операции: Содержимое */
   $handler->display->display_options['fields']['views_bulk_operations']['id'] = 'views_bulk_operations';
-  $handler->display->display_options['fields']['views_bulk_operations']['table'] = 'node';
+  $handler->display->display_options['fields']['views_bulk_operations']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['views_bulk_operations']['field'] = 'views_bulk_operations';
   $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['display_type'] = '0';
   $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['enable_select_all_pages'] = 1;
@@ -8439,7 +8346,7 @@ return date(\'Y-m-d\');';
   $handler->display->display_options['empty']['area']['format'] = 'full_html';
   /* Поле: Массовые операции: Содержимое */
   $handler->display->display_options['fields']['views_bulk_operations']['id'] = 'views_bulk_operations';
-  $handler->display->display_options['fields']['views_bulk_operations']['table'] = 'node';
+  $handler->display->display_options['fields']['views_bulk_operations']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['views_bulk_operations']['field'] = 'views_bulk_operations';
   $handler->display->display_options['fields']['views_bulk_operations']['label'] = '';
   $handler->display->display_options['fields']['views_bulk_operations']['element_label_colon'] = FALSE;
@@ -8826,7 +8733,7 @@ return date(\'Y-m-d\');';
   $handler->display->display_options['relationships']['field_dg_provider_nid']['delta'] = '-1';
   /* Поле: Массовые операции: Содержимое */
   $handler->display->display_options['fields']['views_bulk_operations']['id'] = 'views_bulk_operations';
-  $handler->display->display_options['fields']['views_bulk_operations']['table'] = 'node';
+  $handler->display->display_options['fields']['views_bulk_operations']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['views_bulk_operations']['field'] = 'views_bulk_operations';
   $handler->display->display_options['fields']['views_bulk_operations']['label'] = '';
   $handler->display->display_options['fields']['views_bulk_operations']['element_label_colon'] = FALSE;

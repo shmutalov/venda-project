@@ -22,6 +22,7 @@ function views_data_export_phpexcel_views_plugins() {
         'export feed file' => '%view.xlsx',
         'export feed icon' => drupal_get_path('module', 'views_data_export_phpexcel') . '/images/xlsx.png',
         'additional themes' => array(
+					'views_data_export_xlsx_header' => 'style',
           'views_data_export_xlsx_body' => 'style',
         ),
         'additional themes base' => 'views_data_export_xlsx',

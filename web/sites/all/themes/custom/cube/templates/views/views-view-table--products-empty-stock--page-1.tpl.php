@@ -18,8 +18,8 @@
  *   field id, then row number. This matches the index in $rows.
  * @ingroup views_templates
  */
- 
- 
+
+
 ?>
 <div class="panel panel-default table-panel">
   <div class="panel-body">
@@ -44,20 +44,7 @@
       ?>
       <tr <?php if ($row_classes[$row_count]) { print 'class="' . implode(' ', $row_classes[$row_count]) .'"';  } ?>>
         <?php foreach ($row as $field => $content): ?>
-          <td <?php if ($field_classes[$field][$row_count]) { print 'class="'. $field_classes[$field][$row_count] . '" '; } ?><?php print drupal_attributes($field_attributes[$field][$row_count]); ?>>
-            
-            <?php
-              if ($field=='field_prtrc_roz_price') {
-                if ($content!='-') {
-                  echo $content . ' '.config_pages_get('li'.'c'.'ense','field_currency_pos','сум');;
-                } else {
-                  echo '-';
-                }
-              } else {
-                print $content;
-              }
-            ?>
-          </td>
+          <td <?php if ($field_classes[$field][$row_count]) { print 'class="'. $field_classes[$field][$row_count] . '" '; } ?><?php print drupal_attributes($field_attributes[$field][$row_count]); ?>><?php print $content; ?></td>
         <?php endforeach; ?>
       </tr>
     <?php endforeach; ?>
