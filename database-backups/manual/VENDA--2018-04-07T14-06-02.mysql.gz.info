@@ -1,8 +1,0 @@
-filename = "VENDA--2018-04-07T14-06-02"
-description = ""
-datestamp = "1523091968"
-generator = "Backup and Migrate (http://drupal.org/project/backup_migrate)"
-generatorversion = "7.x-2.x"
-sites[0][version] = "7.58"
-sites[0][name] = "VENDA - Система управления продажами"
-sites[0][url] = "http://venda-project.lc/ru"

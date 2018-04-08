@@ -44,7 +44,7 @@ function venda_views_default_views() {
   $handler->display->display_options['pager']['options']['tags']['next'] = 'следующая ›';
   $handler->display->display_options['pager']['options']['tags']['last'] = 'последняя »';
   $handler->display->display_options['style_plugin'] = 'table';
-  /* Поле: Содержимое: Дата прибытия */
+  /* Field: Content: Дата прибытия */
   $handler->display->display_options['fields']['field_pr_income_date']['id'] = 'field_pr_income_date';
   $handler->display->display_options['fields']['field_pr_income_date']['table'] = 'field_data_field_pr_income_date';
   $handler->display->display_options['fields']['field_pr_income_date']['field'] = 'field_pr_income_date';
@@ -56,7 +56,7 @@ function venda_views_default_views() {
     'multiple_to' => '',
     'show_remaining_days' => 0,
   );
-  /* Поле: Содержимое: Количество */
+  /* Field: Content: Количество */
   $handler->display->display_options['fields']['field_pr_amount']['id'] = 'field_pr_amount';
   $handler->display->display_options['fields']['field_pr_amount']['table'] = 'field_data_field_pr_amount';
   $handler->display->display_options['fields']['field_pr_amount']['field'] = 'field_pr_amount';
@@ -66,7 +66,7 @@ function venda_views_default_views() {
     'scale' => '2',
     'prefix_suffix' => 1,
   );
-  /* Поле: Содержимое: Оптовая цена */
+  /* Field: Content: Оптовая цена */
   $handler->display->display_options['fields']['field_pr_price_base']['id'] = 'field_pr_price_base';
   $handler->display->display_options['fields']['field_pr_price_base']['table'] = 'field_data_field_pr_price_base';
   $handler->display->display_options['fields']['field_pr_price_base']['field'] = 'field_pr_price_base';
@@ -75,7 +75,7 @@ function venda_views_default_views() {
     'thousand_separator' => '',
     'prefix_suffix' => 1,
   );
-  /* Поле: Содержимое: Розничная цена */
+  /* Field: Content: Розничная цена */
   $handler->display->display_options['fields']['field_pr_price']['id'] = 'field_pr_price';
   $handler->display->display_options['fields']['field_pr_price']['table'] = 'field_data_field_pr_price';
   $handler->display->display_options['fields']['field_pr_price']['field'] = 'field_pr_price';
@@ -84,11 +84,11 @@ function venda_views_default_views() {
     'thousand_separator' => '',
     'prefix_suffix' => 1,
   );
-  /* Критерий сортировки: Содержимое: Порядковый номер (field_weight) */
+  /* Sort criterion: Content: Порядковый номер (field_weight) */
   $handler->display->display_options['sorts']['field_weight_value']['id'] = 'field_weight_value';
   $handler->display->display_options['sorts']['field_weight_value']['table'] = 'field_data_field_weight';
   $handler->display->display_options['sorts']['field_weight_value']['field'] = 'field_weight_value';
-  /* Контекстный фильтр: Содержимое: Продукт (field_pb_product) */
+  /* Contextual filter: Content: Продукт (field_pb_product) */
   $handler->display->display_options['arguments']['field_pb_product_nid']['id'] = 'field_pb_product_nid';
   $handler->display->display_options['arguments']['field_pb_product_nid']['table'] = 'field_data_field_pb_product';
   $handler->display->display_options['arguments']['field_pb_product_nid']['field'] = 'field_pb_product_nid';
@@ -98,14 +98,14 @@ function venda_views_default_views() {
   $handler->display->display_options['arguments']['field_pb_product_nid']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['field_pb_product_nid']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['field_pb_product_nid']['summary_options']['items_per_page'] = '25';
-  /* Критерий фильтра: Содержимое: Опубликовано */
+  /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Критерий фильтра: Содержимое: Тип */
+  /* Filter criterion: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
@@ -154,21 +154,21 @@ function venda_views_default_views() {
   $handler->display->display_options['pager']['options']['tags']['next'] = 'следующая ›';
   $handler->display->display_options['pager']['options']['tags']['last'] = 'последняя »';
   $handler->display->display_options['style_plugin'] = 'table';
-  /* Шапка: Глобальный: Text area */
+  /* Header: Global: Text area */
   $handler->display->display_options['header']['area']['id'] = 'area';
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
   $handler->display->display_options['header']['area']['empty'] = TRUE;
   $handler->display->display_options['header']['area']['content'] = '<p class="text-right"><a href="/ru/dashboard/branches/add-new?destination=dashboard/branches" class="btn btn-success">Добавить нового филиала</a></p>';
   $handler->display->display_options['header']['area']['format'] = 'full_html';
-  /* Поведение при отсутствии результатов: Глобальный: Text area */
+  /* No results behavior: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';
   $handler->display->display_options['empty']['area']['table'] = 'views';
   $handler->display->display_options['empty']['area']['field'] = 'area';
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
   $handler->display->display_options['empty']['area']['content'] = '<p>Филиалы ещё не добавлены.</>';
   $handler->display->display_options['empty']['area']['format'] = 'full_html';
-  /* Поле: Массовые операции: Содержимое */
+  /* Field: Bulk operations: Content */
   $handler->display->display_options['fields']['views_bulk_operations']['id'] = 'views_bulk_operations';
   $handler->display->display_options['fields']['views_bulk_operations']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['views_bulk_operations']['field'] = 'views_bulk_operations';
@@ -188,7 +188,7 @@ function venda_views_default_views() {
       'label' => 'Удалить филиала',
     ),
   );
-  /* Поле: Содержимое: Заголовок */
+  /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
@@ -196,12 +196,12 @@ function venda_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
-  /* Поле: Поле: ID филиала */
+  /* Field: Field: ID филиала */
   $handler->display->display_options['fields']['field_apteka_id']['id'] = 'field_apteka_id';
   $handler->display->display_options['fields']['field_apteka_id']['table'] = 'field_data_field_apteka_id';
   $handler->display->display_options['fields']['field_apteka_id']['field'] = 'field_apteka_id';
   $handler->display->display_options['fields']['field_apteka_id']['element_label_colon'] = FALSE;
-  /* Поле: Содержимое: Ссылка на редактирование */
+  /* Field: Content: Edit link */
   $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
   $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['edit_node']['field'] = 'edit_node';
@@ -209,7 +209,7 @@ function venda_views_default_views() {
   $handler->display->display_options['fields']['edit_node']['exclude'] = TRUE;
   $handler->display->display_options['fields']['edit_node']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['edit_node']['text'] = '<span class="glyphicon glyphicon-edit" data-toggle="tooltip" data-placement="top" title="Редактировать"></span>';
-  /* Поле: Содержимое: Ссылка на удаление */
+  /* Field: Content: Delete link */
   $handler->display->display_options['fields']['delete_node']['id'] = 'delete_node';
   $handler->display->display_options['fields']['delete_node']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['delete_node']['field'] = 'delete_node';
@@ -217,7 +217,7 @@ function venda_views_default_views() {
   $handler->display->display_options['fields']['delete_node']['exclude'] = TRUE;
   $handler->display->display_options['fields']['delete_node']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['delete_node']['text'] = '<span class="glyphicon glyphicon-remove-circle text-danger" data-toggle="tooltip" data-placement="top" title="Удалить"></span>';
-  /* Поле: Глобальный: Пользовательский текст */
+  /* Field: Global: Custom text */
   $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
@@ -228,19 +228,19 @@ function venda_views_default_views() {
   $handler->display->display_options['fields']['nothing']['element_class'] = 'h4 text-right';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['nothing']['element_default_classes'] = FALSE;
-  /* Критерий сортировки: Содержимое: Заголовок */
+  /* Sort criterion: Content: Title */
   $handler->display->display_options['sorts']['title']['id'] = 'title';
   $handler->display->display_options['sorts']['title']['table'] = 'node';
   $handler->display->display_options['sorts']['title']['field'] = 'title';
   $handler->display->display_options['sorts']['title']['order'] = 'DESC';
-  /* Критерий фильтра: Содержимое: Опубликовано */
+  /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Критерий фильтра: Содержимое: Тип */
+  /* Filter criterion: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
@@ -257,7 +257,7 @@ function venda_views_default_views() {
   $handler->display->display_options['defaults']['header'] = FALSE;
   $handler->display->display_options['defaults']['empty'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Поле: Содержимое: Заголовок */
+  /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
@@ -265,14 +265,14 @@ function venda_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
-  /* Поле: Содержимое: Nid */
+  /* Field: Content: Nid */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
   $handler->display->display_options['fields']['nid']['table'] = 'node';
   $handler->display->display_options['fields']['nid']['field'] = 'nid';
   $handler->display->display_options['fields']['nid']['label'] = '';
   $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
   $handler->display->display_options['defaults']['sorts'] = FALSE;
-  /* Критерий сортировки: Содержимое: Заголовок */
+  /* Sort criterion: Content: Title */
   $handler->display->display_options['sorts']['title']['id'] = 'title';
   $handler->display->display_options['sorts']['title']['table'] = 'node';
   $handler->display->display_options['sorts']['title']['field'] = 'title';
@@ -313,26 +313,26 @@ function venda_views_default_views() {
   $handler->display->display_options['pager']['options']['tags']['next'] = 'следующая ›';
   $handler->display->display_options['pager']['options']['tags']['last'] = 'последняя »';
   $handler->display->display_options['style_plugin'] = 'table';
-  /* Шапка: Глобальный: Text area */
+  /* Header: Global: Text area */
   $handler->display->display_options['header']['area']['id'] = 'area';
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
   $handler->display->display_options['header']['area']['empty'] = TRUE;
   $handler->display->display_options['header']['area']['content'] = '<p class="text-right"><a href="/ru/dashboard/clients/add-new?destination=dashboard/clients" class="btn btn-success">Добавить новый клиент</a></p>';
   $handler->display->display_options['header']['area']['format'] = 'full_html';
-  /* Поведение при отсутствии результатов: Глобальный: Text area */
+  /* No results behavior: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';
   $handler->display->display_options['empty']['area']['table'] = 'views';
   $handler->display->display_options['empty']['area']['field'] = 'area';
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
   $handler->display->display_options['empty']['area']['content'] = '<p>Клиенты ещё не добавлены.</p>';
   $handler->display->display_options['empty']['area']['format'] = 'full_html';
-  /* Связь: Содержимое: Клиент (field_trc_client) - реверс */
+  /* Relationship: Content: Клиент (field_trc_client) - reverse */
   $handler->display->display_options['relationships']['reverse_field_trc_client_node']['id'] = 'reverse_field_trc_client_node';
   $handler->display->display_options['relationships']['reverse_field_trc_client_node']['table'] = 'node';
   $handler->display->display_options['relationships']['reverse_field_trc_client_node']['field'] = 'reverse_field_trc_client_node';
   $handler->display->display_options['relationships']['reverse_field_trc_client_node']['label'] = 'client';
-  /* Поле: Массовые операции: Содержимое */
+  /* Field: Bulk operations: Content */
   $handler->display->display_options['fields']['views_bulk_operations']['id'] = 'views_bulk_operations';
   $handler->display->display_options['fields']['views_bulk_operations']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['views_bulk_operations']['field'] = 'views_bulk_operations';
@@ -350,27 +350,27 @@ function venda_views_default_views() {
       'label' => 'Удалить договор',
     ),
   );
-  /* Поле: Содержимое: Nid */
+  /* Field: Content: Nid */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
   $handler->display->display_options['fields']['nid']['table'] = 'node';
   $handler->display->display_options['fields']['nid']['field'] = 'nid';
   $handler->display->display_options['fields']['nid']['label'] = '';
   $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
   $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
-  /* Поле: Содержимое: Заголовок */
+  /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = 'Клиент';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Поле: Содержимое: Номер телефона */
+  /* Field: Content: Номер телефона */
   $handler->display->display_options['fields']['field_client_phone']['id'] = 'field_client_phone';
   $handler->display->display_options['fields']['field_client_phone']['table'] = 'field_data_field_client_phone';
   $handler->display->display_options['fields']['field_client_phone']['field'] = 'field_client_phone';
   $handler->display->display_options['fields']['field_client_phone']['delta_limit'] = '5';
   $handler->display->display_options['fields']['field_client_phone']['delta_offset'] = '0';
-  /* Поле: SUM(Содержимое: Розничная цена) */
+  /* Field: SUM(Content: Розничная цена) */
   $handler->display->display_options['fields']['field_trc_price']['id'] = 'field_trc_price';
   $handler->display->display_options['fields']['field_trc_price']['table'] = 'field_data_field_trc_price';
   $handler->display->display_options['fields']['field_trc_price']['field'] = 'field_trc_price';
@@ -386,7 +386,7 @@ function venda_views_default_views() {
     'scale' => '2',
     'prefix_suffix' => 1,
   );
-  /* Поле: SUM(Содержимое: Наличные) */
+  /* Field: SUM(Content: Наличные) */
   $handler->display->display_options['fields']['field_trc_payment_cash']['id'] = 'field_trc_payment_cash';
   $handler->display->display_options['fields']['field_trc_payment_cash']['table'] = 'field_data_field_trc_payment_cash';
   $handler->display->display_options['fields']['field_trc_payment_cash']['field'] = 'field_trc_payment_cash';
@@ -401,7 +401,7 @@ function venda_views_default_views() {
     'scale' => '2',
     'prefix_suffix' => 1,
   );
-  /* Поле: SUM(Содержимое: Терминал) */
+  /* Field: SUM(Content: Терминал) */
   $handler->display->display_options['fields']['field_trc_payment_terminal']['id'] = 'field_trc_payment_terminal';
   $handler->display->display_options['fields']['field_trc_payment_terminal']['table'] = 'field_data_field_trc_payment_terminal';
   $handler->display->display_options['fields']['field_trc_payment_terminal']['field'] = 'field_trc_payment_terminal';
@@ -416,7 +416,7 @@ function venda_views_default_views() {
     'scale' => '2',
     'prefix_suffix' => 1,
   );
-  /* Поле: SUM(Содержимое: Долг) */
+  /* Field: SUM(Content: Долг) */
   $handler->display->display_options['fields']['field_trc_payment_owe']['id'] = 'field_trc_payment_owe';
   $handler->display->display_options['fields']['field_trc_payment_owe']['table'] = 'field_data_field_trc_payment_owe';
   $handler->display->display_options['fields']['field_trc_payment_owe']['field'] = 'field_trc_payment_owe';
@@ -432,7 +432,7 @@ function venda_views_default_views() {
     'scale' => '2',
     'prefix_suffix' => 1,
   );
-  /* Поле: Содержимое: Ссылка на редактирование */
+  /* Field: Content: Edit link */
   $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
   $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['edit_node']['field'] = 'edit_node';
@@ -440,7 +440,7 @@ function venda_views_default_views() {
   $handler->display->display_options['fields']['edit_node']['exclude'] = TRUE;
   $handler->display->display_options['fields']['edit_node']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['edit_node']['text'] = '<span class="glyphicon glyphicon-edit" data-toggle="tooltip" data-placement="top" title="Редактировать"></span>';
-  /* Поле: Содержимое: Ссылка на удаление */
+  /* Field: Content: Delete link */
   $handler->display->display_options['fields']['delete_node']['id'] = 'delete_node';
   $handler->display->display_options['fields']['delete_node']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['delete_node']['field'] = 'delete_node';
@@ -448,7 +448,7 @@ function venda_views_default_views() {
   $handler->display->display_options['fields']['delete_node']['exclude'] = TRUE;
   $handler->display->display_options['fields']['delete_node']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['delete_node']['text'] = '<span class="glyphicon glyphicon-remove-circle text-danger" data-toggle="tooltip" data-placement="top" title="Удалить"></span>';
-  /* Поле: Глобальный: Пользовательский текст */
+  /* Field: Global: Custom text */
   $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
@@ -459,19 +459,19 @@ function venda_views_default_views() {
   $handler->display->display_options['fields']['nothing']['element_class'] = 'h4 text-right';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['nothing']['element_default_classes'] = FALSE;
-  /* Критерий сортировки: Содержимое: Дата публикации */
+  /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  /* Критерий фильтра: Содержимое: Опубликовано */
+  /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Критерий фильтра: Содержимое: Тип */
+  /* Filter criterion: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
@@ -512,21 +512,21 @@ function venda_views_default_views() {
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'table';
-  /* Шапка: Глобальный: Text area */
+  /* Header: Global: Text area */
   $handler->display->display_options['header']['area']['id'] = 'area';
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
   $handler->display->display_options['header']['area']['empty'] = TRUE;
   $handler->display->display_options['header']['area']['content'] = '<p class="text-right pull-right margin-top-38"><a href="/ru/dashboard/providers/contracts/add-new?destination=dashboard/providers/contracts" class="btn btn-success">Добавить новый договор</a></p>';
   $handler->display->display_options['header']['area']['format'] = 'full_html';
-  /* Поведение при отсутствии результатов: Глобальный: Text area */
+  /* No results behavior: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';
   $handler->display->display_options['empty']['area']['table'] = 'views';
   $handler->display->display_options['empty']['area']['field'] = 'area';
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
   $handler->display->display_options['empty']['area']['content'] = '<p>Договоры ещё не добавлены.</p>';
   $handler->display->display_options['empty']['area']['format'] = 'full_html';
-  /* Поле: Массовые операции: Содержимое */
+  /* Field: Bulk operations: Content */
   $handler->display->display_options['fields']['views_bulk_operations']['id'] = 'views_bulk_operations';
   $handler->display->display_options['fields']['views_bulk_operations']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['views_bulk_operations']['field'] = 'views_bulk_operations';
@@ -546,14 +546,14 @@ function venda_views_default_views() {
       'label' => 'Удалить договор',
     ),
   );
-  /* Поле: Содержимое: Заголовок */
+  /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
-  /* Поле: Содержимое: Дата договора */
+  /* Field: Content: Дата договора */
   $handler->display->display_options['fields']['field_dg_date']['id'] = 'field_dg_date';
   $handler->display->display_options['fields']['field_dg_date']['table'] = 'field_data_field_dg_date';
   $handler->display->display_options['fields']['field_dg_date']['field'] = 'field_dg_date';
@@ -565,14 +565,14 @@ function venda_views_default_views() {
     'multiple_to' => '',
     'show_remaining_days' => 0,
   );
-  /* Поле: Содержимое: Поставщик */
+  /* Field: Content: Поставщик */
   $handler->display->display_options['fields']['field_dg_provider']['id'] = 'field_dg_provider';
   $handler->display->display_options['fields']['field_dg_provider']['table'] = 'field_data_field_dg_provider';
   $handler->display->display_options['fields']['field_dg_provider']['field'] = 'field_dg_provider';
   $handler->display->display_options['fields']['field_dg_provider']['alter']['make_link'] = TRUE;
   $handler->display->display_options['fields']['field_dg_provider']['alter']['path'] = 'node/[field_dg_provider-nid]/edit';
   $handler->display->display_options['fields']['field_dg_provider']['type'] = 'node_reference_plain';
-  /* Поле: Содержимое: Ссылка на редактирование */
+  /* Field: Content: Edit link */
   $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
   $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['edit_node']['field'] = 'edit_node';
@@ -580,7 +580,7 @@ function venda_views_default_views() {
   $handler->display->display_options['fields']['edit_node']['exclude'] = TRUE;
   $handler->display->display_options['fields']['edit_node']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['edit_node']['text'] = '<span class="glyphicon glyphicon-edit" data-toggle="tooltip" data-placement="top" title="Редактировать"></span>';
-  /* Поле: Содержимое: Ссылка на удаление */
+  /* Field: Content: Delete link */
   $handler->display->display_options['fields']['delete_node']['id'] = 'delete_node';
   $handler->display->display_options['fields']['delete_node']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['delete_node']['field'] = 'delete_node';
@@ -588,7 +588,7 @@ function venda_views_default_views() {
   $handler->display->display_options['fields']['delete_node']['exclude'] = TRUE;
   $handler->display->display_options['fields']['delete_node']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['delete_node']['text'] = '<span class="glyphicon glyphicon-remove-circle text-danger" data-toggle="tooltip" data-placement="top" title="Удалить"></span>';
-  /* Поле: Глобальный: Пользовательский текст */
+  /* Field: Global: Custom text */
   $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
@@ -599,26 +599,26 @@ function venda_views_default_views() {
   $handler->display->display_options['fields']['nothing']['element_class'] = 'h4 text-right';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['nothing']['element_default_classes'] = FALSE;
-  /* Критерий сортировки: Содержимое: Заголовок */
+  /* Sort criterion: Content: Title */
   $handler->display->display_options['sorts']['title']['id'] = 'title';
   $handler->display->display_options['sorts']['title']['table'] = 'node';
   $handler->display->display_options['sorts']['title']['field'] = 'title';
   $handler->display->display_options['sorts']['title']['order'] = 'DESC';
-  /* Критерий фильтра: Содержимое: Опубликовано */
+  /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Критерий фильтра: Содержимое: Тип */
+  /* Filter criterion: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
     'contract' => 'contract',
   );
-  /* Критерий фильтра: Содержимое: Поставщик (field_dg_provider) */
+  /* Filter criterion: Content: Поставщик (field_dg_provider) */
   $handler->display->display_options['filters']['field_dg_provider_nid']['id'] = 'field_dg_provider_nid';
   $handler->display->display_options['filters']['field_dg_provider_nid']['table'] = 'field_data_field_dg_provider';
   $handler->display->display_options['filters']['field_dg_provider_nid']['field'] = 'field_dg_provider_nid';
@@ -635,7 +635,7 @@ function venda_views_default_views() {
     5 => 0,
     6 => 0,
   );
-  /* Критерий фильтра: Содержимое: Дата договора (field_dg_date) */
+  /* Filter criterion: Content: Дата договора (field_dg_date) */
   $handler->display->display_options['filters']['field_dg_date_value']['id'] = 'field_dg_date_value';
   $handler->display->display_options['filters']['field_dg_date_value']['table'] = 'field_data_field_dg_date';
   $handler->display->display_options['filters']['field_dg_date_value']['field'] = 'field_dg_date_value';
@@ -730,11 +730,11 @@ function venda_views_default_views() {
   $handler->display->display_options['style_options']['yaxis_min'] = '0';
   $handler->display->display_options['style_options']['yaxis_suffix'] = ' сум';
   $handler->display->display_options['style_options']['yaxis_labels_rotation'] = '0';
-  /* Поведение при отсутствии результатов: Глобальный: Text area */
+  /* No results behavior: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';
   $handler->display->display_options['empty']['area']['table'] = 'views';
   $handler->display->display_options['empty']['area']['field'] = 'area';
-  /* Поле: Содержимое: Дата публикации */
+  /* Field: Content: Post date */
   $handler->display->display_options['fields']['created']['id'] = 'created';
   $handler->display->display_options['fields']['created']['table'] = 'node';
   $handler->display->display_options['fields']['created']['field'] = 'created';
@@ -742,7 +742,7 @@ function venda_views_default_views() {
   $handler->display->display_options['fields']['created']['custom_date_format'] = 'Ymd';
   $handler->display->display_options['fields']['created']['second_date_format'] = 'long';
   $handler->display->display_options['fields']['created']['format_date_sql'] = 1;
-  /* Поле: SUM(Содержимое: Розничная цена) */
+  /* Field: SUM(Content: Розничная цена) */
   $handler->display->display_options['fields']['field_trc_price']['id'] = 'field_trc_price';
   $handler->display->display_options['fields']['field_trc_price']['table'] = 'field_data_field_trc_price';
   $handler->display->display_options['fields']['field_trc_price']['field'] = 'field_trc_price';
@@ -752,7 +752,7 @@ function venda_views_default_views() {
     'thousand_separator' => ' ',
     'prefix_suffix' => 1,
   );
-  /* Поле: SUM(Содержимое: Оптовая цена) */
+  /* Field: SUM(Content: Оптовая цена) */
   $handler->display->display_options['fields']['field_trc_price_base']['id'] = 'field_trc_price_base';
   $handler->display->display_options['fields']['field_trc_price_base']['table'] = 'field_data_field_trc_price_base';
   $handler->display->display_options['fields']['field_trc_price_base']['field'] = 'field_trc_price_base';
@@ -762,7 +762,7 @@ function venda_views_default_views() {
     'thousand_separator' => '',
     'prefix_suffix' => 1,
   );
-  /* Поле: SUM(Содержимое: Наличные) */
+  /* Field: SUM(Content: Наличные) */
   $handler->display->display_options['fields']['field_trc_payment_cash']['id'] = 'field_trc_payment_cash';
   $handler->display->display_options['fields']['field_trc_payment_cash']['table'] = 'field_data_field_trc_payment_cash';
   $handler->display->display_options['fields']['field_trc_payment_cash']['field'] = 'field_trc_payment_cash';
@@ -772,7 +772,7 @@ function venda_views_default_views() {
     'thousand_separator' => '',
     'prefix_suffix' => 1,
   );
-  /* Поле: SUM(Содержимое: Терминал) */
+  /* Field: SUM(Content: Терминал) */
   $handler->display->display_options['fields']['field_trc_payment_terminal']['id'] = 'field_trc_payment_terminal';
   $handler->display->display_options['fields']['field_trc_payment_terminal']['table'] = 'field_data_field_trc_payment_terminal';
   $handler->display->display_options['fields']['field_trc_payment_terminal']['field'] = 'field_trc_payment_terminal';
@@ -782,7 +782,7 @@ function venda_views_default_views() {
     'thousand_separator' => '',
     'prefix_suffix' => 1,
   );
-  /* Поле: Глобальный: PHP */
+  /* Field: Global: PHP */
   $handler->display->display_options['fields']['php']['id'] = 'php';
   $handler->display->display_options['fields']['php']['table'] = 'views';
   $handler->display->display_options['fields']['php']['field'] = 'php';
@@ -805,7 +805,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
 ?>';
   $handler->display->display_options['fields']['php']['use_php_click_sortable'] = '0';
   $handler->display->display_options['fields']['php']['php_click_sortable'] = '';
-  /* Контекстный фильтр: Содержимое: UID Автора */
+  /* Contextual filter: Content: Author uid */
   $handler->display->display_options['arguments']['uid']['id'] = 'uid';
   $handler->display->display_options['arguments']['uid']['table'] = 'node';
   $handler->display->display_options['arguments']['uid']['field'] = 'uid';
@@ -817,28 +817,28 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
   $handler->display->display_options['arguments']['uid']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['uid']['summary_options']['items_per_page'] = '25';
   $handler->display->display_options['arguments']['uid']['break_phrase'] = TRUE;
-  /* Критерий фильтра: Содержимое: Опубликовано */
+  /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Критерий фильтра: Содержимое: Тип */
+  /* Filter criterion: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
     'transaction' => 'transaction',
   );
-  /* Критерий фильтра: Содержимое: Дата публикации */
+  /* Filter criterion: Content: Post date */
   $handler->display->display_options['filters']['created']['id'] = 'created';
   $handler->display->display_options['filters']['created']['table'] = 'node';
   $handler->display->display_options['filters']['created']['field'] = 'created';
   $handler->display->display_options['filters']['created']['operator'] = '>';
   $handler->display->display_options['filters']['created']['value']['value'] = 'today - 10 days';
   $handler->display->display_options['filters']['created']['value']['type'] = 'offset';
-  /* Критерий фильтра: Содержимое: Тип транзакции (field_trc_type) */
+  /* Filter criterion: Content: Тип транзакции (field_trc_type) */
   $handler->display->display_options['filters']['field_trc_type_value']['id'] = 'field_trc_type_value';
   $handler->display->display_options['filters']['field_trc_type_value']['table'] = 'field_data_field_trc_type';
   $handler->display->display_options['filters']['field_trc_type_value']['field'] = 'field_trc_type_value';
@@ -849,7 +849,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
   /* Display: Block */
   $handler = $view->new_display('block', 'Block', 'block');
   $handler->display->display_options['defaults']['empty'] = FALSE;
-  /* Поведение при отсутствии результатов: Глобальный: Text area */
+  /* No results behavior: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';
   $handler->display->display_options['empty']['area']['table'] = 'views';
   $handler->display->display_options['empty']['area']['field'] = 'area';
@@ -922,12 +922,12 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
       'empty_column' => 0,
     ),
   );
-  /* Связь: Содержимое: Автор */
+  /* Relationship: Content: Author */
   $handler->display->display_options['relationships']['uid']['id'] = 'uid';
   $handler->display->display_options['relationships']['uid']['table'] = 'node';
   $handler->display->display_options['relationships']['uid']['field'] = 'uid';
   $handler->display->display_options['relationships']['uid']['required'] = TRUE;
-  /* Поле: Массовые операции: Содержимое */
+  /* Field: Bulk operations: Content */
   $handler->display->display_options['fields']['views_bulk_operations']['id'] = 'views_bulk_operations';
   $handler->display->display_options['fields']['views_bulk_operations']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['views_bulk_operations']['field'] = 'views_bulk_operations';
@@ -947,14 +947,14 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
       'label' => 'Удалить',
     ),
   );
-  /* Поле: Содержимое: Заголовок */
+  /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
-  /* Поле: Содержимое: Дата публикации */
+  /* Field: Content: Post date */
   $handler->display->display_options['fields']['created']['id'] = 'created';
   $handler->display->display_options['fields']['created']['table'] = 'node';
   $handler->display->display_options['fields']['created']['field'] = 'created';
@@ -962,33 +962,33 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
   $handler->display->display_options['fields']['created']['date_format'] = 'short';
   $handler->display->display_options['fields']['created']['second_date_format'] = 'long';
   $handler->display->display_options['fields']['created']['format_date_sql'] = 0;
-  /* Поле: Пользователь: Имя */
+  /* Field: User: Name */
   $handler->display->display_options['fields']['name']['id'] = 'name';
   $handler->display->display_options['fields']['name']['table'] = 'users';
   $handler->display->display_options['fields']['name']['field'] = 'name';
   $handler->display->display_options['fields']['name']['relationship'] = 'uid';
   $handler->display->display_options['fields']['name']['label'] = 'Продавец';
   $handler->display->display_options['fields']['name']['link_to_user'] = FALSE;
-  /* Критерий сортировки: Содержимое: Дата публикации */
+  /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  /* Критерий фильтра: Содержимое: Опубликовано */
+  /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Критерий фильтра: Содержимое: Тип */
+  /* Filter criterion: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
     'missing_product' => 'missing_product',
   );
-  /* Критерий фильтра: Дата: Дата (node) */
+  /* Filter criterion: Date: Date (node) */
   $handler->display->display_options['filters']['date_filter']['id'] = 'date_filter';
   $handler->display->display_options['filters']['date_filter']['table'] = 'node';
   $handler->display->display_options['filters']['date_filter']['field'] = 'date_filter';
@@ -1073,21 +1073,21 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
       'empty_column' => 0,
     ),
   );
-  /* Шапка: Глобальный: Text area */
+  /* Header: Global: Text area */
   $handler->display->display_options['header']['area']['id'] = 'area';
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
   $handler->display->display_options['header']['area']['empty'] = TRUE;
   $handler->display->display_options['header']['area']['content'] = '<p class="text-right pull-right margin-top-38"><a href="/ru/dashboard/reports/encashment/add-new?destination=dashboard/reports/encashment" class="btn btn-success">Добавить сумму</a></p>';
   $handler->display->display_options['header']['area']['format'] = 'full_html';
-  /* Поведение при отсутствии результатов: Глобальный: Text area */
+  /* No results behavior: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';
   $handler->display->display_options['empty']['area']['table'] = 'views';
   $handler->display->display_options['empty']['area']['field'] = 'area';
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
   $handler->display->display_options['empty']['area']['content'] = '<p>Данные ещё не добавлены.</p>';
   $handler->display->display_options['empty']['area']['format'] = 'full_html';
-  /* Поле: Массовые операции: Содержимое */
+  /* Field: Bulk operations: Content */
   $handler->display->display_options['fields']['views_bulk_operations']['id'] = 'views_bulk_operations';
   $handler->display->display_options['fields']['views_bulk_operations']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['views_bulk_operations']['field'] = 'views_bulk_operations';
@@ -1105,7 +1105,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
       'label' => 'Удалить',
     ),
   );
-  /* Поле: Содержимое: Дата */
+  /* Field: Content: Дата */
   $handler->display->display_options['fields']['field_enc_date']['id'] = 'field_enc_date';
   $handler->display->display_options['fields']['field_enc_date']['table'] = 'field_data_field_enc_date';
   $handler->display->display_options['fields']['field_enc_date']['field'] = 'field_enc_date';
@@ -1117,7 +1117,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
     'multiple_to' => '',
     'show_remaining_days' => 0,
   );
-  /* Поле: Содержимое: Сумма (в сумах) */
+  /* Field: Content: Сумма (в сумах) */
   $handler->display->display_options['fields']['field_enc_amount']['id'] = 'field_enc_amount';
   $handler->display->display_options['fields']['field_enc_amount']['table'] = 'field_data_field_enc_amount';
   $handler->display->display_options['fields']['field_enc_amount']['field'] = 'field_enc_amount';
@@ -1128,12 +1128,12 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
     'thousand_separator' => ' ',
     'prefix_suffix' => 1,
   );
-  /* Поле: Содержимое: Тип расхода */
+  /* Field: Content: Тип расхода */
   $handler->display->display_options['fields']['field_enc_type']['id'] = 'field_enc_type';
   $handler->display->display_options['fields']['field_enc_type']['table'] = 'field_data_field_enc_type';
   $handler->display->display_options['fields']['field_enc_type']['field'] = 'field_enc_type';
   $handler->display->display_options['fields']['field_enc_type']['type'] = 'taxonomy_term_reference_plain';
-  /* Поле: Содержимое: Ссылка на редактирование */
+  /* Field: Content: Edit link */
   $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
   $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['edit_node']['field'] = 'edit_node';
@@ -1141,7 +1141,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
   $handler->display->display_options['fields']['edit_node']['exclude'] = TRUE;
   $handler->display->display_options['fields']['edit_node']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['edit_node']['text'] = 'редактировать';
-  /* Поле: Содержимое: Ссылка на удаление */
+  /* Field: Content: Delete link */
   $handler->display->display_options['fields']['delete_node']['id'] = 'delete_node';
   $handler->display->display_options['fields']['delete_node']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['delete_node']['field'] = 'delete_node';
@@ -1149,33 +1149,33 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
   $handler->display->display_options['fields']['delete_node']['exclude'] = TRUE;
   $handler->display->display_options['fields']['delete_node']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['delete_node']['text'] = 'удалить';
-  /* Поле: Глобальный: Пользовательский текст */
+  /* Field: Global: Custom text */
   $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['label'] = '';
   $handler->display->display_options['fields']['nothing']['alter']['text'] = '[edit_node] [delete_node]';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
-  /* Критерий сортировки: Содержимое: Дата публикации */
+  /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  /* Критерий фильтра: Содержимое: Опубликовано */
+  /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Критерий фильтра: Содержимое: Тип */
+  /* Filter criterion: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
     'encashment' => 'encashment',
   );
-  /* Критерий фильтра: Дата: Дата (node) */
+  /* Filter criterion: Date: Date (node) */
   $handler->display->display_options['filters']['date_filter']['id'] = 'date_filter';
   $handler->display->display_options['filters']['date_filter']['table'] = 'node';
   $handler->display->display_options['filters']['date_filter']['field'] = 'date_filter';
@@ -1198,7 +1198,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
     'field_data_field_enc_date.field_enc_date_value' => 'field_data_field_enc_date.field_enc_date_value',
   );
   $handler->display->display_options['filters']['date_filter']['date_method'] = 'AND';
-  /* Критерий фильтра: Дата: Дата (node) */
+  /* Filter criterion: Date: Date (node) */
   $handler->display->display_options['filters']['date_filter_1']['id'] = 'date_filter_1';
   $handler->display->display_options['filters']['date_filter_1']['table'] = 'node';
   $handler->display->display_options['filters']['date_filter_1']['field'] = 'date_filter';
@@ -1241,7 +1241,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
   $handler->display->display_options['defaults']['header'] = FALSE;
   $handler->display->display_options['defaults']['empty'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Поле: Содержимое: Сумма (в сумах) */
+  /* Field: Content: Сумма (в сумах) */
   $handler->display->display_options['fields']['field_enc_amount']['id'] = 'field_enc_amount';
   $handler->display->display_options['fields']['field_enc_amount']['table'] = 'field_data_field_enc_amount';
   $handler->display->display_options['fields']['field_enc_amount']['field'] = 'field_enc_amount';
@@ -1351,7 +1351,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
       'empty_column' => 0,
     ),
   );
-  /* Поле: Массовые операции: Файл */
+  /* Field: Bulk operations: File */
   $handler->display->display_options['fields']['views_bulk_operations']['id'] = 'views_bulk_operations';
   $handler->display->display_options['fields']['views_bulk_operations']['table'] = 'views_entity_file';
   $handler->display->display_options['fields']['views_bulk_operations']['field'] = 'views_bulk_operations';
@@ -1371,7 +1371,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
       'label' => 'Удалить',
     ),
   );
-  /* Поле: Файл: Имя */
+  /* Field: File: Name */
   $handler->display->display_options['fields']['filename']['id'] = 'filename';
   $handler->display->display_options['fields']['filename']['table'] = 'file_managed';
   $handler->display->display_options['fields']['filename']['field'] = 'filename';
@@ -1379,7 +1379,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
   $handler->display->display_options['fields']['filename']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['filename']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['filename']['link_to_file'] = FALSE;
-  /* Поле: Файл: Дата загрузки */
+  /* Field: File: Upload date */
   $handler->display->display_options['fields']['timestamp']['id'] = 'timestamp';
   $handler->display->display_options['fields']['timestamp']['table'] = 'file_managed';
   $handler->display->display_options['fields']['timestamp']['field'] = 'timestamp';
@@ -1387,17 +1387,17 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
   $handler->display->display_options['fields']['timestamp']['date_format'] = 'short';
   $handler->display->display_options['fields']['timestamp']['second_date_format'] = 'long';
   $handler->display->display_options['fields']['timestamp']['format_date_sql'] = 0;
-  /* Поле: Файл: Размер */
+  /* Field: File: Size */
   $handler->display->display_options['fields']['filesize']['id'] = 'filesize';
   $handler->display->display_options['fields']['filesize']['table'] = 'file_managed';
   $handler->display->display_options['fields']['filesize']['field'] = 'filesize';
-  /* Поле: Обработчик испорчен или отсутствует */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['field_send_to_branch']['id'] = 'field_send_to_branch';
   $handler->display->display_options['fields']['field_send_to_branch']['table'] = 'field_data_field_send_to_branch';
   $handler->display->display_options['fields']['field_send_to_branch']['field'] = 'field_send_to_branch';
   $handler->display->display_options['fields']['field_send_to_branch']['label'] = 'Отправлен';
   $handler->display->display_options['fields']['field_send_to_branch']['empty'] = 'Нет';
-  /* Поле: Файл: Ссылка на загрузку */
+  /* Field: File: Download link */
   $handler->display->display_options['fields']['download']['id'] = 'download';
   $handler->display->display_options['fields']['download']['table'] = 'file_managed';
   $handler->display->display_options['fields']['download']['field'] = 'download';
@@ -1405,7 +1405,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
   $handler->display->display_options['fields']['download']['exclude'] = TRUE;
   $handler->display->display_options['fields']['download']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['download']['text'] = 'скачать';
-  /* Поле: Файл: Ссылка на удаление */
+  /* Field: File: Delete link */
   $handler->display->display_options['fields']['delete']['id'] = 'delete';
   $handler->display->display_options['fields']['delete']['table'] = 'file_managed';
   $handler->display->display_options['fields']['delete']['field'] = 'delete';
@@ -1413,7 +1413,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
   $handler->display->display_options['fields']['delete']['exclude'] = TRUE;
   $handler->display->display_options['fields']['delete']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['delete']['text'] = 'удалить';
-  /* Поле: Файл: Ссылка */
+  /* Field: File: Link */
   $handler->display->display_options['fields']['link']['id'] = 'link';
   $handler->display->display_options['fields']['link']['table'] = 'file_managed';
   $handler->display->display_options['fields']['link']['field'] = 'link';
@@ -1421,26 +1421,26 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
   $handler->display->display_options['fields']['link']['exclude'] = TRUE;
   $handler->display->display_options['fields']['link']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['link']['text'] = 'cчет-фактура';
-  /* Поле: Глобальный: Пользовательский текст */
+  /* Field: Global: Custom text */
   $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['label'] = '';
   $handler->display->display_options['fields']['nothing']['alter']['text'] = '[link] &nbsp; [download] &nbsp; [delete]';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
-  /* Критерий сортировки: Файл: Дата загрузки */
+  /* Sort criterion: File: Upload date */
   $handler->display->display_options['sorts']['timestamp']['id'] = 'timestamp';
   $handler->display->display_options['sorts']['timestamp']['table'] = 'file_managed';
   $handler->display->display_options['sorts']['timestamp']['field'] = 'timestamp';
   $handler->display->display_options['sorts']['timestamp']['order'] = 'DESC';
-  /* Критерий фильтра: Файл: Тип */
+  /* Filter criterion: File: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'file_managed';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
     'document' => 'document',
   );
-  /* Критерий фильтра: Файл: Сервис (field_file_service) */
+  /* Filter criterion: File: Сервис (field_file_service) */
   $handler->display->display_options['filters']['field_file_service_value']['id'] = 'field_file_service_value';
   $handler->display->display_options['filters']['field_file_service_value']['table'] = 'field_data_field_file_service';
   $handler->display->display_options['filters']['field_file_service_value']['field'] = 'field_file_service_value';
@@ -1483,7 +1483,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
   $handler->display->display_options['style_options']['row_class_special'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['row_options']['default_field_elements'] = FALSE;
-  /* Поле: Содержимое: Заголовок */
+  /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
@@ -1495,7 +1495,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
-  /* Поле: Содержимое: Текст */
+  /* Field: Content: Текст */
   $handler->display->display_options['fields']['body']['id'] = 'body';
   $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
   $handler->display->display_options['fields']['body']['field'] = 'body';
@@ -1504,19 +1504,19 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
   $handler->display->display_options['fields']['body']['element_class'] = 'faq-body hide';
   $handler->display->display_options['fields']['body']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['body']['element_default_classes'] = FALSE;
-  /* Критерий сортировки: Содержимое: Дата публикации */
+  /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  /* Критерий фильтра: Содержимое: Опубликовано */
+  /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Критерий фильтра: Содержимое: Тип */
+  /* Filter criterion: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
@@ -1556,13 +1556,13 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
-  /* Связь: Содержимое: Продукт (field_prtrc_product) */
+  /* Relationship: Content: Продукт (field_prtrc_product) */
   $handler->display->display_options['relationships']['field_prtrc_product_nid']['id'] = 'field_prtrc_product_nid';
   $handler->display->display_options['relationships']['field_prtrc_product_nid']['table'] = 'field_data_field_prtrc_product';
   $handler->display->display_options['relationships']['field_prtrc_product_nid']['field'] = 'field_prtrc_product_nid';
   $handler->display->display_options['relationships']['field_prtrc_product_nid']['required'] = TRUE;
   $handler->display->display_options['relationships']['field_prtrc_product_nid']['delta'] = '-1';
-  /* Поле: Содержимое: Количество */
+  /* Field: Content: Количество */
   $handler->display->display_options['fields']['field_prtrc_amount']['id'] = 'field_prtrc_amount';
   $handler->display->display_options['fields']['field_prtrc_amount']['table'] = 'field_data_field_prtrc_amount';
   $handler->display->display_options['fields']['field_prtrc_amount']['field'] = 'field_prtrc_amount';
@@ -1575,7 +1575,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
     'scale' => '2',
     'prefix_suffix' => 1,
   );
-  /* Поле: Содержимое: Розничная цена */
+  /* Field: Content: Розничная цена */
   $handler->display->display_options['fields']['field_prtrc_roz_price']['id'] = 'field_prtrc_roz_price';
   $handler->display->display_options['fields']['field_prtrc_roz_price']['table'] = 'field_data_field_prtrc_roz_price';
   $handler->display->display_options['fields']['field_prtrc_roz_price']['field'] = 'field_prtrc_roz_price';
@@ -1586,7 +1586,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
     'thousand_separator' => '',
     'prefix_suffix' => 1,
   );
-  /* Поле: Содержимое: Дата обновления */
+  /* Field: Content: Updated date */
   $handler->display->display_options['fields']['changed']['id'] = 'changed';
   $handler->display->display_options['fields']['changed']['table'] = 'node';
   $handler->display->display_options['fields']['changed']['field'] = 'changed';
@@ -1596,19 +1596,19 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
   $handler->display->display_options['fields']['changed']['custom_date_format'] = 'U';
   $handler->display->display_options['fields']['changed']['second_date_format'] = 'long';
   $handler->display->display_options['fields']['changed']['format_date_sql'] = 0;
-  /* Критерий сортировки: Содержимое: Дата публикации */
+  /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  /* Критерий фильтра: Содержимое: Опубликовано */
+  /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Критерий фильтра: Содержимое: Тип */
+  /* Filter criterion: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
@@ -1711,7 +1711,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
       'empty_column' => 0,
     ),
   );
-  /* Поведение при отсутствии результатов: Глобальный: Text area */
+  /* No results behavior: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';
   $handler->display->display_options['empty']['area']['table'] = 'views';
   $handler->display->display_options['empty']['area']['field'] = 'area';
@@ -1722,7 +1722,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
 						<br>
 					</p>';
   $handler->display->display_options['empty']['area']['format'] = 'full_html';
-  /* Поле: Массовые операции: Файл */
+  /* Field: Bulk operations: File */
   $handler->display->display_options['fields']['views_bulk_operations']['id'] = 'views_bulk_operations';
   $handler->display->display_options['fields']['views_bulk_operations']['table'] = 'views_entity_file';
   $handler->display->display_options['fields']['views_bulk_operations']['field'] = 'views_bulk_operations';
@@ -1742,7 +1742,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
       'label' => 'Удалить',
     ),
   );
-  /* Поле: Файл: Имя */
+  /* Field: File: Name */
   $handler->display->display_options['fields']['filename']['id'] = 'filename';
   $handler->display->display_options['fields']['filename']['table'] = 'file_managed';
   $handler->display->display_options['fields']['filename']['field'] = 'filename';
@@ -1750,30 +1750,30 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
   $handler->display->display_options['fields']['filename']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['filename']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['filename']['link_to_file'] = FALSE;
-  /* Поле: Обработчик испорчен или отсутствует */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['field_received_from_server']['id'] = 'field_received_from_server';
   $handler->display->display_options['fields']['field_received_from_server']['table'] = 'field_data_field_received_from_server';
   $handler->display->display_options['fields']['field_received_from_server']['field'] = 'field_received_from_server';
   $handler->display->display_options['fields']['field_received_from_server']['label'] = 'Получен с сервера';
   $handler->display->display_options['fields']['field_received_from_server']['alter']['text'] = '<span class="glyphicon glyphicon-ok text-success"></span>';
-  /* Поле: Файл: Дата загрузки */
+  /* Field: File: Upload date */
   $handler->display->display_options['fields']['timestamp']['id'] = 'timestamp';
   $handler->display->display_options['fields']['timestamp']['table'] = 'file_managed';
   $handler->display->display_options['fields']['timestamp']['field'] = 'timestamp';
   $handler->display->display_options['fields']['timestamp']['date_format'] = 'short';
   $handler->display->display_options['fields']['timestamp']['second_date_format'] = 'long';
   $handler->display->display_options['fields']['timestamp']['format_date_sql'] = 0;
-  /* Поле: Файл: Извлечен */
+  /* Field: File: Извлечен */
   $handler->display->display_options['fields']['field_file_is_extracted']['id'] = 'field_file_is_extracted';
   $handler->display->display_options['fields']['field_file_is_extracted']['table'] = 'field_data_field_file_is_extracted';
   $handler->display->display_options['fields']['field_file_is_extracted']['field'] = 'field_file_is_extracted';
   $handler->display->display_options['fields']['field_file_is_extracted']['label'] = 'Импортирован';
   $handler->display->display_options['fields']['field_file_is_extracted']['type'] = 'list_key';
-  /* Поле: Файл: Размер */
+  /* Field: File: Size */
   $handler->display->display_options['fields']['filesize']['id'] = 'filesize';
   $handler->display->display_options['fields']['filesize']['table'] = 'file_managed';
   $handler->display->display_options['fields']['filesize']['field'] = 'filesize';
-  /* Поле: Файл: Ссылка на загрузку */
+  /* Field: File: Download link */
   $handler->display->display_options['fields']['download']['id'] = 'download';
   $handler->display->display_options['fields']['download']['table'] = 'file_managed';
   $handler->display->display_options['fields']['download']['field'] = 'download';
@@ -1781,7 +1781,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
   $handler->display->display_options['fields']['download']['exclude'] = TRUE;
   $handler->display->display_options['fields']['download']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['download']['text'] = 'скачать';
-  /* Поле: Файл: Ссылка на удаление */
+  /* Field: File: Delete link */
   $handler->display->display_options['fields']['delete']['id'] = 'delete';
   $handler->display->display_options['fields']['delete']['table'] = 'file_managed';
   $handler->display->display_options['fields']['delete']['field'] = 'delete';
@@ -1789,26 +1789,26 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
   $handler->display->display_options['fields']['delete']['exclude'] = TRUE;
   $handler->display->display_options['fields']['delete']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['delete']['text'] = 'удалить';
-  /* Поле: Глобальный: Пользовательский текст */
+  /* Field: Global: Custom text */
   $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['label'] = '';
   $handler->display->display_options['fields']['nothing']['alter']['text'] = '[download] [delete]';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
-  /* Критерий сортировки: Файл: Дата загрузки */
+  /* Sort criterion: File: Upload date */
   $handler->display->display_options['sorts']['timestamp']['id'] = 'timestamp';
   $handler->display->display_options['sorts']['timestamp']['table'] = 'file_managed';
   $handler->display->display_options['sorts']['timestamp']['field'] = 'timestamp';
   $handler->display->display_options['sorts']['timestamp']['order'] = 'DESC';
-  /* Критерий фильтра: Файл: Тип */
+  /* Filter criterion: File: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'file_managed';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
     'document' => 'document',
   );
-  /* Критерий фильтра: Файл: Сервис (field_file_service) */
+  /* Filter criterion: File: Сервис (field_file_service) */
   $handler->display->display_options['filters']['field_file_service_value']['id'] = 'field_file_service_value';
   $handler->display->display_options['filters']['field_file_service_value']['table'] = 'field_data_field_file_service';
   $handler->display->display_options['filters']['field_file_service_value']['field'] = 'field_file_service_value';
@@ -1854,21 +1854,21 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
   $handler->display->display_options['pager']['options']['tags']['next'] = 'следующая ›';
   $handler->display->display_options['pager']['options']['tags']['last'] = 'последняя »';
   $handler->display->display_options['style_plugin'] = 'table';
-  /* Шапка: Глобальный: Text area */
+  /* Header: Global: Text area */
   $handler->display->display_options['header']['area']['id'] = 'area';
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
   $handler->display->display_options['header']['area']['empty'] = TRUE;
   $handler->display->display_options['header']['area']['content'] = '<p class="text-right"><a href="/ru/dashboard/manufacturers/add-new?destination=dashboard/manufacturers" class="btn btn-success">Добавить новый производитель</a></p>';
   $handler->display->display_options['header']['area']['format'] = 'full_html';
-  /* Поведение при отсутствии результатов: Глобальный: Text area */
+  /* No results behavior: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';
   $handler->display->display_options['empty']['area']['table'] = 'views';
   $handler->display->display_options['empty']['area']['field'] = 'area';
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
   $handler->display->display_options['empty']['area']['content'] = 'Производители не добавлены.';
   $handler->display->display_options['empty']['area']['format'] = 'full_html';
-  /* Поле: Массовые операции: Термин таксономии */
+  /* Field: Bulk operations: Taxonomy term */
   $handler->display->display_options['fields']['views_bulk_operations']['id'] = 'views_bulk_operations';
   $handler->display->display_options['fields']['views_bulk_operations']['table'] = 'views_entity_taxonomy_term';
   $handler->display->display_options['fields']['views_bulk_operations']['field'] = 'views_bulk_operations';
@@ -1886,20 +1886,20 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
       'label' => 'Удалить',
     ),
   );
-  /* Поле: Термин таксономии: Имя */
+  /* Field: Taxonomy term: Name */
   $handler->display->display_options['fields']['name']['id'] = 'name';
   $handler->display->display_options['fields']['name']['table'] = 'taxonomy_term_data';
   $handler->display->display_options['fields']['name']['field'] = 'name';
   $handler->display->display_options['fields']['name']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['name']['alter']['ellipsis'] = FALSE;
-  /* Поле: Термин таксономии: Ссылка на редактирование термина */
+  /* Field: Taxonomy term: Term edit link */
   $handler->display->display_options['fields']['edit_term']['id'] = 'edit_term';
   $handler->display->display_options['fields']['edit_term']['table'] = 'taxonomy_term_data';
   $handler->display->display_options['fields']['edit_term']['field'] = 'edit_term';
   $handler->display->display_options['fields']['edit_term']['label'] = '';
   $handler->display->display_options['fields']['edit_term']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['edit_term']['text'] = 'Редактировать';
-  /* Критерий фильтра: Словарь таксономии: Машинное имя */
+  /* Filter criterion: Taxonomy vocabulary: Machine name */
   $handler->display->display_options['filters']['machine_name']['id'] = 'machine_name';
   $handler->display->display_options['filters']['machine_name']['table'] = 'taxonomy_vocabulary';
   $handler->display->display_options['filters']['machine_name']['field'] = 'machine_name';
@@ -1996,24 +1996,24 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
       'empty_column' => 0,
     ),
   );
-  /* Поведение при отсутствии результатов: Глобальный: Text area */
+  /* No results behavior: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';
   $handler->display->display_options['empty']['area']['table'] = 'views';
   $handler->display->display_options['empty']['area']['field'] = 'area';
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
   $handler->display->display_options['empty']['area']['content'] = '<p>Таких продуктов нет.</p>';
   $handler->display->display_options['empty']['area']['format'] = 'full_html';
-  /* Связь: Содержимое: Продукт (field_pb_product) */
+  /* Relationship: Content: Продукт (field_pb_product) */
   $handler->display->display_options['relationships']['field_pb_product_nid']['id'] = 'field_pb_product_nid';
   $handler->display->display_options['relationships']['field_pb_product_nid']['table'] = 'field_data_field_pb_product';
   $handler->display->display_options['relationships']['field_pb_product_nid']['field'] = 'field_pb_product_nid';
   $handler->display->display_options['relationships']['field_pb_product_nid']['required'] = TRUE;
   $handler->display->display_options['relationships']['field_pb_product_nid']['delta'] = '-1';
-  /* Поле: Содержимое: Продукт */
+  /* Field: Content: Продукт */
   $handler->display->display_options['fields']['field_pb_product']['id'] = 'field_pb_product';
   $handler->display->display_options['fields']['field_pb_product']['table'] = 'field_data_field_pb_product';
   $handler->display->display_options['fields']['field_pb_product']['field'] = 'field_pb_product';
-  /* Поле: Содержимое: Количество */
+  /* Field: Content: Количество */
   $handler->display->display_options['fields']['field_pr_amount']['id'] = 'field_pr_amount';
   $handler->display->display_options['fields']['field_pr_amount']['table'] = 'field_data_field_pr_amount';
   $handler->display->display_options['fields']['field_pr_amount']['field'] = 'field_pr_amount';
@@ -2023,7 +2023,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
     'scale' => '2',
     'prefix_suffix' => 1,
   );
-  /* Поле: Содержимое: Дата прибытия */
+  /* Field: Content: Дата прибытия */
   $handler->display->display_options['fields']['field_pr_income_date']['id'] = 'field_pr_income_date';
   $handler->display->display_options['fields']['field_pr_income_date']['table'] = 'field_data_field_pr_income_date';
   $handler->display->display_options['fields']['field_pr_income_date']['field'] = 'field_pr_income_date';
@@ -2037,7 +2037,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
     'multiple_to' => '',
     'show_remaining_days' => 0,
   );
-  /* Поле: Содержимое: Срок годности */
+  /* Field: Content: Срок годности */
   $handler->display->display_options['fields']['field_pr_expiry_date']['id'] = 'field_pr_expiry_date';
   $handler->display->display_options['fields']['field_pr_expiry_date']['table'] = 'field_data_field_pr_expiry_date';
   $handler->display->display_options['fields']['field_pr_expiry_date']['field'] = 'field_pr_expiry_date';
@@ -2051,17 +2051,17 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
     'multiple_to' => '',
     'show_remaining_days' => 0,
   );
-  /* Поле: Содержимое: Поставщик */
+  /* Field: Content: Поставщик */
   $handler->display->display_options['fields']['field_pr_provider']['id'] = 'field_pr_provider';
   $handler->display->display_options['fields']['field_pr_provider']['table'] = 'field_data_field_pr_provider';
   $handler->display->display_options['fields']['field_pr_provider']['field'] = 'field_pr_provider';
   $handler->display->display_options['fields']['field_pr_provider']['type'] = 'node_reference_plain';
-  /* Критерий сортировки: Содержимое: Дата публикации */
+  /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  /* Контекстный фильтр: Содержимое: UID Автора */
+  /* Contextual filter: Content: Author uid */
   $handler->display->display_options['arguments']['uid']['id'] = 'uid';
   $handler->display->display_options['arguments']['uid']['table'] = 'node';
   $handler->display->display_options['arguments']['uid']['field'] = 'uid';
@@ -2071,21 +2071,21 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
   $handler->display->display_options['arguments']['uid']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['uid']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['uid']['summary_options']['items_per_page'] = '25';
-  /* Критерий фильтра: Содержимое: Опубликовано */
+  /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Критерий фильтра: Содержимое: Тип */
+  /* Filter criterion: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
     'product_batch' => 'product_batch',
   );
-  /* Критерий фильтра: Содержимое: Срок годности (field_pr_expiry_date) */
+  /* Filter criterion: Content: Срок годности (field_pr_expiry_date) */
   $handler->display->display_options['filters']['field_pr_expiry_date_value']['id'] = 'field_pr_expiry_date_value';
   $handler->display->display_options['filters']['field_pr_expiry_date_value']['table'] = 'field_data_field_pr_expiry_date';
   $handler->display->display_options['filters']['field_pr_expiry_date_value']['field'] = 'field_pr_expiry_date_value';
@@ -2104,13 +2104,13 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
   );
   $handler->display->display_options['filters']['field_pr_expiry_date_value']['form_type'] = 'date_popup';
   $handler->display->display_options['filters']['field_pr_expiry_date_value']['default_date'] = 'now+6 month';
-  /* Критерий фильтра: Содержимое: Количество (field_pr_amount) */
+  /* Filter criterion: Content: Количество (field_pr_amount) */
   $handler->display->display_options['filters']['field_pr_amount_value']['id'] = 'field_pr_amount_value';
   $handler->display->display_options['filters']['field_pr_amount_value']['table'] = 'field_data_field_pr_amount';
   $handler->display->display_options['filters']['field_pr_amount_value']['field'] = 'field_pr_amount_value';
   $handler->display->display_options['filters']['field_pr_amount_value']['operator'] = '>';
   $handler->display->display_options['filters']['field_pr_amount_value']['value']['value'] = '0';
-  /* Критерий фильтра: Содержимое: Заголовок */
+  /* Filter criterion: Content: Title */
   $handler->display->display_options['filters']['title']['id'] = 'title';
   $handler->display->display_options['filters']['title']['table'] = 'node';
   $handler->display->display_options['filters']['title']['field'] = 'title';
@@ -2146,7 +2146,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
   $handler->display->display_options['pager']['options']['items_per_page'] = '10';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['defaults']['footer'] = FALSE;
-  /* Подвал: Глобальный: Text area */
+  /* Footer: Global: Text area */
   $handler->display->display_options['footer']['area']['id'] = 'area';
   $handler->display->display_options['footer']['area']['table'] = 'views';
   $handler->display->display_options['footer']['area']['field'] = 'area';
@@ -2154,21 +2154,21 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
   $handler->display->display_options['footer']['area']['format'] = 'php_code';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
-  /* Критерий фильтра: Содержимое: Опубликовано */
+  /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Критерий фильтра: Содержимое: Тип */
+  /* Filter criterion: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
     'product_batch' => 'product_batch',
   );
-  /* Критерий фильтра: Содержимое: Срок годности (field_pr_expiry_date) */
+  /* Filter criterion: Content: Срок годности (field_pr_expiry_date) */
   $handler->display->display_options['filters']['field_pr_expiry_date_value']['id'] = 'field_pr_expiry_date_value';
   $handler->display->display_options['filters']['field_pr_expiry_date_value']['table'] = 'field_data_field_pr_expiry_date';
   $handler->display->display_options['filters']['field_pr_expiry_date_value']['field'] = 'field_pr_expiry_date_value';
@@ -2187,7 +2187,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
   );
   $handler->display->display_options['filters']['field_pr_expiry_date_value']['form_type'] = 'date_popup';
   $handler->display->display_options['filters']['field_pr_expiry_date_value']['default_date'] = 'now+6 month';
-  /* Критерий фильтра: Содержимое: Количество (field_pr_amount) */
+  /* Filter criterion: Content: Количество (field_pr_amount) */
   $handler->display->display_options['filters']['field_pr_amount_value']['id'] = 'field_pr_amount_value';
   $handler->display->display_options['filters']['field_pr_amount_value']['table'] = 'field_data_field_pr_amount';
   $handler->display->display_options['filters']['field_pr_amount_value']['field'] = 'field_pr_amount_value';
@@ -2205,14 +2205,14 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
   $handler->display->display_options['style_options']['parent_sort'] = 1;
   $handler->display->display_options['defaults']['empty'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Поле: Содержимое: Продукт */
+  /* Field: Content: Продукт */
   $handler->display->display_options['fields']['field_pb_product']['id'] = 'field_pb_product';
   $handler->display->display_options['fields']['field_pb_product']['table'] = 'field_data_field_pb_product';
   $handler->display->display_options['fields']['field_pb_product']['field'] = 'field_pb_product';
   $handler->display->display_options['fields']['field_pb_product']['element_type'] = '0';
   $handler->display->display_options['fields']['field_pb_product']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['field_pb_product']['type'] = 'node_reference_plain';
-  /* Поле: Содержимое: Количество */
+  /* Field: Content: Количество */
   $handler->display->display_options['fields']['field_pr_amount']['id'] = 'field_pr_amount';
   $handler->display->display_options['fields']['field_pr_amount']['table'] = 'field_data_field_pr_amount';
   $handler->display->display_options['fields']['field_pr_amount']['field'] = 'field_pr_amount';
@@ -2222,7 +2222,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
     'scale' => '2',
     'prefix_suffix' => 1,
   );
-  /* Поле: Содержимое: Дата прибытия */
+  /* Field: Content: Дата прибытия */
   $handler->display->display_options['fields']['field_pr_income_date']['id'] = 'field_pr_income_date';
   $handler->display->display_options['fields']['field_pr_income_date']['table'] = 'field_data_field_pr_income_date';
   $handler->display->display_options['fields']['field_pr_income_date']['field'] = 'field_pr_income_date';
@@ -2236,7 +2236,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
     'multiple_to' => '',
     'show_remaining_days' => 0,
   );
-  /* Поле: Содержимое: Срок годности */
+  /* Field: Content: Срок годности */
   $handler->display->display_options['fields']['field_pr_expiry_date']['id'] = 'field_pr_expiry_date';
   $handler->display->display_options['fields']['field_pr_expiry_date']['table'] = 'field_data_field_pr_expiry_date';
   $handler->display->display_options['fields']['field_pr_expiry_date']['field'] = 'field_pr_expiry_date';
@@ -2287,7 +2287,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
   $handler->display->display_options['exposed_form']['options']['sort_desc_label'] = 'По убыванию';
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['style_plugin'] = 'table';
-  /* Подвал: Глобальный: Text area */
+  /* Footer: Global: Text area */
   $handler->display->display_options['footer']['area']['id'] = 'area';
   $handler->display->display_options['footer']['area']['table'] = 'views';
   $handler->display->display_options['footer']['area']['field'] = 'area';
@@ -2295,7 +2295,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
 <div class="col-sm-4 text-right"><a class="btn btn-info" href="<?php print url(\'dashboard/warehouse/add-price\',array(\'query\'=>array(\'product\'=>arg(1)))); ?>" data-toggle="tooltip" data-placement="top" title="Переходим на новую страницу. Если вы сделали изменения на этом странице, сначала нажмите сохранить.">Добавить партию</a><p></p></div>
 </div>';
   $handler->display->display_options['footer']['area']['format'] = 'php_code';
-  /* Поведение при отсутствии результатов: Глобальный: Text area */
+  /* No results behavior: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';
   $handler->display->display_options['empty']['area']['table'] = 'views';
   $handler->display->display_options['empty']['area']['field'] = 'area';
@@ -2304,7 +2304,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
 <div class="col-sm-4 text-right"><a class="btn btn-info" href="<?php print url(\'dashboard/warehouse/add-price\',array(\'query\'=>array(\'product\'=>arg(1)))); ?>" data-toggle="tooltip" data-placement="top" title="Переходим на новую страницу. Если вы сделали изменения на этом странице, сначала нажмите сохранить.">Добавить партию</a><p></p></div>
 </div>';
   $handler->display->display_options['empty']['area']['format'] = 'php_code';
-  /* Поле: Содержимое: Количество */
+  /* Field: Content: Количество */
   $handler->display->display_options['fields']['field_pr_amount']['id'] = 'field_pr_amount';
   $handler->display->display_options['fields']['field_pr_amount']['table'] = 'field_data_field_pr_amount';
   $handler->display->display_options['fields']['field_pr_amount']['field'] = 'field_pr_amount';
@@ -2313,7 +2313,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
     'thousand_separator' => ' ',
     'prefix_suffix' => 1,
   );
-  /* Поле: Содержимое: Розничная цена */
+  /* Field: Content: Розничная цена */
   $handler->display->display_options['fields']['field_pr_price']['id'] = 'field_pr_price';
   $handler->display->display_options['fields']['field_pr_price']['table'] = 'field_data_field_pr_price';
   $handler->display->display_options['fields']['field_pr_price']['field'] = 'field_pr_price';
@@ -2325,11 +2325,11 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
     'thousand_separator' => ' ',
     'prefix_suffix' => 1,
   );
-  /* Критерий сортировки: Содержимое: Дата публикации */
+  /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
-  /* Контекстный фильтр: Содержимое: Продукт (field_pb_product) */
+  /* Contextual filter: Content: Продукт (field_pb_product) */
   $handler->display->display_options['arguments']['field_pb_product_nid']['id'] = 'field_pb_product_nid';
   $handler->display->display_options['arguments']['field_pb_product_nid']['table'] = 'field_data_field_pb_product';
   $handler->display->display_options['arguments']['field_pb_product_nid']['field'] = 'field_pb_product_nid';
@@ -2339,14 +2339,14 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
   $handler->display->display_options['arguments']['field_pb_product_nid']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['field_pb_product_nid']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['field_pb_product_nid']['summary_options']['items_per_page'] = '25';
-  /* Критерий фильтра: Содержимое: Опубликовано */
+  /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Критерий фильтра: Содержимое: Тип */
+  /* Filter criterion: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
@@ -2384,13 +2384,13 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
   $handler->display->display_options['exposed_form']['options']['sort_desc_label'] = 'По убыванию';
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['style_plugin'] = 'table';
-  /* Поле: Содержимое: Nid */
+  /* Field: Content: Nid */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
   $handler->display->display_options['fields']['nid']['table'] = 'node';
   $handler->display->display_options['fields']['nid']['field'] = 'nid';
   $handler->display->display_options['fields']['nid']['label'] = '';
   $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
-  /* Поле: Содержимое: Дата прибытия */
+  /* Field: Content: Дата прибытия */
   $handler->display->display_options['fields']['field_pr_income_date']['id'] = 'field_pr_income_date';
   $handler->display->display_options['fields']['field_pr_income_date']['table'] = 'field_data_field_pr_income_date';
   $handler->display->display_options['fields']['field_pr_income_date']['field'] = 'field_pr_income_date';
@@ -2405,7 +2405,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
     'multiple_to' => '',
     'show_remaining_days' => 0,
   );
-  /* Поле: Содержимое: Количество */
+  /* Field: Content: Количество */
   $handler->display->display_options['fields']['field_pr_amount']['id'] = 'field_pr_amount';
   $handler->display->display_options['fields']['field_pr_amount']['table'] = 'field_data_field_pr_amount';
   $handler->display->display_options['fields']['field_pr_amount']['field'] = 'field_pr_amount';
@@ -2414,7 +2414,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
     'thousand_separator' => ' ',
     'prefix_suffix' => 1,
   );
-  /* Поле: Содержимое: Розничная цена */
+  /* Field: Content: Розничная цена */
   $handler->display->display_options['fields']['field_pr_price']['id'] = 'field_pr_price';
   $handler->display->display_options['fields']['field_pr_price']['table'] = 'field_data_field_pr_price';
   $handler->display->display_options['fields']['field_pr_price']['field'] = 'field_pr_price';
@@ -2426,7 +2426,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
     'thousand_separator' => ' ',
     'prefix_suffix' => 1,
   );
-  /* Поле: Содержимое: Оптовая цена */
+  /* Field: Content: Оптовая цена */
   $handler->display->display_options['fields']['field_pr_price_base']['id'] = 'field_pr_price_base';
   $handler->display->display_options['fields']['field_pr_price_base']['table'] = 'field_data_field_pr_price_base';
   $handler->display->display_options['fields']['field_pr_price_base']['field'] = 'field_pr_price_base';
@@ -2437,7 +2437,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
     'thousand_separator' => '',
     'prefix_suffix' => 1,
   );
-  /* Поле: Содержимое: Срок годности */
+  /* Field: Content: Срок годности */
   $handler->display->display_options['fields']['field_pr_expiry_date']['id'] = 'field_pr_expiry_date';
   $handler->display->display_options['fields']['field_pr_expiry_date']['table'] = 'field_data_field_pr_expiry_date';
   $handler->display->display_options['fields']['field_pr_expiry_date']['field'] = 'field_pr_expiry_date';
@@ -2452,7 +2452,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
     'multiple_to' => '',
     'show_remaining_days' => 0,
   );
-  /* Поле: Содержимое: Поставщик */
+  /* Field: Content: Поставщик */
   $handler->display->display_options['fields']['field_pr_provider']['id'] = 'field_pr_provider';
   $handler->display->display_options['fields']['field_pr_provider']['table'] = 'field_data_field_pr_provider';
   $handler->display->display_options['fields']['field_pr_provider']['field'] = 'field_pr_provider';
@@ -2461,7 +2461,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
   $handler->display->display_options['fields']['field_pr_provider']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_pr_provider']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['field_pr_provider']['type'] = 'node_reference_nid';
-  /* Поле: Содержимое: Порядковый номер */
+  /* Field: Content: Порядковый номер */
   $handler->display->display_options['fields']['field_weight']['id'] = 'field_weight';
   $handler->display->display_options['fields']['field_weight']['table'] = 'field_data_field_weight';
   $handler->display->display_options['fields']['field_weight']['field'] = 'field_weight';
@@ -2469,14 +2469,14 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
     'thousand_separator' => '',
     'prefix_suffix' => 1,
   );
-  /* Поле: Содержимое: Филиал */
+  /* Field: Content: Филиал */
   $handler->display->display_options['fields']['field_pr_branch']['id'] = 'field_pr_branch';
   $handler->display->display_options['fields']['field_pr_branch']['table'] = 'field_data_field_pr_branch';
   $handler->display->display_options['fields']['field_pr_branch']['field'] = 'field_pr_branch';
   $handler->display->display_options['fields']['field_pr_branch']['label'] = '';
   $handler->display->display_options['fields']['field_pr_branch']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_pr_branch']['type'] = 'node_reference_nid';
-  /* Поле: Содержимое: Накладная № */
+  /* Field: Content: Накладная № */
   $handler->display->display_options['fields']['field_pr_waybill_no']['id'] = 'field_pr_waybill_no';
   $handler->display->display_options['fields']['field_pr_waybill_no']['table'] = 'field_data_field_pr_waybill_no';
   $handler->display->display_options['fields']['field_pr_waybill_no']['field'] = 'field_pr_waybill_no';
@@ -2485,15 +2485,15 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
     'alias' => 1,
     'absolute' => 0,
   );
-  /* Критерий сортировки: Содержимое: Порядковый номер (field_weight) */
+  /* Sort criterion: Content: Порядковый номер (field_weight) */
   $handler->display->display_options['sorts']['field_weight_value']['id'] = 'field_weight_value';
   $handler->display->display_options['sorts']['field_weight_value']['table'] = 'field_data_field_weight';
   $handler->display->display_options['sorts']['field_weight_value']['field'] = 'field_weight_value';
-  /* Критерий сортировки: Содержимое: Дата публикации */
+  /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
-  /* Контекстный фильтр: Содержимое: Продукт (field_pb_product) */
+  /* Contextual filter: Content: Продукт (field_pb_product) */
   $handler->display->display_options['arguments']['field_pb_product_nid']['id'] = 'field_pb_product_nid';
   $handler->display->display_options['arguments']['field_pb_product_nid']['table'] = 'field_data_field_pb_product';
   $handler->display->display_options['arguments']['field_pb_product_nid']['field'] = 'field_pb_product_nid';
@@ -2503,14 +2503,14 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
   $handler->display->display_options['arguments']['field_pb_product_nid']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['field_pb_product_nid']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['field_pb_product_nid']['summary_options']['items_per_page'] = '25';
-  /* Критерий фильтра: Содержимое: Опубликовано */
+  /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Критерий фильтра: Содержимое: Тип */
+  /* Filter criterion: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
@@ -2550,18 +2550,18 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
   $handler->display->display_options['pager']['type'] = 'some';
   $handler->display->display_options['pager']['options']['items_per_page'] = '5';
   $handler->display->display_options['style_plugin'] = 'table';
-  /* Поведение при отсутствии результатов: Глобальный: Text area */
+  /* No results behavior: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';
   $handler->display->display_options['empty']['area']['table'] = 'views';
   $handler->display->display_options['empty']['area']['field'] = 'area';
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
   $handler->display->display_options['empty']['area']['content'] = 'Таких продуктов нет.';
   $handler->display->display_options['empty']['area']['format'] = 'full_html';
-  /* Связь: Содержимое: Продукт (field_pb_product) - реверс */
+  /* Relationship: Content: Продукт (field_pb_product) - reverse */
   $handler->display->display_options['relationships']['reverse_field_pb_product_node']['id'] = 'reverse_field_pb_product_node';
   $handler->display->display_options['relationships']['reverse_field_pb_product_node']['table'] = 'node';
   $handler->display->display_options['relationships']['reverse_field_pb_product_node']['field'] = 'reverse_field_pb_product_node';
-  /* Поле: Содержимое: Заголовок */
+  /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
@@ -2569,11 +2569,11 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  /* Критерий сортировки: Содержимое: Заголовок */
+  /* Sort criterion: Content: Title */
   $handler->display->display_options['sorts']['title']['id'] = 'title';
   $handler->display->display_options['sorts']['title']['table'] = 'node';
   $handler->display->display_options['sorts']['title']['field'] = 'title';
-  /* Контекстный фильтр: Содержимое: UID Автора */
+  /* Contextual filter: Content: Author uid */
   $handler->display->display_options['arguments']['uid']['id'] = 'uid';
   $handler->display->display_options['arguments']['uid']['table'] = 'node';
   $handler->display->display_options['arguments']['uid']['field'] = 'uid';
@@ -2587,7 +2587,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
     1 => 'OR',
     2 => 'OR',
   );
-  /* Критерий фильтра: Содержимое: Тип */
+  /* Filter criterion: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
@@ -2595,7 +2595,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
     'product' => 'product',
   );
   $handler->display->display_options['filters']['type']['group'] = 3;
-  /* Критерий фильтра: SUM(Содержимое: Количество (field_pr_amount)) */
+  /* Filter criterion: SUM(Content: Количество (field_pr_amount)) */
   $handler->display->display_options['filters']['field_pr_amount_value']['id'] = 'field_pr_amount_value';
   $handler->display->display_options['filters']['field_pr_amount_value']['table'] = 'field_data_field_pr_amount';
   $handler->display->display_options['filters']['field_pr_amount_value']['field'] = 'field_pr_amount_value';
@@ -2604,7 +2604,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
   $handler->display->display_options['filters']['field_pr_amount_value']['operator'] = '<=';
   $handler->display->display_options['filters']['field_pr_amount_value']['value']['value'] = '0';
   $handler->display->display_options['filters']['field_pr_amount_value']['group'] = 1;
-  /* Критерий фильтра: SUM(Содержимое: Количество (field_pr_amount)) */
+  /* Filter criterion: SUM(Content: Количество (field_pr_amount)) */
   $handler->display->display_options['filters']['field_pr_amount_value_1']['id'] = 'field_pr_amount_value_1';
   $handler->display->display_options['filters']['field_pr_amount_value_1']['table'] = 'field_data_field_pr_amount';
   $handler->display->display_options['filters']['field_pr_amount_value_1']['field'] = 'field_pr_amount_value';
@@ -2612,7 +2612,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
   $handler->display->display_options['filters']['field_pr_amount_value_1']['group_type'] = 'sum';
   $handler->display->display_options['filters']['field_pr_amount_value_1']['operator'] = 'empty';
   $handler->display->display_options['filters']['field_pr_amount_value_1']['group'] = 1;
-  /* Критерий фильтра: Содержимое: Опубликовано */
+  /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
@@ -2621,7 +2621,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
   /* Display: Block */
   $handler = $view->new_display('block', 'Block', 'block');
   $handler->display->display_options['defaults']['footer'] = FALSE;
-  /* Подвал: Глобальный: Text area */
+  /* Footer: Global: Text area */
   $handler->display->display_options['footer']['area']['id'] = 'area';
   $handler->display->display_options['footer']['area']['table'] = 'views';
   $handler->display->display_options['footer']['area']['field'] = 'area';
@@ -2704,19 +2704,19 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
   $handler->display->display_options['pager']['options']['tags']['last'] = 'последняя »';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
-  /* Поле: Содержимое: Заголовок */
+  /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Критерий сортировки: Содержимое: Дата публикации */
+  /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  /* Контекстный фильтр: Содержимое: UID Автора */
+  /* Contextual filter: Content: Author uid */
   $handler->display->display_options['arguments']['uid']['id'] = 'uid';
   $handler->display->display_options['arguments']['uid']['table'] = 'node';
   $handler->display->display_options['arguments']['uid']['field'] = 'uid';
@@ -2726,14 +2726,14 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
   $handler->display->display_options['arguments']['uid']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['uid']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['uid']['summary_options']['items_per_page'] = '25';
-  /* Критерий фильтра: Содержимое: Опубликовано */
+  /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Критерий фильтра: Содержимое: Тип */
+  /* Filter criterion: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
@@ -2788,7 +2788,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
   $handler->display->display_options['style_options']['row_class_special'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['row_options']['default_field_elements'] = FALSE;
-  /* Поле: Профиль: Рисунок профиля */
+  /* Field: Profile: Рисунок профиля */
   $handler->display->display_options['fields']['field_apteka_image']['id'] = 'field_apteka_image';
   $handler->display->display_options['fields']['field_apteka_image']['table'] = 'field_data_field_apteka_image';
   $handler->display->display_options['fields']['field_apteka_image']['field'] = 'field_apteka_image';
@@ -2801,7 +2801,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
     'image_style' => 'thumbnail',
     'image_link' => 'content',
   );
-  /* Поле: Профиль: Название магазина */
+  /* Field: Profile: Название магазина */
   $handler->display->display_options['fields']['field_apteka_name']['id'] = 'field_apteka_name';
   $handler->display->display_options['fields']['field_apteka_name']['table'] = 'field_data_field_apteka_name';
   $handler->display->display_options['fields']['field_apteka_name']['field'] = 'field_apteka_name';
@@ -2810,7 +2810,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
   $handler->display->display_options['fields']['field_apteka_name']['element_class'] = 'profile-name';
   $handler->display->display_options['fields']['field_apteka_name']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_apteka_name']['element_default_classes'] = FALSE;
-  /* Поле: Профиль: Обложка */
+  /* Field: Profile: Обложка */
   $handler->display->display_options['fields']['field_appteca_cover']['id'] = 'field_appteca_cover';
   $handler->display->display_options['fields']['field_appteca_cover']['table'] = 'field_data_field_appteca_cover';
   $handler->display->display_options['fields']['field_appteca_cover']['field'] = 'field_appteca_cover';
@@ -2825,7 +2825,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
     'image_style' => 'large',
     'image_link' => '',
   );
-  /* Контекстный фильтр: Профиль: Пользователь uid */
+  /* Contextual filter: Profile: User uid */
   $handler->display->display_options['arguments']['user']['id'] = 'user';
   $handler->display->display_options['arguments']['user']['table'] = 'profile';
   $handler->display->display_options['arguments']['user']['field'] = 'user';
@@ -2844,7 +2844,7 @@ return $parent_manager->uid;
   $handler->display->display_options['arguments']['user']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['user']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['user']['summary_options']['items_per_page'] = '25';
-  /* Критерий фильтра: Профиль: Type */
+  /* Filter criterion: Profile: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'profile';
   $handler->display->display_options['filters']['type']['field'] = 'type';
@@ -2953,25 +2953,25 @@ return $parent_manager->uid;
       'empty_column' => 0,
     ),
   );
-  /* Шапка: Глобальный: Text area */
+  /* Header: Global: Text area */
   $handler->display->display_options['header']['area']['id'] = 'area';
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
   $handler->display->display_options['header']['area']['empty'] = TRUE;
   $handler->display->display_options['header']['area']['content'] = '<p class="text-right pull-right margin-top-38"><a href="/ru/dashboard/providers/add-new?destination=dashboard/providers" class="btn btn-success">Добавить нового поставщика</a></p>';
   $handler->display->display_options['header']['area']['format'] = 'full_html';
-  /* Поведение при отсутствии результатов: Глобальный: Text area */
+  /* No results behavior: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';
   $handler->display->display_options['empty']['area']['table'] = 'views';
   $handler->display->display_options['empty']['area']['field'] = 'area';
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
   $handler->display->display_options['empty']['area']['content'] = '<p>Поставщики ещё не добавлены.</p>';
   $handler->display->display_options['empty']['area']['format'] = 'full_html';
-  /* Связь: Содержимое: Поставщик (field_dg_provider) - реверс */
+  /* Relationship: Content: Поставщик (field_dg_provider) - reverse */
   $handler->display->display_options['relationships']['reverse_field_dg_provider_node']['id'] = 'reverse_field_dg_provider_node';
   $handler->display->display_options['relationships']['reverse_field_dg_provider_node']['table'] = 'node';
   $handler->display->display_options['relationships']['reverse_field_dg_provider_node']['field'] = 'reverse_field_dg_provider_node';
-  /* Поле: Массовые операции: Содержимое */
+  /* Field: Bulk operations: Content */
   $handler->display->display_options['fields']['views_bulk_operations']['id'] = 'views_bulk_operations';
   $handler->display->display_options['fields']['views_bulk_operations']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['views_bulk_operations']['field'] = 'views_bulk_operations';
@@ -2991,41 +2991,41 @@ return $parent_manager->uid;
       'label' => 'Удалить провайдера',
     ),
   );
-  /* Поле: Содержимое: Nid */
+  /* Field: Content: Nid */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
   $handler->display->display_options['fields']['nid']['table'] = 'node';
   $handler->display->display_options['fields']['nid']['field'] = 'nid';
   $handler->display->display_options['fields']['nid']['label'] = '';
   $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
   $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
-  /* Поле: Содержимое: Заголовок */
+  /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
-  /* Поле: Содержимое: Контактное лицо */
+  /* Field: Content: Контактное лицо */
   $handler->display->display_options['fields']['field_provider_name']['id'] = 'field_provider_name';
   $handler->display->display_options['fields']['field_provider_name']['table'] = 'field_data_field_provider_name';
   $handler->display->display_options['fields']['field_provider_name']['field'] = 'field_provider_name';
-  /* Поле: Содержимое: Номер телефона */
+  /* Field: Content: Номер телефона */
   $handler->display->display_options['fields']['field_provider_phone']['id'] = 'field_provider_phone';
   $handler->display->display_options['fields']['field_provider_phone']['table'] = 'field_data_field_provider_phone';
   $handler->display->display_options['fields']['field_provider_phone']['field'] = 'field_provider_phone';
-  /* Поле: Содержимое: Email */
+  /* Field: Content: Email */
   $handler->display->display_options['fields']['field_provider_email']['id'] = 'field_provider_email';
   $handler->display->display_options['fields']['field_provider_email']['table'] = 'field_data_field_provider_email';
   $handler->display->display_options['fields']['field_provider_email']['field'] = 'field_provider_email';
   $handler->display->display_options['fields']['field_provider_email']['type'] = 'email_plain';
-  /* Поле: COUNT(Содержимое: Заголовок) */
+  /* Field: COUNT(Content: Title) */
   $handler->display->display_options['fields']['title_1']['id'] = 'title_1';
   $handler->display->display_options['fields']['title_1']['table'] = 'node';
   $handler->display->display_options['fields']['title_1']['field'] = 'title';
   $handler->display->display_options['fields']['title_1']['relationship'] = 'reverse_field_dg_provider_node';
   $handler->display->display_options['fields']['title_1']['group_type'] = 'count';
   $handler->display->display_options['fields']['title_1']['label'] = 'Договоры';
-  /* Поле: Содержимое: Ссылка на редактирование */
+  /* Field: Content: Edit link */
   $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
   $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['edit_node']['field'] = 'edit_node';
@@ -3033,7 +3033,7 @@ return $parent_manager->uid;
   $handler->display->display_options['fields']['edit_node']['exclude'] = TRUE;
   $handler->display->display_options['fields']['edit_node']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['edit_node']['text'] = '<span class="glyphicon glyphicon-edit" data-toggle="tooltip" data-placement="top" title="Редактировать"></span>';
-  /* Поле: Содержимое: Ссылка на удаление */
+  /* Field: Content: Delete link */
   $handler->display->display_options['fields']['delete_node']['id'] = 'delete_node';
   $handler->display->display_options['fields']['delete_node']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['delete_node']['field'] = 'delete_node';
@@ -3041,7 +3041,7 @@ return $parent_manager->uid;
   $handler->display->display_options['fields']['delete_node']['exclude'] = TRUE;
   $handler->display->display_options['fields']['delete_node']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['delete_node']['text'] = '<span class="glyphicon glyphicon-remove-circle text-danger" data-toggle="tooltip" data-placement="top" title="Удалить"></span>';
-  /* Поле: Глобальный: Пользовательский текст */
+  /* Field: Global: Custom text */
   $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
@@ -3053,25 +3053,25 @@ return $parent_manager->uid;
   $handler->display->display_options['fields']['nothing']['element_class'] = 'h4 text-right';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['nothing']['element_default_classes'] = FALSE;
-  /* Критерий сортировки: Содержимое: Заголовок */
+  /* Sort criterion: Content: Title */
   $handler->display->display_options['sorts']['title']['id'] = 'title';
   $handler->display->display_options['sorts']['title']['table'] = 'node';
   $handler->display->display_options['sorts']['title']['field'] = 'title';
-  /* Критерий фильтра: Содержимое: Опубликовано */
+  /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Критерий фильтра: Содержимое: Тип */
+  /* Filter criterion: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
     'provider' => 'provider',
   );
-  /* Критерий фильтра: Содержимое: Заголовок */
+  /* Filter criterion: Content: Title */
   $handler->display->display_options['filters']['title']['id'] = 'title';
   $handler->display->display_options['filters']['title']['table'] = 'node';
   $handler->display->display_options['filters']['title']['field'] = 'title';
@@ -3128,7 +3128,7 @@ return $parent_manager->uid;
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
-  /* Поле: Содержимое: Заголовок */
+  /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
@@ -3137,7 +3137,7 @@ return $parent_manager->uid;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
-  /* Поле: Содержимое: Nid */
+  /* Field: Content: Nid */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
   $handler->display->display_options['fields']['nid']['table'] = 'node';
   $handler->display->display_options['fields']['nid']['field'] = 'nid';
@@ -3145,7 +3145,7 @@ return $parent_manager->uid;
   $handler->display->display_options['fields']['nid']['element_type'] = '0';
   $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['nid']['element_default_classes'] = FALSE;
-  /* Контекстный фильтр: Содержимое: UID Автора */
+  /* Contextual filter: Content: Author uid */
   $handler->display->display_options['arguments']['uid']['id'] = 'uid';
   $handler->display->display_options['arguments']['uid']['table'] = 'node';
   $handler->display->display_options['arguments']['uid']['field'] = 'uid';
@@ -3155,14 +3155,14 @@ return $parent_manager->uid;
   $handler->display->display_options['arguments']['uid']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['uid']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['uid']['summary_options']['items_per_page'] = '25';
-  /* Критерий фильтра: Содержимое: Опубликовано */
+  /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Критерий фильтра: Содержимое: Тип */
+  /* Filter criterion: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
@@ -3259,7 +3259,7 @@ return $parent_manager->uid;
       'empty_column' => 0,
     ),
   );
-  /* Поведение при отсутствии результатов: Глобальный: Text area */
+  /* No results behavior: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';
   $handler->display->display_options['empty']['area']['table'] = 'views';
   $handler->display->display_options['empty']['area']['field'] = 'area';
@@ -3269,7 +3269,7 @@ return $parent_manager->uid;
 <br/><br/><br/><br/>
 </div>';
   $handler->display->display_options['empty']['area']['format'] = 'full_html';
-  /* Поле: Содержимое: Дата публикации */
+  /* Field: Content: Post date */
   $handler->display->display_options['fields']['created']['id'] = 'created';
   $handler->display->display_options['fields']['created']['table'] = 'node';
   $handler->display->display_options['fields']['created']['field'] = 'created';
@@ -3280,13 +3280,13 @@ return $parent_manager->uid;
   $handler->display->display_options['fields']['created']['custom_date_format'] = 'd.m.Y';
   $handler->display->display_options['fields']['created']['second_date_format'] = 'long';
   $handler->display->display_options['fields']['created']['format_date_sql'] = 1;
-  /* Поле: COUNT(Содержимое: Nid) */
+  /* Field: COUNT(Content: Nid) */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
   $handler->display->display_options['fields']['nid']['table'] = 'node';
   $handler->display->display_options['fields']['nid']['field'] = 'nid';
   $handler->display->display_options['fields']['nid']['group_type'] = 'count';
   $handler->display->display_options['fields']['nid']['label'] = 'Кол-во транзакций';
-  /* Поле: SUM(Содержимое: Розничная цена) */
+  /* Field: SUM(Content: Розничная цена) */
   $handler->display->display_options['fields']['field_trc_price']['id'] = 'field_trc_price';
   $handler->display->display_options['fields']['field_trc_price']['table'] = 'field_data_field_trc_price';
   $handler->display->display_options['fields']['field_trc_price']['field'] = 'field_trc_price';
@@ -3300,7 +3300,7 @@ return $parent_manager->uid;
     'scale' => '0',
     'prefix_suffix' => 1,
   );
-  /* Поле: SUM(Содержимое: Оптовая цена) */
+  /* Field: SUM(Content: Оптовая цена) */
   $handler->display->display_options['fields']['field_trc_price_base']['id'] = 'field_trc_price_base';
   $handler->display->display_options['fields']['field_trc_price_base']['table'] = 'field_data_field_trc_price_base';
   $handler->display->display_options['fields']['field_trc_price_base']['field'] = 'field_trc_price_base';
@@ -3311,7 +3311,7 @@ return $parent_manager->uid;
     'thousand_separator' => '',
     'prefix_suffix' => 1,
   );
-  /* Поле: Глобальный: PHP */
+  /* Field: Global: PHP */
   $handler->display->display_options['fields']['php']['id'] = 'php';
   $handler->display->display_options['fields']['php']['table'] = 'views';
   $handler->display->display_options['fields']['php']['field'] = 'php';
@@ -3335,33 +3335,33 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
 ?>';
   $handler->display->display_options['fields']['php']['use_php_click_sortable'] = '0';
   $handler->display->display_options['fields']['php']['php_click_sortable'] = '';
-  /* Критерий сортировки: MAX(Содержимое: Дата публикации) */
+  /* Sort criterion: MAX(Content: Post date) */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['group_type'] = 'max';
-  /* Критерий фильтра: Содержимое: Опубликовано */
+  /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Критерий фильтра: Содержимое: Тип */
+  /* Filter criterion: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
     'transaction' => 'transaction',
   );
-  /* Критерий фильтра: Содержимое: Тип транзакции (field_trc_type) */
+  /* Filter criterion: Content: Тип транзакции (field_trc_type) */
   $handler->display->display_options['filters']['field_trc_type_value']['id'] = 'field_trc_type_value';
   $handler->display->display_options['filters']['field_trc_type_value']['table'] = 'field_data_field_trc_type';
   $handler->display->display_options['filters']['field_trc_type_value']['field'] = 'field_trc_type_value';
   $handler->display->display_options['filters']['field_trc_type_value']['value'] = array(
     'sell' => 'sell',
   );
-  /* Критерий фильтра: Дата: Дата (node) */
+  /* Filter criterion: Date: Date (node) */
   $handler->display->display_options['filters']['date_filter']['id'] = 'date_filter';
   $handler->display->display_options['filters']['date_filter']['table'] = 'node';
   $handler->display->display_options['filters']['date_filter']['field'] = 'date_filter';
@@ -3385,7 +3385,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
     'node.created' => 'node.created',
   );
   $handler->display->display_options['filters']['date_filter']['date_method'] = 'AND';
-  /* Критерий фильтра: Дата: Дата (node) */
+  /* Filter criterion: Date: Date (node) */
   $handler->display->display_options['filters']['date_filter_1']['id'] = 'date_filter_1';
   $handler->display->display_options['filters']['date_filter_1']['table'] = 'node';
   $handler->display->display_options['filters']['date_filter_1']['field'] = 'date_filter';
@@ -3417,7 +3417,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
     'node.created' => 'node.created',
   );
   $handler->display->display_options['filters']['date_filter_1']['date_method'] = 'AND';
-  /* Критерий фильтра: Содержимое: Тип оплаты (field_trc_payment_type) */
+  /* Filter criterion: Content: Тип оплаты (field_trc_payment_type) */
   $handler->display->display_options['filters']['field_trc_payment_type_tid']['id'] = 'field_trc_payment_type_tid';
   $handler->display->display_options['filters']['field_trc_payment_type_tid']['table'] = 'field_data_field_trc_payment_type';
   $handler->display->display_options['filters']['field_trc_payment_type_tid']['field'] = 'field_trc_payment_type_tid';
@@ -3436,7 +3436,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
   );
   $handler->display->display_options['filters']['field_trc_payment_type_tid']['type'] = 'select';
   $handler->display->display_options['filters']['field_trc_payment_type_tid']['vocabulary'] = 'payment_type';
-  /* Критерий фильтра: Содержимое: Продукт транзакции (field_trc_product) */
+  /* Filter criterion: Content: Продукт транзакции (field_trc_product) */
   $handler->display->display_options['filters']['field_trc_product_nid']['id'] = 'field_trc_product_nid';
   $handler->display->display_options['filters']['field_trc_product_nid']['table'] = 'field_data_field_trc_product';
   $handler->display->display_options['filters']['field_trc_product_nid']['field'] = 'field_trc_product_nid';
@@ -3453,7 +3453,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
     5 => 0,
     6 => 0,
   );
-  /* Критерий фильтра: Содержимое: Клиент (field_trc_client) */
+  /* Filter criterion: Content: Клиент (field_trc_client) */
   $handler->display->display_options['filters']['field_trc_client_nid']['id'] = 'field_trc_client_nid';
   $handler->display->display_options['filters']['field_trc_client_nid']['table'] = 'field_data_field_trc_client';
   $handler->display->display_options['filters']['field_trc_client_nid']['field'] = 'field_trc_client_nid';
@@ -3525,7 +3525,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['sorts'] = FALSE;
-  /* Критерий сортировки: MAX(Содержимое: Дата публикации) */
+  /* Sort criterion: MAX(Content: Post date) */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
@@ -3547,7 +3547,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
   $handler->display->display_options['style_options']['filename'] = 'Отчет-по-дате-%timestamp-full.xlsx';
   $handler->display->display_options['style_options']['parent_sort'] = 1;
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Поле: STDDEV_POP(Содержимое: Заголовок) */
+  /* Field: STDDEV_POP(Content: Title) */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
@@ -3556,7 +3556,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
   $handler->display->display_options['fields']['title']['label'] = 'Продукт';
   $handler->display->display_options['fields']['title']['exclude'] = TRUE;
   $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
-  /* Поле: Содержимое: Дата публикации */
+  /* Field: Content: Post date */
   $handler->display->display_options['fields']['created']['id'] = 'created';
   $handler->display->display_options['fields']['created']['table'] = 'node';
   $handler->display->display_options['fields']['created']['field'] = 'created';
@@ -3567,13 +3567,13 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
   $handler->display->display_options['fields']['created']['custom_date_format'] = 'd.m.Y';
   $handler->display->display_options['fields']['created']['second_date_format'] = 'long';
   $handler->display->display_options['fields']['created']['format_date_sql'] = 1;
-  /* Поле: COUNT(Содержимое: Nid) */
+  /* Field: COUNT(Content: Nid) */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
   $handler->display->display_options['fields']['nid']['table'] = 'node';
   $handler->display->display_options['fields']['nid']['field'] = 'nid';
   $handler->display->display_options['fields']['nid']['group_type'] = 'count';
   $handler->display->display_options['fields']['nid']['label'] = 'Кол-во транзакций';
-  /* Поле: SUM(Содержимое: Розничная цена) */
+  /* Field: SUM(Content: Розничная цена) */
   $handler->display->display_options['fields']['field_trc_price']['id'] = 'field_trc_price';
   $handler->display->display_options['fields']['field_trc_price']['table'] = 'field_data_field_trc_price';
   $handler->display->display_options['fields']['field_trc_price']['field'] = 'field_trc_price';
@@ -3584,7 +3584,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
     'thousand_separator' => ' ',
     'prefix_suffix' => 1,
   );
-  /* Поле: SUM(Содержимое: Оптовая цена) */
+  /* Field: SUM(Content: Оптовая цена) */
   $handler->display->display_options['fields']['field_trc_price_base']['id'] = 'field_trc_price_base';
   $handler->display->display_options['fields']['field_trc_price_base']['table'] = 'field_data_field_trc_price_base';
   $handler->display->display_options['fields']['field_trc_price_base']['field'] = 'field_trc_price_base';
@@ -3693,7 +3693,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
       'empty_column' => 0,
     ),
   );
-  /* Поведение при отсутствии результатов: Глобальный: Text area */
+  /* No results behavior: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';
   $handler->display->display_options['empty']['area']['table'] = 'views';
   $handler->display->display_options['empty']['area']['field'] = 'area';
@@ -3703,7 +3703,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
 <br/><br/><br/><br/>
 </div>';
   $handler->display->display_options['empty']['area']['format'] = 'full_html';
-  /* Поле: Содержимое: Дата публикации */
+  /* Field: Content: Post date */
   $handler->display->display_options['fields']['created']['id'] = 'created';
   $handler->display->display_options['fields']['created']['table'] = 'node';
   $handler->display->display_options['fields']['created']['field'] = 'created';
@@ -3712,13 +3712,13 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
   $handler->display->display_options['fields']['created']['custom_date_format'] = 'H';
   $handler->display->display_options['fields']['created']['second_date_format'] = 'long';
   $handler->display->display_options['fields']['created']['format_date_sql'] = 1;
-  /* Поле: COUNT(Содержимое: Nid) */
+  /* Field: COUNT(Content: Nid) */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
   $handler->display->display_options['fields']['nid']['table'] = 'node';
   $handler->display->display_options['fields']['nid']['field'] = 'nid';
   $handler->display->display_options['fields']['nid']['group_type'] = 'count';
   $handler->display->display_options['fields']['nid']['label'] = 'Кол-во транзакций';
-  /* Поле: SUM(Содержимое: Розничная цена) */
+  /* Field: SUM(Content: Розничная цена) */
   $handler->display->display_options['fields']['field_trc_price']['id'] = 'field_trc_price';
   $handler->display->display_options['fields']['field_trc_price']['table'] = 'field_data_field_trc_price';
   $handler->display->display_options['fields']['field_trc_price']['field'] = 'field_trc_price';
@@ -3732,7 +3732,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
     'scale' => '0',
     'prefix_suffix' => 1,
   );
-  /* Поле: SUM(Содержимое: Оптовая цена) */
+  /* Field: SUM(Content: Оптовая цена) */
   $handler->display->display_options['fields']['field_trc_price_base']['id'] = 'field_trc_price_base';
   $handler->display->display_options['fields']['field_trc_price_base']['table'] = 'field_data_field_trc_price_base';
   $handler->display->display_options['fields']['field_trc_price_base']['field'] = 'field_trc_price_base';
@@ -3743,7 +3743,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
     'thousand_separator' => '',
     'prefix_suffix' => 1,
   );
-  /* Поле: Глобальный: PHP */
+  /* Field: Global: PHP */
   $handler->display->display_options['fields']['php']['id'] = 'php';
   $handler->display->display_options['fields']['php']['table'] = 'views';
   $handler->display->display_options['fields']['php']['field'] = 'php';
@@ -3767,19 +3767,19 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
 ?>';
   $handler->display->display_options['fields']['php']['use_php_click_sortable'] = '0';
   $handler->display->display_options['fields']['php']['php_click_sortable'] = '';
-  /* Критерий сортировки: MAX(Содержимое: Дата публикации) */
+  /* Sort criterion: MAX(Content: Post date) */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['group_type'] = 'max';
-  /* Критерий фильтра: Содержимое: Опубликовано */
+  /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Критерий фильтра: Содержимое: Тип */
+  /* Filter criterion: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
@@ -3787,7 +3787,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
     'transaction' => 'transaction',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Критерий фильтра: Содержимое: Тип транзакции (field_trc_type) */
+  /* Filter criterion: Content: Тип транзакции (field_trc_type) */
   $handler->display->display_options['filters']['field_trc_type_value']['id'] = 'field_trc_type_value';
   $handler->display->display_options['filters']['field_trc_type_value']['table'] = 'field_data_field_trc_type';
   $handler->display->display_options['filters']['field_trc_type_value']['field'] = 'field_trc_type_value';
@@ -3795,7 +3795,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
     'sell' => 'sell',
   );
   $handler->display->display_options['filters']['field_trc_type_value']['group'] = 1;
-  /* Критерий фильтра: Дата: Дата (node) */
+  /* Filter criterion: Date: Date (node) */
   $handler->display->display_options['filters']['date_filter']['id'] = 'date_filter';
   $handler->display->display_options['filters']['date_filter']['table'] = 'node';
   $handler->display->display_options['filters']['date_filter']['field'] = 'date_filter';
@@ -3819,7 +3819,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
     'node.created' => 'node.created',
   );
   $handler->display->display_options['filters']['date_filter']['date_method'] = 'AND';
-  /* Критерий фильтра: Содержимое: Тип оплаты (field_trc_payment_type) */
+  /* Filter criterion: Content: Тип оплаты (field_trc_payment_type) */
   $handler->display->display_options['filters']['field_trc_payment_type_tid']['id'] = 'field_trc_payment_type_tid';
   $handler->display->display_options['filters']['field_trc_payment_type_tid']['table'] = 'field_data_field_trc_payment_type';
   $handler->display->display_options['filters']['field_trc_payment_type_tid']['field'] = 'field_trc_payment_type_tid';
@@ -3838,7 +3838,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
   );
   $handler->display->display_options['filters']['field_trc_payment_type_tid']['type'] = 'select';
   $handler->display->display_options['filters']['field_trc_payment_type_tid']['vocabulary'] = 'payment_type';
-  /* Критерий фильтра: Содержимое: Клиент (field_trc_client) */
+  /* Filter criterion: Content: Клиент (field_trc_client) */
   $handler->display->display_options['filters']['field_trc_client_nid']['id'] = 'field_trc_client_nid';
   $handler->display->display_options['filters']['field_trc_client_nid']['table'] = 'field_data_field_trc_client';
   $handler->display->display_options['filters']['field_trc_client_nid']['field'] = 'field_trc_client_nid';
@@ -3855,7 +3855,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
     5 => 0,
     6 => 0,
   );
-  /* Критерий фильтра: Содержимое: Продукт транзакции (field_trc_product) */
+  /* Filter criterion: Content: Продукт транзакции (field_trc_product) */
   $handler->display->display_options['filters']['field_trc_product_nid']['id'] = 'field_trc_product_nid';
   $handler->display->display_options['filters']['field_trc_product_nid']['table'] = 'field_data_field_trc_product';
   $handler->display->display_options['filters']['field_trc_product_nid']['field'] = 'field_trc_product_nid';
@@ -3925,7 +3925,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['sorts'] = FALSE;
-  /* Критерий сортировки: MAX(Содержимое: Дата публикации) */
+  /* Sort criterion: MAX(Content: Post date) */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
@@ -4022,36 +4022,36 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
       'empty_column' => 0,
     ),
   );
-  /* Поведение при отсутствии результатов: Глобальный: Text area */
+  /* No results behavior: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';
   $handler->display->display_options['empty']['area']['table'] = 'views';
   $handler->display->display_options['empty']['area']['field'] = 'area';
-  /* Связь: Содержимое: Продукт транзакции (field_trc_product) */
+  /* Relationship: Content: Продукт транзакции (field_trc_product) */
   $handler->display->display_options['relationships']['field_trc_product_nid']['id'] = 'field_trc_product_nid';
   $handler->display->display_options['relationships']['field_trc_product_nid']['table'] = 'field_data_field_trc_product';
   $handler->display->display_options['relationships']['field_trc_product_nid']['field'] = 'field_trc_product_nid';
   $handler->display->display_options['relationships']['field_trc_product_nid']['required'] = TRUE;
   $handler->display->display_options['relationships']['field_trc_product_nid']['delta'] = '0';
-  /* Связь: Обработчик испорчен или отсутствует */
+  /* Relationship: Broken/missing handler */
   $handler->display->display_options['relationships']['field_md_manufacturer_tid']['id'] = 'field_md_manufacturer_tid';
   $handler->display->display_options['relationships']['field_md_manufacturer_tid']['table'] = 'field_data_field_md_manufacturer';
   $handler->display->display_options['relationships']['field_md_manufacturer_tid']['field'] = 'field_md_manufacturer_tid';
   $handler->display->display_options['relationships']['field_md_manufacturer_tid']['relationship'] = 'field_trc_product_nid';
   $handler->display->display_options['relationships']['field_md_manufacturer_tid']['label'] = 'Term field_md_manufacturer';
   $handler->display->display_options['relationships']['field_md_manufacturer_tid']['required'] = TRUE;
-  /* Поле: Термин таксономии: Имя */
+  /* Field: Taxonomy term: Name */
   $handler->display->display_options['fields']['name']['id'] = 'name';
   $handler->display->display_options['fields']['name']['table'] = 'taxonomy_term_data';
   $handler->display->display_options['fields']['name']['field'] = 'name';
   $handler->display->display_options['fields']['name']['relationship'] = 'field_md_manufacturer_tid';
   $handler->display->display_options['fields']['name']['label'] = 'Производители';
-  /* Поле: Обработчик испорчен или отсутствует */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['field_trc_qty']['id'] = 'field_trc_qty';
   $handler->display->display_options['fields']['field_trc_qty']['table'] = 'field_data_field_trc_qty';
   $handler->display->display_options['fields']['field_trc_qty']['field'] = 'field_trc_qty';
   $handler->display->display_options['fields']['field_trc_qty']['group_type'] = 'sum';
   $handler->display->display_options['fields']['field_trc_qty']['label'] = 'Продуктов продано';
-  /* Поле: SUM(Содержимое: Розничная цена) */
+  /* Field: SUM(Content: Розничная цена) */
   $handler->display->display_options['fields']['field_trc_price']['id'] = 'field_trc_price';
   $handler->display->display_options['fields']['field_trc_price']['table'] = 'field_data_field_trc_price';
   $handler->display->display_options['fields']['field_trc_price']['field'] = 'field_trc_price';
@@ -4061,7 +4061,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
     'thousand_separator' => ' ',
     'prefix_suffix' => 1,
   );
-  /* Поле: SUM(Содержимое: Оптовая цена) */
+  /* Field: SUM(Content: Оптовая цена) */
   $handler->display->display_options['fields']['field_trc_price_base']['id'] = 'field_trc_price_base';
   $handler->display->display_options['fields']['field_trc_price_base']['table'] = 'field_data_field_trc_price_base';
   $handler->display->display_options['fields']['field_trc_price_base']['field'] = 'field_trc_price_base';
@@ -4072,7 +4072,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
     'thousand_separator' => ' ',
     'prefix_suffix' => 1,
   );
-  /* Поле: Глобальный: PHP */
+  /* Field: Global: PHP */
   $handler->display->display_options['fields']['php']['id'] = 'php';
   $handler->display->display_options['fields']['php']['table'] = 'views';
   $handler->display->display_options['fields']['php']['field'] = 'php';
@@ -4087,13 +4087,13 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
 ?>';
   $handler->display->display_options['fields']['php']['use_php_click_sortable'] = '0';
   $handler->display->display_options['fields']['php']['php_click_sortable'] = '';
-  /* Критерий сортировки: SUM(Содержимое: Розничная цена (field_trc_price)) */
+  /* Sort criterion: SUM(Content: Розничная цена (field_trc_price)) */
   $handler->display->display_options['sorts']['field_trc_price_value']['id'] = 'field_trc_price_value';
   $handler->display->display_options['sorts']['field_trc_price_value']['table'] = 'field_data_field_trc_price';
   $handler->display->display_options['sorts']['field_trc_price_value']['field'] = 'field_trc_price_value';
   $handler->display->display_options['sorts']['field_trc_price_value']['group_type'] = 'sum';
   $handler->display->display_options['sorts']['field_trc_price_value']['order'] = 'DESC';
-  /* Контекстный фильтр: Содержимое: UID Автора */
+  /* Contextual filter: Content: Author uid */
   $handler->display->display_options['arguments']['uid']['id'] = 'uid';
   $handler->display->display_options['arguments']['uid']['table'] = 'node';
   $handler->display->display_options['arguments']['uid']['field'] = 'uid';
@@ -4109,14 +4109,14 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
   $handler->display->display_options['arguments']['uid']['validate_options']['code'] = 'return customizer_manager_user_context_filter_validate($argument);';
   $handler->display->display_options['arguments']['uid']['validate']['fail'] = 'empty';
   $handler->display->display_options['arguments']['uid']['break_phrase'] = TRUE;
-  /* Критерий фильтра: Содержимое: Опубликовано */
+  /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Критерий фильтра: Содержимое: Тип */
+  /* Filter criterion: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
@@ -4124,7 +4124,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
     'transaction' => 'transaction',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Критерий фильтра: Содержимое: Тип транзакции (field_trc_type) */
+  /* Filter criterion: Content: Тип транзакции (field_trc_type) */
   $handler->display->display_options['filters']['field_trc_type_value']['id'] = 'field_trc_type_value';
   $handler->display->display_options['filters']['field_trc_type_value']['table'] = 'field_data_field_trc_type';
   $handler->display->display_options['filters']['field_trc_type_value']['field'] = 'field_trc_type_value';
@@ -4132,7 +4132,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
     'sell' => 'sell',
   );
   $handler->display->display_options['filters']['field_trc_type_value']['group'] = 1;
-  /* Критерий фильтра: Дата: Дата (node) */
+  /* Filter criterion: Date: Date (node) */
   $handler->display->display_options['filters']['date_filter']['id'] = 'date_filter';
   $handler->display->display_options['filters']['date_filter']['table'] = 'node';
   $handler->display->display_options['filters']['date_filter']['field'] = 'date_filter';
@@ -4157,7 +4157,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
     'node.created' => 'node.created',
   );
   $handler->display->display_options['filters']['date_filter']['date_method'] = 'AND';
-  /* Критерий фильтра: Дата: Дата (node) */
+  /* Filter criterion: Date: Date (node) */
   $handler->display->display_options['filters']['date_filter_1']['id'] = 'date_filter_1';
   $handler->display->display_options['filters']['date_filter_1']['table'] = 'node';
   $handler->display->display_options['filters']['date_filter_1']['field'] = 'date_filter';
@@ -4182,7 +4182,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
     'node.created' => 'node.created',
   );
   $handler->display->display_options['filters']['date_filter_1']['date_method'] = 'AND';
-  /* Критерий фильтра: Термин таксономии: Имя */
+  /* Filter criterion: Taxonomy term: Name */
   $handler->display->display_options['filters']['name']['id'] = 'name';
   $handler->display->display_options['filters']['name']['table'] = 'taxonomy_term_data';
   $handler->display->display_options['filters']['name']['field'] = 'name';
@@ -4208,7 +4208,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
   $handler->display->display_options['filters']['name']['expose']['autocomplete_raw_suggestion'] = 1;
   $handler->display->display_options['filters']['name']['expose']['autocomplete_raw_dropdown'] = 1;
   $handler->display->display_options['filters']['name']['expose']['autocomplete_dependent'] = 0;
-  /* Критерий фильтра: Содержимое: Тип оплаты (field_trc_payment_type) */
+  /* Filter criterion: Content: Тип оплаты (field_trc_payment_type) */
   $handler->display->display_options['filters']['field_trc_payment_type_tid']['id'] = 'field_trc_payment_type_tid';
   $handler->display->display_options['filters']['field_trc_payment_type_tid']['table'] = 'field_data_field_trc_payment_type';
   $handler->display->display_options['filters']['field_trc_payment_type_tid']['field'] = 'field_trc_payment_type_tid';
@@ -4231,7 +4231,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['defaults']['empty'] = FALSE;
-  /* Поведение при отсутствии результатов: Глобальный: Text area */
+  /* No results behavior: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';
   $handler->display->display_options['empty']['area']['table'] = 'views';
   $handler->display->display_options['empty']['area']['field'] = 'area';
@@ -4279,7 +4279,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['empty'] = FALSE;
-  /* Поведение при отсутствии результатов: Глобальный: Text area */
+  /* No results behavior: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';
   $handler->display->display_options['empty']['area']['table'] = 'views';
   $handler->display->display_options['empty']['area']['field'] = 'area';
@@ -4290,19 +4290,19 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
 </div>';
   $handler->display->display_options['empty']['area']['format'] = 'full_html';
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Поле: Термин таксономии: Имя */
+  /* Field: Taxonomy term: Name */
   $handler->display->display_options['fields']['name']['id'] = 'name';
   $handler->display->display_options['fields']['name']['table'] = 'taxonomy_term_data';
   $handler->display->display_options['fields']['name']['field'] = 'name';
   $handler->display->display_options['fields']['name']['relationship'] = 'field_md_manufacturer_tid';
   $handler->display->display_options['fields']['name']['label'] = 'Производители';
-  /* Поле: Обработчик испорчен или отсутствует */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['field_trc_qty']['id'] = 'field_trc_qty';
   $handler->display->display_options['fields']['field_trc_qty']['table'] = 'field_data_field_trc_qty';
   $handler->display->display_options['fields']['field_trc_qty']['field'] = 'field_trc_qty';
   $handler->display->display_options['fields']['field_trc_qty']['group_type'] = 'sum';
   $handler->display->display_options['fields']['field_trc_qty']['label'] = 'Продуктов продано';
-  /* Поле: SUM(Содержимое: Розничная цена) */
+  /* Field: SUM(Content: Розничная цена) */
   $handler->display->display_options['fields']['field_trc_price']['id'] = 'field_trc_price';
   $handler->display->display_options['fields']['field_trc_price']['table'] = 'field_data_field_trc_price';
   $handler->display->display_options['fields']['field_trc_price']['field'] = 'field_trc_price';
@@ -4313,7 +4313,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
     'thousand_separator' => '',
     'prefix_suffix' => 1,
   );
-  /* Поле: SUM(Содержимое: Оптовая цена) */
+  /* Field: SUM(Content: Оптовая цена) */
   $handler->display->display_options['fields']['field_trc_price_base']['id'] = 'field_trc_price_base';
   $handler->display->display_options['fields']['field_trc_price_base']['table'] = 'field_data_field_trc_price_base';
   $handler->display->display_options['fields']['field_trc_price_base']['field'] = 'field_trc_price_base';
@@ -4324,7 +4324,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
     'thousand_separator' => ' ',
     'prefix_suffix' => 1,
   );
-  /* Поле: Глобальный: PHP */
+  /* Field: Global: PHP */
   $handler->display->display_options['fields']['php']['id'] = 'php';
   $handler->display->display_options['fields']['php']['table'] = 'views';
   $handler->display->display_options['fields']['php']['field'] = 'php';
@@ -4417,7 +4417,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
       'empty_column' => 0,
     ),
   );
-  /* Поведение при отсутствии результатов: Глобальный: Text area */
+  /* No results behavior: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';
   $handler->display->display_options['empty']['area']['table'] = 'views';
   $handler->display->display_options['empty']['area']['field'] = 'area';
@@ -4427,19 +4427,19 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
 <br/><br/><br/><br/>
 </div>';
   $handler->display->display_options['empty']['area']['format'] = 'full_html';
-  /* Связь: Содержимое: Продукт транзакции (field_trc_product) - реверс */
+  /* Relationship: Content: Продукт транзакции (field_trc_product) - reverse */
   $handler->display->display_options['relationships']['reverse_field_trc_product_node']['id'] = 'reverse_field_trc_product_node';
   $handler->display->display_options['relationships']['reverse_field_trc_product_node']['table'] = 'node';
   $handler->display->display_options['relationships']['reverse_field_trc_product_node']['field'] = 'reverse_field_trc_product_node';
   $handler->display->display_options['relationships']['reverse_field_trc_product_node']['required'] = TRUE;
-  /* Поле: Содержимое: Заголовок */
+  /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
-  /* Поле: Содержимое: Штрих-код */
+  /* Field: Content: Штрих-код */
   $handler->display->display_options['fields']['field_prtrc_barcode']['id'] = 'field_prtrc_barcode';
   $handler->display->display_options['fields']['field_prtrc_barcode']['table'] = 'field_data_field_prtrc_barcode';
   $handler->display->display_options['fields']['field_prtrc_barcode']['field'] = 'field_prtrc_barcode';
@@ -4447,7 +4447,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
     'thousand_separator' => '',
     'prefix_suffix' => 0,
   );
-  /* Поле: SUM(Содержимое: Оптовая цена) */
+  /* Field: SUM(Content: Оптовая цена) */
   $handler->display->display_options['fields']['field_prtrc_opt_price']['id'] = 'field_prtrc_opt_price';
   $handler->display->display_options['fields']['field_prtrc_opt_price']['table'] = 'field_data_field_prtrc_opt_price';
   $handler->display->display_options['fields']['field_prtrc_opt_price']['field'] = 'field_prtrc_opt_price';
@@ -4457,7 +4457,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
     'thousand_separator' => '',
     'prefix_suffix' => 1,
   );
-  /* Поле: SUM(Содержимое: Розничная цена) */
+  /* Field: SUM(Content: Розничная цена) */
   $handler->display->display_options['fields']['field_prtrc_roz_price']['id'] = 'field_prtrc_roz_price';
   $handler->display->display_options['fields']['field_prtrc_roz_price']['table'] = 'field_data_field_prtrc_roz_price';
   $handler->display->display_options['fields']['field_prtrc_roz_price']['field'] = 'field_prtrc_roz_price';
@@ -4467,7 +4467,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
     'thousand_separator' => '',
     'prefix_suffix' => 0,
   );
-  /* Поле: Глобальный: PHP */
+  /* Field: Global: PHP */
   $handler->display->display_options['fields']['php']['id'] = 'php';
   $handler->display->display_options['fields']['php']['table'] = 'views';
   $handler->display->display_options['fields']['php']['field'] = 'php';
@@ -4491,20 +4491,20 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
 ?>';
   $handler->display->display_options['fields']['php']['use_php_click_sortable'] = '0';
   $handler->display->display_options['fields']['php']['php_click_sortable'] = '';
-  /* Критерий сортировки: SUM(Содержимое: Розничная цена (field_prtrc_roz_price)) */
+  /* Sort criterion: SUM(Content: Розничная цена (field_prtrc_roz_price)) */
   $handler->display->display_options['sorts']['field_prtrc_roz_price_value']['id'] = 'field_prtrc_roz_price_value';
   $handler->display->display_options['sorts']['field_prtrc_roz_price_value']['table'] = 'field_data_field_prtrc_roz_price';
   $handler->display->display_options['sorts']['field_prtrc_roz_price_value']['field'] = 'field_prtrc_roz_price_value';
   $handler->display->display_options['sorts']['field_prtrc_roz_price_value']['group_type'] = 'sum';
   $handler->display->display_options['sorts']['field_prtrc_roz_price_value']['order'] = 'DESC';
-  /* Критерий фильтра: Содержимое: Тип */
+  /* Filter criterion: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
     'transaction_product' => 'transaction_product',
   );
-  /* Критерий фильтра: Дата: Дата (node) */
+  /* Filter criterion: Date: Date (node) */
   $handler->display->display_options['filters']['date_filter']['id'] = 'date_filter';
   $handler->display->display_options['filters']['date_filter']['table'] = 'node';
   $handler->display->display_options['filters']['date_filter']['field'] = 'date_filter';
@@ -4528,7 +4528,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
     'node.created' => 'node.created',
   );
   $handler->display->display_options['filters']['date_filter']['date_method'] = 'AND';
-  /* Критерий фильтра: Дата: Дата (node) */
+  /* Filter criterion: Date: Date (node) */
   $handler->display->display_options['filters']['date_filter_1']['id'] = 'date_filter_1';
   $handler->display->display_options['filters']['date_filter_1']['table'] = 'node';
   $handler->display->display_options['filters']['date_filter_1']['field'] = 'date_filter';
@@ -4552,7 +4552,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
     'node.created' => 'node.created',
   );
   $handler->display->display_options['filters']['date_filter_1']['date_method'] = 'AND';
-  /* Критерий фильтра: Содержимое: Заголовок */
+  /* Filter criterion: Content: Title */
   $handler->display->display_options['filters']['title']['id'] = 'title';
   $handler->display->display_options['filters']['title']['table'] = 'node';
   $handler->display->display_options['filters']['title']['field'] = 'title';
@@ -4577,7 +4577,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
   $handler->display->display_options['filters']['title']['expose']['autocomplete_raw_suggestion'] = 1;
   $handler->display->display_options['filters']['title']['expose']['autocomplete_raw_dropdown'] = 1;
   $handler->display->display_options['filters']['title']['expose']['autocomplete_dependent'] = 0;
-  /* Критерий фильтра: Содержимое: Тип оплаты (field_trc_payment_type) */
+  /* Filter criterion: Content: Тип оплаты (field_trc_payment_type) */
   $handler->display->display_options['filters']['field_trc_payment_type_tid']['id'] = 'field_trc_payment_type_tid';
   $handler->display->display_options['filters']['field_trc_payment_type_tid']['table'] = 'field_data_field_trc_payment_type';
   $handler->display->display_options['filters']['field_trc_payment_type_tid']['field'] = 'field_trc_payment_type_tid';
@@ -4597,7 +4597,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
   );
   $handler->display->display_options['filters']['field_trc_payment_type_tid']['type'] = 'select';
   $handler->display->display_options['filters']['field_trc_payment_type_tid']['vocabulary'] = 'payment_type';
-  /* Критерий фильтра: Содержимое: Поставщик (field_prtrc_provider_title) */
+  /* Filter criterion: Content: Поставщик (field_prtrc_provider_title) */
   $handler->display->display_options['filters']['field_prtrc_provider_title_value']['id'] = 'field_prtrc_provider_title_value';
   $handler->display->display_options['filters']['field_prtrc_provider_title_value']['table'] = 'field_data_field_prtrc_provider_title';
   $handler->display->display_options['filters']['field_prtrc_provider_title_value']['field'] = 'field_prtrc_provider_title_value';
@@ -4618,13 +4618,13 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
   $handler->display->display_options['filters']['field_prtrc_provider_title_value']['expose']['autocomplete_raw_suggestion'] = 1;
   $handler->display->display_options['filters']['field_prtrc_provider_title_value']['expose']['autocomplete_raw_dropdown'] = 1;
   $handler->display->display_options['filters']['field_prtrc_provider_title_value']['expose']['autocomplete_dependent'] = 0;
-  /* Критерий фильтра: Содержимое: Количество (field_prtrc_amount) */
+  /* Filter criterion: Content: Количество (field_prtrc_amount) */
   $handler->display->display_options['filters']['field_prtrc_amount_value']['id'] = 'field_prtrc_amount_value';
   $handler->display->display_options['filters']['field_prtrc_amount_value']['table'] = 'field_data_field_prtrc_amount';
   $handler->display->display_options['filters']['field_prtrc_amount_value']['field'] = 'field_prtrc_amount_value';
   $handler->display->display_options['filters']['field_prtrc_amount_value']['operator'] = '>';
   $handler->display->display_options['filters']['field_prtrc_amount_value']['value']['value'] = '0';
-  /* Критерий фильтра: Содержимое: Клиент (field_trc_client) */
+  /* Filter criterion: Content: Клиент (field_trc_client) */
   $handler->display->display_options['filters']['field_trc_client_nid']['id'] = 'field_trc_client_nid';
   $handler->display->display_options['filters']['field_trc_client_nid']['table'] = 'field_data_field_trc_client';
   $handler->display->display_options['filters']['field_trc_client_nid']['field'] = 'field_trc_client_nid';
@@ -4646,14 +4646,14 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Поле: Содержимое: Заголовок */
+  /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
-  /* Поле: Содержимое: Штрих-код */
+  /* Field: Content: Штрих-код */
   $handler->display->display_options['fields']['field_prtrc_barcode']['id'] = 'field_prtrc_barcode';
   $handler->display->display_options['fields']['field_prtrc_barcode']['table'] = 'field_data_field_prtrc_barcode';
   $handler->display->display_options['fields']['field_prtrc_barcode']['field'] = 'field_prtrc_barcode';
@@ -4661,7 +4661,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
     'thousand_separator' => '',
     'prefix_suffix' => 1,
   );
-  /* Поле: SUM(Содержимое: Оптовая цена) */
+  /* Field: SUM(Content: Оптовая цена) */
   $handler->display->display_options['fields']['field_prtrc_opt_price']['id'] = 'field_prtrc_opt_price';
   $handler->display->display_options['fields']['field_prtrc_opt_price']['table'] = 'field_data_field_prtrc_opt_price';
   $handler->display->display_options['fields']['field_prtrc_opt_price']['field'] = 'field_prtrc_opt_price';
@@ -4673,7 +4673,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
     'thousand_separator' => ' ',
     'prefix_suffix' => 1,
   );
-  /* Поле: SUM(Содержимое: Розничная цена) */
+  /* Field: SUM(Content: Розничная цена) */
   $handler->display->display_options['fields']['field_prtrc_roz_price']['id'] = 'field_prtrc_roz_price';
   $handler->display->display_options['fields']['field_prtrc_roz_price']['table'] = 'field_data_field_prtrc_roz_price';
   $handler->display->display_options['fields']['field_prtrc_roz_price']['field'] = 'field_prtrc_roz_price';
@@ -4685,7 +4685,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
     'thousand_separator' => ' ',
     'prefix_suffix' => 1,
   );
-  /* Поле: Глобальный: PHP */
+  /* Field: Global: PHP */
   $handler->display->display_options['fields']['php']['id'] = 'php';
   $handler->display->display_options['fields']['php']['table'] = 'views';
   $handler->display->display_options['fields']['php']['field'] = 'php';
@@ -4751,7 +4751,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['sorts'] = FALSE;
-  /* Критерий сортировки: SUM(Содержимое: Розничная цена (field_prtrc_roz_price)) */
+  /* Sort criterion: SUM(Content: Розничная цена (field_prtrc_roz_price)) */
   $handler->display->display_options['sorts']['field_prtrc_roz_price_value']['id'] = 'field_prtrc_roz_price_value';
   $handler->display->display_options['sorts']['field_prtrc_roz_price_value']['table'] = 'field_data_field_prtrc_roz_price';
   $handler->display->display_options['sorts']['field_prtrc_roz_price_value']['field'] = 'field_prtrc_roz_price_value';
@@ -4772,18 +4772,18 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
   $handler->display->display_options['style_options']['filename'] = 'Отчет-по-продуктам-%timestamp-full.xlsx';
   $handler->display->display_options['style_options']['parent_sort'] = 1;
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Поле: Содержимое: Заголовок */
+  /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
-  /* Поле: Содержимое: Штрих-код */
+  /* Field: Content: Штрих-код */
   $handler->display->display_options['fields']['field_md_up_barcode']['id'] = 'field_md_up_barcode';
   $handler->display->display_options['fields']['field_md_up_barcode']['table'] = 'field_data_field_md_up_barcode';
   $handler->display->display_options['fields']['field_md_up_barcode']['field'] = 'field_md_up_barcode';
-  /* Поле: SUM(Содержимое: Оптовая цена) */
+  /* Field: SUM(Content: Оптовая цена) */
   $handler->display->display_options['fields']['field_prtrc_opt_price']['id'] = 'field_prtrc_opt_price';
   $handler->display->display_options['fields']['field_prtrc_opt_price']['table'] = 'field_data_field_prtrc_opt_price';
   $handler->display->display_options['fields']['field_prtrc_opt_price']['field'] = 'field_prtrc_opt_price';
@@ -4793,7 +4793,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
     'thousand_separator' => '',
     'prefix_suffix' => 1,
   );
-  /* Поле: SUM(Содержимое: Розничная цена) */
+  /* Field: SUM(Content: Розничная цена) */
   $handler->display->display_options['fields']['field_prtrc_roz_price']['id'] = 'field_prtrc_roz_price';
   $handler->display->display_options['fields']['field_prtrc_roz_price']['table'] = 'field_data_field_prtrc_roz_price';
   $handler->display->display_options['fields']['field_prtrc_roz_price']['field'] = 'field_prtrc_roz_price';
@@ -4903,7 +4903,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
       'empty_column' => 0,
     ),
   );
-  /* Поведение при отсутствии результатов: Глобальный: Text area */
+  /* No results behavior: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';
   $handler->display->display_options['empty']['area']['table'] = 'views';
   $handler->display->display_options['empty']['area']['field'] = 'area';
@@ -4913,12 +4913,12 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
 <br/><br/><br/><br/>
 </div>';
   $handler->display->display_options['empty']['area']['format'] = 'full_html';
-  /* Связь: Содержимое: Продукт транзакции (field_trc_product) */
+  /* Relationship: Content: Продукт транзакции (field_trc_product) */
   $handler->display->display_options['relationships']['field_trc_product_nid']['id'] = 'field_trc_product_nid';
   $handler->display->display_options['relationships']['field_trc_product_nid']['table'] = 'field_data_field_trc_product';
   $handler->display->display_options['relationships']['field_trc_product_nid']['field'] = 'field_trc_product_nid';
   $handler->display->display_options['relationships']['field_trc_product_nid']['delta'] = '0';
-  /* Поле: STDDEV_POP(Содержимое: Заголовок) */
+  /* Field: STDDEV_POP(Content: Title) */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
@@ -4926,7 +4926,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
   $handler->display->display_options['fields']['title']['group_type'] = 'stddev_pop';
   $handler->display->display_options['fields']['title']['exclude'] = TRUE;
   $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
-  /* Поле: Содержимое: Поставщик */
+  /* Field: Content: Поставщик */
   $handler->display->display_options['fields']['field_prtrc_provider_title']['id'] = 'field_prtrc_provider_title';
   $handler->display->display_options['fields']['field_prtrc_provider_title']['table'] = 'field_data_field_prtrc_provider_title';
   $handler->display->display_options['fields']['field_prtrc_provider_title']['field'] = 'field_prtrc_provider_title';
@@ -4936,13 +4936,13 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
     'value' => 'value',
   );
   $handler->display->display_options['fields']['field_prtrc_provider_title']['delta_offset'] = '0';
-  /* Поле: COUNT(Содержимое: Nid) */
+  /* Field: COUNT(Content: Nid) */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
   $handler->display->display_options['fields']['nid']['table'] = 'node';
   $handler->display->display_options['fields']['nid']['field'] = 'nid';
   $handler->display->display_options['fields']['nid']['group_type'] = 'count';
   $handler->display->display_options['fields']['nid']['label'] = 'Кол-во транзакций';
-  /* Поле: SUM(Содержимое: Оптовая цена) */
+  /* Field: SUM(Content: Оптовая цена) */
   $handler->display->display_options['fields']['field_trc_price_base']['id'] = 'field_trc_price_base';
   $handler->display->display_options['fields']['field_trc_price_base']['table'] = 'field_data_field_trc_price_base';
   $handler->display->display_options['fields']['field_trc_price_base']['field'] = 'field_trc_price_base';
@@ -4952,7 +4952,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
     'thousand_separator' => ' ',
     'prefix_suffix' => 1,
   );
-  /* Поле: SUM(Содержимое: Розничная цена) */
+  /* Field: SUM(Content: Розничная цена) */
   $handler->display->display_options['fields']['field_trc_price']['id'] = 'field_trc_price';
   $handler->display->display_options['fields']['field_trc_price']['table'] = 'field_data_field_trc_price';
   $handler->display->display_options['fields']['field_trc_price']['field'] = 'field_trc_price';
@@ -4962,7 +4962,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
     'thousand_separator' => ' ',
     'prefix_suffix' => 1,
   );
-  /* Поле: Глобальный: PHP */
+  /* Field: Global: PHP */
   $handler->display->display_options['fields']['php']['id'] = 'php';
   $handler->display->display_options['fields']['php']['table'] = 'views';
   $handler->display->display_options['fields']['php']['field'] = 'php';
@@ -4977,7 +4977,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
 ?>';
   $handler->display->display_options['fields']['php']['use_php_click_sortable'] = '0';
   $handler->display->display_options['fields']['php']['php_click_sortable'] = '';
-  /* Контекстный фильтр: Содержимое: UID Автора */
+  /* Contextual filter: Content: Author uid */
   $handler->display->display_options['arguments']['uid']['id'] = 'uid';
   $handler->display->display_options['arguments']['uid']['table'] = 'node';
   $handler->display->display_options['arguments']['uid']['field'] = 'uid';
@@ -4993,28 +4993,28 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
   $handler->display->display_options['arguments']['uid']['validate_options']['code'] = 'return customizer_manager_user_context_filter_validate($argument);';
   $handler->display->display_options['arguments']['uid']['validate']['fail'] = 'empty';
   $handler->display->display_options['arguments']['uid']['break_phrase'] = TRUE;
-  /* Критерий фильтра: Содержимое: Опубликовано */
+  /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Критерий фильтра: Содержимое: Тип */
+  /* Filter criterion: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
     'transaction' => 'transaction',
   );
-  /* Критерий фильтра: Содержимое: Тип транзакции (field_trc_type) */
+  /* Filter criterion: Content: Тип транзакции (field_trc_type) */
   $handler->display->display_options['filters']['field_trc_type_value']['id'] = 'field_trc_type_value';
   $handler->display->display_options['filters']['field_trc_type_value']['table'] = 'field_data_field_trc_type';
   $handler->display->display_options['filters']['field_trc_type_value']['field'] = 'field_trc_type_value';
   $handler->display->display_options['filters']['field_trc_type_value']['value'] = array(
     'sell' => 'sell',
   );
-  /* Критерий фильтра: Дата: Дата (node) */
+  /* Filter criterion: Date: Date (node) */
   $handler->display->display_options['filters']['date_filter']['id'] = 'date_filter';
   $handler->display->display_options['filters']['date_filter']['table'] = 'node';
   $handler->display->display_options['filters']['date_filter']['field'] = 'date_filter';
@@ -5038,7 +5038,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
     'node.created' => 'node.created',
   );
   $handler->display->display_options['filters']['date_filter']['date_method'] = 'AND';
-  /* Критерий фильтра: Дата: Дата (node) */
+  /* Filter criterion: Date: Date (node) */
   $handler->display->display_options['filters']['date_filter_1']['id'] = 'date_filter_1';
   $handler->display->display_options['filters']['date_filter_1']['table'] = 'node';
   $handler->display->display_options['filters']['date_filter_1']['field'] = 'date_filter';
@@ -5062,7 +5062,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
     'node.created' => 'node.created',
   );
   $handler->display->display_options['filters']['date_filter_1']['date_method'] = 'AND';
-  /* Критерий фильтра: Содержимое: Заголовок */
+  /* Filter criterion: Content: Title */
   $handler->display->display_options['filters']['title']['id'] = 'title';
   $handler->display->display_options['filters']['title']['table'] = 'node';
   $handler->display->display_options['filters']['title']['field'] = 'title';
@@ -5087,7 +5087,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
   $handler->display->display_options['filters']['title']['expose']['autocomplete_raw_suggestion'] = 1;
   $handler->display->display_options['filters']['title']['expose']['autocomplete_raw_dropdown'] = 1;
   $handler->display->display_options['filters']['title']['expose']['autocomplete_dependent'] = 0;
-  /* Критерий фильтра: Содержимое: Тип оплаты (field_trc_payment_type) */
+  /* Filter criterion: Content: Тип оплаты (field_trc_payment_type) */
   $handler->display->display_options['filters']['field_trc_payment_type_tid']['id'] = 'field_trc_payment_type_tid';
   $handler->display->display_options['filters']['field_trc_payment_type_tid']['table'] = 'field_data_field_trc_payment_type';
   $handler->display->display_options['filters']['field_trc_payment_type_tid']['field'] = 'field_trc_payment_type_tid';
@@ -5106,7 +5106,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
   );
   $handler->display->display_options['filters']['field_trc_payment_type_tid']['type'] = 'select';
   $handler->display->display_options['filters']['field_trc_payment_type_tid']['vocabulary'] = 'payment_type';
-  /* Критерий фильтра: Содержимое: Поставщик (field_prtrc_provider_title) */
+  /* Filter criterion: Content: Поставщик (field_prtrc_provider_title) */
   $handler->display->display_options['filters']['field_prtrc_provider_title_value']['id'] = 'field_prtrc_provider_title_value';
   $handler->display->display_options['filters']['field_prtrc_provider_title_value']['table'] = 'field_data_field_prtrc_provider_title';
   $handler->display->display_options['filters']['field_prtrc_provider_title_value']['field'] = 'field_prtrc_provider_title_value';
@@ -5195,7 +5195,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
   $handler->display->display_options['style_options']['filename'] = 'Отчет-по-поставщикам-%timestamp-full.xlsx';
   $handler->display->display_options['style_options']['parent_sort'] = 1;
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Поле: STDDEV_POP(Содержимое: Заголовок) */
+  /* Field: STDDEV_POP(Content: Title) */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
@@ -5203,7 +5203,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
   $handler->display->display_options['fields']['title']['group_type'] = 'stddev_pop';
   $handler->display->display_options['fields']['title']['exclude'] = TRUE;
   $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
-  /* Поле: Содержимое: Поставщик */
+  /* Field: Content: Поставщик */
   $handler->display->display_options['fields']['field_prtrc_provider_title']['id'] = 'field_prtrc_provider_title';
   $handler->display->display_options['fields']['field_prtrc_provider_title']['table'] = 'field_data_field_prtrc_provider_title';
   $handler->display->display_options['fields']['field_prtrc_provider_title']['field'] = 'field_prtrc_provider_title';
@@ -5213,13 +5213,13 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
     'value' => 'value',
   );
   $handler->display->display_options['fields']['field_prtrc_provider_title']['delta_offset'] = '0';
-  /* Поле: COUNT(Содержимое: Nid) */
+  /* Field: COUNT(Content: Nid) */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
   $handler->display->display_options['fields']['nid']['table'] = 'node';
   $handler->display->display_options['fields']['nid']['field'] = 'nid';
   $handler->display->display_options['fields']['nid']['group_type'] = 'count';
   $handler->display->display_options['fields']['nid']['label'] = 'Кол-во транзакций';
-  /* Поле: SUM(Содержимое: Оптовая цена) */
+  /* Field: SUM(Content: Оптовая цена) */
   $handler->display->display_options['fields']['field_trc_price_base']['id'] = 'field_trc_price_base';
   $handler->display->display_options['fields']['field_trc_price_base']['table'] = 'field_data_field_trc_price_base';
   $handler->display->display_options['fields']['field_trc_price_base']['field'] = 'field_trc_price_base';
@@ -5230,7 +5230,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
     'thousand_separator' => '',
     'prefix_suffix' => 0,
   );
-  /* Поле: SUM(Содержимое: Розничная цена) */
+  /* Field: SUM(Content: Розничная цена) */
   $handler->display->display_options['fields']['field_trc_price']['id'] = 'field_trc_price';
   $handler->display->display_options['fields']['field_trc_price']['table'] = 'field_data_field_trc_price';
   $handler->display->display_options['fields']['field_trc_price']['field'] = 'field_trc_price';
@@ -5341,7 +5341,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
       'empty_column' => 0,
     ),
   );
-  /* Поведение при отсутствии результатов: Глобальный: Text area */
+  /* No results behavior: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';
   $handler->display->display_options['empty']['area']['table'] = 'views';
   $handler->display->display_options['empty']['area']['field'] = 'area';
@@ -5351,12 +5351,12 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
 <br/><br/><br/><br/>
 </div>';
   $handler->display->display_options['empty']['area']['format'] = 'full_html';
-  /* Связь: Содержимое: Автор */
+  /* Relationship: Content: Author */
   $handler->display->display_options['relationships']['uid']['id'] = 'uid';
   $handler->display->display_options['relationships']['uid']['table'] = 'node';
   $handler->display->display_options['relationships']['uid']['field'] = 'uid';
   $handler->display->display_options['relationships']['uid']['required'] = TRUE;
-  /* Поле: Пользователь: Имя */
+  /* Field: User: Name */
   $handler->display->display_options['fields']['name']['id'] = 'name';
   $handler->display->display_options['fields']['name']['table'] = 'users';
   $handler->display->display_options['fields']['name']['field'] = 'name';
@@ -5364,14 +5364,14 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
   $handler->display->display_options['fields']['name']['label'] = '';
   $handler->display->display_options['fields']['name']['exclude'] = TRUE;
   $handler->display->display_options['fields']['name']['element_label_colon'] = FALSE;
-  /* Поле: Содержимое: UID Автора */
+  /* Field: Content: Author uid */
   $handler->display->display_options['fields']['uid']['id'] = 'uid';
   $handler->display->display_options['fields']['uid']['table'] = 'node';
   $handler->display->display_options['fields']['uid']['field'] = 'uid';
   $handler->display->display_options['fields']['uid']['label'] = 'Продавец';
   $handler->display->display_options['fields']['uid']['exclude'] = TRUE;
   $handler->display->display_options['fields']['uid']['link_to_user'] = FALSE;
-  /* Поле: Глобальный: PHP */
+  /* Field: Global: PHP */
   $handler->display->display_options['fields']['php_1']['id'] = 'php_1';
   $handler->display->display_options['fields']['php_1']['table'] = 'views';
   $handler->display->display_options['fields']['php_1']['field'] = 'php';
@@ -5384,13 +5384,13 @@ echo \'<a href="\'.url(\'dashboard/reports\', array(\'query\' => array(\'seller_
 ?>';
   $handler->display->display_options['fields']['php_1']['use_php_click_sortable'] = '0';
   $handler->display->display_options['fields']['php_1']['php_click_sortable'] = '';
-  /* Поле: COUNT(Содержимое: Nid) */
+  /* Field: COUNT(Content: Nid) */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
   $handler->display->display_options['fields']['nid']['table'] = 'node';
   $handler->display->display_options['fields']['nid']['field'] = 'nid';
   $handler->display->display_options['fields']['nid']['group_type'] = 'count';
   $handler->display->display_options['fields']['nid']['label'] = 'Кол-во транзакций';
-  /* Поле: SUM(Содержимое: Розничная цена) */
+  /* Field: SUM(Content: Розничная цена) */
   $handler->display->display_options['fields']['field_trc_price']['id'] = 'field_trc_price';
   $handler->display->display_options['fields']['field_trc_price']['table'] = 'field_data_field_trc_price';
   $handler->display->display_options['fields']['field_trc_price']['field'] = 'field_trc_price';
@@ -5404,7 +5404,7 @@ echo \'<a href="\'.url(\'dashboard/reports\', array(\'query\' => array(\'seller_
     'scale' => '0',
     'prefix_suffix' => 1,
   );
-  /* Поле: SUM(Содержимое: Оптовая цена) */
+  /* Field: SUM(Content: Оптовая цена) */
   $handler->display->display_options['fields']['field_trc_price_base']['id'] = 'field_trc_price_base';
   $handler->display->display_options['fields']['field_trc_price_base']['table'] = 'field_data_field_trc_price_base';
   $handler->display->display_options['fields']['field_trc_price_base']['field'] = 'field_trc_price_base';
@@ -5418,7 +5418,7 @@ echo \'<a href="\'.url(\'dashboard/reports\', array(\'query\' => array(\'seller_
     'scale' => '0',
     'prefix_suffix' => 1,
   );
-  /* Поле: Глобальный: PHP */
+  /* Field: Global: PHP */
   $handler->display->display_options['fields']['php']['id'] = 'php';
   $handler->display->display_options['fields']['php']['table'] = 'views';
   $handler->display->display_options['fields']['php']['field'] = 'php';
@@ -5433,7 +5433,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
 ?>';
   $handler->display->display_options['fields']['php']['use_php_click_sortable'] = '0';
   $handler->display->display_options['fields']['php']['php_click_sortable'] = '';
-  /* Контекстный фильтр: Содержимое: UID Автора */
+  /* Contextual filter: Content: Author uid */
   $handler->display->display_options['arguments']['uid']['id'] = 'uid';
   $handler->display->display_options['arguments']['uid']['table'] = 'node';
   $handler->display->display_options['arguments']['uid']['field'] = 'uid';
@@ -5444,28 +5444,28 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
   $handler->display->display_options['arguments']['uid']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['uid']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['uid']['summary_options']['items_per_page'] = '25';
-  /* Критерий фильтра: Содержимое: Опубликовано */
+  /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Критерий фильтра: Содержимое: Тип */
+  /* Filter criterion: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
     'transaction' => 'transaction',
   );
-  /* Критерий фильтра: Содержимое: Тип транзакции (field_trc_type) */
+  /* Filter criterion: Content: Тип транзакции (field_trc_type) */
   $handler->display->display_options['filters']['field_trc_type_value']['id'] = 'field_trc_type_value';
   $handler->display->display_options['filters']['field_trc_type_value']['table'] = 'field_data_field_trc_type';
   $handler->display->display_options['filters']['field_trc_type_value']['field'] = 'field_trc_type_value';
   $handler->display->display_options['filters']['field_trc_type_value']['value'] = array(
     'sell' => 'sell',
   );
-  /* Критерий фильтра: Дата: Дата (node) */
+  /* Filter criterion: Date: Date (node) */
   $handler->display->display_options['filters']['date_filter']['id'] = 'date_filter';
   $handler->display->display_options['filters']['date_filter']['table'] = 'node';
   $handler->display->display_options['filters']['date_filter']['field'] = 'date_filter';
@@ -5489,7 +5489,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
     'node.created' => 'node.created',
   );
   $handler->display->display_options['filters']['date_filter']['date_method'] = 'AND';
-  /* Критерий фильтра: Дата: Дата (node) */
+  /* Filter criterion: Date: Date (node) */
   $handler->display->display_options['filters']['date_filter_1']['id'] = 'date_filter_1';
   $handler->display->display_options['filters']['date_filter_1']['table'] = 'node';
   $handler->display->display_options['filters']['date_filter_1']['field'] = 'date_filter';
@@ -5513,7 +5513,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
     'node.created' => 'node.created',
   );
   $handler->display->display_options['filters']['date_filter_1']['date_method'] = 'AND';
-  /* Критерий фильтра: Содержимое: Тип оплаты (field_trc_payment_type) */
+  /* Filter criterion: Content: Тип оплаты (field_trc_payment_type) */
   $handler->display->display_options['filters']['field_trc_payment_type_tid']['id'] = 'field_trc_payment_type_tid';
   $handler->display->display_options['filters']['field_trc_payment_type_tid']['table'] = 'field_data_field_trc_payment_type';
   $handler->display->display_options['filters']['field_trc_payment_type_tid']['field'] = 'field_trc_payment_type_tid';
@@ -5532,7 +5532,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
   );
   $handler->display->display_options['filters']['field_trc_payment_type_tid']['type'] = 'select';
   $handler->display->display_options['filters']['field_trc_payment_type_tid']['vocabulary'] = 'payment_type';
-  /* Критерий фильтра: Содержимое: Продукт транзакции (field_trc_product) */
+  /* Filter criterion: Content: Продукт транзакции (field_trc_product) */
   $handler->display->display_options['filters']['field_trc_product_nid']['id'] = 'field_trc_product_nid';
   $handler->display->display_options['filters']['field_trc_product_nid']['table'] = 'field_data_field_trc_product';
   $handler->display->display_options['filters']['field_trc_product_nid']['field'] = 'field_trc_product_nid';
@@ -5549,7 +5549,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
     5 => 0,
     6 => 0,
   );
-  /* Критерий фильтра: Содержимое: UID Автора */
+  /* Filter criterion: Content: Author uid */
   $handler->display->display_options['filters']['uid']['id'] = 'uid';
   $handler->display->display_options['filters']['uid']['table'] = 'node';
   $handler->display->display_options['filters']['uid']['field'] = 'uid';
@@ -5569,7 +5569,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
     5 => 0,
     6 => 0,
   );
-  /* Критерий фильтра: Содержимое: Клиент (field_trc_client) */
+  /* Filter criterion: Content: Клиент (field_trc_client) */
   $handler->display->display_options['filters']['field_trc_client_nid']['id'] = 'field_trc_client_nid';
   $handler->display->display_options['filters']['field_trc_client_nid']['table'] = 'field_data_field_trc_client';
   $handler->display->display_options['filters']['field_trc_client_nid']['field'] = 'field_trc_client_nid';
@@ -5776,7 +5776,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
       'empty_column' => 0,
     ),
   );
-  /* Поведение при отсутствии результатов: Глобальный: Text area */
+  /* No results behavior: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';
   $handler->display->display_options['empty']['area']['table'] = 'views';
   $handler->display->display_options['empty']['area']['field'] = 'area';
@@ -5786,33 +5786,33 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
 <br/><br/><br/><br/>
 </div>';
   $handler->display->display_options['empty']['area']['format'] = 'full_html';
-  /* Поле: Содержимое: Заголовок */
+  /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['relationship'] = 'field_trc_product_nid';
   $handler->display->display_options['fields']['title']['label'] = 'Продукт';
   $handler->display->display_options['fields']['title']['empty'] = '[field_trc_product_title] <span class="label label-warning">продукт удалён</span>';
-  /* Поле: Содержимое: UID Автора */
+  /* Field: Content: Author uid */
   $handler->display->display_options['fields']['uid']['id'] = 'uid';
   $handler->display->display_options['fields']['uid']['table'] = 'node';
   $handler->display->display_options['fields']['uid']['field'] = 'uid';
-  /* Поле: Содержимое: Nid */
+  /* Field: Content: Nid */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
   $handler->display->display_options['fields']['nid']['table'] = 'node';
   $handler->display->display_options['fields']['nid']['field'] = 'nid';
-  /* Поле: Глобальный: PHP */
+  /* Field: Global: PHP */
   $handler->display->display_options['fields']['php']['id'] = 'php';
   $handler->display->display_options['fields']['php']['table'] = 'views';
   $handler->display->display_options['fields']['php']['field'] = 'php';
-  /* Критерий фильтра: Содержимое: Опубликовано */
+  /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = '1';
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Критерий фильтра: Содержимое: Тип */
+  /* Filter criterion: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
@@ -5820,7 +5820,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
     'transaction' => 'transaction',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Критерий фильтра: Дата: Дата (node) */
+  /* Filter criterion: Date: Date (node) */
   $handler->display->display_options['filters']['date_filter']['id'] = 'date_filter';
   $handler->display->display_options['filters']['date_filter']['table'] = 'node';
   $handler->display->display_options['filters']['date_filter']['field'] = 'date_filter';
@@ -5845,7 +5845,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
     'node.created' => 'node.created',
   );
   $handler->display->display_options['filters']['date_filter']['date_method'] = 'AND';
-  /* Критерий фильтра: Дата: Дата (node) */
+  /* Filter criterion: Date: Date (node) */
   $handler->display->display_options['filters']['date_filter_1']['id'] = 'date_filter_1';
   $handler->display->display_options['filters']['date_filter_1']['table'] = 'node';
   $handler->display->display_options['filters']['date_filter_1']['field'] = 'date_filter';
@@ -5870,7 +5870,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
     'node.created' => 'node.created',
   );
   $handler->display->display_options['filters']['date_filter_1']['date_method'] = 'AND';
-  /* Критерий фильтра: Содержимое: Тип транзакции (field_trc_type) */
+  /* Filter criterion: Content: Тип транзакции (field_trc_type) */
   $handler->display->display_options['filters']['field_trc_type_value']['id'] = 'field_trc_type_value';
   $handler->display->display_options['filters']['field_trc_type_value']['table'] = 'field_data_field_trc_type';
   $handler->display->display_options['filters']['field_trc_type_value']['field'] = 'field_trc_type_value';
@@ -5888,7 +5888,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
     5 => 0,
     6 => 0,
   );
-  /* Критерий фильтра: Содержимое: Seller UID (select list) */
+  /* Filter criterion: Content: Seller UID (select list) */
   $handler->display->display_options['filters']['seller_select']['id'] = 'seller_select';
   $handler->display->display_options['filters']['seller_select']['table'] = 'node';
   $handler->display->display_options['filters']['seller_select']['field'] = 'seller_select';
@@ -5906,7 +5906,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
     5 => 0,
     6 => 0,
   );
-  /* Критерий фильтра: Содержимое: Тип оплаты (field_trc_payment_type) */
+  /* Filter criterion: Content: Тип оплаты (field_trc_payment_type) */
   $handler->display->display_options['filters']['field_trc_payment_type_tid']['id'] = 'field_trc_payment_type_tid';
   $handler->display->display_options['filters']['field_trc_payment_type_tid']['table'] = 'field_data_field_trc_payment_type';
   $handler->display->display_options['filters']['field_trc_payment_type_tid']['field'] = 'field_trc_payment_type_tid';
@@ -5926,7 +5926,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
   );
   $handler->display->display_options['filters']['field_trc_payment_type_tid']['type'] = 'select';
   $handler->display->display_options['filters']['field_trc_payment_type_tid']['vocabulary'] = 'payment_type';
-  /* Критерий фильтра: Содержимое: Чек № (field_trc_check_no) */
+  /* Filter criterion: Content: Чек № (field_trc_check_no) */
   $handler->display->display_options['filters']['field_trc_check_no_value']['id'] = 'field_trc_check_no_value';
   $handler->display->display_options['filters']['field_trc_check_no_value']['table'] = 'field_data_field_trc_check_no';
   $handler->display->display_options['filters']['field_trc_check_no_value']['field'] = 'field_trc_check_no_value';
@@ -5944,7 +5944,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
     5 => 0,
     6 => 0,
   );
-  /* Критерий фильтра: Содержимое: Клиент (field_trc_client) */
+  /* Filter criterion: Content: Клиент (field_trc_client) */
   $handler->display->display_options['filters']['field_trc_client_nid']['id'] = 'field_trc_client_nid';
   $handler->display->display_options['filters']['field_trc_client_nid']['table'] = 'field_data_field_trc_client';
   $handler->display->display_options['filters']['field_trc_client_nid']['field'] = 'field_trc_client_nid';
@@ -5962,7 +5962,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
     5 => 0,
     6 => 0,
   );
-  /* Критерий фильтра: Содержимое: Продукт транзакции (field_trc_product) */
+  /* Filter criterion: Content: Продукт транзакции (field_trc_product) */
   $handler->display->display_options['filters']['field_trc_product_nid']['id'] = 'field_trc_product_nid';
   $handler->display->display_options['filters']['field_trc_product_nid']['table'] = 'field_data_field_trc_product';
   $handler->display->display_options['filters']['field_trc_product_nid']['field'] = 'field_trc_product_nid';
@@ -5979,7 +5979,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
     5 => 0,
     6 => 0,
   );
-  /* Критерий фильтра: Содержимое: Дата публикации */
+  /* Filter criterion: Content: Post date */
   $handler->display->display_options['filters']['created']['id'] = 'created';
   $handler->display->display_options['filters']['created']['table'] = 'node';
   $handler->display->display_options['filters']['created']['field'] = 'created';
@@ -6273,14 +6273,14 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['header'] = FALSE;
   $handler->display->display_options['defaults']['footer'] = FALSE;
-  /* Подвал: Глобальный: Сводка результатов */
+  /* Footer: Global: Result summary */
   $handler->display->display_options['footer']['result']['id'] = 'result';
   $handler->display->display_options['footer']['result']['table'] = 'views';
   $handler->display->display_options['footer']['result']['field'] = 'result';
   $handler->display->display_options['footer']['result']['content'] = 'Показано @start - @end из @total';
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Поле: Массовые операции: Содержимое */
+  /* Field: Bulk operations: Content */
   $handler->display->display_options['fields']['views_bulk_operations']['id'] = 'views_bulk_operations';
   $handler->display->display_options['fields']['views_bulk_operations']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['views_bulk_operations']['field'] = 'views_bulk_operations';
@@ -6300,7 +6300,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
       'label' => 'Удалить транзакцию',
     ),
   );
-  /* Поле: Содержимое: Чек № */
+  /* Field: Content: Чек № */
   $handler->display->display_options['fields']['field_trc_check_no']['id'] = 'field_trc_check_no';
   $handler->display->display_options['fields']['field_trc_check_no']['table'] = 'field_data_field_trc_check_no';
   $handler->display->display_options['fields']['field_trc_check_no']['field'] = 'field_trc_check_no';
@@ -6309,7 +6309,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
     'thousand_separator' => '',
     'prefix_suffix' => 1,
   );
-  /* Поле: Содержимое: Продукт транзакции */
+  /* Field: Content: Продукт транзакции */
   $handler->display->display_options['fields']['field_trc_product']['id'] = 'field_trc_product';
   $handler->display->display_options['fields']['field_trc_product']['table'] = 'field_data_field_trc_product';
   $handler->display->display_options['fields']['field_trc_product']['field'] = 'field_trc_product';
@@ -6320,7 +6320,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
   );
   $handler->display->display_options['fields']['field_trc_product']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_trc_product']['separator'] = '';
-  /* Поле: Содержимое: UID Автора */
+  /* Field: Content: Author uid */
   $handler->display->display_options['fields']['uid']['id'] = 'uid';
   $handler->display->display_options['fields']['uid']['table'] = 'node';
   $handler->display->display_options['fields']['uid']['field'] = 'uid';
@@ -6328,7 +6328,7 @@ echo number_format($value, 0, \'.\', \' \') . \' сум\';
   $handler->display->display_options['fields']['uid']['exclude'] = TRUE;
   $handler->display->display_options['fields']['uid']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['uid']['link_to_user'] = FALSE;
-  /* Поле: Глобальный: PHP */
+  /* Field: Global: PHP */
   $handler->display->display_options['fields']['php']['id'] = 'php';
   $handler->display->display_options['fields']['php']['table'] = 'views';
   $handler->display->display_options['fields']['php']['field'] = 'php';
@@ -6343,7 +6343,7 @@ print \'<a href="\'.url(\'dashboard/reports/sellers\').\'" data-toggle="tooltip"
 ?>';
   $handler->display->display_options['fields']['php']['use_php_click_sortable'] = '0';
   $handler->display->display_options['fields']['php']['php_click_sortable'] = '';
-  /* Поле: Содержимое: Дата публикации */
+  /* Field: Content: Post date */
   $handler->display->display_options['fields']['created_1']['id'] = 'created_1';
   $handler->display->display_options['fields']['created_1']['table'] = 'node';
   $handler->display->display_options['fields']['created_1']['field'] = 'created';
@@ -6354,7 +6354,7 @@ print \'<a href="\'.url(\'dashboard/reports/sellers\').\'" data-toggle="tooltip"
   $handler->display->display_options['fields']['created_1']['custom_date_format'] = 'd.m.Y';
   $handler->display->display_options['fields']['created_1']['second_date_format'] = 'long';
   $handler->display->display_options['fields']['created_1']['format_date_sql'] = 0;
-  /* Поле: Содержимое: Дата публикации */
+  /* Field: Content: Post date */
   $handler->display->display_options['fields']['created']['id'] = 'created';
   $handler->display->display_options['fields']['created']['table'] = 'node';
   $handler->display->display_options['fields']['created']['field'] = 'created';
@@ -6366,7 +6366,7 @@ print \'<a href="\'.url(\'dashboard/reports/sellers\').\'" data-toggle="tooltip"
   $handler->display->display_options['fields']['created']['custom_date_format'] = 'd.m.Y H:i';
   $handler->display->display_options['fields']['created']['second_date_format'] = 'long';
   $handler->display->display_options['fields']['created']['format_date_sql'] = 0;
-  /* Поле: Содержимое: Тип транзакции */
+  /* Field: Content: Тип транзакции */
   $handler->display->display_options['fields']['field_trc_type']['id'] = 'field_trc_type';
   $handler->display->display_options['fields']['field_trc_type']['table'] = 'field_data_field_trc_type';
   $handler->display->display_options['fields']['field_trc_type']['field'] = 'field_trc_type';
@@ -6374,7 +6374,7 @@ print \'<a href="\'.url(\'dashboard/reports/sellers\').\'" data-toggle="tooltip"
   $handler->display->display_options['fields']['field_trc_type']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['field_trc_type']['alter']['text'] = '<span class="trc-type-[field_trc_type-value]">[field_trc_type]</span>';
   $handler->display->display_options['fields']['field_trc_type']['element_label_colon'] = FALSE;
-  /* Поле: Содержимое: Оптовая цена */
+  /* Field: Content: Оптовая цена */
   $handler->display->display_options['fields']['field_trc_price_base']['id'] = 'field_trc_price_base';
   $handler->display->display_options['fields']['field_trc_price_base']['table'] = 'field_data_field_trc_price_base';
   $handler->display->display_options['fields']['field_trc_price_base']['field'] = 'field_trc_price_base';
@@ -6388,7 +6388,7 @@ print \'<a href="\'.url(\'dashboard/reports/sellers\').\'" data-toggle="tooltip"
     'scale' => '0',
     'prefix_suffix' => 0,
   );
-  /* Поле: Содержимое: Розничная цена */
+  /* Field: Content: Розничная цена */
   $handler->display->display_options['fields']['field_trc_price']['id'] = 'field_trc_price';
   $handler->display->display_options['fields']['field_trc_price']['table'] = 'field_data_field_trc_price';
   $handler->display->display_options['fields']['field_trc_price']['field'] = 'field_trc_price';
@@ -6402,7 +6402,7 @@ print \'<a href="\'.url(\'dashboard/reports/sellers\').\'" data-toggle="tooltip"
     'scale' => '0',
     'prefix_suffix' => 0,
   );
-  /* Поле: Содержимое: Наличные */
+  /* Field: Content: Наличные */
   $handler->display->display_options['fields']['field_trc_payment_cash']['id'] = 'field_trc_payment_cash';
   $handler->display->display_options['fields']['field_trc_payment_cash']['table'] = 'field_data_field_trc_payment_cash';
   $handler->display->display_options['fields']['field_trc_payment_cash']['field'] = 'field_trc_payment_cash';
@@ -6412,7 +6412,7 @@ print \'<a href="\'.url(\'dashboard/reports/sellers\').\'" data-toggle="tooltip"
     'thousand_separator' => ' ',
     'prefix_suffix' => 0,
   );
-  /* Поле: Содержимое: Терминал */
+  /* Field: Content: Терминал */
   $handler->display->display_options['fields']['field_trc_payment_terminal']['id'] = 'field_trc_payment_terminal';
   $handler->display->display_options['fields']['field_trc_payment_terminal']['table'] = 'field_data_field_trc_payment_terminal';
   $handler->display->display_options['fields']['field_trc_payment_terminal']['field'] = 'field_trc_payment_terminal';
@@ -6422,7 +6422,7 @@ print \'<a href="\'.url(\'dashboard/reports/sellers\').\'" data-toggle="tooltip"
     'thousand_separator' => ' ',
     'prefix_suffix' => 0,
   );
-  /* Поле: Содержимое: Долг */
+  /* Field: Content: Долг */
   $handler->display->display_options['fields']['field_trc_payment_owe']['id'] = 'field_trc_payment_owe';
   $handler->display->display_options['fields']['field_trc_payment_owe']['table'] = 'field_data_field_trc_payment_owe';
   $handler->display->display_options['fields']['field_trc_payment_owe']['field'] = 'field_trc_payment_owe';
@@ -6433,7 +6433,7 @@ print \'<a href="\'.url(\'dashboard/reports/sellers\').\'" data-toggle="tooltip"
     'scale' => '2',
     'prefix_suffix' => 1,
   );
-  /* Поле: Содержимое: Курс у.е. в сумах */
+  /* Field: Content: Курс у.е. в сумах */
   $handler->display->display_options['fields']['field_trc_rate']['id'] = 'field_trc_rate';
   $handler->display->display_options['fields']['field_trc_rate']['table'] = 'field_data_field_trc_rate';
   $handler->display->display_options['fields']['field_trc_rate']['field'] = 'field_trc_rate';
@@ -6448,7 +6448,7 @@ print \'<a href="\'.url(\'dashboard/reports/sellers\').\'" data-toggle="tooltip"
     'scale' => '2',
     'prefix_suffix' => 1,
   );
-  /* Поле: Содержимое: Ссылка на редактирование */
+  /* Field: Content: Edit link */
   $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
   $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['edit_node']['field'] = 'edit_node';
@@ -6456,7 +6456,7 @@ print \'<a href="\'.url(\'dashboard/reports/sellers\').\'" data-toggle="tooltip"
   $handler->display->display_options['fields']['edit_node']['exclude'] = TRUE;
   $handler->display->display_options['fields']['edit_node']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['edit_node']['text'] = '<span class="glyphicon glyphicon-edit" data-toggle="tooltip" data-placement="top" title="Редактировать"></span>';
-  /* Поле: Содержимое: Ссылка на удаление */
+  /* Field: Content: Delete link */
   $handler->display->display_options['fields']['delete_node']['id'] = 'delete_node';
   $handler->display->display_options['fields']['delete_node']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['delete_node']['field'] = 'delete_node';
@@ -6464,7 +6464,7 @@ print \'<a href="\'.url(\'dashboard/reports/sellers\').\'" data-toggle="tooltip"
   $handler->display->display_options['fields']['delete_node']['exclude'] = TRUE;
   $handler->display->display_options['fields']['delete_node']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['delete_node']['text'] = '<span class="glyphicon glyphicon-remove-circle text-danger" data-toggle="tooltip" data-placement="top" title="Удалить"></span>';
-  /* Поле: Глобальный: Пользовательский текст */
+  /* Field: Global: Custom text */
   $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
@@ -6511,14 +6511,14 @@ print \'<a href="\'.url(\'dashboard/reports/sellers\').\'" data-toggle="tooltip"
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['empty'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Поле: Содержимое: Nid */
+  /* Field: Content: Nid */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
   $handler->display->display_options['fields']['nid']['table'] = 'node';
   $handler->display->display_options['fields']['nid']['field'] = 'nid';
   $handler->display->display_options['fields']['nid']['group_type'] = 'count';
   $handler->display->display_options['fields']['nid']['label'] = 'Продаж всего';
   $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
-  /* Поле: Содержимое: Розничная цена */
+  /* Field: Content: Розничная цена */
   $handler->display->display_options['fields']['field_trc_price']['id'] = 'field_trc_price';
   $handler->display->display_options['fields']['field_trc_price']['table'] = 'field_data_field_trc_price';
   $handler->display->display_options['fields']['field_trc_price']['field'] = 'field_trc_price';
@@ -6533,7 +6533,7 @@ print \'<a href="\'.url(\'dashboard/reports/sellers\').\'" data-toggle="tooltip"
     'thousand_separator' => ' ',
     'prefix_suffix' => 1,
   );
-  /* Поле: Содержимое: Оптовая цена */
+  /* Field: Content: Оптовая цена */
   $handler->display->display_options['fields']['field_trc_price_base']['id'] = 'field_trc_price_base';
   $handler->display->display_options['fields']['field_trc_price_base']['table'] = 'field_data_field_trc_price_base';
   $handler->display->display_options['fields']['field_trc_price_base']['field'] = 'field_trc_price_base';
@@ -6546,7 +6546,7 @@ print \'<a href="\'.url(\'dashboard/reports/sellers\').\'" data-toggle="tooltip"
     'thousand_separator' => ' ',
     'prefix_suffix' => 1,
   );
-  /* Поле: Глобальный: PHP */
+  /* Field: Global: PHP */
   $handler->display->display_options['fields']['php']['id'] = 'php';
   $handler->display->display_options['fields']['php']['table'] = 'views';
   $handler->display->display_options['fields']['php']['field'] = 'php';
@@ -6579,7 +6579,7 @@ return number_format($prib, 0, \'.\', \' \') . \' сум\';';
   $handler->display->display_options['style_options']['filename'] = 'Все-транзакции-%timestamp-full.xlsx';
   $handler->display->display_options['style_options']['parent_sort'] = 1;
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Поле: Содержимое: Чек № */
+  /* Field: Content: Чек № */
   $handler->display->display_options['fields']['field_trc_check_no']['id'] = 'field_trc_check_no';
   $handler->display->display_options['fields']['field_trc_check_no']['table'] = 'field_data_field_trc_check_no';
   $handler->display->display_options['fields']['field_trc_check_no']['field'] = 'field_trc_check_no';
@@ -6588,19 +6588,19 @@ return number_format($prib, 0, \'.\', \' \') . \' сум\';';
     'thousand_separator' => '',
     'prefix_suffix' => 0,
   );
-  /* Поле: Содержимое: Заголовок */
+  /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['relationship'] = 'field_trc_product_nid';
   $handler->display->display_options['fields']['title']['label'] = 'Продукт';
   $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
-  /* Поле: Содержимое: UID Автора */
+  /* Field: Content: Author uid */
   $handler->display->display_options['fields']['uid']['id'] = 'uid';
   $handler->display->display_options['fields']['uid']['table'] = 'node';
   $handler->display->display_options['fields']['uid']['field'] = 'uid';
   $handler->display->display_options['fields']['uid']['exclude'] = TRUE;
-  /* Поле: Глобальный: PHP */
+  /* Field: Global: PHP */
   $handler->display->display_options['fields']['php']['id'] = 'php';
   $handler->display->display_options['fields']['php']['table'] = 'views';
   $handler->display->display_options['fields']['php']['field'] = 'php';
@@ -6615,7 +6615,7 @@ print $trc_user->name;
 ?>';
   $handler->display->display_options['fields']['php']['use_php_click_sortable'] = '0';
   $handler->display->display_options['fields']['php']['php_click_sortable'] = '';
-  /* Поле: Содержимое: Дата публикации */
+  /* Field: Content: Post date */
   $handler->display->display_options['fields']['created']['id'] = 'created';
   $handler->display->display_options['fields']['created']['table'] = 'node';
   $handler->display->display_options['fields']['created']['field'] = 'created';
@@ -6625,13 +6625,13 @@ print $trc_user->name;
   $handler->display->display_options['fields']['created']['custom_date_format'] = 'd.m.Y H:i';
   $handler->display->display_options['fields']['created']['second_date_format'] = 'long';
   $handler->display->display_options['fields']['created']['format_date_sql'] = 0;
-  /* Поле: Содержимое: Тип транзакции */
+  /* Field: Content: Тип транзакции */
   $handler->display->display_options['fields']['field_trc_type']['id'] = 'field_trc_type';
   $handler->display->display_options['fields']['field_trc_type']['table'] = 'field_data_field_trc_type';
   $handler->display->display_options['fields']['field_trc_type']['field'] = 'field_trc_type';
   $handler->display->display_options['fields']['field_trc_type']['label'] = 'Тип';
   $handler->display->display_options['fields']['field_trc_type']['element_label_colon'] = FALSE;
-  /* Поле: Содержимое: Количество */
+  /* Field: Content: Количество */
   $handler->display->display_options['fields']['field_prtrc_amount']['id'] = 'field_prtrc_amount';
   $handler->display->display_options['fields']['field_prtrc_amount']['table'] = 'field_data_field_prtrc_amount';
   $handler->display->display_options['fields']['field_prtrc_amount']['field'] = 'field_prtrc_amount';
@@ -6642,7 +6642,7 @@ print $trc_user->name;
     'scale' => '2',
     'prefix_suffix' => 0,
   );
-  /* Поле: Содержимое: Оптовая цена */
+  /* Field: Content: Оптовая цена */
   $handler->display->display_options['fields']['field_prtrc_opt_price']['id'] = 'field_prtrc_opt_price';
   $handler->display->display_options['fields']['field_prtrc_opt_price']['table'] = 'field_data_field_prtrc_opt_price';
   $handler->display->display_options['fields']['field_prtrc_opt_price']['field'] = 'field_prtrc_opt_price';
@@ -6652,7 +6652,7 @@ print $trc_user->name;
     'thousand_separator' => '',
     'prefix_suffix' => 0,
   );
-  /* Поле: Содержимое: Розничная цена */
+  /* Field: Content: Розничная цена */
   $handler->display->display_options['fields']['field_prtrc_roz_price']['id'] = 'field_prtrc_roz_price';
   $handler->display->display_options['fields']['field_prtrc_roz_price']['table'] = 'field_data_field_prtrc_roz_price';
   $handler->display->display_options['fields']['field_prtrc_roz_price']['field'] = 'field_prtrc_roz_price';
@@ -6662,18 +6662,18 @@ print $trc_user->name;
     'thousand_separator' => '',
     'prefix_suffix' => 0,
   );
-  /* Поле: Содержимое: Поставщик */
+  /* Field: Content: Поставщик */
   $handler->display->display_options['fields']['field_prtrc_provider_title']['id'] = 'field_prtrc_provider_title';
   $handler->display->display_options['fields']['field_prtrc_provider_title']['table'] = 'field_data_field_prtrc_provider_title';
   $handler->display->display_options['fields']['field_prtrc_provider_title']['field'] = 'field_prtrc_provider_title';
   $handler->display->display_options['fields']['field_prtrc_provider_title']['relationship'] = 'field_trc_product_nid';
   $handler->display->display_options['fields']['field_prtrc_provider_title']['delta_offset'] = '0';
-  /* Поле: Содержимое: Производитель */
+  /* Field: Content: Производитель */
   $handler->display->display_options['fields']['field_prtrc_manufacturer']['id'] = 'field_prtrc_manufacturer';
   $handler->display->display_options['fields']['field_prtrc_manufacturer']['table'] = 'field_data_field_prtrc_manufacturer';
   $handler->display->display_options['fields']['field_prtrc_manufacturer']['field'] = 'field_prtrc_manufacturer';
   $handler->display->display_options['fields']['field_prtrc_manufacturer']['relationship'] = 'field_trc_product_nid';
-  /* Поле: Содержимое: Страна производителя */
+  /* Field: Content: Страна производителя */
   $handler->display->display_options['fields']['field_prtrc_mn_country']['id'] = 'field_prtrc_mn_country';
   $handler->display->display_options['fields']['field_prtrc_mn_country']['table'] = 'field_data_field_prtrc_mn_country';
   $handler->display->display_options['fields']['field_prtrc_mn_country']['field'] = 'field_prtrc_mn_country';
@@ -6715,14 +6715,14 @@ print $trc_user->name;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['empty'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Поле: Содержимое: Nid */
+  /* Field: Content: Nid */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
   $handler->display->display_options['fields']['nid']['table'] = 'node';
   $handler->display->display_options['fields']['nid']['field'] = 'nid';
   $handler->display->display_options['fields']['nid']['group_type'] = 'count';
   $handler->display->display_options['fields']['nid']['label'] = 'Продаж всего';
   $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
-  /* Поле: Содержимое: Курс у.е. в сумах */
+  /* Field: Content: Курс у.е. в сумах */
   $handler->display->display_options['fields']['field_trc_rate']['id'] = 'field_trc_rate';
   $handler->display->display_options['fields']['field_trc_rate']['table'] = 'field_data_field_trc_rate';
   $handler->display->display_options['fields']['field_trc_rate']['field'] = 'field_trc_rate';
@@ -6733,7 +6733,7 @@ print $trc_user->name;
     'scale' => '2',
     'prefix_suffix' => 1,
   );
-  /* Поле: Содержимое: Розничная цена */
+  /* Field: Content: Розничная цена */
   $handler->display->display_options['fields']['field_trc_price']['id'] = 'field_trc_price';
   $handler->display->display_options['fields']['field_trc_price']['table'] = 'field_data_field_trc_price';
   $handler->display->display_options['fields']['field_trc_price']['field'] = 'field_trc_price';
@@ -6749,7 +6749,7 @@ print $trc_user->name;
     'scale' => '2',
     'prefix_suffix' => 0,
   );
-  /* Поле: Содержимое: Оптовая цена */
+  /* Field: Content: Оптовая цена */
   $handler->display->display_options['fields']['field_trc_price_base']['id'] = 'field_trc_price_base';
   $handler->display->display_options['fields']['field_trc_price_base']['table'] = 'field_data_field_trc_price_base';
   $handler->display->display_options['fields']['field_trc_price_base']['field'] = 'field_trc_price_base';
@@ -6762,7 +6762,7 @@ print $trc_user->name;
     'thousand_separator' => '',
     'prefix_suffix' => 0,
   );
-  /* Поле: Содержимое: Чек № */
+  /* Field: Content: Чек № */
   $handler->display->display_options['fields']['field_trc_check_no']['id'] = 'field_trc_check_no';
   $handler->display->display_options['fields']['field_trc_check_no']['table'] = 'field_data_field_trc_check_no';
   $handler->display->display_options['fields']['field_trc_check_no']['field'] = 'field_trc_check_no';
@@ -6770,7 +6770,7 @@ print $trc_user->name;
   $handler->display->display_options['fields']['field_trc_check_no']['element_type'] = '0';
   $handler->display->display_options['fields']['field_trc_check_no']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['field_trc_check_no']['separator'] = '';
-  /* Поле: Содержимое: Наличные */
+  /* Field: Content: Наличные */
   $handler->display->display_options['fields']['field_trc_payment_cash']['id'] = 'field_trc_payment_cash';
   $handler->display->display_options['fields']['field_trc_payment_cash']['table'] = 'field_data_field_trc_payment_cash';
   $handler->display->display_options['fields']['field_trc_payment_cash']['field'] = 'field_trc_payment_cash';
@@ -6781,7 +6781,7 @@ print $trc_user->name;
     'thousand_separator' => '',
     'prefix_suffix' => 1,
   );
-  /* Поле: Содержимое: Терминал */
+  /* Field: Content: Терминал */
   $handler->display->display_options['fields']['field_trc_payment_terminal']['id'] = 'field_trc_payment_terminal';
   $handler->display->display_options['fields']['field_trc_payment_terminal']['table'] = 'field_data_field_trc_payment_terminal';
   $handler->display->display_options['fields']['field_trc_payment_terminal']['field'] = 'field_trc_payment_terminal';
@@ -6792,7 +6792,7 @@ print $trc_user->name;
     'thousand_separator' => '',
     'prefix_suffix' => 1,
   );
-  /* Поле: Содержимое: Розничная цена */
+  /* Field: Content: Розничная цена */
   $handler->display->display_options['fields']['field_trc_price_1']['id'] = 'field_trc_price_1';
   $handler->display->display_options['fields']['field_trc_price_1']['table'] = 'field_data_field_trc_price';
   $handler->display->display_options['fields']['field_trc_price_1']['field'] = 'field_trc_price';
@@ -6806,7 +6806,7 @@ print $trc_user->name;
     'scale' => '2',
     'prefix_suffix' => 1,
   );
-  /* Поле: Содержимое: Долг */
+  /* Field: Content: Долг */
   $handler->display->display_options['fields']['field_trc_payment_owe']['id'] = 'field_trc_payment_owe';
   $handler->display->display_options['fields']['field_trc_payment_owe']['table'] = 'field_data_field_trc_payment_owe';
   $handler->display->display_options['fields']['field_trc_payment_owe']['field'] = 'field_trc_payment_owe';
@@ -6839,7 +6839,7 @@ print $trc_user->name;
   $handler->display->display_options['style_options']['header'] = 1;
   $handler->display->display_options['style_options']['keep_html'] = 0;
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Поле: Содержимое: Чек № */
+  /* Field: Content: Чек № */
   $handler->display->display_options['fields']['field_trc_check_no']['id'] = 'field_trc_check_no';
   $handler->display->display_options['fields']['field_trc_check_no']['table'] = 'field_data_field_trc_check_no';
   $handler->display->display_options['fields']['field_trc_check_no']['field'] = 'field_trc_check_no';
@@ -6848,19 +6848,19 @@ print $trc_user->name;
     'thousand_separator' => '',
     'prefix_suffix' => 0,
   );
-  /* Поле: Содержимое: Заголовок */
+  /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['relationship'] = 'field_trc_product_nid';
   $handler->display->display_options['fields']['title']['label'] = 'Продукт';
   $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
-  /* Поле: Содержимое: UID Автора */
+  /* Field: Content: Author uid */
   $handler->display->display_options['fields']['uid']['id'] = 'uid';
   $handler->display->display_options['fields']['uid']['table'] = 'node';
   $handler->display->display_options['fields']['uid']['field'] = 'uid';
   $handler->display->display_options['fields']['uid']['exclude'] = TRUE;
-  /* Поле: Глобальный: PHP */
+  /* Field: Global: PHP */
   $handler->display->display_options['fields']['php']['id'] = 'php';
   $handler->display->display_options['fields']['php']['table'] = 'views';
   $handler->display->display_options['fields']['php']['field'] = 'php';
@@ -6875,7 +6875,7 @@ print $trc_user->name;
 ?>';
   $handler->display->display_options['fields']['php']['use_php_click_sortable'] = '0';
   $handler->display->display_options['fields']['php']['php_click_sortable'] = '';
-  /* Поле: Содержимое: Дата публикации */
+  /* Field: Content: Post date */
   $handler->display->display_options['fields']['created']['id'] = 'created';
   $handler->display->display_options['fields']['created']['table'] = 'node';
   $handler->display->display_options['fields']['created']['field'] = 'created';
@@ -6885,13 +6885,13 @@ print $trc_user->name;
   $handler->display->display_options['fields']['created']['custom_date_format'] = 'd.m.Y H:i';
   $handler->display->display_options['fields']['created']['second_date_format'] = 'long';
   $handler->display->display_options['fields']['created']['format_date_sql'] = 0;
-  /* Поле: Содержимое: Тип транзакции */
+  /* Field: Content: Тип транзакции */
   $handler->display->display_options['fields']['field_trc_type']['id'] = 'field_trc_type';
   $handler->display->display_options['fields']['field_trc_type']['table'] = 'field_data_field_trc_type';
   $handler->display->display_options['fields']['field_trc_type']['field'] = 'field_trc_type';
   $handler->display->display_options['fields']['field_trc_type']['label'] = 'Тип';
   $handler->display->display_options['fields']['field_trc_type']['element_label_colon'] = FALSE;
-  /* Поле: Содержимое: Количество */
+  /* Field: Content: Количество */
   $handler->display->display_options['fields']['field_prtrc_amount']['id'] = 'field_prtrc_amount';
   $handler->display->display_options['fields']['field_prtrc_amount']['table'] = 'field_data_field_prtrc_amount';
   $handler->display->display_options['fields']['field_prtrc_amount']['field'] = 'field_prtrc_amount';
@@ -6902,7 +6902,7 @@ print $trc_user->name;
     'scale' => '2',
     'prefix_suffix' => 0,
   );
-  /* Поле: Содержимое: Оптовая цена */
+  /* Field: Content: Оптовая цена */
   $handler->display->display_options['fields']['field_prtrc_opt_price']['id'] = 'field_prtrc_opt_price';
   $handler->display->display_options['fields']['field_prtrc_opt_price']['table'] = 'field_data_field_prtrc_opt_price';
   $handler->display->display_options['fields']['field_prtrc_opt_price']['field'] = 'field_prtrc_opt_price';
@@ -6912,7 +6912,7 @@ print $trc_user->name;
     'thousand_separator' => '',
     'prefix_suffix' => 0,
   );
-  /* Поле: Содержимое: Розничная цена */
+  /* Field: Content: Розничная цена */
   $handler->display->display_options['fields']['field_prtrc_roz_price']['id'] = 'field_prtrc_roz_price';
   $handler->display->display_options['fields']['field_prtrc_roz_price']['table'] = 'field_data_field_prtrc_roz_price';
   $handler->display->display_options['fields']['field_prtrc_roz_price']['field'] = 'field_prtrc_roz_price';
@@ -6922,18 +6922,18 @@ print $trc_user->name;
     'thousand_separator' => '',
     'prefix_suffix' => 0,
   );
-  /* Поле: Содержимое: Поставщик */
+  /* Field: Content: Поставщик */
   $handler->display->display_options['fields']['field_prtrc_provider_title']['id'] = 'field_prtrc_provider_title';
   $handler->display->display_options['fields']['field_prtrc_provider_title']['table'] = 'field_data_field_prtrc_provider_title';
   $handler->display->display_options['fields']['field_prtrc_provider_title']['field'] = 'field_prtrc_provider_title';
   $handler->display->display_options['fields']['field_prtrc_provider_title']['relationship'] = 'field_trc_product_nid';
   $handler->display->display_options['fields']['field_prtrc_provider_title']['delta_offset'] = '0';
-  /* Поле: Содержимое: Производитель */
+  /* Field: Content: Производитель */
   $handler->display->display_options['fields']['field_prtrc_manufacturer']['id'] = 'field_prtrc_manufacturer';
   $handler->display->display_options['fields']['field_prtrc_manufacturer']['table'] = 'field_data_field_prtrc_manufacturer';
   $handler->display->display_options['fields']['field_prtrc_manufacturer']['field'] = 'field_prtrc_manufacturer';
   $handler->display->display_options['fields']['field_prtrc_manufacturer']['relationship'] = 'field_trc_product_nid';
-  /* Поле: Содержимое: Страна производителя */
+  /* Field: Content: Страна производителя */
   $handler->display->display_options['fields']['field_prtrc_mn_country']['id'] = 'field_prtrc_mn_country';
   $handler->display->display_options['fields']['field_prtrc_mn_country']['table'] = 'field_data_field_prtrc_mn_country';
   $handler->display->display_options['fields']['field_prtrc_mn_country']['field'] = 'field_prtrc_mn_country';
@@ -7097,24 +7097,24 @@ print $trc_user->name;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['header'] = FALSE;
-  /* Шапка: Глобальный: Сводка результатов */
+  /* Header: Global: Result summary */
   $handler->display->display_options['header']['result']['id'] = 'result';
   $handler->display->display_options['header']['result']['table'] = 'views';
   $handler->display->display_options['header']['result']['field'] = 'result';
   $handler->display->display_options['header']['result']['content'] = 'Показано @start - @end из @total';
   $handler->display->display_options['defaults']['footer'] = FALSE;
   $handler->display->display_options['defaults']['relationships'] = FALSE;
-  /* Связь: Содержимое: Автор */
+  /* Relationship: Content: Author */
   $handler->display->display_options['relationships']['uid']['id'] = 'uid';
   $handler->display->display_options['relationships']['uid']['table'] = 'node';
   $handler->display->display_options['relationships']['uid']['field'] = 'uid';
   $handler->display->display_options['relationships']['uid']['required'] = TRUE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Поле: Содержимое: Nid */
+  /* Field: Content: Nid */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
   $handler->display->display_options['fields']['nid']['table'] = 'node';
   $handler->display->display_options['fields']['nid']['field'] = 'nid';
-  /* Поле: Содержимое: Чек № */
+  /* Field: Content: Чек № */
   $handler->display->display_options['fields']['field_trc_check_no']['id'] = 'field_trc_check_no';
   $handler->display->display_options['fields']['field_trc_check_no']['table'] = 'field_data_field_trc_check_no';
   $handler->display->display_options['fields']['field_trc_check_no']['field'] = 'field_trc_check_no';
@@ -7123,12 +7123,12 @@ print $trc_user->name;
     'thousand_separator' => '',
     'prefix_suffix' => 1,
   );
-  /* Поле: Содержимое: Заголовок */
+  /* Field: Content: Title */
   $handler->display->display_options['fields']['title_1']['id'] = 'title_1';
   $handler->display->display_options['fields']['title_1']['table'] = 'node';
   $handler->display->display_options['fields']['title_1']['field'] = 'title';
   $handler->display->display_options['fields']['title_1']['link_to_node'] = FALSE;
-  /* Поле: Содержимое: Продукт транзакции */
+  /* Field: Content: Продукт транзакции */
   $handler->display->display_options['fields']['field_trc_product']['id'] = 'field_trc_product';
   $handler->display->display_options['fields']['field_trc_product']['table'] = 'field_data_field_trc_product';
   $handler->display->display_options['fields']['field_trc_product']['field'] = 'field_trc_product';
@@ -7139,14 +7139,14 @@ print $trc_user->name;
   );
   $handler->display->display_options['fields']['field_trc_product']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_trc_product']['separator'] = '';
-  /* Поле: Содержимое: UID Автора */
+  /* Field: Content: Author uid */
   $handler->display->display_options['fields']['uid']['id'] = 'uid';
   $handler->display->display_options['fields']['uid']['table'] = 'node';
   $handler->display->display_options['fields']['uid']['field'] = 'uid';
   $handler->display->display_options['fields']['uid']['label'] = '';
   $handler->display->display_options['fields']['uid']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['uid']['link_to_user'] = FALSE;
-  /* Поле: Содержимое: Дата публикации */
+  /* Field: Content: Post date */
   $handler->display->display_options['fields']['created']['id'] = 'created';
   $handler->display->display_options['fields']['created']['table'] = 'node';
   $handler->display->display_options['fields']['created']['field'] = 'created';
@@ -7156,7 +7156,7 @@ print $trc_user->name;
   $handler->display->display_options['fields']['created']['custom_date_format'] = 'd.m.Y H:i';
   $handler->display->display_options['fields']['created']['second_date_format'] = 'long';
   $handler->display->display_options['fields']['created']['format_date_sql'] = 0;
-  /* Поле: Содержимое: Тип транзакции */
+  /* Field: Content: Тип транзакции */
   $handler->display->display_options['fields']['field_trc_type']['id'] = 'field_trc_type';
   $handler->display->display_options['fields']['field_trc_type']['table'] = 'field_data_field_trc_type';
   $handler->display->display_options['fields']['field_trc_type']['field'] = 'field_trc_type';
@@ -7165,7 +7165,7 @@ print $trc_user->name;
   $handler->display->display_options['fields']['field_trc_type']['alter']['text'] = '<span class="trc-type-[field_trc_type-value]">[field_trc_type]</span>';
   $handler->display->display_options['fields']['field_trc_type']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_trc_type']['type'] = 'list_key';
-  /* Поле: Содержимое: Оптовая цена */
+  /* Field: Content: Оптовая цена */
   $handler->display->display_options['fields']['field_trc_price_base']['id'] = 'field_trc_price_base';
   $handler->display->display_options['fields']['field_trc_price_base']['table'] = 'field_data_field_trc_price_base';
   $handler->display->display_options['fields']['field_trc_price_base']['field'] = 'field_trc_price_base';
@@ -7177,7 +7177,7 @@ print $trc_user->name;
     'thousand_separator' => '',
     'prefix_suffix' => 0,
   );
-  /* Поле: Содержимое: Розничная цена */
+  /* Field: Content: Розничная цена */
   $handler->display->display_options['fields']['field_trc_price']['id'] = 'field_trc_price';
   $handler->display->display_options['fields']['field_trc_price']['table'] = 'field_data_field_trc_price';
   $handler->display->display_options['fields']['field_trc_price']['field'] = 'field_trc_price';
@@ -7189,7 +7189,7 @@ print $trc_user->name;
     'thousand_separator' => ' ',
     'prefix_suffix' => 1,
   );
-  /* Поле: Содержимое: Наличные */
+  /* Field: Content: Наличные */
   $handler->display->display_options['fields']['field_trc_payment_cash']['id'] = 'field_trc_payment_cash';
   $handler->display->display_options['fields']['field_trc_payment_cash']['table'] = 'field_data_field_trc_payment_cash';
   $handler->display->display_options['fields']['field_trc_payment_cash']['field'] = 'field_trc_payment_cash';
@@ -7200,7 +7200,7 @@ print $trc_user->name;
     'thousand_separator' => ' ',
     'prefix_suffix' => 1,
   );
-  /* Поле: Содержимое: Терминал */
+  /* Field: Content: Терминал */
   $handler->display->display_options['fields']['field_trc_payment_terminal']['id'] = 'field_trc_payment_terminal';
   $handler->display->display_options['fields']['field_trc_payment_terminal']['table'] = 'field_data_field_trc_payment_terminal';
   $handler->display->display_options['fields']['field_trc_payment_terminal']['field'] = 'field_trc_payment_terminal';
@@ -7211,11 +7211,11 @@ print $trc_user->name;
     'thousand_separator' => ' ',
     'prefix_suffix' => 1,
   );
-  /* Поле: Содержимое: Причина возврата */
+  /* Field: Content: Причина возврата */
   $handler->display->display_options['fields']['field_field_trc_refund_reason']['id'] = 'field_field_trc_refund_reason';
   $handler->display->display_options['fields']['field_field_trc_refund_reason']['table'] = 'field_data_field_field_trc_refund_reason';
   $handler->display->display_options['fields']['field_field_trc_refund_reason']['field'] = 'field_field_trc_refund_reason';
-  /* Поле: Содержимое: Сумма возврата */
+  /* Field: Content: Сумма возврата */
   $handler->display->display_options['fields']['field_trc_refund_amount']['id'] = 'field_trc_refund_amount';
   $handler->display->display_options['fields']['field_trc_refund_amount']['table'] = 'field_data_field_trc_refund_amount';
   $handler->display->display_options['fields']['field_trc_refund_amount']['field'] = 'field_trc_refund_amount';
@@ -7224,20 +7224,20 @@ print $trc_user->name;
     'thousand_separator' => '',
     'prefix_suffix' => 0,
   );
-  /* Поле: Содержимое: Тип оплаты */
+  /* Field: Content: Тип оплаты */
   $handler->display->display_options['fields']['field_trc_payment_type']['id'] = 'field_trc_payment_type';
   $handler->display->display_options['fields']['field_trc_payment_type']['table'] = 'field_data_field_trc_payment_type';
   $handler->display->display_options['fields']['field_trc_payment_type']['field'] = 'field_trc_payment_type';
   $handler->display->display_options['fields']['field_trc_payment_type']['type'] = 'taxonomy_term_reference_plain';
   $handler->display->display_options['fields']['field_trc_payment_type']['delta_offset'] = '0';
-  /* Поле: Пользователь: Имя */
+  /* Field: User: Name */
   $handler->display->display_options['fields']['name']['id'] = 'name';
   $handler->display->display_options['fields']['name']['table'] = 'users';
   $handler->display->display_options['fields']['name']['field'] = 'name';
   $handler->display->display_options['fields']['name']['relationship'] = 'uid';
   $handler->display->display_options['fields']['name']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['name']['link_to_user'] = FALSE;
-  /* Поле: Содержимое: Сервер ID */
+  /* Field: Content: Сервер ID */
   $handler->display->display_options['fields']['field_trc_server_node_id']['id'] = 'field_trc_server_node_id';
   $handler->display->display_options['fields']['field_trc_server_node_id']['table'] = 'field_data_field_trc_server_node_id';
   $handler->display->display_options['fields']['field_trc_server_node_id']['field'] = 'field_trc_server_node_id';
@@ -7247,21 +7247,21 @@ print $trc_user->name;
     'prefix_suffix' => 1,
   );
   $handler->display->display_options['defaults']['sorts'] = FALSE;
-  /* Критерий сортировки: Содержимое: Дата публикации */
+  /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
-  /* Критерий фильтра: Содержимое: Опубликовано */
+  /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = '1';
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Критерий фильтра: Содержимое: Тип */
+  /* Filter criterion: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
@@ -7269,7 +7269,7 @@ print $trc_user->name;
     'transaction' => 'transaction',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Критерий фильтра: Содержимое: Загружен на сервер (field_trc_uploaded_server) */
+  /* Filter criterion: Content: Загружен на сервер (field_trc_uploaded_server) */
   $handler->display->display_options['filters']['field_trc_uploaded_server_value']['id'] = 'field_trc_uploaded_server_value';
   $handler->display->display_options['filters']['field_trc_uploaded_server_value']['table'] = 'field_data_field_trc_uploaded_server';
   $handler->display->display_options['filters']['field_trc_uploaded_server_value']['field'] = 'field_trc_uploaded_server_value';
@@ -7383,7 +7383,7 @@ print $trc_user->name;
       'empty_column' => 0,
     ),
   );
-  /* Поле: Массовые операции: Содержимое */
+  /* Field: Bulk operations: Content */
   $handler->display->display_options['fields']['views_bulk_operations']['id'] = 'views_bulk_operations';
   $handler->display->display_options['fields']['views_bulk_operations']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['views_bulk_operations']['field'] = 'views_bulk_operations';
@@ -7401,14 +7401,14 @@ print $trc_user->name;
       'label' => 'Удалить списанного товара',
     ),
   );
-  /* Поле: Содержимое: Заголовок */
+  /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
-  /* Поле: Содержимое: Дата публикации */
+  /* Field: Content: Post date */
   $handler->display->display_options['fields']['created']['id'] = 'created';
   $handler->display->display_options['fields']['created']['table'] = 'node';
   $handler->display->display_options['fields']['created']['field'] = 'created';
@@ -7416,7 +7416,7 @@ print $trc_user->name;
   $handler->display->display_options['fields']['created']['date_format'] = 'short';
   $handler->display->display_options['fields']['created']['second_date_format'] = 'long';
   $handler->display->display_options['fields']['created']['format_date_sql'] = 0;
-  /* Поле: Содержимое: Количество */
+  /* Field: Content: Количество */
   $handler->display->display_options['fields']['field_rv_amount']['id'] = 'field_rv_amount';
   $handler->display->display_options['fields']['field_rv_amount']['table'] = 'field_data_field_rv_amount';
   $handler->display->display_options['fields']['field_rv_amount']['field'] = 'field_rv_amount';
@@ -7427,7 +7427,7 @@ print $trc_user->name;
     'scale' => '2',
     'prefix_suffix' => 1,
   );
-  /* Поле: Содержимое: Оптовая цена */
+  /* Field: Content: Оптовая цена */
   $handler->display->display_options['fields']['field_rv_opt_price']['id'] = 'field_rv_opt_price';
   $handler->display->display_options['fields']['field_rv_opt_price']['table'] = 'field_data_field_rv_opt_price';
   $handler->display->display_options['fields']['field_rv_opt_price']['field'] = 'field_rv_opt_price';
@@ -7438,7 +7438,7 @@ print $trc_user->name;
     'scale' => '2',
     'prefix_suffix' => 1,
   );
-  /* Поле: Содержимое: Розничная цена */
+  /* Field: Content: Розничная цена */
   $handler->display->display_options['fields']['field_rv_roz_price']['id'] = 'field_rv_roz_price';
   $handler->display->display_options['fields']['field_rv_roz_price']['table'] = 'field_data_field_rv_roz_price';
   $handler->display->display_options['fields']['field_rv_roz_price']['field'] = 'field_rv_roz_price';
@@ -7449,23 +7449,23 @@ print $trc_user->name;
     'scale' => '2',
     'prefix_suffix' => 1,
   );
-  /* Поле: Содержимое: Комментарий */
+  /* Field: Content: Комментарий */
   $handler->display->display_options['fields']['field_rv_comment']['id'] = 'field_rv_comment';
   $handler->display->display_options['fields']['field_rv_comment']['table'] = 'field_data_field_rv_comment';
   $handler->display->display_options['fields']['field_rv_comment']['field'] = 'field_rv_comment';
-  /* Критерий сортировки: Содержимое: Дата публикации */
+  /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  /* Критерий фильтра: Содержимое: Опубликовано */
+  /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Критерий фильтра: Содержимое: Тип */
+  /* Filter criterion: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
@@ -7514,14 +7514,14 @@ print $trc_user->name;
   $handler->display->display_options['pager']['options']['tags']['next'] = 'следующая ›';
   $handler->display->display_options['pager']['options']['tags']['last'] = 'последняя »';
   $handler->display->display_options['style_plugin'] = 'table';
-  /* Поведение при отсутствии результатов: Глобальный: Text area */
+  /* No results behavior: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';
   $handler->display->display_options['empty']['area']['table'] = 'views';
   $handler->display->display_options['empty']['area']['field'] = 'area';
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
   $handler->display->display_options['empty']['area']['content'] = '<p>Вы ещё не добавили ни одного продавца.</p>';
   $handler->display->display_options['empty']['area']['format'] = 'full_html';
-  /* Поле: Пользователь: Имя */
+  /* Field: User: Name */
   $handler->display->display_options['fields']['name']['id'] = 'name';
   $handler->display->display_options['fields']['name']['table'] = 'users';
   $handler->display->display_options['fields']['name']['field'] = 'name';
@@ -7529,7 +7529,7 @@ print $trc_user->name;
   $handler->display->display_options['fields']['name']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['name']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['name']['link_to_user'] = FALSE;
-  /* Поле: Пользователь: Uid */
+  /* Field: User: Uid */
   $handler->display->display_options['fields']['uid']['id'] = 'uid';
   $handler->display->display_options['fields']['uid']['table'] = 'users';
   $handler->display->display_options['fields']['uid']['field'] = 'uid';
@@ -7537,7 +7537,7 @@ print $trc_user->name;
   $handler->display->display_options['fields']['uid']['exclude'] = TRUE;
   $handler->display->display_options['fields']['uid']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['uid']['link_to_user'] = FALSE;
-  /* Поле: Глобальный: PHP */
+  /* Field: Global: PHP */
   $handler->display->display_options['fields']['php']['id'] = 'php';
   $handler->display->display_options['fields']['php']['table'] = 'views';
   $handler->display->display_options['fields']['php']['field'] = 'php';
@@ -7551,7 +7551,7 @@ print \'<span class="glyphicon glyphicon-ok text-success"></span>\';
 ?>';
   $handler->display->display_options['fields']['php']['use_php_click_sortable'] = '0';
   $handler->display->display_options['fields']['php']['php_click_sortable'] = '';
-  /* Поле: Пользователь: Дата создания */
+  /* Field: User: Created date */
   $handler->display->display_options['fields']['created']['id'] = 'created';
   $handler->display->display_options['fields']['created']['table'] = 'users';
   $handler->display->display_options['fields']['created']['field'] = 'created';
@@ -7559,26 +7559,26 @@ print \'<span class="glyphicon glyphicon-ok text-success"></span>\';
   $handler->display->display_options['fields']['created']['date_format'] = 'short';
   $handler->display->display_options['fields']['created']['second_date_format'] = 'long';
   $handler->display->display_options['fields']['created']['format_date_sql'] = 0;
-  /* Поле: Пользователь: Последнее посещение */
+  /* Field: User: Last access */
   $handler->display->display_options['fields']['access']['id'] = 'access';
   $handler->display->display_options['fields']['access']['table'] = 'users';
   $handler->display->display_options['fields']['access']['field'] = 'access';
   $handler->display->display_options['fields']['access']['empty'] = 'никогда';
   $handler->display->display_options['fields']['access']['date_format'] = 'long';
   $handler->display->display_options['fields']['access']['second_date_format'] = 'long';
-  /* Поле: Глобальный: Пользовательский текст */
+  /* Field: Global: Custom text */
   $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['label'] = '';
   $handler->display->display_options['fields']['nothing']['alter']['text'] = '<a href="/ru/dashboard/sellers/[uid]/edit?destination=dashboard/sellers">Редактировать</a> <a href="/ru/dashboard/sellers/[uid]/cancel?destination=dashboard/sellers">Удалить</a>';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
-  /* Критерий сортировки: Пользователь: Дата создания */
+  /* Sort criterion: User: Created date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'users';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  /* Контекстный фильтр: Пользователь: Менеджер (field_parent_manager) */
+  /* Contextual filter: User: Менеджер (field_parent_manager) */
   $handler->display->display_options['arguments']['field_parent_manager_uid']['id'] = 'field_parent_manager_uid';
   $handler->display->display_options['arguments']['field_parent_manager_uid']['table'] = 'field_data_field_parent_manager';
   $handler->display->display_options['arguments']['field_parent_manager_uid']['field'] = 'field_parent_manager_uid';
@@ -7588,7 +7588,7 @@ print \'<span class="glyphicon glyphicon-ok text-success"></span>\';
   $handler->display->display_options['arguments']['field_parent_manager_uid']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['field_parent_manager_uid']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['field_parent_manager_uid']['summary_options']['items_per_page'] = '25';
-  /* Критерий фильтра: Пользователь: Активно */
+  /* Filter criterion: User: Active */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'users';
   $handler->display->display_options['filters']['status']['field'] = 'status';
@@ -7630,7 +7630,7 @@ print \'<span class="glyphicon glyphicon-ok text-success"></span>\';
   $handler->display->display_options['pager']['options']['items_per_page'] = '5';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
-  /* Подвал: Глобальный: Text area */
+  /* Footer: Global: Text area */
   $handler->display->display_options['footer']['area']['id'] = 'area';
   $handler->display->display_options['footer']['area']['table'] = 'views';
   $handler->display->display_options['footer']['area']['field'] = 'area';
@@ -7638,26 +7638,26 @@ print \'<span class="glyphicon glyphicon-ok text-success"></span>\';
   <br><a href="/ru/dashboard/reports/products">Посмотреть отчёт по продуктам</a>
 </div>';
   $handler->display->display_options['footer']['area']['format'] = 'full_html';
-  /* Поведение при отсутствии результатов: Глобальный: Text area */
+  /* No results behavior: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';
   $handler->display->display_options['empty']['area']['table'] = 'views';
   $handler->display->display_options['empty']['area']['field'] = 'area';
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
   $handler->display->display_options['empty']['area']['content'] = 'Не было продаж.';
   $handler->display->display_options['empty']['area']['format'] = 'full_html';
-  /* Связь: Содержимое: Продукт транзакции (field_trc_product) - реверс */
+  /* Relationship: Content: Продукт транзакции (field_trc_product) - reverse */
   $handler->display->display_options['relationships']['reverse_field_trc_product_node']['id'] = 'reverse_field_trc_product_node';
   $handler->display->display_options['relationships']['reverse_field_trc_product_node']['table'] = 'node';
   $handler->display->display_options['relationships']['reverse_field_trc_product_node']['field'] = 'reverse_field_trc_product_node';
   $handler->display->display_options['relationships']['reverse_field_trc_product_node']['required'] = TRUE;
-  /* Поле: Содержимое: Заголовок */
+  /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
-  /* Поле: SUM(Содержимое: Количество) */
+  /* Field: SUM(Content: Количество) */
   $handler->display->display_options['fields']['field_prtrc_amount']['id'] = 'field_prtrc_amount';
   $handler->display->display_options['fields']['field_prtrc_amount']['table'] = 'field_data_field_prtrc_amount';
   $handler->display->display_options['fields']['field_prtrc_amount']['field'] = 'field_prtrc_amount';
@@ -7671,7 +7671,7 @@ print \'<span class="glyphicon glyphicon-ok text-success"></span>\';
     'scale' => '2',
     'prefix_suffix' => 1,
   );
-  /* Поле: Глобальный: Счетчик результатов */
+  /* Field: Global: View result counter */
   $handler->display->display_options['fields']['counter']['id'] = 'counter';
   $handler->display->display_options['fields']['counter']['table'] = 'views';
   $handler->display->display_options['fields']['counter']['field'] = 'counter';
@@ -7679,13 +7679,13 @@ print \'<span class="glyphicon glyphicon-ok text-success"></span>\';
   $handler->display->display_options['fields']['counter']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['counter']['counter_start'] = '1';
   $handler->display->display_options['fields']['counter']['reverse'] = 0;
-  /* Критерий сортировки: SUM(Содержимое: Количество (field_prtrc_amount)) */
+  /* Sort criterion: SUM(Content: Количество (field_prtrc_amount)) */
   $handler->display->display_options['sorts']['field_prtrc_amount_value']['id'] = 'field_prtrc_amount_value';
   $handler->display->display_options['sorts']['field_prtrc_amount_value']['table'] = 'field_data_field_prtrc_amount';
   $handler->display->display_options['sorts']['field_prtrc_amount_value']['field'] = 'field_prtrc_amount_value';
   $handler->display->display_options['sorts']['field_prtrc_amount_value']['group_type'] = 'sum';
   $handler->display->display_options['sorts']['field_prtrc_amount_value']['order'] = 'DESC';
-  /* Контекстный фильтр: Содержимое: UID Автора */
+  /* Contextual filter: Content: Author uid */
   $handler->display->display_options['arguments']['uid']['id'] = 'uid';
   $handler->display->display_options['arguments']['uid']['table'] = 'node';
   $handler->display->display_options['arguments']['uid']['field'] = 'uid';
@@ -7695,21 +7695,21 @@ print \'<span class="glyphicon glyphicon-ok text-success"></span>\';
   $handler->display->display_options['arguments']['uid']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['uid']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['uid']['summary_options']['items_per_page'] = '25';
-  /* Критерий фильтра: Содержимое: Опубликовано */
+  /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Критерий фильтра: Содержимое: Тип */
+  /* Filter criterion: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
     'transaction_product' => 'transaction_product',
   );
-  /* Критерий фильтра: Содержимое: Дата публикации */
+  /* Filter criterion: Content: Post date */
   $handler->display->display_options['filters']['created']['id'] = 'created';
   $handler->display->display_options['filters']['created']['table'] = 'node';
   $handler->display->display_options['filters']['created']['field'] = 'created';
@@ -7720,7 +7720,7 @@ print \'<span class="glyphicon glyphicon-ok text-success"></span>\';
   $handler->display->display_options['filters']['created']['expose']['label'] = 'Дата публикации';
   $handler->display->display_options['filters']['created']['expose']['operator'] = 'created_op';
   $handler->display->display_options['filters']['created']['expose']['identifier'] = 'created';
-  /* Критерий фильтра: Содержимое: Количество (field_prtrc_amount) */
+  /* Filter criterion: Content: Количество (field_prtrc_amount) */
   $handler->display->display_options['filters']['field_prtrc_amount_value']['id'] = 'field_prtrc_amount_value';
   $handler->display->display_options['filters']['field_prtrc_amount_value']['table'] = 'field_data_field_prtrc_amount';
   $handler->display->display_options['filters']['field_prtrc_amount_value']['field'] = 'field_prtrc_amount_value';
@@ -7739,7 +7739,7 @@ print \'<span class="glyphicon glyphicon-ok text-success"></span>\';
   $handler->display->display_options['row_options']['default_field_elements'] = FALSE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Поле: Глобальный: Счетчик результатов */
+  /* Field: Global: View result counter */
   $handler->display->display_options['fields']['counter']['id'] = 'counter';
   $handler->display->display_options['fields']['counter']['table'] = 'views';
   $handler->display->display_options['fields']['counter']['field'] = 'counter';
@@ -7749,7 +7749,7 @@ print \'<span class="glyphicon glyphicon-ok text-success"></span>\';
   $handler->display->display_options['fields']['counter']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['counter']['counter_start'] = '1';
   $handler->display->display_options['fields']['counter']['reverse'] = 0;
-  /* Поле: Содержимое: Заголовок */
+  /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
@@ -7759,7 +7759,7 @@ print \'<span class="glyphicon glyphicon-ok text-success"></span>\';
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
-  /* Поле: SUM(Содержимое: Количество) */
+  /* Field: SUM(Content: Количество) */
   $handler->display->display_options['fields']['field_prtrc_amount']['id'] = 'field_prtrc_amount';
   $handler->display->display_options['fields']['field_prtrc_amount']['table'] = 'field_data_field_prtrc_amount';
   $handler->display->display_options['fields']['field_prtrc_amount']['field'] = 'field_prtrc_amount';
@@ -7858,14 +7858,14 @@ print \'<span class="glyphicon glyphicon-ok text-success"></span>\';
       'empty_column' => 0,
     ),
   );
-  /* Поле: Содержимое: Заголовок */
+  /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['exclude'] = TRUE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  /* Поле: Field Tracker: Creation Date */
+  /* Field: Field Tracker: Creation Date */
   $handler->display->display_options['fields']['timestamp']['id'] = 'timestamp';
   $handler->display->display_options['fields']['timestamp']['table'] = 'track_field_changes_audit';
   $handler->display->display_options['fields']['timestamp']['field'] = 'timestamp';
@@ -7874,31 +7874,31 @@ print \'<span class="glyphicon glyphicon-ok text-success"></span>\';
   $handler->display->display_options['fields']['timestamp']['custom_date_format'] = 'd.m.Y - H:i:s';
   $handler->display->display_options['fields']['timestamp']['second_date_format'] = 'long';
   $handler->display->display_options['fields']['timestamp']['format_date_sql'] = 0;
-  /* Поле: Field Tracker: Пользователь */
+  /* Field: Field Tracker: User */
   $handler->display->display_options['fields']['uid']['id'] = 'uid';
   $handler->display->display_options['fields']['uid']['table'] = 'track_field_changes_audit';
   $handler->display->display_options['fields']['uid']['field'] = 'uid';
-  /* Поле: Field Tracker: Field Name */
+  /* Field: Field Tracker: Field Name */
   $handler->display->display_options['fields']['field_name']['id'] = 'field_name';
   $handler->display->display_options['fields']['field_name']['table'] = 'track_field_changes_audit';
   $handler->display->display_options['fields']['field_name']['field'] = 'field_name';
   $handler->display->display_options['fields']['field_name']['label'] = 'Название поля';
-  /* Поле: Field Tracker: Value Before */
+  /* Field: Field Tracker: Value Before */
   $handler->display->display_options['fields']['before_value_text']['id'] = 'before_value_text';
   $handler->display->display_options['fields']['before_value_text']['table'] = 'track_field_changes_audit';
   $handler->display->display_options['fields']['before_value_text']['field'] = 'before_value_text';
   $handler->display->display_options['fields']['before_value_text']['label'] = 'Старое значение';
-  /* Поле: Field Tracker: Value After */
+  /* Field: Field Tracker: Value After */
   $handler->display->display_options['fields']['after_value_text']['id'] = 'after_value_text';
   $handler->display->display_options['fields']['after_value_text']['table'] = 'track_field_changes_audit';
   $handler->display->display_options['fields']['after_value_text']['field'] = 'after_value_text';
   $handler->display->display_options['fields']['after_value_text']['label'] = 'Новое значение';
-  /* Критерий сортировки: Содержимое: Дата публикации */
+  /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  /* Контекстный фильтр: Содержимое: Nid */
+  /* Contextual filter: Content: Nid */
   $handler->display->display_options['arguments']['nid']['id'] = 'nid';
   $handler->display->display_options['arguments']['nid']['table'] = 'node';
   $handler->display->display_options['arguments']['nid']['field'] = 'nid';
@@ -7908,21 +7908,21 @@ print \'<span class="glyphicon glyphicon-ok text-success"></span>\';
   $handler->display->display_options['arguments']['nid']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['nid']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['nid']['summary_options']['items_per_page'] = '25';
-  /* Критерий фильтра: Содержимое: Опубликовано */
+  /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Критерий фильтра: Содержимое: Тип */
+  /* Filter criterion: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
     'transaction' => 'transaction',
   );
-  /* Критерий фильтра: Field Tracker: Field Name */
+  /* Filter criterion: Field Tracker: Field Name */
   $handler->display->display_options['filters']['field_name']['id'] = 'field_name';
   $handler->display->display_options['filters']['field_name']['table'] = 'track_field_changes_audit';
   $handler->display->display_options['filters']['field_name']['field'] = 'field_name';
@@ -7967,7 +7967,7 @@ print \'<span class="glyphicon glyphicon-ok text-success"></span>\';
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'table';
-  /* Поведение при отсутствии результатов: Глобальный: Text area */
+  /* No results behavior: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';
   $handler->display->display_options['empty']['area']['table'] = 'views';
   $handler->display->display_options['empty']['area']['field'] = 'area';
@@ -7989,12 +7989,12 @@ print \'<span class="glyphicon glyphicon-ok text-success"></span>\';
 				<tbody></tbody>
 			</table>';
   $handler->display->display_options['empty']['area']['format'] = 'full_html';
-  /* Связь: Содержимое: Автор */
+  /* Relationship: Content: Author */
   $handler->display->display_options['relationships']['uid']['id'] = 'uid';
   $handler->display->display_options['relationships']['uid']['table'] = 'node';
   $handler->display->display_options['relationships']['uid']['field'] = 'uid';
   $handler->display->display_options['relationships']['uid']['required'] = TRUE;
-  /* Поле: Содержимое: Заголовок */
+  /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
@@ -8003,7 +8003,7 @@ print \'<span class="glyphicon glyphicon-ok text-success"></span>\';
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
-  /* Поле: Содержимое: Чек № */
+  /* Field: Content: Чек № */
   $handler->display->display_options['fields']['field_trc_check_no']['id'] = 'field_trc_check_no';
   $handler->display->display_options['fields']['field_trc_check_no']['table'] = 'field_data_field_trc_check_no';
   $handler->display->display_options['fields']['field_trc_check_no']['field'] = 'field_trc_check_no';
@@ -8016,7 +8016,7 @@ print \'<span class="glyphicon glyphicon-ok text-success"></span>\';
     'thousand_separator' => '',
     'prefix_suffix' => 1,
   );
-  /* Поле: Содержимое: Дата публикации */
+  /* Field: Content: Post date */
   $handler->display->display_options['fields']['created']['id'] = 'created';
   $handler->display->display_options['fields']['created']['table'] = 'node';
   $handler->display->display_options['fields']['created']['field'] = 'created';
@@ -8027,7 +8027,7 @@ print \'<span class="glyphicon glyphicon-ok text-success"></span>\';
   $handler->display->display_options['fields']['created']['custom_date_format'] = 'd.m.Y H:i:s';
   $handler->display->display_options['fields']['created']['second_date_format'] = 'long';
   $handler->display->display_options['fields']['created']['format_date_sql'] = 0;
-  /* Поле: Содержимое: Продукт транзакции */
+  /* Field: Content: Продукт транзакции */
   $handler->display->display_options['fields']['field_trc_product']['id'] = 'field_trc_product';
   $handler->display->display_options['fields']['field_trc_product']['table'] = 'field_data_field_trc_product';
   $handler->display->display_options['fields']['field_trc_product']['field'] = 'field_trc_product';
@@ -8041,7 +8041,7 @@ print \'<span class="glyphicon glyphicon-ok text-success"></span>\';
   );
   $handler->display->display_options['fields']['field_trc_product']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_trc_product']['separator'] = '';
-  /* Поле: Содержимое: Оптовая цена */
+  /* Field: Content: Оптовая цена */
   $handler->display->display_options['fields']['field_trc_price_base']['id'] = 'field_trc_price_base';
   $handler->display->display_options['fields']['field_trc_price_base']['table'] = 'field_data_field_trc_price_base';
   $handler->display->display_options['fields']['field_trc_price_base']['field'] = 'field_trc_price_base';
@@ -8054,7 +8054,7 @@ print \'<span class="glyphicon glyphicon-ok text-success"></span>\';
     'thousand_separator' => '',
     'prefix_suffix' => 0,
   );
-  /* Поле: Содержимое: Розничная цена */
+  /* Field: Content: Розничная цена */
   $handler->display->display_options['fields']['field_trc_price']['id'] = 'field_trc_price';
   $handler->display->display_options['fields']['field_trc_price']['table'] = 'field_data_field_trc_price';
   $handler->display->display_options['fields']['field_trc_price']['field'] = 'field_trc_price';
@@ -8065,7 +8065,7 @@ print \'<span class="glyphicon glyphicon-ok text-success"></span>\';
     'thousand_separator' => '',
     'prefix_suffix' => 1,
   );
-  /* Поле: Содержимое: Терминал */
+  /* Field: Content: Терминал */
   $handler->display->display_options['fields']['field_trc_payment_terminal']['id'] = 'field_trc_payment_terminal';
   $handler->display->display_options['fields']['field_trc_payment_terminal']['table'] = 'field_data_field_trc_payment_terminal';
   $handler->display->display_options['fields']['field_trc_payment_terminal']['field'] = 'field_trc_payment_terminal';
@@ -8078,7 +8078,7 @@ print \'<span class="glyphicon glyphicon-ok text-success"></span>\';
     'scale' => '2',
     'prefix_suffix' => 1,
   );
-  /* Поле: Содержимое: Наличные */
+  /* Field: Content: Наличные */
   $handler->display->display_options['fields']['field_trc_payment_cash']['id'] = 'field_trc_payment_cash';
   $handler->display->display_options['fields']['field_trc_payment_cash']['table'] = 'field_data_field_trc_payment_cash';
   $handler->display->display_options['fields']['field_trc_payment_cash']['field'] = 'field_trc_payment_cash';
@@ -8091,7 +8091,7 @@ print \'<span class="glyphicon glyphicon-ok text-success"></span>\';
     'scale' => '2',
     'prefix_suffix' => 1,
   );
-  /* Поле: Содержимое: Долг */
+  /* Field: Content: Долг */
   $handler->display->display_options['fields']['field_trc_payment_owe']['id'] = 'field_trc_payment_owe';
   $handler->display->display_options['fields']['field_trc_payment_owe']['table'] = 'field_data_field_trc_payment_owe';
   $handler->display->display_options['fields']['field_trc_payment_owe']['field'] = 'field_trc_payment_owe';
@@ -8103,7 +8103,7 @@ print \'<span class="glyphicon glyphicon-ok text-success"></span>\';
     'scale' => '2',
     'prefix_suffix' => 1,
   );
-  /* Поле: Содержимое: Тип транзакции */
+  /* Field: Content: Тип транзакции */
   $handler->display->display_options['fields']['field_trc_type']['id'] = 'field_trc_type';
   $handler->display->display_options['fields']['field_trc_type']['table'] = 'field_data_field_trc_type';
   $handler->display->display_options['fields']['field_trc_type']['field'] = 'field_trc_type';
@@ -8111,7 +8111,7 @@ print \'<span class="glyphicon glyphicon-ok text-success"></span>\';
   $handler->display->display_options['fields']['field_trc_type']['element_class'] = 'trc-type';
   $handler->display->display_options['fields']['field_trc_type']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_trc_type']['element_default_classes'] = FALSE;
-  /* Поле: Содержимое: Дата публикации */
+  /* Field: Content: Post date */
   $handler->display->display_options['fields']['created_1']['id'] = 'created_1';
   $handler->display->display_options['fields']['created_1']['table'] = 'node';
   $handler->display->display_options['fields']['created_1']['field'] = 'created';
@@ -8122,14 +8122,14 @@ print \'<span class="glyphicon glyphicon-ok text-success"></span>\';
   $handler->display->display_options['fields']['created_1']['custom_date_format'] = 'YmdHis';
   $handler->display->display_options['fields']['created_1']['second_date_format'] = 'long';
   $handler->display->display_options['fields']['created_1']['format_date_sql'] = 0;
-  /* Поле: Содержимое: Nid */
+  /* Field: Content: Nid */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
   $handler->display->display_options['fields']['nid']['table'] = 'node';
   $handler->display->display_options['fields']['nid']['field'] = 'nid';
   $handler->display->display_options['fields']['nid']['label'] = '';
   $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['nid']['element_default_classes'] = FALSE;
-  /* Поле: Содержимое: Тип транзакции */
+  /* Field: Content: Тип транзакции */
   $handler->display->display_options['fields']['field_trc_type_1']['id'] = 'field_trc_type_1';
   $handler->display->display_options['fields']['field_trc_type_1']['table'] = 'field_data_field_trc_type';
   $handler->display->display_options['fields']['field_trc_type_1']['field'] = 'field_trc_type';
@@ -8137,7 +8137,7 @@ print \'<span class="glyphicon glyphicon-ok text-success"></span>\';
   $handler->display->display_options['fields']['field_trc_type_1']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_trc_type_1']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['field_trc_type_1']['type'] = 'list_key';
-  /* Поле: Пользователь: Имя */
+  /* Field: User: Name */
   $handler->display->display_options['fields']['name']['id'] = 'name';
   $handler->display->display_options['fields']['name']['table'] = 'users';
   $handler->display->display_options['fields']['name']['field'] = 'name';
@@ -8145,12 +8145,12 @@ print \'<span class="glyphicon glyphicon-ok text-success"></span>\';
   $handler->display->display_options['fields']['name']['label'] = 'Продавец';
   $handler->display->display_options['fields']['name']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['name']['link_to_user'] = FALSE;
-  /* Критерий сортировки: Содержимое: Дата публикации */
+  /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  /* Контекстный фильтр: Дата: Дата (node) */
+  /* Contextual filter: Date: Date (node) */
   $handler->display->display_options['arguments']['date_argument']['id'] = 'date_argument';
   $handler->display->display_options['arguments']['date_argument']['table'] = 'node';
   $handler->display->display_options['arguments']['date_argument']['field'] = 'date_argument';
@@ -8167,14 +8167,14 @@ return date(\'Y-m-d\');';
   $handler->display->display_options['arguments']['date_argument']['date_fields'] = array(
     'node.created' => 'node.created',
   );
-  /* Критерий фильтра: Содержимое: Опубликовано */
+  /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Критерий фильтра: Содержимое: Тип */
+  /* Filter criterion: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
@@ -8277,19 +8277,19 @@ return date(\'Y-m-d\');';
       'empty_column' => 0,
     ),
   );
-  /* Поле: Содержимое: Дата публикации */
+  /* Field: Content: Post date */
   $handler->display->display_options['fields']['created']['id'] = 'created';
   $handler->display->display_options['fields']['created']['table'] = 'node';
   $handler->display->display_options['fields']['created']['field'] = 'created';
   $handler->display->display_options['fields']['created']['label'] = 'Дата продажи';
   $handler->display->display_options['fields']['created']['date_format'] = 'short';
   $handler->display->display_options['fields']['created']['second_date_format'] = 'long';
-  /* Поле: Обработчик испорчен или отсутствует */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['field_trc_qty']['id'] = 'field_trc_qty';
   $handler->display->display_options['fields']['field_trc_qty']['table'] = 'field_data_field_trc_qty';
   $handler->display->display_options['fields']['field_trc_qty']['field'] = 'field_trc_qty';
   $handler->display->display_options['fields']['field_trc_qty']['label'] = 'Количество';
-  /* Поле: Содержимое: Оптовая цена */
+  /* Field: Content: Оптовая цена */
   $handler->display->display_options['fields']['field_trc_price_base']['id'] = 'field_trc_price_base';
   $handler->display->display_options['fields']['field_trc_price_base']['table'] = 'field_data_field_trc_price_base';
   $handler->display->display_options['fields']['field_trc_price_base']['field'] = 'field_trc_price_base';
@@ -8298,7 +8298,7 @@ return date(\'Y-m-d\');';
     'thousand_separator' => '',
     'prefix_suffix' => 1,
   );
-  /* Поле: Содержимое: Розничная цена */
+  /* Field: Content: Розничная цена */
   $handler->display->display_options['fields']['field_trc_price']['id'] = 'field_trc_price';
   $handler->display->display_options['fields']['field_trc_price']['table'] = 'field_data_field_trc_price';
   $handler->display->display_options['fields']['field_trc_price']['field'] = 'field_trc_price';
@@ -8307,23 +8307,23 @@ return date(\'Y-m-d\');';
     'thousand_separator' => '',
     'prefix_suffix' => 1,
   );
-  /* Поле: Содержимое: Причина возврата */
+  /* Field: Content: Причина возврата */
   $handler->display->display_options['fields']['field_field_trc_refund_reason']['id'] = 'field_field_trc_refund_reason';
   $handler->display->display_options['fields']['field_field_trc_refund_reason']['table'] = 'field_data_field_field_trc_refund_reason';
   $handler->display->display_options['fields']['field_field_trc_refund_reason']['field'] = 'field_field_trc_refund_reason';
   $handler->display->display_options['fields']['field_field_trc_refund_reason']['exclude'] = TRUE;
-  /* Поле: Содержимое: Тип транзакции */
+  /* Field: Content: Тип транзакции */
   $handler->display->display_options['fields']['field_trc_type']['id'] = 'field_trc_type';
   $handler->display->display_options['fields']['field_trc_type']['table'] = 'field_data_field_trc_type';
   $handler->display->display_options['fields']['field_trc_type']['field'] = 'field_trc_type';
   $handler->display->display_options['fields']['field_trc_type']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['field_trc_type']['alter']['text'] = '<a data-toggle="tooltip" data-placement="top" title="[field_field_trc_refund_reason]">[field_trc_type]</a>';
-  /* Критерий сортировки: Содержимое: Дата публикации */
+  /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  /* Контекстный фильтр: Содержимое: Продукт транзакции (field_trc_product) */
+  /* Contextual filter: Content: Продукт транзакции (field_trc_product) */
   $handler->display->display_options['arguments']['field_trc_product_nid']['id'] = 'field_trc_product_nid';
   $handler->display->display_options['arguments']['field_trc_product_nid']['table'] = 'field_data_field_trc_product';
   $handler->display->display_options['arguments']['field_trc_product_nid']['field'] = 'field_trc_product_nid';
@@ -8333,14 +8333,14 @@ return date(\'Y-m-d\');';
   $handler->display->display_options['arguments']['field_trc_product_nid']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['field_trc_product_nid']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['field_trc_product_nid']['summary_options']['items_per_page'] = '25';
-  /* Критерий фильтра: Содержимое: Опубликовано */
+  /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Критерий фильтра: Содержимое: Тип */
+  /* Filter criterion: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
@@ -8485,7 +8485,7 @@ return date(\'Y-m-d\');';
       'empty_column' => 0,
     ),
   );
-  /* Шапка: Глобальный: Text area */
+  /* Header: Global: Text area */
   $handler->display->display_options['header']['area']['id'] = 'area';
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
@@ -8495,14 +8495,14 @@ return date(\'Y-m-d\');';
 <a href="/ru/dashboard/warehouse/add-new?destination=dashboard/warehouse" class="btn btn-success">Добавить новый продукт</a>
 </p>';
   $handler->display->display_options['header']['area']['format'] = 'full_html';
-  /* Поведение при отсутствии результатов: Глобальный: Text area */
+  /* No results behavior: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';
   $handler->display->display_options['empty']['area']['table'] = 'views';
   $handler->display->display_options['empty']['area']['field'] = 'area';
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
   $handler->display->display_options['empty']['area']['content'] = '<p>Ваш склад пустой. Добавьте новый <a href="/dashboard/warehouse/add-new">продукт</a>. Ваши продукты будут доступно в кассе.</p>';
   $handler->display->display_options['empty']['area']['format'] = 'full_html';
-  /* Поле: Массовые операции: Содержимое */
+  /* Field: Bulk operations: Content */
   $handler->display->display_options['fields']['views_bulk_operations']['id'] = 'views_bulk_operations';
   $handler->display->display_options['fields']['views_bulk_operations']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['views_bulk_operations']['field'] = 'views_bulk_operations';
@@ -8549,7 +8549,7 @@ return date(\'Y-m-d\');';
       'label' => 'Удалить продукт',
     ),
   );
-  /* Поле: Содержимое: Заголовок */
+  /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
@@ -8557,7 +8557,7 @@ return date(\'Y-m-d\');';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
-  /* Поле: Содержимое: Штрих-код */
+  /* Field: Content: Штрих-код */
   $handler->display->display_options['fields']['field_md_up_barcode']['id'] = 'field_md_up_barcode';
   $handler->display->display_options['fields']['field_md_up_barcode']['table'] = 'field_data_field_md_up_barcode';
   $handler->display->display_options['fields']['field_md_up_barcode']['field'] = 'field_md_up_barcode';
@@ -8566,13 +8566,13 @@ return date(\'Y-m-d\');';
     'thousand_separator' => '',
     'prefix_suffix' => 0,
   );
-  /* Поле: Содержимое: Nid */
+  /* Field: Content: Nid */
   $handler->display->display_options['fields']['nid_2']['id'] = 'nid_2';
   $handler->display->display_options['fields']['nid_2']['table'] = 'node';
   $handler->display->display_options['fields']['nid_2']['field'] = 'nid';
   $handler->display->display_options['fields']['nid_2']['label'] = 'Кол.';
   $handler->display->display_options['fields']['nid_2']['element_default_classes'] = FALSE;
-  /* Поле: Содержимое: Дата публикации */
+  /* Field: Content: Post date */
   $handler->display->display_options['fields']['created']['id'] = 'created';
   $handler->display->display_options['fields']['created']['table'] = 'node';
   $handler->display->display_options['fields']['created']['field'] = 'created';
@@ -8580,7 +8580,7 @@ return date(\'Y-m-d\');';
   $handler->display->display_options['fields']['created']['date_format'] = 'short';
   $handler->display->display_options['fields']['created']['second_date_format'] = 'long';
   $handler->display->display_options['fields']['created']['format_date_sql'] = 0;
-  /* Поле: Содержимое: Ссылка на удаление */
+  /* Field: Content: Delete link */
   $handler->display->display_options['fields']['delete_node']['id'] = 'delete_node';
   $handler->display->display_options['fields']['delete_node']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['delete_node']['field'] = 'delete_node';
@@ -8588,7 +8588,7 @@ return date(\'Y-m-d\');';
   $handler->display->display_options['fields']['delete_node']['exclude'] = TRUE;
   $handler->display->display_options['fields']['delete_node']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['delete_node']['text'] = '<span class="glyphicon glyphicon-remove-circle text-danger" data-toggle="tooltip" data-placement="top" title="Удалить"></span>';
-  /* Поле: Содержимое: Ссылка на редактирование */
+  /* Field: Content: Edit link */
   $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
   $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['edit_node']['field'] = 'edit_node';
@@ -8596,7 +8596,7 @@ return date(\'Y-m-d\');';
   $handler->display->display_options['fields']['edit_node']['exclude'] = TRUE;
   $handler->display->display_options['fields']['edit_node']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['edit_node']['text'] = '<span class="glyphicon glyphicon-edit" data-toggle="tooltip" data-placement="top" title="Редактировать"></span>';
-  /* Поле: Глобальный: Пользовательский текст */
+  /* Field: Global: Custom text */
   $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
@@ -8609,24 +8609,24 @@ return date(\'Y-m-d\');';
   $handler->display->display_options['fields']['nothing']['element_class'] = 'h3 text-right warehouse-actions';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['nothing']['element_default_classes'] = FALSE;
-  /* Критерий сортировки: Содержимое: Дата публикации */
+  /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['group_type'] = 'stddev_pop';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  /* Критерий сортировки: Содержимое: Заголовок */
+  /* Sort criterion: Content: Title */
   $handler->display->display_options['sorts']['title']['id'] = 'title';
   $handler->display->display_options['sorts']['title']['table'] = 'node';
   $handler->display->display_options['sorts']['title']['field'] = 'title';
-  /* Критерий фильтра: Содержимое: Тип */
+  /* Filter criterion: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
     'product' => 'product',
   );
-  /* Критерий фильтра: Содержимое: Заголовок */
+  /* Filter criterion: Content: Title */
   $handler->display->display_options['filters']['title']['id'] = 'title';
   $handler->display->display_options['filters']['title']['table'] = 'node';
   $handler->display->display_options['filters']['title']['field'] = 'title';
@@ -8651,7 +8651,7 @@ return date(\'Y-m-d\');';
   $handler->display->display_options['filters']['title']['expose']['autocomplete_raw_suggestion'] = 1;
   $handler->display->display_options['filters']['title']['expose']['autocomplete_raw_dropdown'] = 1;
   $handler->display->display_options['filters']['title']['expose']['autocomplete_dependent'] = 1;
-  /* Критерий фильтра: Содержимое: Штрих-код (field_md_up_barcode) */
+  /* Filter criterion: Content: Штрих-код (field_md_up_barcode) */
   $handler->display->display_options['filters']['field_md_up_barcode_value']['id'] = 'field_md_up_barcode_value';
   $handler->display->display_options['filters']['field_md_up_barcode_value']['table'] = 'field_data_field_md_up_barcode';
   $handler->display->display_options['filters']['field_md_up_barcode_value']['field'] = 'field_md_up_barcode_value';
@@ -8668,7 +8668,7 @@ return date(\'Y-m-d\');';
     5 => 0,
     6 => 0,
   );
-  /* Критерий фильтра: Содержимое: Опубликовано */
+  /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
@@ -8692,7 +8692,7 @@ return date(\'Y-m-d\');';
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['defaults']['header'] = FALSE;
   $handler->display->display_options['defaults']['footer'] = FALSE;
-  /* Подвал: Глобальный: Сводка результатов */
+  /* Footer: Global: Result summary */
   $handler->display->display_options['footer']['result']['id'] = 'result';
   $handler->display->display_options['footer']['result']['table'] = 'views';
   $handler->display->display_options['footer']['result']['field'] = 'result';
@@ -8709,23 +8709,23 @@ return date(\'Y-m-d\');';
   $handler->display->display_options['style_options']['parent_sort'] = 1;
   $handler->display->display_options['defaults']['empty'] = FALSE;
   $handler->display->display_options['defaults']['relationships'] = FALSE;
-  /* Связь: Содержимое: Продукт (field_pb_product) - реверс */
+  /* Relationship: Content: Продукт (field_pb_product) - reverse */
   $handler->display->display_options['relationships']['reverse_field_pb_product_node']['id'] = 'reverse_field_pb_product_node';
   $handler->display->display_options['relationships']['reverse_field_pb_product_node']['table'] = 'node';
   $handler->display->display_options['relationships']['reverse_field_pb_product_node']['field'] = 'reverse_field_pb_product_node';
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Поле: Содержимое: Заголовок */
+  /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = 'Название продукта';
   $handler->display->display_options['fields']['title']['exclude'] = TRUE;
   $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
-  /* Поле: Содержимое: Название продукта */
+  /* Field: Content: Название продукта */
   $handler->display->display_options['fields']['field_pr_medicament_title']['id'] = 'field_pr_medicament_title';
   $handler->display->display_options['fields']['field_pr_medicament_title']['table'] = 'field_data_field_pr_medicament_title';
   $handler->display->display_options['fields']['field_pr_medicament_title']['field'] = 'field_pr_medicament_title';
-  /* Поле: Содержимое: Штрих-код */
+  /* Field: Content: Штрих-код */
   $handler->display->display_options['fields']['field_md_up_barcode']['id'] = 'field_md_up_barcode';
   $handler->display->display_options['fields']['field_md_up_barcode']['table'] = 'field_data_field_md_up_barcode';
   $handler->display->display_options['fields']['field_md_up_barcode']['field'] = 'field_md_up_barcode';
@@ -8734,7 +8734,7 @@ return date(\'Y-m-d\');';
     'thousand_separator' => '',
     'prefix_suffix' => 0,
   );
-  /* Поле: Содержимое: Кол. в упаковке */
+  /* Field: Content: Кол. в упаковке */
   $handler->display->display_options['fields']['field_md_up_amount']['id'] = 'field_md_up_amount';
   $handler->display->display_options['fields']['field_md_up_amount']['table'] = 'field_data_field_md_up_amount';
   $handler->display->display_options['fields']['field_md_up_amount']['field'] = 'field_md_up_amount';
@@ -8743,17 +8743,17 @@ return date(\'Y-m-d\');';
     'thousand_separator' => '',
     'prefix_suffix' => 1,
   );
-  /* Поле: Содержимое: Производитель */
+  /* Field: Content: Производитель */
   $handler->display->display_options['fields']['field_pr_manufacturer']['id'] = 'field_pr_manufacturer';
   $handler->display->display_options['fields']['field_pr_manufacturer']['table'] = 'field_data_field_pr_manufacturer';
   $handler->display->display_options['fields']['field_pr_manufacturer']['field'] = 'field_pr_manufacturer';
   $handler->display->display_options['fields']['field_pr_manufacturer']['type'] = 'taxonomy_term_reference_plain';
-  /* Поле: Содержимое: Страна производителя */
+  /* Field: Content: Страна производителя */
   $handler->display->display_options['fields']['field_pr_mn_country']['id'] = 'field_pr_mn_country';
   $handler->display->display_options['fields']['field_pr_mn_country']['table'] = 'field_data_field_pr_mn_country';
   $handler->display->display_options['fields']['field_pr_mn_country']['field'] = 'field_pr_mn_country';
   $handler->display->display_options['fields']['field_pr_mn_country']['type'] = 'taxonomy_term_reference_plain';
-  /* Поле: Содержимое: Дата прибытия */
+  /* Field: Content: Дата прибытия */
   $handler->display->display_options['fields']['field_pr_income_date']['id'] = 'field_pr_income_date';
   $handler->display->display_options['fields']['field_pr_income_date']['table'] = 'field_data_field_pr_income_date';
   $handler->display->display_options['fields']['field_pr_income_date']['field'] = 'field_pr_income_date';
@@ -8766,7 +8766,7 @@ return date(\'Y-m-d\');';
     'multiple_to' => '',
     'show_remaining_days' => 0,
   );
-  /* Поле: Содержимое: Количество */
+  /* Field: Content: Количество */
   $handler->display->display_options['fields']['field_pr_amount']['id'] = 'field_pr_amount';
   $handler->display->display_options['fields']['field_pr_amount']['table'] = 'field_data_field_pr_amount';
   $handler->display->display_options['fields']['field_pr_amount']['field'] = 'field_pr_amount';
@@ -8778,7 +8778,7 @@ return date(\'Y-m-d\');';
     'scale' => '2',
     'prefix_suffix' => 1,
   );
-  /* Поле: Содержимое: Оптовая цена */
+  /* Field: Content: Оптовая цена */
   $handler->display->display_options['fields']['field_pr_price_base']['id'] = 'field_pr_price_base';
   $handler->display->display_options['fields']['field_pr_price_base']['table'] = 'field_data_field_pr_price_base';
   $handler->display->display_options['fields']['field_pr_price_base']['field'] = 'field_pr_price_base';
@@ -8791,7 +8791,7 @@ return date(\'Y-m-d\');';
     'scale' => '2',
     'prefix_suffix' => 1,
   );
-  /* Поле: Содержимое: Розничная цена */
+  /* Field: Content: Розничная цена */
   $handler->display->display_options['fields']['field_pr_price']['id'] = 'field_pr_price';
   $handler->display->display_options['fields']['field_pr_price']['table'] = 'field_data_field_pr_price';
   $handler->display->display_options['fields']['field_pr_price']['field'] = 'field_pr_price';
@@ -8804,7 +8804,7 @@ return date(\'Y-m-d\');';
     'scale' => '2',
     'prefix_suffix' => 1,
   );
-  /* Поле: Содержимое: Срок годности */
+  /* Field: Content: Срок годности */
   $handler->display->display_options['fields']['field_pr_expiry_date']['id'] = 'field_pr_expiry_date';
   $handler->display->display_options['fields']['field_pr_expiry_date']['table'] = 'field_data_field_pr_expiry_date';
   $handler->display->display_options['fields']['field_pr_expiry_date']['field'] = 'field_pr_expiry_date';
@@ -8817,7 +8817,7 @@ return date(\'Y-m-d\');';
     'multiple_to' => '',
     'show_remaining_days' => 0,
   );
-  /* Поле: Содержимое: Опубликовано */
+  /* Field: Content: Published */
   $handler->display->display_options['fields']['status']['id'] = 'status';
   $handler->display->display_options['fields']['status']['table'] = 'node';
   $handler->display->display_options['fields']['status']['field'] = 'status';
@@ -8862,34 +8862,34 @@ return date(\'Y-m-d\');';
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'table';
-  /* Шапка: Глобальный: Text area */
+  /* Header: Global: Text area */
   $handler->display->display_options['header']['area']['id'] = 'area';
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
   $handler->display->display_options['header']['area']['empty'] = TRUE;
   $handler->display->display_options['header']['area']['content'] = '<p class="text-right pull-right margin-top-38"><a href="/ru/dashboard/providers/waybills/add-new?destination=dashboard/providers/waybills" class="btn btn-success">Новая накладная</a></p>';
   $handler->display->display_options['header']['area']['format'] = 'full_html';
-  /* Поведение при отсутствии результатов: Глобальный: Text area */
+  /* No results behavior: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';
   $handler->display->display_options['empty']['area']['table'] = 'views';
   $handler->display->display_options['empty']['area']['field'] = 'area';
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
   $handler->display->display_options['empty']['area']['content'] = '<p>Накладные ещё не добавлены.</p>';
   $handler->display->display_options['empty']['area']['format'] = 'full_html';
-  /* Связь: Содержимое: Договор (field_wb_contract_no) */
+  /* Relationship: Content: Договор (field_wb_contract_no) */
   $handler->display->display_options['relationships']['field_wb_contract_no_nid']['id'] = 'field_wb_contract_no_nid';
   $handler->display->display_options['relationships']['field_wb_contract_no_nid']['table'] = 'field_data_field_wb_contract_no';
   $handler->display->display_options['relationships']['field_wb_contract_no_nid']['field'] = 'field_wb_contract_no_nid';
   $handler->display->display_options['relationships']['field_wb_contract_no_nid']['required'] = TRUE;
   $handler->display->display_options['relationships']['field_wb_contract_no_nid']['delta'] = '-1';
-  /* Связь: Содержимое: Поставщик (field_dg_provider) */
+  /* Relationship: Content: Поставщик (field_dg_provider) */
   $handler->display->display_options['relationships']['field_dg_provider_nid']['id'] = 'field_dg_provider_nid';
   $handler->display->display_options['relationships']['field_dg_provider_nid']['table'] = 'field_data_field_dg_provider';
   $handler->display->display_options['relationships']['field_dg_provider_nid']['field'] = 'field_dg_provider_nid';
   $handler->display->display_options['relationships']['field_dg_provider_nid']['relationship'] = 'field_wb_contract_no_nid';
   $handler->display->display_options['relationships']['field_dg_provider_nid']['required'] = TRUE;
   $handler->display->display_options['relationships']['field_dg_provider_nid']['delta'] = '-1';
-  /* Поле: Массовые операции: Содержимое */
+  /* Field: Bulk operations: Content */
   $handler->display->display_options['fields']['views_bulk_operations']['id'] = 'views_bulk_operations';
   $handler->display->display_options['fields']['views_bulk_operations']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['views_bulk_operations']['field'] = 'views_bulk_operations';
@@ -8909,7 +8909,7 @@ return date(\'Y-m-d\');';
       'label' => 'Удалить договор',
     ),
   );
-  /* Поле: Содержимое: Заголовок */
+  /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
@@ -8917,7 +8917,7 @@ return date(\'Y-m-d\');';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
-  /* Поле: Содержимое: Дата */
+  /* Field: Content: Дата */
   $handler->display->display_options['fields']['field_wb_date']['id'] = 'field_wb_date';
   $handler->display->display_options['fields']['field_wb_date']['table'] = 'field_data_field_wb_date';
   $handler->display->display_options['fields']['field_wb_date']['field'] = 'field_wb_date';
@@ -8930,13 +8930,13 @@ return date(\'Y-m-d\');';
     'multiple_to' => '',
     'show_remaining_days' => 0,
   );
-  /* Поле: Содержимое: Заголовок */
+  /* Field: Content: Title */
   $handler->display->display_options['fields']['title_1']['id'] = 'title_1';
   $handler->display->display_options['fields']['title_1']['table'] = 'node';
   $handler->display->display_options['fields']['title_1']['field'] = 'title';
   $handler->display->display_options['fields']['title_1']['relationship'] = 'field_wb_contract_no_nid';
   $handler->display->display_options['fields']['title_1']['label'] = 'Договор №';
-  /* Поле: Содержимое: Дата договора */
+  /* Field: Content: Дата договора */
   $handler->display->display_options['fields']['field_dg_date']['id'] = 'field_dg_date';
   $handler->display->display_options['fields']['field_dg_date']['table'] = 'field_data_field_dg_date';
   $handler->display->display_options['fields']['field_dg_date']['field'] = 'field_dg_date';
@@ -8949,14 +8949,14 @@ return date(\'Y-m-d\');';
     'multiple_to' => '',
     'show_remaining_days' => 0,
   );
-  /* Поле: Содержимое: Заголовок */
+  /* Field: Content: Title */
   $handler->display->display_options['fields']['title_2']['id'] = 'title_2';
   $handler->display->display_options['fields']['title_2']['table'] = 'node';
   $handler->display->display_options['fields']['title_2']['field'] = 'title';
   $handler->display->display_options['fields']['title_2']['relationship'] = 'field_dg_provider_nid';
   $handler->display->display_options['fields']['title_2']['label'] = 'Поставщик';
   $handler->display->display_options['fields']['title_2']['link_to_node'] = FALSE;
-  /* Поле: Содержимое: Ссылка на редактирование */
+  /* Field: Content: Edit link */
   $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
   $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['edit_node']['field'] = 'edit_node';
@@ -8964,7 +8964,7 @@ return date(\'Y-m-d\');';
   $handler->display->display_options['fields']['edit_node']['exclude'] = TRUE;
   $handler->display->display_options['fields']['edit_node']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['edit_node']['text'] = '<span class="glyphicon glyphicon-edit" data-toggle="tooltip" data-placement="top" title="Редактировать"></span>';
-  /* Поле: Содержимое: Ссылка на удаление */
+  /* Field: Content: Delete link */
   $handler->display->display_options['fields']['delete_node']['id'] = 'delete_node';
   $handler->display->display_options['fields']['delete_node']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['delete_node']['field'] = 'delete_node';
@@ -8972,7 +8972,7 @@ return date(\'Y-m-d\');';
   $handler->display->display_options['fields']['delete_node']['exclude'] = TRUE;
   $handler->display->display_options['fields']['delete_node']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['delete_node']['text'] = '<span class="glyphicon glyphicon-remove-circle text-danger" data-toggle="tooltip" data-placement="top" title="Удалить"></span>';
-  /* Поле: Глобальный: Пользовательский текст */
+  /* Field: Global: Custom text */
   $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
@@ -8983,26 +8983,26 @@ return date(\'Y-m-d\');';
   $handler->display->display_options['fields']['nothing']['element_class'] = 'h4 text-right';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['nothing']['element_default_classes'] = FALSE;
-  /* Поле: Содержимое: Nid */
+  /* Field: Content: Nid */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
   $handler->display->display_options['fields']['nid']['table'] = 'node';
   $handler->display->display_options['fields']['nid']['field'] = 'nid';
   $handler->display->display_options['fields']['nid']['relationship'] = 'field_dg_provider_nid';
   $handler->display->display_options['fields']['nid']['label'] = 'Поставщик №';
   $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
-  /* Критерий сортировки: Содержимое: Дата публикации */
+  /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  /* Критерий фильтра: Содержимое: Опубликовано */
+  /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Критерий фильтра: Содержимое: Тип */
+  /* Filter criterion: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
@@ -9010,7 +9010,7 @@ return date(\'Y-m-d\');';
     'waybill' => 'waybill',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Критерий фильтра: Содержимое: Заголовок */
+  /* Filter criterion: Content: Title */
   $handler->display->display_options['filters']['title']['id'] = 'title';
   $handler->display->display_options['filters']['title']['table'] = 'node';
   $handler->display->display_options['filters']['title']['field'] = 'title';
@@ -9034,7 +9034,7 @@ return date(\'Y-m-d\');';
   $handler->display->display_options['filters']['title']['expose']['autocomplete_raw_suggestion'] = 1;
   $handler->display->display_options['filters']['title']['expose']['autocomplete_raw_dropdown'] = 1;
   $handler->display->display_options['filters']['title']['expose']['autocomplete_dependent'] = 0;
-  /* Критерий фильтра: Содержимое: Дата (field_wb_date) */
+  /* Filter criterion: Content: Дата (field_wb_date) */
   $handler->display->display_options['filters']['field_wb_date_value']['id'] = 'field_wb_date_value';
   $handler->display->display_options['filters']['field_wb_date_value']['table'] = 'field_data_field_wb_date';
   $handler->display->display_options['filters']['field_wb_date_value']['field'] = 'field_wb_date_value';
@@ -9054,7 +9054,7 @@ return date(\'Y-m-d\');';
   );
   $handler->display->display_options['filters']['field_wb_date_value']['form_type'] = 'date_popup';
   $handler->display->display_options['filters']['field_wb_date_value']['year_range'] = '-0:+0';
-  /* Критерий фильтра: Содержимое: Договор (field_wb_contract_no) */
+  /* Filter criterion: Content: Договор (field_wb_contract_no) */
   $handler->display->display_options['filters']['field_wb_contract_no_nid']['id'] = 'field_wb_contract_no_nid';
   $handler->display->display_options['filters']['field_wb_contract_no_nid']['table'] = 'field_data_field_wb_contract_no';
   $handler->display->display_options['filters']['field_wb_contract_no_nid']['field'] = 'field_wb_contract_no_nid';
@@ -9089,7 +9089,7 @@ return date(\'Y-m-d\');';
   $handler->display->display_options['pager']['options']['tags']['next'] = 'следующая ›';
   $handler->display->display_options['pager']['options']['tags']['last'] = 'последняя »';
   $handler->display->display_options['defaults']['sorts'] = FALSE;
-  /* Критерий сортировки: Содержимое: Дата публикации */
+  /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';

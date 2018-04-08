@@ -42,6 +42,7 @@ function venda_user_default_permissions() {
     'name' => 'access backup and migrate',
     'roles' => array(
       'administrator' => 'administrator',
+      'manager' => 'manager',
     ),
     'module' => 'backup_migrate',
   );
@@ -51,6 +52,7 @@ function venda_user_default_permissions() {
     'name' => 'access backup files',
     'roles' => array(
       'administrator' => 'administrator',
+      'manager' => 'manager',
     ),
     'module' => 'backup_migrate',
   );
@@ -81,6 +83,15 @@ function venda_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'contextual',
+  );
+
+  // Exported permission: 'access devel information'.
+  $permissions['access devel information'] = array(
+    'name' => 'access devel information',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'devel',
   );
 
   // Exported permission: 'access example charts'.
@@ -1028,6 +1039,7 @@ function venda_user_default_permissions() {
     'name' => 'delete backup files',
     'roles' => array(
       'administrator' => 'administrator',
+      'manager' => 'manager',
     ),
     'module' => 'backup_migrate',
   );
@@ -2102,6 +2114,15 @@ function venda_user_default_permissions() {
     'module' => 'override_node_options',
   );
 
+  // Exported permission: 'execute php code'.
+  $permissions['execute php code'] = array(
+    'name' => 'execute php code',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'devel',
+  );
+
   // Exported permission: 'export taxonomy by csv'.
   $permissions['export taxonomy by csv'] = array(
     'name' => 'export taxonomy by csv',
@@ -2907,6 +2928,7 @@ function venda_user_default_permissions() {
     'name' => 'perform backup',
     'roles' => array(
       'administrator' => 'administrator',
+      'manager' => 'manager',
     ),
     'module' => 'backup_migrate',
   );
@@ -2925,6 +2947,7 @@ function venda_user_default_permissions() {
     'name' => 'restore from backup',
     'roles' => array(
       'administrator' => 'administrator',
+      'manager' => 'manager',
     ),
     'module' => 'backup_migrate',
   );
@@ -3035,6 +3058,15 @@ function venda_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'better_formats',
+  );
+
+  // Exported permission: 'switch users'.
+  $permissions['switch users'] = array(
+    'name' => 'switch users',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'devel',
   );
 
   // Exported permission: 'toggle nicemessages'.

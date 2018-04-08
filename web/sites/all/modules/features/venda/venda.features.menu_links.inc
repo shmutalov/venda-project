@@ -10,234 +10,307 @@
 function venda_menu_default_menu_links() {
   $menu_links = array();
 
-  // Exported menu link: main-menu_--:http://appteca.uz/ru/documentation.
-  $menu_links['main-menu_--:http://appteca.uz/ru/documentation'] = array(
-    'menu_name' => 'main-menu',
-    'link_path' => 'http://appteca.uz/ru/documentation',
-    'router_path' => '',
-    'link_title' => 'Инструкция по использованию',
-    'options' => array(
-      'alter' => TRUE,
-      'attributes' => array(),
-      'item_attributes' => array(
-        'id' => '',
-        'class' => '',
-        'style' => '',
-      ),
-      'identifier' => 'main-menu_--:http://appteca.uz/ru/documentation',
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 1,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => -49,
-    'customized' => 1,
-    'parent_identifier' => 'main-menu_-:http://appteca.uz/ru',
-  );
-  // Exported menu link: main-menu_--:http://appteca.uz/ru/faq.
-  $menu_links['main-menu_--:http://appteca.uz/ru/faq'] = array(
-    'menu_name' => 'main-menu',
-    'link_path' => 'http://appteca.uz/ru/faq',
-    'router_path' => '',
-    'link_title' => 'Часто задаваемые вопросы',
-    'options' => array(
-      'alter' => TRUE,
-      'attributes' => array(),
-      'item_attributes' => array(
-        'id' => '',
-        'class' => '',
-        'style' => '',
-      ),
-      'identifier' => 'main-menu_--:http://appteca.uz/ru/faq',
-    ),
-    'module' => 'menu',
-    'hidden' => 1,
-    'external' => 1,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => -48,
-    'customized' => 1,
-    'parent_identifier' => 'main-menu_-:http://appteca.uz/ru',
-  );
-  // Exported menu link: main-menu_--:https://login.appteca.uz/ru/user.
-  $menu_links['main-menu_--:https://login.appteca.uz/ru/user'] = array(
-    'menu_name' => 'main-menu',
-    'link_path' => 'https://login.appteca.uz/ru/user',
-    'router_path' => '',
-    'link_title' => 'Войти в систему',
-    'options' => array(
-      'alter' => TRUE,
-      'attributes' => array(),
-      'item_attributes' => array(
-        'id' => '',
-        'class' => 'btn-danger',
-        'style' => '',
-      ),
-      'identifier' => 'main-menu_--:https://login.appteca.uz/ru/user',
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 1,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => -45,
-    'customized' => 1,
-  );
-  // Exported menu link: main-menu_-:http://appteca.uz/ru.
-  $menu_links['main-menu_-:http://appteca.uz/ru'] = array(
-    'menu_name' => 'main-menu',
-    'link_path' => 'http://appteca.uz/ru',
-    'router_path' => '',
-    'link_title' => 'О программе',
-    'options' => array(
-      'attributes' => array(),
-      'item_attributes' => array(
-        'id' => '',
-        'class' => '',
-        'style' => '',
-      ),
-      'identifier' => 'main-menu_-:http://appteca.uz/ru',
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 1,
-    'has_children' => 1,
-    'expanded' => 1,
-    'weight' => -50,
-    'customized' => 1,
-  );
-  // Exported menu link: main-menu_-:http://appteca.uz/ru/medicaments/search.
-  $menu_links['main-menu_-:http://appteca.uz/ru/medicaments/search'] = array(
-    'menu_name' => 'main-menu',
-    'link_path' => 'http://appteca.uz/ru/medicaments/search',
-    'router_path' => '',
-    'link_title' => 'Поиск лекарства',
-    'options' => array(
-      'alter' => TRUE,
-      'attributes' => array(),
-      'item_attributes' => array(
-        'id' => '',
-        'class' => '',
-        'style' => '',
-      ),
-      'identifier' => 'main-menu_-:http://appteca.uz/ru/medicaments/search',
-    ),
-    'module' => 'menu',
-    'hidden' => 1,
-    'external' => 1,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => -46,
-    'customized' => 1,
-  );
-  // Exported menu link: main-menu_-:http://appteca.uz/ru/vitrina.
-  $menu_links['main-menu_-:http://appteca.uz/ru/vitrina'] = array(
-    'menu_name' => 'main-menu',
-    'link_path' => 'http://appteca.uz/ru/vitrina',
-    'router_path' => '',
-    'link_title' => 'Интернет-витрина',
-    'options' => array(
-      'attributes' => array(),
-      'item_attributes' => array(
-        'id' => '',
-        'class' => '',
-        'style' => '',
-      ),
-      'identifier' => 'main-menu_-:http://appteca.uz/ru/vitrina',
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 1,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => -47,
-    'customized' => 1,
-  );
-  // Exported menu link: main-menu_:http://appteca.uz/ru/devices.
-  $menu_links['main-menu_:http://appteca.uz/ru/devices'] = array(
-    'menu_name' => 'main-menu',
-    'link_path' => 'http://appteca.uz/ru/devices',
-    'router_path' => '',
-    'link_title' => 'Оборудование',
-    'options' => array(
-      'attributes' => array(),
-      'item_attributes' => array(
-        'id' => '',
-        'class' => '',
-        'style' => '',
-      ),
-      'identifier' => 'main-menu_:http://appteca.uz/ru/devices',
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 1,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => -48,
-    'customized' => 1,
-  );
-  // Exported menu link: main-menu_:http://appteca.uz/ru/pricing.
-  $menu_links['main-menu_:http://appteca.uz/ru/pricing'] = array(
-    'menu_name' => 'main-menu',
-    'link_path' => 'http://appteca.uz/ru/pricing',
-    'router_path' => '',
-    'link_title' => 'Цены',
-    'options' => array(
-      'attributes' => array(),
-      'item_attributes' => array(
-        'id' => '',
-        'class' => '',
-        'style' => '',
-      ),
-      'identifier' => 'main-menu_:http://appteca.uz/ru/pricing',
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 1,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => -49,
-    'customized' => 1,
-  );
-  // Exported menu link: management_--:admin/config/people/accounts/display/full.
-  $menu_links['management_--:admin/config/people/accounts/display/full'] = array(
-    'menu_name' => 'management',
-    'link_path' => 'admin/config/people/accounts/display/full',
-    'router_path' => 'admin/config/people/accounts/display/full',
-    'link_title' => 'Учётная запись пользователя',
-    'options' => array(
-      'identifier' => 'management_--:admin/config/people/accounts/display/full',
-    ),
-    'module' => 'system',
-    'hidden' => -1,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => 0,
-    'customized' => 0,
-    'parent_identifier' => 'management_-:admin/config/people/accounts/display',
-  );
-  // Exported menu link: management_-:admin/structure/profiles.
-  $menu_links['management_-:admin/structure/profiles'] = array(
-    'menu_name' => 'management',
-    'link_path' => 'admin/structure/profiles',
-    'router_path' => 'admin/structure/profiles',
-    'link_title' => 'Типы профилей',
+  // Exported menu link: devel_clear-cache:devel/cache/clear.
+  $menu_links['devel_clear-cache:devel/cache/clear'] = array(
+    'menu_name' => 'devel',
+    'link_path' => 'devel/cache/clear',
+    'router_path' => 'devel/cache/clear',
+    'link_title' => 'Clear cache',
     'options' => array(
       'attributes' => array(
-        'title' => 'Manage profiles, including fields.',
+        'title' => 'Clear the CSS cache and all database cache tables which store page, node, theme and variable caches.',
       ),
-      'identifier' => 'management_-:admin/structure/profiles',
+      'alter' => TRUE,
+      'identifier' => 'devel_clear-cache:devel/cache/clear',
     ),
     'module' => 'system',
     'hidden' => 0,
     'external' => 0,
-    'has_children' => 1,
+    'has_children' => 0,
     'expanded' => 0,
     'weight' => 0,
     'customized' => 0,
-    'parent_identifier' => 'management_:admin/structure',
+  );
+  // Exported menu link: devel_devel-settings:devel/settings.
+  $menu_links['devel_devel-settings:devel/settings'] = array(
+    'menu_name' => 'devel',
+    'link_path' => 'devel/settings',
+    'router_path' => 'devel/settings',
+    'link_title' => 'Devel settings',
+    'options' => array(
+      'attributes' => array(
+        'title' => 'Helper functions, pages, and blocks to assist Drupal developers. The devel blocks can be managed via the <a href="/en/admin/structure/block">block administration</a> page.',
+      ),
+      'identifier' => 'devel_devel-settings:devel/settings',
+    ),
+    'module' => 'system',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => 0,
+    'customized' => 0,
+  );
+  // Exported menu link: devel_entity-info:devel/entity/info.
+  $menu_links['devel_entity-info:devel/entity/info'] = array(
+    'menu_name' => 'devel',
+    'link_path' => 'devel/entity/info',
+    'router_path' => 'devel/entity/info',
+    'link_title' => 'Entity info',
+    'options' => array(
+      'attributes' => array(
+        'title' => 'View entity information across the whole site.',
+      ),
+      'identifier' => 'devel_entity-info:devel/entity/info',
+    ),
+    'module' => 'system',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => 0,
+    'customized' => 0,
+  );
+  // Exported menu link: devel_execute-php-code:devel/php.
+  $menu_links['devel_execute-php-code:devel/php'] = array(
+    'menu_name' => 'devel',
+    'link_path' => 'devel/php',
+    'router_path' => 'devel/php',
+    'link_title' => 'Execute PHP Code',
+    'options' => array(
+      'attributes' => array(
+        'title' => 'Execute some PHP code',
+      ),
+      'identifier' => 'devel_execute-php-code:devel/php',
+    ),
+    'module' => 'system',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => 0,
+    'customized' => 0,
+  );
+  // Exported menu link: devel_field-info:devel/field/info.
+  $menu_links['devel_field-info:devel/field/info'] = array(
+    'menu_name' => 'devel',
+    'link_path' => 'devel/field/info',
+    'router_path' => 'devel/field/info',
+    'link_title' => 'Field info',
+    'options' => array(
+      'attributes' => array(
+        'title' => 'View fields information across the whole site.',
+      ),
+      'identifier' => 'devel_field-info:devel/field/info',
+    ),
+    'module' => 'system',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => 0,
+    'customized' => 0,
+  );
+  // Exported menu link: devel_function-reference:devel/reference.
+  $menu_links['devel_function-reference:devel/reference'] = array(
+    'menu_name' => 'devel',
+    'link_path' => 'devel/reference',
+    'router_path' => 'devel/reference',
+    'link_title' => 'Function reference',
+    'options' => array(
+      'attributes' => array(
+        'title' => 'View a list of currently defined user functions with documentation links.',
+      ),
+      'identifier' => 'devel_function-reference:devel/reference',
+    ),
+    'module' => 'system',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => 0,
+    'customized' => 0,
+  );
+  // Exported menu link: devel_hookelements:devel/elements.
+  $menu_links['devel_hookelements:devel/elements'] = array(
+    'menu_name' => 'devel',
+    'link_path' => 'devel/elements',
+    'router_path' => 'devel/elements',
+    'link_title' => 'Hook_elements()',
+    'options' => array(
+      'attributes' => array(
+        'title' => 'View the active form/render elements for this site.',
+      ),
+      'identifier' => 'devel_hookelements:devel/elements',
+    ),
+    'module' => 'system',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => 0,
+    'customized' => 0,
+  );
+  // Exported menu link: devel_menu-item:devel/menu/item.
+  $menu_links['devel_menu-item:devel/menu/item'] = array(
+    'menu_name' => 'devel',
+    'link_path' => 'devel/menu/item',
+    'router_path' => 'devel/menu/item',
+    'link_title' => 'Menu item',
+    'options' => array(
+      'attributes' => array(
+        'title' => 'Details about a given menu item.',
+      ),
+      'alter' => TRUE,
+      'identifier' => 'devel_menu-item:devel/menu/item',
+    ),
+    'module' => 'system',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => 0,
+    'customized' => 0,
+  );
+  // Exported menu link: devel_phpinfo:devel/phpinfo.
+  $menu_links['devel_phpinfo:devel/phpinfo'] = array(
+    'menu_name' => 'devel',
+    'link_path' => 'devel/phpinfo',
+    'router_path' => 'devel/phpinfo',
+    'link_title' => 'PHPinfo()',
+    'options' => array(
+      'attributes' => array(
+        'title' => 'View your server\'s PHP configuration',
+      ),
+      'identifier' => 'devel_phpinfo:devel/phpinfo',
+    ),
+    'module' => 'system',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => 0,
+    'customized' => 0,
+  );
+  // Exported menu link: devel_rebuild-menus:devel/menu/reset.
+  $menu_links['devel_rebuild-menus:devel/menu/reset'] = array(
+    'menu_name' => 'devel',
+    'link_path' => 'devel/menu/reset',
+    'router_path' => 'devel/menu/reset',
+    'link_title' => 'Rebuild menus',
+    'options' => array(
+      'attributes' => array(
+        'title' => 'Rebuild menu based on hook_menu() and revert any custom changes. All menu items return to their default settings.',
+      ),
+      'alter' => TRUE,
+      'identifier' => 'devel_rebuild-menus:devel/menu/reset',
+    ),
+    'module' => 'system',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => 0,
+    'customized' => 0,
+  );
+  // Exported menu link: devel_reinstall-modules:devel/reinstall.
+  $menu_links['devel_reinstall-modules:devel/reinstall'] = array(
+    'menu_name' => 'devel',
+    'link_path' => 'devel/reinstall',
+    'router_path' => 'devel/reinstall',
+    'link_title' => 'Reinstall modules',
+    'options' => array(
+      'attributes' => array(
+        'title' => 'Run hook_uninstall() and then hook_install() for a given module.',
+      ),
+      'alter' => TRUE,
+      'identifier' => 'devel_reinstall-modules:devel/reinstall',
+    ),
+    'module' => 'system',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => 0,
+    'customized' => 0,
+  );
+  // Exported menu link: devel_run-cron:devel/run-cron.
+  $menu_links['devel_run-cron:devel/run-cron'] = array(
+    'menu_name' => 'devel',
+    'link_path' => 'devel/run-cron',
+    'router_path' => 'devel/run-cron',
+    'link_title' => 'Run cron',
+    'options' => array(
+      'identifier' => 'devel_run-cron:devel/run-cron',
+    ),
+    'module' => 'system',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => 0,
+    'customized' => 0,
+  );
+  // Exported menu link: devel_session-viewer:devel/session.
+  $menu_links['devel_session-viewer:devel/session'] = array(
+    'menu_name' => 'devel',
+    'link_path' => 'devel/session',
+    'router_path' => 'devel/session',
+    'link_title' => 'Session viewer',
+    'options' => array(
+      'attributes' => array(
+        'title' => 'List the contents of $_SESSION.',
+      ),
+      'identifier' => 'devel_session-viewer:devel/session',
+    ),
+    'module' => 'system',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => 0,
+    'customized' => 0,
+  );
+  // Exported menu link: devel_theme-registry:devel/theme/registry.
+  $menu_links['devel_theme-registry:devel/theme/registry'] = array(
+    'menu_name' => 'devel',
+    'link_path' => 'devel/theme/registry',
+    'router_path' => 'devel/theme/registry',
+    'link_title' => 'Theme registry',
+    'options' => array(
+      'attributes' => array(
+        'title' => 'View a list of available theme functions across the whole site.',
+      ),
+      'identifier' => 'devel_theme-registry:devel/theme/registry',
+    ),
+    'module' => 'system',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => 0,
+    'customized' => 0,
+  );
+  // Exported menu link: devel_variable-editor:devel/variable.
+  $menu_links['devel_variable-editor:devel/variable'] = array(
+    'menu_name' => 'devel',
+    'link_path' => 'devel/variable',
+    'router_path' => 'devel/variable',
+    'link_title' => 'Variable editor',
+    'options' => array(
+      'attributes' => array(
+        'title' => 'Edit and delete site variables.',
+      ),
+      'alter' => TRUE,
+      'identifier' => 'devel_variable-editor:devel/variable',
+    ),
+    'module' => 'system',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => 0,
+    'customized' => 0,
   );
   // Exported menu link: management_account-settings:admin/config/people/accounts.
   $menu_links['management_account-settings:admin/config/people/accounts'] = array(
@@ -258,7 +331,7 @@ function venda_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => -10,
     'customized' => 0,
-    'parent_identifier' => 'management_:admin/config/people',
+    'parent_identifier' => 'management_people:admin/config/people',
   );
   // Exported menu link: management_actions:admin/config/system/actions.
   $menu_links['management_actions:admin/config/system/actions'] = array(
@@ -279,7 +352,7 @@ function venda_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => 0,
     'customized' => 0,
-    'parent_identifier' => 'management_:admin/config/system',
+    'parent_identifier' => 'management_system:admin/config/system',
   );
   // Exported menu link: management_adminimal-menu:admin/config/administration/adminimal_menu.
   $menu_links['management_adminimal-menu:admin/config/administration/adminimal_menu'] = array(
@@ -300,7 +373,7 @@ function venda_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => 0,
     'customized' => 0,
-    'parent_identifier' => 'management_:admin/config/administration',
+    'parent_identifier' => 'management_administration:admin/config/administration',
   );
   // Exported menu link: management_administration-menu:admin/config/administration/admin_menu.
   $menu_links['management_administration-menu:admin/config/administration/admin_menu'] = array(
@@ -321,7 +394,7 @@ function venda_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => 0,
     'customized' => 0,
-    'parent_identifier' => 'management_:admin/config/administration',
+    'parent_identifier' => 'management_administration:admin/config/administration',
   );
   // Exported menu link: management_administration:admin.
   $menu_links['management_administration:admin'] = array(
@@ -359,7 +432,7 @@ function venda_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => 0,
     'customized' => 0,
-    'parent_identifier' => 'management_:admin/config',
+    'parent_identifier' => 'management_configuration:admin/config',
   );
   // Exported menu link: management_appearance:admin/appearance.
   $menu_links['management_appearance:admin/appearance'] = array(
@@ -380,7 +453,7 @@ function venda_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => -6,
     'customized' => 0,
-    'parent_identifier' => 'management_:admin',
+    'parent_identifier' => 'management_administration:admin',
   );
   // Exported menu link: management_authcache:admin/config/system/authcache.
   $menu_links['management_authcache:admin/config/system/authcache'] = array(
@@ -401,7 +474,7 @@ function venda_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => 10,
     'customized' => 0,
-    'parent_identifier' => 'management_:admin/config/system',
+    'parent_identifier' => 'management_system:admin/config/system',
   );
   // Exported menu link: management_available-updates:admin/reports/updates.
   $menu_links['management_available-updates:admin/reports/updates'] = array(
@@ -422,7 +495,28 @@ function venda_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => -50,
     'customized' => 0,
-    'parent_identifier' => 'management_:admin/reports',
+    'parent_identifier' => 'management_reports:admin/reports',
+  );
+  // Exported menu link: management_backup-and-migrate:admin/config/system/backup_migrate.
+  $menu_links['management_backup-and-migrate:admin/config/system/backup_migrate'] = array(
+    'menu_name' => 'management',
+    'link_path' => 'admin/config/system/backup_migrate',
+    'router_path' => 'admin/config/system/backup_migrate',
+    'link_title' => 'Backup and Migrate',
+    'options' => array(
+      'attributes' => array(
+        'title' => 'Backup/restore your database and files or migrate data to or from another Drupal site.',
+      ),
+      'identifier' => 'management_backup-and-migrate:admin/config/system/backup_migrate',
+    ),
+    'module' => 'system',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => 0,
+    'customized' => 0,
+    'parent_identifier' => 'management_system:admin/config/system',
   );
   // Exported menu link: management_blocks:admin/structure/block.
   $menu_links['management_blocks:admin/structure/block'] = array(
@@ -443,7 +537,7 @@ function venda_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => 0,
     'customized' => 0,
-    'parent_identifier' => 'management_:admin/structure',
+    'parent_identifier' => 'management_structure:admin/structure',
   );
   // Exported menu link: management_cache-expiration:admin/config/system/expire.
   $menu_links['management_cache-expiration:admin/config/system/expire'] = array(
@@ -464,7 +558,7 @@ function venda_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => 0,
     'customized' => 0,
-    'parent_identifier' => 'management_:admin/config/system',
+    'parent_identifier' => 'management_system:admin/config/system',
   );
   // Exported menu link: management_ckeditor:admin/config/content/ckeditor.
   $menu_links['management_ckeditor:admin/config/content/ckeditor'] = array(
@@ -485,7 +579,7 @@ function venda_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => 0,
     'customized' => 0,
-    'parent_identifier' => 'management_--:admin/config/content',
+    'parent_identifier' => 'management_content-authoring:admin/config/content',
   );
   // Exported menu link: management_clean-urls:admin/config/search/clean-urls.
   $menu_links['management_clean-urls:admin/config/search/clean-urls'] = array(
@@ -506,7 +600,7 @@ function venda_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => 5,
     'customized' => 0,
-    'parent_identifier' => 'management_--:admin/config/search',
+    'parent_identifier' => 'management_search-and-metadata:admin/config/search',
   );
   // Exported menu link: management_clientside-validation:admin/config/validation/clientside_validation.
   $menu_links['management_clientside-validation:admin/config/validation/clientside_validation'] = array(
@@ -527,7 +621,7 @@ function venda_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => 0,
     'customized' => 0,
-    'parent_identifier' => 'management_:admin/config/validation',
+    'parent_identifier' => 'management_validation:admin/config/validation',
   );
   // Exported menu link: management_config-pages:admin/config/development/config_pages_types.
   $menu_links['management_config-pages:admin/config/development/config_pages_types'] = array(
@@ -548,7 +642,7 @@ function venda_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => 0,
     'customized' => 0,
-    'parent_identifier' => 'management_:admin/config/development',
+    'parent_identifier' => 'management_development:admin/config/development',
   );
   // Exported menu link: management_configuration:admin/config.
   $menu_links['management_configuration:admin/config'] = array(
@@ -569,7 +663,7 @@ function venda_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => 0,
     'customized' => 0,
-    'parent_identifier' => 'management_:admin',
+    'parent_identifier' => 'management_administration:admin',
   );
   // Exported menu link: management_content-authoring:admin/config/content.
   $menu_links['management_content-authoring:admin/config/content'] = array(
@@ -590,7 +684,28 @@ function venda_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => -15,
     'customized' => 0,
-    'parent_identifier' => 'management_:admin/config',
+    'parent_identifier' => 'management_configuration:admin/config',
+  );
+  // Exported menu link: management_content-types:admin/config/validation/clientside_validation/content-types.
+  $menu_links['management_content-types:admin/config/validation/clientside_validation/content-types'] = array(
+    'menu_name' => 'management',
+    'link_path' => 'admin/config/validation/clientside_validation/content-types',
+    'router_path' => 'admin/config/validation/clientside_validation/content-types',
+    'link_title' => 'Content types',
+    'options' => array(
+      'attributes' => array(
+        'title' => 'Override settings for content types.',
+      ),
+      'identifier' => 'management_content-types:admin/config/validation/clientside_validation/content-types',
+    ),
+    'module' => 'system',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => 10,
+    'customized' => 0,
+    'parent_identifier' => 'management_clientside-validation:admin/config/validation/clientside_validation',
   );
   // Exported menu link: management_content-types:admin/structure/types.
   $menu_links['management_content-types:admin/structure/types'] = array(
@@ -611,7 +726,7 @@ function venda_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => 0,
     'customized' => 0,
-    'parent_identifier' => 'management_:admin/structure',
+    'parent_identifier' => 'management_structure:admin/structure',
   );
   // Exported menu link: management_content:admin/content.
   $menu_links['management_content:admin/content'] = array(
@@ -632,7 +747,7 @@ function venda_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => -10,
     'customized' => 0,
-    'parent_identifier' => 'management_:admin',
+    'parent_identifier' => 'management_administration:admin',
   );
   // Exported menu link: management_cron:admin/config/system/cron.
   $menu_links['management_cron:admin/config/system/cron'] = array(
@@ -653,7 +768,7 @@ function venda_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => 20,
     'customized' => 0,
-    'parent_identifier' => 'management_:admin/config/system',
+    'parent_identifier' => 'management_system:admin/config/system',
   );
   // Exported menu link: management_custom-forms:admin/config/validation/clientside_validation/custom-forms.
   $menu_links['management_custom-forms:admin/config/validation/clientside_validation/custom-forms'] = array(
@@ -695,7 +810,7 @@ function venda_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => -15,
     'customized' => 0,
-    'parent_identifier' => 'management_--:admin/config/regional',
+    'parent_identifier' => 'management_regional-and-language:admin/config/regional',
   );
   // Exported menu link: management_date-api:admin/config/date.
   $menu_links['management_date-api:admin/config/date'] = array(
@@ -716,7 +831,28 @@ function venda_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => -10,
     'customized' => 0,
-    'parent_identifier' => 'management_:admin/config',
+    'parent_identifier' => 'management_configuration:admin/config',
+  );
+  // Exported menu link: management_date-popup:admin/config/date/date_popup.
+  $menu_links['management_date-popup:admin/config/date/date_popup'] = array(
+    'menu_name' => 'management',
+    'link_path' => 'admin/config/date/date_popup',
+    'router_path' => 'admin/config/date/date_popup',
+    'link_title' => 'Date Popup',
+    'options' => array(
+      'attributes' => array(
+        'title' => 'Configure the Date Popup settings.',
+      ),
+      'identifier' => 'management_date-popup:admin/config/date/date_popup',
+    ),
+    'module' => 'system',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => 0,
+    'customized' => 0,
+    'parent_identifier' => 'management_date-api:admin/config/date',
   );
   // Exported menu link: management_default-chart-configuration:admin/config/content/charts.
   $menu_links['management_default-chart-configuration:admin/config/content/charts'] = array(
@@ -737,7 +873,49 @@ function venda_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => 0,
     'customized' => 0,
-    'parent_identifier' => 'management_--:admin/config/content',
+    'parent_identifier' => 'management_content-authoring:admin/config/content',
+  );
+  // Exported menu link: management_default-settings:admin/config/validation/clientside_validation/default.
+  $menu_links['management_default-settings:admin/config/validation/clientside_validation/default'] = array(
+    'menu_name' => 'management',
+    'link_path' => 'admin/config/validation/clientside_validation/default',
+    'router_path' => 'admin/config/validation/clientside_validation/default',
+    'link_title' => 'Default settings',
+    'options' => array(
+      'attributes' => array(
+        'title' => 'Edit default settings.',
+      ),
+      'identifier' => 'management_default-settings:admin/config/validation/clientside_validation/default',
+    ),
+    'module' => 'system',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => 5,
+    'customized' => 0,
+    'parent_identifier' => 'management_clientside-validation:admin/config/validation/clientside_validation',
+  );
+  // Exported menu link: management_devel-settings:admin/config/development/devel.
+  $menu_links['management_devel-settings:admin/config/development/devel'] = array(
+    'menu_name' => 'management',
+    'link_path' => 'admin/config/development/devel',
+    'router_path' => 'admin/config/development/devel',
+    'link_title' => 'Devel settings',
+    'options' => array(
+      'attributes' => array(
+        'title' => 'Helper functions, pages, and blocks to assist Drupal developers. The devel blocks can be managed via the <a href="/en/admin/structure/block">block administration</a> page.',
+      ),
+      'identifier' => 'management_devel-settings:admin/config/development/devel',
+    ),
+    'module' => 'system',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => 0,
+    'customized' => 0,
+    'parent_identifier' => 'management_development:admin/config/development',
   );
   // Exported menu link: management_development:admin/config/development.
   $menu_links['management_development:admin/config/development'] = array(
@@ -758,7 +936,7 @@ function venda_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => -10,
     'customized' => 0,
-    'parent_identifier' => 'management_:admin/config',
+    'parent_identifier' => 'management_configuration:admin/config',
   );
   // Exported menu link: management_email-contact-form-settings:admin/config/content/email.
   $menu_links['management_email-contact-form-settings:admin/config/content/email'] = array(
@@ -779,7 +957,28 @@ function venda_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => 0,
     'customized' => 0,
-    'parent_identifier' => 'management_--:admin/config/content',
+    'parent_identifier' => 'management_content-authoring:admin/config/content',
+  );
+  // Exported menu link: management_extended-path-aliases:admin/config/system/path_alias_xt.
+  $menu_links['management_extended-path-aliases:admin/config/system/path_alias_xt'] = array(
+    'menu_name' => 'management',
+    'link_path' => 'admin/config/system/path_alias_xt',
+    'router_path' => 'admin/config/system/path_alias_xt',
+    'link_title' => 'Extended path aliases',
+    'options' => array(
+      'attributes' => array(
+        'title' => 'Advanced settings.',
+      ),
+      'identifier' => 'management_extended-path-aliases:admin/config/system/path_alias_xt',
+    ),
+    'module' => 'system',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => 0,
+    'customized' => 0,
+    'parent_identifier' => 'management_system:admin/config/system',
   );
   // Exported menu link: management_features:admin/structure/features.
   $menu_links['management_features:admin/structure/features'] = array(
@@ -800,7 +999,7 @@ function venda_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => 0,
     'customized' => 0,
-    'parent_identifier' => 'management_:admin/structure',
+    'parent_identifier' => 'management_structure:admin/structure',
   );
   // Exported menu link: management_field-collections:admin/structure/field-collections.
   $menu_links['management_field-collections:admin/structure/field-collections'] = array(
@@ -821,7 +1020,7 @@ function venda_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => 0,
     'customized' => 0,
-    'parent_identifier' => 'management_:admin/structure',
+    'parent_identifier' => 'management_structure:admin/structure',
   );
   // Exported menu link: management_field-list:admin/reports/fields.
   $menu_links['management_field-list:admin/reports/fields'] = array(
@@ -842,7 +1041,7 @@ function venda_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => 0,
     'customized' => 0,
-    'parent_identifier' => 'management_:admin/reports',
+    'parent_identifier' => 'management_reports:admin/reports',
   );
   // Exported menu link: management_field-track-changes:admin/config/system/track_field_changes.
   $menu_links['management_field-track-changes:admin/config/system/track_field_changes'] = array(
@@ -863,7 +1062,7 @@ function venda_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => 0,
     'customized' => 0,
-    'parent_identifier' => 'management_:admin/config/system',
+    'parent_identifier' => 'management_system:admin/config/system',
   );
   // Exported menu link: management_file-settings:admin/config/media/file-settings.
   $menu_links['management_file-settings:admin/config/media/file-settings'] = array(
@@ -884,7 +1083,7 @@ function venda_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => 0,
     'customized' => 0,
-    'parent_identifier' => 'management_:admin/config/media',
+    'parent_identifier' => 'management_media:admin/config/media',
   );
   // Exported menu link: management_file-system:admin/config/media/file-system.
   $menu_links['management_file-system:admin/config/media/file-system'] = array(
@@ -905,7 +1104,7 @@ function venda_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => -10,
     'customized' => 0,
-    'parent_identifier' => 'management_:admin/config/media',
+    'parent_identifier' => 'management_media:admin/config/media',
   );
   // Exported menu link: management_file-types:admin/structure/file-types.
   $menu_links['management_file-types:admin/structure/file-types'] = array(
@@ -926,7 +1125,7 @@ function venda_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => 0,
     'customized' => 0,
-    'parent_identifier' => 'management_:admin/structure',
+    'parent_identifier' => 'management_structure:admin/structure',
   );
   // Exported menu link: management_files:admin/content/file.
   $menu_links['management_files:admin/content/file'] = array(
@@ -947,7 +1146,49 @@ function venda_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => 0,
     'customized' => 0,
-    'parent_identifier' => 'management_:admin/content',
+    'parent_identifier' => 'management_content:admin/content',
+  );
+  // Exported menu link: management_general-settings:admin/config/validation/clientside_validation/general.
+  $menu_links['management_general-settings:admin/config/validation/clientside_validation/general'] = array(
+    'menu_name' => 'management',
+    'link_path' => 'admin/config/validation/clientside_validation/general',
+    'router_path' => 'admin/config/validation/clientside_validation/general',
+    'link_title' => 'General settings',
+    'options' => array(
+      'attributes' => array(
+        'title' => 'Edit general settings.',
+      ),
+      'identifier' => 'management_general-settings:admin/config/validation/clientside_validation/general',
+    ),
+    'module' => 'system',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -1,
+    'customized' => 0,
+    'parent_identifier' => 'management_clientside-validation:admin/config/validation/clientside_validation',
+  );
+  // Exported menu link: management_generate-profiles:admin/config/development/generate/profile2.
+  $menu_links['management_generate-profiles:admin/config/development/generate/profile2'] = array(
+    'menu_name' => 'management',
+    'link_path' => 'admin/config/development/generate/profile2',
+    'router_path' => 'admin/config/development/generate/profile2',
+    'link_title' => 'Generate profiles',
+    'options' => array(
+      'attributes' => array(
+        'title' => 'Generate a given number of profiles for users. Optionally override current user profiles.',
+      ),
+      'identifier' => 'management_generate-profiles:admin/config/development/generate/profile2',
+    ),
+    'module' => 'system',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => 0,
+    'customized' => 0,
+    'parent_identifier' => 'management_development:admin/config/development',
   );
   // Exported menu link: management_global-redirect:admin/config/system/globalredirect.
   $menu_links['management_global-redirect:admin/config/system/globalredirect'] = array(
@@ -968,7 +1209,7 @@ function venda_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => 0,
     'customized' => 0,
-    'parent_identifier' => 'management_:admin/config/system',
+    'parent_identifier' => 'management_system:admin/config/system',
   );
   // Exported menu link: management_image-styles:admin/config/media/image-styles.
   $menu_links['management_image-styles:admin/config/media/image-styles'] = array(
@@ -989,7 +1230,7 @@ function venda_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => 0,
     'customized' => 0,
-    'parent_identifier' => 'management_:admin/config/media',
+    'parent_identifier' => 'management_media:admin/config/media',
   );
   // Exported menu link: management_image-toolkit:admin/config/media/image-toolkit.
   $menu_links['management_image-toolkit:admin/config/media/image-toolkit'] = array(
@@ -1010,7 +1251,7 @@ function venda_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => 20,
     'customized' => 0,
-    'parent_identifier' => 'management_:admin/config/media',
+    'parent_identifier' => 'management_media:admin/config/media',
   );
   // Exported menu link: management_ip-address-blocking:admin/config/people/ip-blocking.
   $menu_links['management_ip-address-blocking:admin/config/people/ip-blocking'] = array(
@@ -1031,7 +1272,28 @@ function venda_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => 10,
     'customized' => 0,
-    'parent_identifier' => 'management_:admin/config/people',
+    'parent_identifier' => 'management_people:admin/config/people',
+  );
+  // Exported menu link: management_jquery-update:admin/config/development/jquery_update.
+  $menu_links['management_jquery-update:admin/config/development/jquery_update'] = array(
+    'menu_name' => 'management',
+    'link_path' => 'admin/config/development/jquery_update',
+    'router_path' => 'admin/config/development/jquery_update',
+    'link_title' => 'jQuery update',
+    'options' => array(
+      'attributes' => array(
+        'title' => 'Configure settings related to the jQuery upgrade, the library path and compression.',
+      ),
+      'identifier' => 'management_jquery-update:admin/config/development/jquery_update',
+    ),
+    'module' => 'system',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => 0,
+    'customized' => 0,
+    'parent_identifier' => 'management_development:admin/config/development',
   );
   // Exported menu link: management_languages:admin/config/regional/language.
   $menu_links['management_languages:admin/config/regional/language'] = array(
@@ -1052,7 +1314,7 @@ function venda_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => -10,
     'customized' => 0,
-    'parent_identifier' => 'management_--:admin/config/regional',
+    'parent_identifier' => 'management_regional-and-language:admin/config/regional',
   );
   // Exported menu link: management_libraries:admin/reports/libraries.
   $menu_links['management_libraries:admin/reports/libraries'] = array(
@@ -1073,25 +1335,7 @@ function venda_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => 0,
     'customized' => 0,
-    'parent_identifier' => 'management_:admin/reports',
-  );
-  // Exported menu link: management_license:admin/config/system/license.
-  $menu_links['management_license:admin/config/system/license'] = array(
-    'menu_name' => 'management',
-    'link_path' => 'admin/config/system/license',
-    'router_path' => 'admin/config/system',
-    'link_title' => 'License',
-    'options' => array(
-      'identifier' => 'management_license:admin/config/system/license',
-    ),
-    'module' => 'system',
-    'hidden' => 1,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => 0,
-    'customized' => 1,
-    'parent_identifier' => 'management_:admin/config/system',
+    'parent_identifier' => 'management_reports:admin/reports',
   );
   // Exported menu link: management_logging-and-errors:admin/config/development/logging.
   $menu_links['management_logging-and-errors:admin/config/development/logging'] = array(
@@ -1112,7 +1356,7 @@ function venda_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => -15,
     'customized' => 0,
-    'parent_identifier' => 'management_:admin/config/development',
+    'parent_identifier' => 'management_development:admin/config/development',
   );
   // Exported menu link: management_logintoboggan:admin/config/system/logintoboggan.
   $menu_links['management_logintoboggan:admin/config/system/logintoboggan'] = array(
@@ -1133,25 +1377,7 @@ function venda_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => 0,
     'customized' => 0,
-    'parent_identifier' => 'management_:admin/config/system',
-  );
-  // Exported menu link: management_main-menu:admin/structure/menu/manage/main-menu.
-  $menu_links['management_main-menu:admin/structure/menu/manage/main-menu'] = array(
-    'menu_name' => 'management',
-    'link_path' => 'admin/structure/menu/manage/main-menu',
-    'router_path' => 'admin/structure/menu/manage/%',
-    'link_title' => 'Main menu',
-    'options' => array(
-      'identifier' => 'management_main-menu:admin/structure/menu/manage/main-menu',
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => 0,
-    'customized' => 0,
-    'parent_identifier' => 'management_:admin/structure/menu',
+    'parent_identifier' => 'management_system:admin/config/system',
   );
   // Exported menu link: management_maintenance-mode:admin/config/development/maintenance.
   $menu_links['management_maintenance-mode:admin/config/development/maintenance'] = array(
@@ -1172,43 +1398,7 @@ function venda_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => -10,
     'customized' => 0,
-    'parent_identifier' => 'management_:admin/config/development',
-  );
-  // Exported menu link: management_management:admin/structure/menu/manage/management.
-  $menu_links['management_management:admin/structure/menu/manage/management'] = array(
-    'menu_name' => 'management',
-    'link_path' => 'admin/structure/menu/manage/management',
-    'router_path' => 'admin/structure/menu/manage/%',
-    'link_title' => 'Management',
-    'options' => array(
-      'identifier' => 'management_management:admin/structure/menu/manage/management',
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => 0,
-    'customized' => 0,
-    'parent_identifier' => 'management_:admin/structure/menu',
-  );
-  // Exported menu link: management_manager-menu:admin/structure/menu/manage/menu-manager-menu.
-  $menu_links['management_manager-menu:admin/structure/menu/manage/menu-manager-menu'] = array(
-    'menu_name' => 'management',
-    'link_path' => 'admin/structure/menu/manage/menu-manager-menu',
-    'router_path' => 'admin/structure/menu/manage/%',
-    'link_title' => 'Manager menu',
-    'options' => array(
-      'identifier' => 'management_manager-menu:admin/structure/menu/manage/menu-manager-menu',
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => 0,
-    'customized' => 0,
-    'parent_identifier' => 'management_:admin/structure/menu',
+    'parent_identifier' => 'management_development:admin/config/development',
   );
   // Exported menu link: management_media-browser-settings:admin/config/media/browser.
   $menu_links['management_media-browser-settings:admin/config/media/browser'] = array(
@@ -1229,7 +1419,7 @@ function venda_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => 0,
     'customized' => 0,
-    'parent_identifier' => 'management_:admin/config/media',
+    'parent_identifier' => 'management_media:admin/config/media',
   );
   // Exported menu link: management_media:admin/config/media.
   $menu_links['management_media:admin/config/media'] = array(
@@ -1250,7 +1440,7 @@ function venda_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => -10,
     'customized' => 0,
-    'parent_identifier' => 'management_:admin/config',
+    'parent_identifier' => 'management_configuration:admin/config',
   );
   // Exported menu link: management_menus:admin/structure/menu.
   $menu_links['management_menus:admin/structure/menu'] = array(
@@ -1271,7 +1461,7 @@ function venda_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => 0,
     'customized' => 0,
-    'parent_identifier' => 'management_:admin/structure',
+    'parent_identifier' => 'management_structure:admin/structure',
   );
   // Exported menu link: management_missing-module-message-fixer:admin/config/system/module-missing-message-fixer.
   $menu_links['management_missing-module-message-fixer:admin/config/system/module-missing-message-fixer'] = array(
@@ -1292,7 +1482,7 @@ function venda_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => 0,
     'customized' => 0,
-    'parent_identifier' => 'management_:admin/config/system',
+    'parent_identifier' => 'management_system:admin/config/system',
   );
   // Exported menu link: management_module-filter:admin/config/user-interface/modulefilter.
   $menu_links['management_module-filter:admin/config/user-interface/modulefilter'] = array(
@@ -1313,7 +1503,7 @@ function venda_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => 0,
     'customized' => 0,
-    'parent_identifier' => 'management_-:admin/config/user-interface',
+    'parent_identifier' => 'management_user-interface:admin/config/user-interface',
   );
   // Exported menu link: management_modules:admin/modules.
   $menu_links['management_modules:admin/modules'] = array(
@@ -1334,7 +1524,7 @@ function venda_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => -2,
     'customized' => 0,
-    'parent_identifier' => 'management_:admin',
+    'parent_identifier' => 'management_administration:admin',
   );
   // Exported menu link: management_multilingual-settings:admin/config/regional/i18n.
   $menu_links['management_multilingual-settings:admin/config/regional/i18n'] = array(
@@ -1355,25 +1545,7 @@ function venda_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => 10,
     'customized' => 0,
-    'parent_identifier' => 'management_--:admin/config/regional',
-  );
-  // Exported menu link: management_navigation:admin/structure/menu/manage/navigation.
-  $menu_links['management_navigation:admin/structure/menu/manage/navigation'] = array(
-    'menu_name' => 'management',
-    'link_path' => 'admin/structure/menu/manage/navigation',
-    'router_path' => 'admin/structure/menu/manage/%',
-    'link_title' => 'Navigation',
-    'options' => array(
-      'identifier' => 'management_navigation:admin/structure/menu/manage/navigation',
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => 0,
-    'customized' => 0,
-    'parent_identifier' => 'management_:admin/structure/menu',
+    'parent_identifier' => 'management_regional-and-language:admin/config/regional',
   );
   // Exported menu link: management_nice-messages:admin/config/system/nicemessages.
   $menu_links['management_nice-messages:admin/config/system/nicemessages'] = array(
@@ -1394,7 +1566,7 @@ function venda_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => 0,
     'customized' => 0,
-    'parent_identifier' => 'management_:admin/config/system',
+    'parent_identifier' => 'management_system:admin/config/system',
   );
   // Exported menu link: management_override-node-options-settings:admin/config/content/override-node-options.
   $menu_links['management_override-node-options-settings:admin/config/content/override-node-options'] = array(
@@ -1412,7 +1584,28 @@ function venda_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => 0,
     'customized' => 0,
-    'parent_identifier' => 'management_--:admin/config/content',
+    'parent_identifier' => 'management_content-authoring:admin/config/content',
+  );
+  // Exported menu link: management_password-reset:admin/config/people/password-reset.
+  $menu_links['management_password-reset:admin/config/people/password-reset'] = array(
+    'menu_name' => 'management',
+    'link_path' => 'admin/config/people/password-reset',
+    'router_path' => 'admin/config/people/password-reset',
+    'link_title' => 'Password reset',
+    'options' => array(
+      'attributes' => array(
+        'title' => 'Configure security questions for the password_reset module.',
+      ),
+      'identifier' => 'management_password-reset:admin/config/people/password-reset',
+    ),
+    'module' => 'system',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => 0,
+    'customized' => 0,
+    'parent_identifier' => 'management_people:admin/config/people',
   );
   // Exported menu link: management_people:admin/config/people.
   $menu_links['management_people:admin/config/people'] = array(
@@ -1433,7 +1626,7 @@ function venda_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => -20,
     'customized' => 0,
-    'parent_identifier' => 'management_:admin/config',
+    'parent_identifier' => 'management_configuration:admin/config',
   );
   // Exported menu link: management_people:admin/people.
   $menu_links['management_people:admin/people'] = array(
@@ -1454,7 +1647,7 @@ function venda_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => -4,
     'customized' => 0,
-    'parent_identifier' => 'management_:admin',
+    'parent_identifier' => 'management_administration:admin',
   );
   // Exported menu link: management_performance:admin/config/development/performance.
   $menu_links['management_performance:admin/config/development/performance'] = array(
@@ -1475,7 +1668,28 @@ function venda_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => -20,
     'customized' => 0,
-    'parent_identifier' => 'management_:admin/config/development',
+    'parent_identifier' => 'management_development:admin/config/development',
+  );
+  // Exported menu link: management_profile-types:admin/structure/profiles.
+  $menu_links['management_profile-types:admin/structure/profiles'] = array(
+    'menu_name' => 'management',
+    'link_path' => 'admin/structure/profiles',
+    'router_path' => 'admin/structure/profiles',
+    'link_title' => 'Profile types',
+    'options' => array(
+      'attributes' => array(
+        'title' => 'Manage profiles, including fields.',
+      ),
+      'identifier' => 'management_profile-types:admin/structure/profiles',
+    ),
+    'module' => 'system',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 1,
+    'expanded' => 0,
+    'weight' => 0,
+    'customized' => 0,
+    'parent_identifier' => 'management_structure:admin/structure',
   );
   // Exported menu link: management_recent-log-messages:admin/reports/dblog.
   $menu_links['management_recent-log-messages:admin/reports/dblog'] = array(
@@ -1496,7 +1710,7 @@ function venda_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => -1,
     'customized' => 0,
-    'parent_identifier' => 'management_:admin/reports',
+    'parent_identifier' => 'management_reports:admin/reports',
   );
   // Exported menu link: management_regional-and-language:admin/config/regional.
   $menu_links['management_regional-and-language:admin/config/regional'] = array(
@@ -1517,7 +1731,7 @@ function venda_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => -5,
     'customized' => 0,
-    'parent_identifier' => 'management_:admin/config',
+    'parent_identifier' => 'management_configuration:admin/config',
   );
   // Exported menu link: management_regional-settings:admin/config/regional/settings.
   $menu_links['management_regional-settings:admin/config/regional/settings'] = array(
@@ -1538,25 +1752,7 @@ function venda_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => -20,
     'customized' => 0,
-    'parent_identifier' => 'management_--:admin/config/regional',
-  );
-  // Exported menu link: management_report-menu:admin/structure/menu/manage/menu-report-menu.
-  $menu_links['management_report-menu:admin/structure/menu/manage/menu-report-menu'] = array(
-    'menu_name' => 'management',
-    'link_path' => 'admin/structure/menu/manage/menu-report-menu',
-    'router_path' => 'admin/structure/menu/manage/%',
-    'link_title' => 'Report menu',
-    'options' => array(
-      'identifier' => 'management_report-menu:admin/structure/menu/manage/menu-report-menu',
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => 0,
-    'customized' => 0,
-    'parent_identifier' => 'management_:admin/structure/menu',
+    'parent_identifier' => 'management_regional-and-language:admin/config/regional',
   );
   // Exported menu link: management_reports:admin/reports.
   $menu_links['management_reports:admin/reports'] = array(
@@ -1577,7 +1773,7 @@ function venda_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => 5,
     'customized' => 0,
-    'parent_identifier' => 'management_:admin',
+    'parent_identifier' => 'management_administration:admin',
   );
   // Exported menu link: management_rss-publishing:admin/config/services/rss-publishing.
   $menu_links['management_rss-publishing:admin/config/services/rss-publishing'] = array(
@@ -1598,7 +1794,7 @@ function venda_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => 0,
     'customized' => 0,
-    'parent_identifier' => 'management_-:admin/config/services',
+    'parent_identifier' => 'management_web-services:admin/config/services',
   );
   // Exported menu link: management_rules:admin/config/workflow/rules.
   $menu_links['management_rules:admin/config/workflow/rules'] = array(
@@ -1619,7 +1815,7 @@ function venda_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => 0,
     'customized' => 0,
-    'parent_identifier' => 'management_:admin/config/workflow',
+    'parent_identifier' => 'management_workflow:admin/config/workflow',
   );
   // Exported menu link: management_search-and-metadata:admin/config/search.
   $menu_links['management_search-and-metadata:admin/config/search'] = array(
@@ -1640,7 +1836,7 @@ function venda_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => -10,
     'customized' => 0,
-    'parent_identifier' => 'management_:admin/config',
+    'parent_identifier' => 'management_configuration:admin/config',
   );
   // Exported menu link: management_site-information:admin/config/system/site-information.
   $menu_links['management_site-information:admin/config/system/site-information'] = array(
@@ -1661,7 +1857,7 @@ function venda_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => -20,
     'customized' => 0,
-    'parent_identifier' => 'management_:admin/config/system',
+    'parent_identifier' => 'management_system:admin/config/system',
   );
   // Exported menu link: management_status-report:admin/reports/status.
   $menu_links['management_status-report:admin/reports/status'] = array(
@@ -1680,9 +1876,9 @@ function venda_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -50,
-    'customized' => 1,
-    'parent_identifier' => 'management_:admin/reports',
+    'weight' => -60,
+    'customized' => 0,
+    'parent_identifier' => 'management_reports:admin/reports',
   );
   // Exported menu link: management_structure:admin/structure.
   $menu_links['management_structure:admin/structure'] = array(
@@ -1703,7 +1899,7 @@ function venda_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => -8,
     'customized' => 0,
-    'parent_identifier' => 'management_:admin',
+    'parent_identifier' => 'management_administration:admin',
   );
   // Exported menu link: management_system:admin/config/system.
   $menu_links['management_system:admin/config/system'] = array(
@@ -1724,7 +1920,7 @@ function venda_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => -20,
     'customized' => 0,
-    'parent_identifier' => 'management_:admin/config',
+    'parent_identifier' => 'management_configuration:admin/config',
   );
   // Exported menu link: management_taxonomy:admin/structure/taxonomy.
   $menu_links['management_taxonomy:admin/structure/taxonomy'] = array(
@@ -1745,7 +1941,7 @@ function venda_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => 0,
     'customized' => 0,
-    'parent_identifier' => 'management_:admin/structure',
+    'parent_identifier' => 'management_structure:admin/structure',
   );
   // Exported menu link: management_text-formats:admin/config/content/formats.
   $menu_links['management_text-formats:admin/config/content/formats'] = array(
@@ -1766,7 +1962,7 @@ function venda_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => 0,
     'customized' => 0,
-    'parent_identifier' => 'management_--:admin/config/content',
+    'parent_identifier' => 'management_content-authoring:admin/config/content',
   );
   // Exported menu link: management_top-access-denied-errors:admin/reports/access-denied.
   $menu_links['management_top-access-denied-errors:admin/reports/access-denied'] = array(
@@ -1787,7 +1983,7 @@ function venda_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => 0,
     'customized' => 0,
-    'parent_identifier' => 'management_:admin/reports',
+    'parent_identifier' => 'management_reports:admin/reports',
   );
   // Exported menu link: management_top-page-not-found-errors:admin/reports/page-not-found.
   $menu_links['management_top-page-not-found-errors:admin/reports/page-not-found'] = array(
@@ -1808,7 +2004,7 @@ function venda_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => 0,
     'customized' => 0,
-    'parent_identifier' => 'management_:admin/reports',
+    'parent_identifier' => 'management_reports:admin/reports',
   );
   // Exported menu link: management_translate-interface:admin/config/regional/translate.
   $menu_links['management_translate-interface:admin/config/regional/translate'] = array(
@@ -1829,7 +2025,7 @@ function venda_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => -5,
     'customized' => 0,
-    'parent_identifier' => 'management_--:admin/config/regional',
+    'parent_identifier' => 'management_regional-and-language:admin/config/regional',
   );
   // Exported menu link: management_url-aliases:admin/config/search/path.
   $menu_links['management_url-aliases:admin/config/search/path'] = array(
@@ -1850,7 +2046,7 @@ function venda_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => -5,
     'customized' => 0,
-    'parent_identifier' => 'management_--:admin/config/search',
+    'parent_identifier' => 'management_search-and-metadata:admin/config/search',
   );
   // Exported menu link: management_user-interface:admin/config/user-interface.
   $menu_links['management_user-interface:admin/config/user-interface'] = array(
@@ -1871,25 +2067,7 @@ function venda_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => -15,
     'customized' => 0,
-    'parent_identifier' => 'management_:admin/config',
-  );
-  // Exported menu link: management_user-menu:admin/structure/menu/manage/user-menu.
-  $menu_links['management_user-menu:admin/structure/menu/manage/user-menu'] = array(
-    'menu_name' => 'management',
-    'link_path' => 'admin/structure/menu/manage/user-menu',
-    'router_path' => 'admin/structure/menu/manage/%',
-    'link_title' => 'User menu',
-    'options' => array(
-      'identifier' => 'management_user-menu:admin/structure/menu/manage/user-menu',
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => 0,
-    'customized' => 0,
-    'parent_identifier' => 'management_:admin/structure/menu',
+    'parent_identifier' => 'management_configuration:admin/config',
   );
   // Exported menu link: management_validation:admin/config/validation.
   $menu_links['management_validation:admin/config/validation'] = array(
@@ -1910,7 +2088,7 @@ function venda_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => -10,
     'customized' => 0,
-    'parent_identifier' => 'management_:admin/config',
+    'parent_identifier' => 'management_configuration:admin/config',
   );
   // Exported menu link: management_views-plugins:admin/reports/views-plugins.
   $menu_links['management_views-plugins:admin/reports/views-plugins'] = array(
@@ -1931,7 +2109,7 @@ function venda_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => 0,
     'customized' => 0,
-    'parent_identifier' => 'management_:admin/reports',
+    'parent_identifier' => 'management_reports:admin/reports',
   );
   // Exported menu link: management_views:admin/structure/views.
   $menu_links['management_views:admin/structure/views'] = array(
@@ -1952,7 +2130,7 @@ function venda_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => 0,
     'customized' => 0,
-    'parent_identifier' => 'management_:admin/structure',
+    'parent_identifier' => 'management_structure:admin/structure',
   );
   // Exported menu link: management_web-services:admin/config/services.
   $menu_links['management_web-services:admin/config/services'] = array(
@@ -1973,7 +2151,7 @@ function venda_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => 0,
     'customized' => 0,
-    'parent_identifier' => 'management_:admin/config',
+    'parent_identifier' => 'management_configuration:admin/config',
   );
   // Exported menu link: management_workflow:admin/config/workflow.
   $menu_links['management_workflow:admin/config/workflow'] = array(
@@ -1994,7 +2172,7 @@ function venda_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => 5,
     'customized' => 0,
-    'parent_identifier' => 'management_:admin/config',
+    'parent_identifier' => 'management_configuration:admin/config',
   );
   // Exported menu link: menu-manager-menu_--:admin/structure/taxonomy/manufacturers/add.
   $menu_links['menu-manager-menu_--:admin/structure/taxonomy/manufacturers/add'] = array(
@@ -2264,16 +2442,16 @@ function venda_menu_default_menu_links() {
   $menu_links['menu-manager-menu_-:admin/config/system/backup_migrate'] = array(
     'menu_name' => 'menu-manager-menu',
     'link_path' => 'admin/config/system/backup_migrate',
-    'router_path' => 'admin/config/system',
+    'router_path' => 'admin/config/system/backup_migrate',
     'link_title' => 'Резерв. копирование',
     'options' => array(
+      'identifier' => 'menu-manager-menu_-:admin/config/system/backup_migrate',
       'attributes' => array(),
       'item_attributes' => array(
         'id' => '',
         'class' => '',
         'style' => '',
       ),
-      'identifier' => 'menu-manager-menu_-:admin/config/system/backup_migrate',
     ),
     'module' => 'menu',
     'hidden' => 0,
@@ -2283,6 +2461,30 @@ function venda_menu_default_menu_links() {
     'weight' => 0,
     'customized' => 1,
     'parent_identifier' => 'menu-manager-menu_span-classglyphicon-glyphicon-cogspan:dashboard/settings',
+  );
+  // Exported menu link: menu-manager-menu_-:dashboard/reports.
+  $menu_links['menu-manager-menu_-:dashboard/reports'] = array(
+    'menu_name' => 'menu-manager-menu',
+    'link_path' => 'dashboard/reports',
+    'router_path' => 'dashboard/reports',
+    'link_title' => 'Все транзакции',
+    'options' => array(
+      'attributes' => array(),
+      'item_attributes' => array(
+        'id' => '',
+        'class' => '',
+        'style' => '',
+      ),
+      'identifier' => 'menu-manager-menu_-:dashboard/reports',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -50,
+    'customized' => 1,
+    'parent_identifier' => 'menu-manager-menu_span-classglyphicon-glyphicon-equalizerspan:dashboard/reports',
   );
   // Exported menu link: menu-manager-menu_-:dashboard/reports/date.
   $menu_links['menu-manager-menu_-:dashboard/reports/date'] = array(
@@ -2646,6 +2848,30 @@ function venda_menu_default_menu_links() {
     'weight' => -44,
     'customized' => 1,
   );
+  // Exported menu link: menu-manager-menu_span-classglyphicon-glyphicon-equalizerspan:dashboard/reports.
+  $menu_links['menu-manager-menu_span-classglyphicon-glyphicon-equalizerspan:dashboard/reports'] = array(
+    'menu_name' => 'menu-manager-menu',
+    'link_path' => 'dashboard/reports',
+    'router_path' => 'dashboard/reports',
+    'link_title' => '<span class="glyphicon glyphicon-equalizer"></span>Продажи',
+    'options' => array(
+      'html' => 1,
+      'attributes' => array(),
+      'item_attributes' => array(
+        'id' => '',
+        'class' => '',
+        'style' => '',
+      ),
+      'identifier' => 'menu-manager-menu_span-classglyphicon-glyphicon-equalizerspan:dashboard/reports',
+    ),
+    'module' => 'system',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 1,
+    'expanded' => 1,
+    'weight' => -48,
+    'customized' => 1,
+  );
   // Exported menu link: menu-manager-menu_span-classglyphicon-glyphicon-scalespan:dashboard/sell.
   $menu_links['menu-manager-menu_span-classglyphicon-glyphicon-scalespan:dashboard/sell'] = array(
     'menu_name' => 'menu-manager-menu',
@@ -2983,60 +3209,6 @@ function venda_menu_default_menu_links() {
     'weight' => 0,
     'customized' => 0,
   );
-  // Exported menu link: navigation_-:node/add/missing-product.
-  $menu_links['navigation_-:node/add/missing-product'] = array(
-    'menu_name' => 'navigation',
-    'link_path' => 'node/add/missing-product',
-    'router_path' => 'node/add/missing-product',
-    'link_title' => 'Отказной товар',
-    'options' => array(
-      'identifier' => 'navigation_-:node/add/missing-product',
-    ),
-    'module' => 'system',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => 0,
-    'customized' => 0,
-    'parent_identifier' => 'navigation_-:node/add',
-  );
-  // Exported menu link: navigation_-:node/add/revoked-product.
-  $menu_links['navigation_-:node/add/revoked-product'] = array(
-    'menu_name' => 'navigation',
-    'link_path' => 'node/add/revoked-product',
-    'router_path' => 'node/add/revoked-product',
-    'link_title' => 'Списанный товар',
-    'options' => array(
-      'identifier' => 'navigation_-:node/add/revoked-product',
-    ),
-    'module' => 'system',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => 0,
-    'customized' => 0,
-    'parent_identifier' => 'navigation_-:node/add',
-  );
-  // Exported menu link: navigation_-:node/add/transaction-product.
-  $menu_links['navigation_-:node/add/transaction-product'] = array(
-    'menu_name' => 'navigation',
-    'link_path' => 'node/add/transaction-product',
-    'router_path' => 'node/add/transaction-product',
-    'link_title' => 'Продукт транзакции',
-    'options' => array(
-      'identifier' => 'navigation_-:node/add/transaction-product',
-    ),
-    'module' => 'system',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => 0,
-    'customized' => 0,
-    'parent_identifier' => 'navigation_-:node/add',
-  );
   // Exported menu link: navigation_:dashboard/sell.
   $menu_links['navigation_:dashboard/sell'] = array(
     'menu_name' => 'navigation',
@@ -3089,186 +3261,6 @@ function venda_menu_default_menu_links() {
     'customized' => 0,
     'parent_identifier' => 'navigation_--csv:dashboard/warehouse/export',
   );
-  // Exported menu link: navigation_:node/add/branch.
-  $menu_links['navigation_:node/add/branch'] = array(
-    'menu_name' => 'navigation',
-    'link_path' => 'node/add/branch',
-    'router_path' => 'node/add/branch',
-    'link_title' => 'Филиал',
-    'options' => array(
-      'identifier' => 'navigation_:node/add/branch',
-    ),
-    'module' => 'system',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => 0,
-    'customized' => 0,
-    'parent_identifier' => 'navigation_-:node/add',
-  );
-  // Exported menu link: navigation_:node/add/client.
-  $menu_links['navigation_:node/add/client'] = array(
-    'menu_name' => 'navigation',
-    'link_path' => 'node/add/client',
-    'router_path' => 'node/add/client',
-    'link_title' => 'Клиент',
-    'options' => array(
-      'identifier' => 'navigation_:node/add/client',
-    ),
-    'module' => 'system',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => 0,
-    'customized' => 0,
-    'parent_identifier' => 'navigation_-:node/add',
-  );
-  // Exported menu link: navigation_:node/add/contract.
-  $menu_links['navigation_:node/add/contract'] = array(
-    'menu_name' => 'navigation',
-    'link_path' => 'node/add/contract',
-    'router_path' => 'node/add/contract',
-    'link_title' => 'Договор',
-    'options' => array(
-      'identifier' => 'navigation_:node/add/contract',
-    ),
-    'module' => 'system',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => 0,
-    'customized' => 0,
-    'parent_identifier' => 'navigation_-:node/add',
-  );
-  // Exported menu link: navigation_:node/add/encashment.
-  $menu_links['navigation_:node/add/encashment'] = array(
-    'menu_name' => 'navigation',
-    'link_path' => 'node/add/encashment',
-    'router_path' => 'node/add/encashment',
-    'link_title' => 'Расход',
-    'options' => array(
-      'identifier' => 'navigation_:node/add/encashment',
-    ),
-    'module' => 'system',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => 0,
-    'customized' => 0,
-    'parent_identifier' => 'navigation_-:node/add',
-  );
-  // Exported menu link: navigation_:node/add/page.
-  $menu_links['navigation_:node/add/page'] = array(
-    'menu_name' => 'navigation',
-    'link_path' => 'node/add/page',
-    'router_path' => 'node/add/page',
-    'link_title' => 'Страница',
-    'options' => array(
-      'identifier' => 'navigation_:node/add/page',
-    ),
-    'module' => 'system',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => 0,
-    'customized' => 0,
-    'parent_identifier' => 'navigation_-:node/add',
-  );
-  // Exported menu link: navigation_:node/add/product.
-  $menu_links['navigation_:node/add/product'] = array(
-    'menu_name' => 'navigation',
-    'link_path' => 'node/add/product',
-    'router_path' => 'node/add/product',
-    'link_title' => 'Продукт',
-    'options' => array(
-      'identifier' => 'navigation_:node/add/product',
-    ),
-    'module' => 'system',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => 0,
-    'customized' => 0,
-    'parent_identifier' => 'navigation_-:node/add',
-  );
-  // Exported menu link: navigation_:node/add/product-batch.
-  $menu_links['navigation_:node/add/product-batch'] = array(
-    'menu_name' => 'navigation',
-    'link_path' => 'node/add/product-batch',
-    'router_path' => 'node/add/product-batch',
-    'link_title' => 'Партия',
-    'options' => array(
-      'identifier' => 'navigation_:node/add/product-batch',
-    ),
-    'module' => 'system',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => 0,
-    'customized' => 0,
-    'parent_identifier' => 'navigation_-:node/add',
-  );
-  // Exported menu link: navigation_:node/add/provider.
-  $menu_links['navigation_:node/add/provider'] = array(
-    'menu_name' => 'navigation',
-    'link_path' => 'node/add/provider',
-    'router_path' => 'node/add/provider',
-    'link_title' => 'Поставщик',
-    'options' => array(
-      'identifier' => 'navigation_:node/add/provider',
-    ),
-    'module' => 'system',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => 0,
-    'customized' => 0,
-    'parent_identifier' => 'navigation_-:node/add',
-  );
-  // Exported menu link: navigation_:node/add/transaction.
-  $menu_links['navigation_:node/add/transaction'] = array(
-    'menu_name' => 'navigation',
-    'link_path' => 'node/add/transaction',
-    'router_path' => 'node/add/transaction',
-    'link_title' => 'Транзакция',
-    'options' => array(
-      'identifier' => 'navigation_:node/add/transaction',
-    ),
-    'module' => 'system',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => 0,
-    'customized' => 0,
-    'parent_identifier' => 'navigation_-:node/add',
-  );
-  // Exported menu link: navigation_:node/add/waybill.
-  $menu_links['navigation_:node/add/waybill'] = array(
-    'menu_name' => 'navigation',
-    'link_path' => 'node/add/waybill',
-    'router_path' => 'node/add/waybill',
-    'link_title' => 'Накладная',
-    'options' => array(
-      'identifier' => 'navigation_:node/add/waybill',
-    ),
-    'module' => 'system',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => 0,
-    'customized' => 0,
-    'parent_identifier' => 'navigation_-:node/add',
-  );
   // Exported menu link: navigation_add-content:node/add.
   $menu_links['navigation_add-content:node/add'] = array(
     'menu_name' => 'navigation',
@@ -3281,7 +3273,7 @@ function venda_menu_default_menu_links() {
     'module' => 'system',
     'hidden' => 0,
     'external' => 0,
-    'has_children' => 1,
+    'has_children' => 0,
     'expanded' => 0,
     'weight' => 0,
     'customized' => 0,
@@ -3378,6 +3370,7 @@ function venda_menu_default_menu_links() {
   t('<span class="glyphicon glyphicon-briefcase"></span>Поставщики');
   t('<span class="glyphicon glyphicon-cog"></span>Настройки');
   t('<span class="glyphicon glyphicon-duplicate"></span>Производители');
+  t('<span class="glyphicon glyphicon-equalizer"></span>Продажи');
   t('<span class="glyphicon glyphicon-scale"></span>Касса');
   t('<span class="glyphicon glyphicon-shopping-cart"></span>Склад');
   t('<span class="glyphicon glyphicon-tags"></span>Клиенты');
@@ -3392,11 +3385,13 @@ function venda_menu_default_menu_links() {
   t('Appearance');
   t('Authcache');
   t('Available updates');
+  t('Backup and Migrate');
   t('Blocks');
   t('CKEditor');
   t('Cache Expiration');
   t('Charts examples');
   t('Clean URLs');
+  t('Clear cache');
   t('Clientside Validation');
   t('Compose tips');
   t('Config Pages');
@@ -3407,118 +3402,110 @@ function venda_menu_default_menu_links() {
   t('Cron');
   t('Custom forms');
   t('Date API');
+  t('Date Popup');
   t('Date and time');
   t('Default chart configuration');
+  t('Default settings');
+  t('Devel settings');
   t('Development');
   t('Email Contact Form Settings');
+  t('Entity info');
+  t('Execute PHP Code');
+  t('Extended path aliases');
   t('Features');
   t('Field Track Changes');
   t('Field collections');
+  t('Field info');
   t('Field list');
   t('File settings');
   t('File system');
   t('File types');
   t('Files');
+  t('Function reference');
+  t('General settings');
+  t('Generate profiles');
   t('Global Redirect');
+  t('Hook_elements()');
   t('IP address blocking');
   t('Image styles');
   t('Image toolkit');
   t('Languages');
   t('Libraries');
-  t('License');
   t('Log out');
   t('Logging and errors');
   t('LoginToboggan');
-  t('Main menu');
   t('Maintenance mode');
-  t('Management');
-  t('Manager menu');
   t('Media');
   t('Media browser settings');
+  t('Menu item');
   t('Menus');
   t('Missing Module Message Fixer');
   t('Module filter');
   t('Modules');
   t('Multilingual settings');
-  t('Navigation');
   t('Nice messages');
   t('Override Node Options Settings');
+  t('PHPinfo()');
+  t('Password reset');
   t('People');
   t('Performance');
+  t('Profile types');
   t('RSS publishing');
+  t('Rebuild menus');
   t('Recent log messages');
   t('Regional and language');
   t('Regional settings');
-  t('Report menu');
+  t('Reinstall modules');
   t('Reports');
   t('Rules');
+  t('Run cron');
   t('Search and metadata');
+  t('Session viewer');
   t('Site information');
   t('Status report');
   t('Structure');
   t('System');
   t('Taxonomy');
   t('Text formats');
+  t('Theme registry');
   t('Top \'access denied\' errors');
   t('Top \'page not found\' errors');
   t('Translate interface');
   t('URL aliases');
   t('User account');
   t('User interface');
-  t('User menu');
   t('Validation');
+  t('Variable editor');
   t('Views');
   t('Views plugins');
   t('Web services');
   t('Workflow');
-  t('Войти в систему');
+  t('jQuery update');
   t('Все транзакции');
   t('Добавить нового поставщика');
   t('Добавить новый клиент');
   t('Добавить новый продукт');
   t('Добавить новый производитель');
   t('Добавить сумму');
-  t('Договор');
   t('Договоры');
   t('Импорт из CSV');
-  t('Инструкция по использованию');
-  t('Интернет-витрина');
   t('Истекающий срок годности');
   t('Касса');
-  t('Клиент');
-  t('Накладная');
   t('Накладные');
   t('Настройки профиля');
   t('Настройки сайта');
   t('Нет в наличии');
-  t('О программе');
-  t('Оборудование');
   t('Отказной лист');
-  t('Отказной товар');
-  t('Партия');
   t('По дате');
   t('По поставщикам');
   t('По продавцам');
   t('По продуктам');
   t('По часам');
-  t('Поиск лекарства');
-  t('Поставщик');
   t('Поступление по накладной');
-  t('Продукт');
-  t('Продукт транзакции');
-  t('Расход');
   t('Расходы');
   t('Регистрация нового продавца');
   t('Резерв. копирование');
   t('Списание товаров');
-  t('Списанный товар');
-  t('Страница');
-  t('Типы профилей');
-  t('Транзакция');
-  t('Учётная запись пользователя');
-  t('Филиал');
-  t('Цены');
-  t('Часто задаваемые вопросы');
   t('Экспорт в CSV');
 
   return $menu_links;
