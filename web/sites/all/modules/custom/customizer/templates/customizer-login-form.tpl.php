@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-3">
-      
+
     </div>
     <div class="col-md-6">
 			<br/><br/>
@@ -11,13 +11,18 @@
 					<?php print drupal_render($form['name']); ?>
 					<?php print drupal_render($form['pass']); ?>
 					<?php print drupal_render($form['captcha']); ?>
-					<div class="text-center">
-						<button type="submit" value="<?php print t('Log in'); ?>" name="op" id="edit-submit" class="btn btn-primary form-submit"><?php print t('Log in'); ?></button>
+					<div class="row">
+						<div class="col-md-6">
+							<button type="submit" value="<?php print t('Log in'); ?>" name="op" id="edit-submit" class="btn btn-primary form-submit"><?php print t('Log in'); ?></button>
+						</div>
+						<div class="col-md-6 text-right">
+							<a href="<?php print url('user/password'); ?>" data-toggle="tooltip" title="Только менеджеры могут сбросить пароль. Продавцам нужно обратиться к менеджеру.">Забыли пароль?</a>
+						</div>
 					</div>
 			</div>
     </div>
     <div class="col-md-3">
-      
+
     </div>
   </div>
 </div>
@@ -31,7 +36,7 @@
 				<h4 class="modal-title">Доступ для demo-версии</h4>
 			</div>
 			<div class="modal-body">
-				<p>Имя пользователя: <strong>demo</strong><br/>Пароль: <strong>demo</strong></p> 
+				<p>Имя пользователя: <strong>demo</strong><br/>Пароль: <strong>demo</strong></p>
 			</div>
 		</div>
   </div>
