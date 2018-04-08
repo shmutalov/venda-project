@@ -1774,6 +1774,7 @@
         }).always(function() {
             //Disable progressbar
             progressbar_process(100);
+            window.location.reload(1);
         });
 
         $('.search-md-input').focus();
